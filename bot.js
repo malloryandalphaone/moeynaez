@@ -7,6 +7,24 @@ client.user.setActivity("َ",{type: 'PLAYING'});
 console.log('I am ready!');
 });
 
+client.on("message", message => {
+              
+          if(!message.channel.guild) return;
+   if(message.author.bot) return;
+      if(message.content === prefix + "صورة-السيرفر"){ 
+          const embed = new Discord.RichEmbed()
+  
+      .setTitle(`This is  ** ${message.guild.name} **  Photo !`)
+  .setAuthor(message.author.username, message.guild.iconrURL)
+    .setColor("#565656")
+    .setImage(message.guild.iconURL)
+    .setURL(message.guild.iconrURL)
+                    .setTimestamp()
+
+   message.channel.send({embed});
+      }
+  });
+
 let stylie;
 client.on("ready", async  => {
   let guild = client.guilds.get("462085665371324427"); 
