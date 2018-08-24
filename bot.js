@@ -50,7 +50,7 @@ if(!check.voiceChannelID){
   stylie++;
 }
 }
-guild.channels.find('id', '482338937923305482').setName(" Online Voice "+stylie+". ");
+guild.channels.find('id', '482338937923305482').setName(" ' Online Voice "+stylie+". ");
   client.setInterval(() =>{
     let d = Date.now()
   }, 5000);
@@ -61,10 +61,10 @@ let newUserChannel = newMember.voiceChannel
 let oldUserChannel = oldMember.voiceChannel
  if(oldUserChannel === undefined && newUserChannel !== undefined) {
    stylie++;
-guild.channels.find('id', '482338937923305482').setName(" Online Voice "+stylie+". ");
+guild.channels.find('id', '482338937923305482').setName(" ' Online Voice "+stylie+". ");
 } else if(newUserChannel === undefined){
   stylie--;
-guild.channels.find('id', '482338937923305482').setName(" Online Voice "+stylie+". ");
+guild.channels.find('id', '482338937923305482').setName(" ' Online Voice "+stylie+". ");
 }
 });
 
@@ -102,12 +102,34 @@ client.on('message', msg => {
     if(msg.member.hasPermission("MANAGE_MESSAGES")) {
     if (textxt == "") {
         msg.delete().then
-    msg.channel.send("```ضع عدد الرسائل التي تريد مسحها```").then(m => m.delete(3000));
+    msg.channel.send("**```ضع عدد الرسائل التي تريد مسحها```**").then(m => m.delete(3000));
 } else {
     msg.delete().then
     msg.delete().then
     msg.channel.bulkDelete(textxt);
-        msg.channel.send("```\nعدد الرسائل التي تم مسحها: " + textxt + "\n```").then(m => m.delete(3000));
+        msg.channel.send("**```\nعدد الرسائل التي تم مسحها: " + textxt + "\n```**").then(m => m.delete(3000));
+        }    
+    }
+}
+});
+
+client.on('message', msg => {
+  if (msg.author.bot) return;
+  if (!msg.content.startsWith(prefix)) return;
+  let command = msg.content.split(" ")[0];
+  command = command.slice(prefix.length);
+  let args = msg.content.split(" ").slice(1);
+
+    if(command === "clear") {
+        const emoji = client.emojis.find("name", "wastebasket")
+    let textxt = args.slice(0).join("");
+    if(msg.member.hasPermission("MANAGE_MESSAGES")) {
+    if (textxt == "") {
+        msg.delete().then
+} else {
+    msg.delete().then
+    msg.delete().then
+    msg.channel.bulkDelete(textxt);
         }    
     }
 }
