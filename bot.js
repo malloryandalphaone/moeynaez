@@ -4,7 +4,7 @@ const prefix = "$";
 client.on('ready', () => {
 client.user.setStatus('online');
 client.user.setActivity("َ",{type: 'PLAYING'});
-console.log('I am ready!');
+console.log('Mallory is ready!');
 });
 
     const adminprefix = "$";
