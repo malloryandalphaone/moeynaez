@@ -7,23 +7,34 @@ client.user.setActivity("َ",{type: 'PLAYING'});
 console.log('I am ready!');
 });
 
-client.on("message", message => {
-              
-          if(!message.channel.guild) return;
-   if(message.author.bot) return;
-      if(message.content === prefix + "صورة-السيرفر"){ 
-          const embed = new Discord.RichEmbed()
-  
-      .setTitle(`This is  ** ${message.guild.name} **  Photo !`)
-  .setAuthor(message.author.username, message.guild.iconrURL)
-    .setColor("#565656")
-    .setImage(message.guild.iconURL)
-    .setURL(message.guild.iconrURL)
-                    .setTimestamp()
+client.on('message', msg => {
+	
+  if(msg.content.startsWith('$تقديم')) {
+    if(!msg.channel.guild) return msg.reply('** هذا الامر فقط للسيرفرات**');
+    if(!msg.guild.channels.find('name', 'تقديمات')) return msg.reply('**الرجاء، اضافة روم بأسم : تقديمات**');
+    let args = msg.content.split(" ").slice(1);
+    if(!args[1]) return msg.reply('**الرجاء، قم بكتابة اسمك, عمرك الحقيقي و خبرتك بالدسكورد بأختصار**')
+    //غيره على حسب اسم روم الاقتراحات او سوي مثل اسم الروم الموجود هنا
+    if(msg.guild.channels.find('name', 'تقديمات')) {
+      //غيره هنا كمان اذا غيرت فوق
+      msg.guild.channels.find('name', 'تقديمات').send(`
+**تم التقديم بواسطة : ** ${msg.member}
 
-   message.channel.send({embed});
+
+**التقديم :** 
+
+${args.join(" ").split(msg.mentions.members.first()).slice(' ')}
+
+@here
+`)
+      .then(function (message) {
+        message.react('')
+        message.react('')
+      })
       }
-  });
+    }
+
+});
 
 let stylie;
 client.on("ready", async  => {
