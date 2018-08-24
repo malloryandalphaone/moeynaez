@@ -7,6 +7,47 @@ client.user.setActivity("َ",{type: 'PLAYING'});
 console.log('I am ready!');
 });
 
+client.on('message', async message => {
+  if(message.content.startsWith(prefix + "تقديم")) {
+    await message.channel.send("**الأن، كم مدة خبرتك بالدسكورد؟**").then(e => {
+    let filter = m => m.author.id === message.author.id
+    let lan = '';
+    let md = '';
+    let br = '';
+    let chaLan = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
+    .then(collected => {
+      lan = collected.first().content
+      collected.first().delete()
+e.edit(`**الأن، قل خبرتك باختصار**`)
+let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
+.then(co => {
+  md = co.first().content
+        co.first().delete()
+        e.edit(`**الأن، كم عمرك واسمك الحقيقي؟**`)
+let br = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
+.then(col => {
+  br = col.first().content
+        col.first().delete()
+e.edit("**جاري ارسال تقديمك الرجاء الانتظار**").then(b => {
+        setTimeout(() => {
+  b.edit(`**تم ارسال طلبك، سيتم الرد في أقرب وقت ممكن**`)
+        },2000);
+var gg = message.guild.channels.find('name', 'تقديمات')
+if(!gg) return;
+if(gg) {
+gg.send({embed : new Discord.RichEmbed()
+.setDescription(`**مدة الخبرة بالدسكورد :\n ${lan}\n\nالخبرة بأختصار :\n ${md} \n\nالعمر والاسم :\n${br}  **`)  
+          .setFooter(`Mallory Community`)
+	  .setColor("#565656")
+.setTimestamp()
+});
+}        
+})
+})
+})
+})
+})
+ });
 
 let stylie;
 client.on("ready", async  => {
@@ -74,12 +115,12 @@ client.on('message', msg => {
     if(msg.member.hasPermission("MANAGE_MESSAGES")) {
     if (textxt == "") {
         msg.delete().then
-    msg.channel.send("**```ضع عدد الرسائل التي تريد مسحها```**").then(m => m.delete(3000));
+    msg.channel.send("```ضع عدد الرسائل التي تريد مسحها```").then(m => m.delete(3000));
 } else {
     msg.delete().then
     msg.delete().then
     msg.channel.bulkDelete(textxt);
-        msg.channel.send("**```\nعدد الرسائل التي تم مسحها: " + textxt + "\n```**").then(m => m.delete(3000));
+        msg.channel.send("```\nعدد الرسائل التي تم مسحها: " + textxt + "\n```").then(m => m.delete(3000));
         }    
     }
 }
