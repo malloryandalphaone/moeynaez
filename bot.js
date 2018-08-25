@@ -44,7 +44,7 @@ client.on("message", async message => {
     if (command == "addrole") {
       if(!message.channel.guild) return message.reply(`**this ~~command~~ __for servers only__**`);
       if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("sorry you can't do this");
-      if(!args[0] || args[1]) return message.channel.send(`\`\`\`${prefix}autoC <role-name>\`\`\``);
+      if(!args[0] || args[1]) return message.channel.send(`\`\`\`${prefix}addrole <role-name>\`\`\``);
       var role = message.guild.roles.find( role => { return role.name == args[0] });
       if(!role) return message.channel.send(`no role with name ${definedRoleName} found, make sure you entered correct name`);
       if(definedReactionRole != null  || !stopReacord) return message.channel.send("another reaction role request is running");
