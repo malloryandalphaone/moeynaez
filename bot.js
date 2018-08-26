@@ -67,7 +67,7 @@ client.on('messageReactionAdd', (reaction, user) => {
     if(user.id == client.user.id) return;
     if(!stopReacord) {
       var done = false;
-      reactionRoles[(reaction.message.id + reaction.emoji.name )] = { role: definedReactionRole, message_id: reaction.message.id, emoji: reaction.emoji};
+      reactionRoles[reaction.message.id] = { role: definedReactionRole, message_id: reaction.message.id, emoji: reaction.emoji};
       stopReacord =  true;
       definedReactionRole = null;
       reaction.message.react(reaction.emoji.name)
