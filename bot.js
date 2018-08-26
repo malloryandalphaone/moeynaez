@@ -42,9 +42,9 @@ client.on("message", async message => {
     if(message.author.bot) return;
     if(message.content.indexOf(prefix) !== 0) return;
     if (command == "addrole") {
-      if(!message.channel.guild) return message.reply(`**this ~~command~~ __for servers only__**`);
-      if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("sorry you can't do this");
-      if(!args[0] || args[1]) return message.channel.send(`\`\`\`${prefix}addrole <role-name>\`\`\``);
+      if(!message.channel.guild) return message.reply(`**هذا الامر فقط للسيرفرات**`);
+      if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("لا تمتلك الخاصية المطلوبة");
+      if(!args[0] || args[1]) return message.channel.send(`${prefix}addrole اسم الرتبة`);
       var role = message.guild.roles.find( role => { return role.name == args[0] });
       if(!role) return message.channel.send(`no role with name ${definedRoleName} found, make sure you entered correct name`);
       if(definedReactionRole != null  || !stopReacord) return message.channel.send("another reaction role request is running");
@@ -67,7 +67,7 @@ client.on('messageReactionAdd', (reaction, user) => {
     if(user.id == client.user.id) return;
     if(!stopReacord) {
       var done = false;
-      reactionRoles[reaction.message.id] = { role: definedReactionRole, message_id: reaction.message.id, emoji: reaction.emoji};
+      reactionRoles[(reaction.message.id + reaction.emoji.name )] = { role: definedReactionRole, message_id: reaction.message.id, emoji: reaction.emoji};
       stopReacord =  true;
       definedReactionRole = null;
       reaction.message.react(reaction.emoji.name)
@@ -88,22 +88,46 @@ client.on('messageReactionRemove', (reaction, user) => {
   reaction.message.guild.members.get(user.id).removeRole(request.role);
 });
 
-
 client.on('message', msg => {
 	
   if(msg.content.startsWith('$تقديم')) {
     if(!msg.channel.guild) return msg.reply('** هذا الامر فقط للسيرفرات**');
-    if(!msg.guild.channels.find('name', 'تقديمات')) return msg.reply('**الرجاء، اضافة روم بأسم : تقديمات**');
+    if(!msg.guild.channels.find('name', 'التقديم')) return msg.reply('**الرجاء، اضافة روم بأسم : التقديم**');
     let args = msg.content.split(" ").slice(1);
-    if(!args[1]) return msg.reply('**الرجاء، قم بكتابة اسمك, عمرك الحقيقي و خبرتك بالدسكورد بأختصار**')
-    //غيره على حسب اسم روم الاقتراحات او سوي مثل اسم الروم الموجود هنا
-    if(msg.guild.channels.find('name', 'تقديمات')) {
-      //غيره هنا كمان اذا غيرت فوق
-      msg.guild.channels.find('name', 'تقديمات').send(`
+    if(!args[1]) return msg.reply('**الأن قم بكتابة اسمك وعمرك الحقيقي وخبرتك بأختصار**')
+    if(msg.guild.channels.find('name', 'التقديم')) {
+      msg.guild.channels.find('name', 'التقديم').send(`
 **تم التقديم بواسطة : ** ${msg.member}
 
 
 **التقديم :** 
+
+${args.join(" ").split(msg.mentions.members.first()).slice(' ')}
+
+@here
+`)
+      .then(function (message) {
+        message.react('')
+        message.react('')
+      })
+      }
+    }
+
+});
+
+client.on('message', msg => {
+	
+  if(msg.content.startsWith('$اقتراح')) {
+    if(!msg.channel.guild) return msg.reply('** هذا الامر فقط للسيرفرات**');
+    if(!msg.guild.channels.find('name', 'اقتراح')) return msg.reply('**الرجاء، اضافة روم بأسم : اقتراح**');
+    let args = msg.content.split(" ").slice(1);
+    if(!args[1]) return msg.reply('**يجب كتابة اقتراح، علما ان الاستهبال يعاقبك**')
+    if(msg.guild.channels.find('name', 'اقتراح')) {
+      msg.guild.channels.find('name', 'اقتراح').send(`
+**مقترح : ** ${msg.member}
+
+
+**الاقتراح :** 
 
 ${args.join(" ").split(msg.mentions.members.first()).slice(' ')}
 
@@ -132,7 +156,7 @@ if(!check.voiceChannelID){
   stylie++;
 }
 }
-guild.channels.find('id', '482338937923305482').setName(" ' Online Voice "+stylie+". ");
+guild.channels.find('id', '483077110467133440').setName("Mallory Online. ["+stylie+"]");
   client.setInterval(() =>{
     let d = Date.now()
   }, 5000);
@@ -143,10 +167,10 @@ let newUserChannel = newMember.voiceChannel
 let oldUserChannel = oldMember.voiceChannel
  if(oldUserChannel === undefined && newUserChannel !== undefined) {
    stylie++;
-guild.channels.find('id', '482338937923305482').setName(" ' Online Voice "+stylie+". ");
+guild.channels.find('id', '483077110467133440').setName("Mallory Online. ["+stylie+"]");
 } else if(newUserChannel === undefined){
   stylie--;
-guild.channels.find('id', '482338937923305482').setName(" ' Online Voice "+stylie+". ");
+guild.channels.find('id', '483077110467133440').setName("Mallory Online. ["+stylie+"]");
 }
 });
 
@@ -189,29 +213,7 @@ client.on('message', msg => {
     msg.delete().then
     msg.delete().then
     msg.channel.bulkDelete(textxt);
-        msg.channel.send("**```\nعدد الرسائل التي تم مسحها: " + textxt + "\n```**").then(m => m.delete(3000));
-        }    
-    }
-}
-});
-
-client.on('message', msg => {
-  if (msg.author.bot) return;
-  if (!msg.content.startsWith(prefix)) return;
-  let command = msg.content.split(" ")[0];
-  command = command.slice(prefix.length);
-  let args = msg.content.split(" ").slice(1);
-
-    if(command === "clear") {
-        const emoji = client.emojis.find("name", "wastebasket")
-    let textxt = args.slice(0).join("");
-    if(msg.member.hasPermission("MANAGE_MESSAGES")) {
-    if (textxt == "") {
-        msg.delete().then
-} else {
-    msg.delete().then
-    msg.delete().then
-    msg.channel.bulkDelete(textxt);
+        msg.channel.send("**```js\nعدد الرسائل التي تم مسحها: " + textxt + "\n```**").then(m => m.delete(3000));
         }    
     }
 }
@@ -227,14 +229,14 @@ client.on('message', msg => {
      message.guild.members.filter(m=>m.voiceChannel).forEach(m => {
      m.setVoiceChannel(author)
      })
-     message.channel.send(`**تم سحب جميع الأعضاء الي الروم الصوتي.**`)
+     message.channel.send(`**تم سحب جميع الأعضاء الى الروم الصوتي.**`)
 
 
      }
        });
 
 client.on('message' , message => {
-    var prefix = "$";
+	
     var args = message.content.split(' ').slice(1).join(' ');
     if(message.content.startsWith(prefix +'8ol3ne')) {
 	    
@@ -267,7 +269,7 @@ var api = `${Math.round(client.ping)}`
 if (message.author.bot) return;
 let embed = new Discord.RichEmbed()
 .setAuthor(message.author.username,message.author.avatarURL)
-.setColor('FFFFFF')
+.setColor("#f3c98e")
 .addField('**Ping is**',msg + " ms :signal_strength: ")
 message.channel.send({embed:embed});
 }
@@ -314,7 +316,6 @@ client.on('message', message => {
                                             if(!message.channel.guild) return message.reply('**You can\'t send links! :broken_heart:**');
         if (!message.member.hasPermissions(['ADMINISTRATOR'])){
         message.delete()
-    return message.reply(`**You can't send links! :broken_heart:**`)
     }
 }
 });
@@ -324,7 +325,6 @@ client.on('message', message => {
                                             if(!message.channel.guild) return message.reply('**You can\'t send links! :broken_heart:**');
         if (!message.member.hasPermissions(['ADMINISTRATOR'])){
         message.delete()
-    return message.reply(`**You can't send links! :broken_heart:**`)
     }
 }
 });
