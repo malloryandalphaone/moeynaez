@@ -7,12 +7,6 @@ client.user.setActivity("َ",{type: 'PLAYING'});
 console.log('Mallory is ready!');
 });
 
-client.on('guildCreate', guild => {
-if(guild.memberCount > 20) { 
-guild.leave()
-}
-});
-
   Client.on('message', message => {
 
     if (message.content === "$count") {
