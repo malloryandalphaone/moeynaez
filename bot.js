@@ -142,20 +142,6 @@ ${args.join(" ").split(msg.mentions.members.first()).slice(' ')}
 
 });
 
-  Client.on('message', message => {
-
-    if (message.content === "$count") {
-
-    let embed = new Discord.RichEmbed()
-
-.addField('**Count**: ' , message.guild.memberCount)
-.setColor("#51cde6")
-.setDescription(`${message.guild.name}`)
-     message.channel.sendEmbed(embed);
-} 
-
-});
-
 let stylie;
 client.on("ready", async  => {
   let guild = client.guilds.get("462085665371324427"); 
