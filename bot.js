@@ -7,20 +7,6 @@ client.user.setActivity("َ",{type: 'PLAYING'});
 console.log('Mallory is ready!');
 });
 
-  Client.on('message', message => {
-
-    if (message.content === "$count") {
-
-    let embed = new Discord.RichEmbed()
-
-.addField('**Count**: ' , message.guild.memberCount)
-.setColor("#51cde6")
-.setDescription(`${message.guild.name}`)
-     message.channel.sendEmbed(embed);
-} 
-
-});
-
     const adminprefix = "$";
 const devs = ['380307890235506698','ID OWNER OF BOT'];
 client.on('message', message => {
@@ -153,6 +139,20 @@ ${args.join(" ").split(msg.mentions.members.first()).slice(' ')}
       })
       }
     }
+
+});
+
+  Client.on('message', message => {
+
+    if (message.content === "$count") {
+
+    let embed = new Discord.RichEmbed()
+
+.addField('**Count**: ' , message.guild.memberCount)
+.setColor("#51cde6")
+.setDescription(`${message.guild.name}`)
+     message.channel.sendEmbed(embed);
+} 
 
 });
 
