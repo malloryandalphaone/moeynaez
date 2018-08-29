@@ -40,7 +40,6 @@ client.channels.get(channel);
   console.log("تم تفعيله");
 });
 });
-});
 
 client.on('message', msg => {
 	
