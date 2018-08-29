@@ -32,15 +32,26 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 }); 
 
   client.on('guildMemberAdd', member => {
-  member.addRole('name', "- New")
+  member.addRole('name', "• New") //NotActivated Rank
 });
 
 
 client.on('message', message => { 
-  let act = message.guild.roles.find('name', "- Verified")
+  var prefix = "-"; //you can change it
+  let log = message.guild.channels.find('name', "log") 
+  let act = message.guild.roles.find('name', "• Verified") //Activated Rank
   let user = message.mentions.members.first();
-  if(message.content.startsWith(prefix + "active"){
-  if (!message.member.hasPermission("MOVE_MEMBERS")) return;
+  if(message.content.startsWith(prefix + "act"){
+    var embed = new Discord.RichEmbed() 
+    .setAuthor(message.author.username) 
+    .setThumbnail(user.avatarURL)
+    .addField('User Activated', `${user} get rank ${act}`)
+    .addField('By', `<@${message.author.id}>`)
+    .setTimestamp()
+    .setFooter("Codes©") //CopyRight Codes 2018©
+  log.send({embed})
+  message.channel.send({embed})
+  }
 });
 
 client.on('message', msg => {
