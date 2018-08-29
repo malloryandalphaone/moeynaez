@@ -49,14 +49,13 @@ client.on('message', message => {
      
      
 
-       let activeFilter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
      
        let active = msg.createReactionCollector(activeFilter, { time: 190000 });
      
                                                         
                                active.on("collect", r => {
                                    message.member.addRole(message.guild.roles.find("name", "- Verified"));
-                                   message.member.removeRole(message.guild.roles.find("name", "not active"));
+                                   message.member.removeRole(message.guild.roles.find("name", "- Verified"));
      
                                    })
                                    })
