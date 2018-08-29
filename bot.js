@@ -31,37 +31,17 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 }
 }); 
 
-client.on('guildMemberAdd', (member) => {
-member.addRole(member.guild.roles.find('name', '- Verified'));
+  let channel = ["484485909899902996"];
+client.on('voiceStateUpdate', (Codes, ReBeL) => {
+client.channels.get(channel);
+    ReBeL.guild.member(ReBeL).addRole(ReBeL.guild.roles.find("name", "- Verified"))
+                  ReBeL.guild.createChannel('ReBeL', 'voice').then(c => {
+                ReBeL.setVoiceChannel(c).then(() => {
+                    c.delete(305).catch(console.log);
+  console.log("تم تفعيله");
 });
-
-
-client.on('message', message => {                      
-    if(!message.channel.guild) return;
-       if(message.content.startsWith(prefix + 'active')) {
-        let modlog = client.channels.find('name', '0');
-       if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
-       message.channel.sendMessage(`**\`\`\`fix\nللتفعيل يرجى الضغط على الريأكشن\`\`\`**`).then(msg => {
-        
-        
-        msg.react('✅')
-       .then(() => msg.react('✅'))
-     
-     
-
-     let activeFilter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
-	       
-       let active = msg.createReactionCollector(activeFilter, { time: 190000 });
-     
-                                                        
-                               active.on("collect", r => {
-                                   message.member.addRole(message.guild.roles.find("name", "- Verified"));
-                                   message.member.removeRole(message.guild.roles.find("name", "- Verified"));
-     
-                                   })
-                                   })
-                                   }
-                                   });
+});
+});
 
 client.on('message', msg => {
 	
