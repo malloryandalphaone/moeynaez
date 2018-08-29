@@ -49,7 +49,8 @@ client.on('message', message => {
      
      
 
-     
+     let activeFilter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
+	       
        let active = msg.createReactionCollector(activeFilter, { time: 190000 });
      
                                                         
