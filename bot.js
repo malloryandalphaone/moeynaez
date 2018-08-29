@@ -41,7 +41,7 @@ client.on('message', message => {
        if(message.content.startsWith(prefix + 'active')) {
         let modlog = client.channels.find('name', '0');
        if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
-       message.channel.sendMessage(`**\`\`\`fix\nللتفعيل يرجى الضغط على الريأكشن`).then(msg => {
+       message.channel.sendMessage(`**\`\`\`fix\nللتفعيل يرجى الضغط على الريأكشن`\`\`**`).then(msg => {
         
         
         msg.react('✅')
