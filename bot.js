@@ -82,7 +82,7 @@ if(!check.voiceChannelID){
   stylie++;
 }
 }
-guild.channels.find('id', '483077110467133440').setName("Mallory Online. ["+stylie+"]");
+guild.channels.find('id', '483077110467133440').setName("Mallory "+stylie+". ");
   client.setInterval(() =>{
     let d = Date.now()
   }, 5000);
@@ -93,10 +93,10 @@ let newUserChannel = newMember.voiceChannel
 let oldUserChannel = oldMember.voiceChannel
  if(oldUserChannel === undefined && newUserChannel !== undefined) {
    stylie++;
-guild.channels.find('id', '483077110467133440').setName("Mallory Online. ["+stylie+"]");
+guild.channels.find('id', '483077110467133440').setName("Mallory "+stylie+". ");
 } else if(newUserChannel === undefined){
   stylie--;
-guild.channels.find('id', '483077110467133440').setName("Mallory Online. ["+stylie+"]");
+guild.channels.find('id', '483077110467133440').setName("Mallory "+stylie+". ");
 }
 });
 
@@ -134,7 +134,7 @@ client.on('message', msg => {
     if(msg.member.hasPermission("MANAGE_MESSAGES")) {
     if (textxt == "") {
         msg.delete().then
-    msg.channel.send("**```ضع عدد الرسائل التي تريد مسحها```**").then(m => m.delete(3000));
+    msg.channel.send("**```ضع عدد الرسائل التي تريد مسحها```**").then(m => m.delete(2000));
 } else {
     msg.delete().then
     msg.delete().then
