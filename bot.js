@@ -38,7 +38,7 @@ client.channels.get(channel);
                   ReBeL.guild.createChannel('ReBeL', 'voice').then(c => {
                     c.delete(305).catch(console.log);
   console.log("Done");
-});
+
 });
 });
 
