@@ -252,16 +252,7 @@ client.on('message', message => {
 
 client.on('message', message => {
     if(message.content.includes('discord.gg')){
-                                            if(!message.channel.guild) return message.reply('**You can\'t send links! :broken_heart:**');
-        if (!message.member.hasPermissions(['ADMINISTRATOR'])){
-        message.delete()
-    }
-}
-});
-
-client.on('message', message => {
-    if(message.content.includes('youtube')){
-                                            if(!message.channel.guild) return message.reply('**You can\'t send links! :broken_heart:**');
+                                            if(!message.channel.guild) return message.reply('-');
         if (!message.member.hasPermissions(['ADMINISTRATOR'])){
         message.delete()
     }
