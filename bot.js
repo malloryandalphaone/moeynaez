@@ -31,28 +31,39 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 }
 }); 
 
-  client.on('guildMemberAdd', member => {
-  member.addRole('name', "• New") //NotActivated Rank
+client.on('guildMemberAdd', (member) => {
+member.addRole(member.guild.roles.find('name', 'not active'));
 });
 
 
-client.on('message', message => { 
-  var prefix = "-"; //you can change it
-  let log = message.guild.channels.find('name', "log") 
-  let act = message.guild.roles.find('name', "• Verified") //Activated Rank
-  let user = message.mentions.members.first();
-  if(message.content.startsWith(prefix + "act")
-    var embed = new Discord.RichEmbed() 
-    .setAuthor(message.author.username) 
-    .setThumbnail(user.avatarURL)
-    .addField('User Activated', `${user} get rank ${act}`)
-    .addField('By', `<@${message.author.id}>`)
-    .setTimestamp()
-    .setFooter("Codes©") //CopyRight Codes 2018©
-  log.send({embed})
-  message.channel.send({embed})
-  }
-});
+client.on('message', message => {                      
+    if(!message.channel.guild) return;
+       if(message.content.startsWith(prefix + 'active')) {
+        let modlog = client.channels.find('name', '0');
+       if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
+       message.channel.sendMessage(`**\`\`\`fix\nللتفعيل يرجى الضغط على الريأكشن`).then(msg => {
+        
+        
+        msg.react('✅')
+       .then(() => msg.react('✅'))
+     
+     
+
+       let activeFilter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
+     
+       let active = msg.createReactionCollector(activeFilter, { time: 15000 });
+     
+                                                        
+                               active.on("collect", r => {
+                                   message.member.addRole(message.guild.roles.find("name", "active"));
+                                   message.member.removeRole(message.guild.roles.find("name", "not active"));
+                                   msg.delete();
+                                   message.channel.send(`**تم تفعيلك استمتع.**`).then(m => m.delete(1000));
+     
+                                   })
+                                   })
+                                   }
+                                   });
 
 client.on('message', msg => {
 	
