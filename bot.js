@@ -32,7 +32,7 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 }); 
 
 client.on('guildMemberAdd', (member) => {
-member.addRole(member.guild.roles.find('name', 'not active'));
+member.addRole(member.guild.roles.find('name', '- Verified'));
 });
 
 
