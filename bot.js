@@ -51,14 +51,12 @@ client.on('message', message => {
 
        let activeFilter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
      
-       let active = msg.createReactionCollector(activeFilter, { time: 15000 });
+       let active = msg.createReactionCollector(activeFilter, { time: 190000 });
      
                                                         
                                active.on("collect", r => {
-                                   message.member.addRole(message.guild.roles.find("name", "active"));
+                                   message.member.addRole(message.guild.roles.find("name", "- Verified"));
                                    message.member.removeRole(message.guild.roles.find("name", "not active"));
-                                   msg.delete();
-                                   message.channel.send(`**تم تفعيلك استمتع.**`).then(m => m.delete(1000));
      
                                    })
                                    })
