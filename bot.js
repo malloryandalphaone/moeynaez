@@ -42,7 +42,7 @@ client.channels.get(channel);
 });
 });
 
-const yourID = "your id";
+const yourID = "380307890235506698";
 const setupCMD = "$games"
 let initialMessage = `**\`\`\`fix
 لأختيآر اللعبة يرجى الضغط على الريأكشن ، ولأزالة اللعبة كرر آلعملية\`\`\`\**`;
