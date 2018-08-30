@@ -45,7 +45,8 @@ client.channels.get(channel);
 const yourID = "380307890235506698";
 const setupCMD = "$games"
 let initialMessage = `**\`\`\`fix
-لأختيآر اللعبة يرجى الضغط على الريأكشن\ ولأزالة اللعبة كرر آلعملية\`\`\`\**`;
+قم بالضغط على الريأكشن لأخذ الرتبة
+قم بأزالة الريأكشن لأزالة الرتبة\`\`\`\**`;
 const roles = ["MineCraft", "CreativeD", "Fortnite", "Brawlhalla", "OverWatch", "PUBG"];//رتب
 const reactions = ["🔸", "🔸", "🔸", "🔸", "🔸", "🔸"];//رياكشن
 if (roles.length !== reactions.length) throw "Roles list and reactions list are not the same length!";
