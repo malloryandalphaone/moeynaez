@@ -47,8 +47,7 @@ const setupCMD = "$games"
 let initialMessage = `**\`\`\`fix
 لأختيآر اللعبة يرجى الضغط على الريأكشن ، ولأزالة اللعبة كرر آلعملية\`\`\`\**`;
 const roles = ["MineCraft", "CreativeD", "Fortnite", "Brawlhalla", "OverWatch", "PUBG"];//رتب
-const reactions = ["🔸", "🔸", "🔸", "🔸", "🔸", "🔸", "🔸", "🔸", "🔸", "🔸"];//رياكشن
-
+const reactions = ["🔸", "🔸", "🔸", "🔸", "🔸", "🔸"];//رياكشن
 if (roles.length !== reactions.length) throw "Roles list and reactions list are not the same length!";
 
 
