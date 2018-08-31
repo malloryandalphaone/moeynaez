@@ -37,7 +37,7 @@ if (message.content.startsWith(adminprefix + 'setT')) {
     let channelBOT = ""
     let messageBOT = ""
     message.channel.send(("", {embed: {
-      title: "` - `** Messege System **",
+      title: "`Manage System`",
       color: 0x06DF00,
       timestamp: new Date(),
       description:"قم بكتابة ايدي الغرفة",
@@ -52,13 +52,13 @@ if (message.content.startsWith(adminprefix + 'setT')) {
           pop1.first().delete(/*Mallory*/)
           messageArray1.delete(/*Mallory*/)
           message.channel.send(("", {embed: {
-            title: "` - `** Messege System **",
+            title: "`Manage System`",
             color: 0x06DF00,
             timestamp: new Date(),
             description:"قم بكتابة الرسالة",
             footer: {
               icon_url: client.user.avatarURL,
-              text: "© Codes BOT"
+              text: "Mallory ©"
             }} 
           })).then((messageArray2)=>{
             message.channel.awaitMessages(filter ,{max:1,time:30000,error:['time'],} ).then(pop2=>{
