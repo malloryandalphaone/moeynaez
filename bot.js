@@ -31,13 +31,6 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 }
 }); 
 
-  const Discord = require('discord.js');
-const Client = new Discord.Client();
-
-Client.on('ready',async () => {
-  Client.channels.find(ch => ch.id === "482342481304879125" && ch.type === 'voice').join();
-});
-
   client.on("message", message=> {
   if (message.content.startsWith("$sayTo")) {
     let filter = m => m.author.id === message.author.id
