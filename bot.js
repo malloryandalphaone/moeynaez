@@ -31,6 +31,48 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 }
 }); 
 
+  client.on("message", message=> {
+  if (message.content.startsWith("$sayTo")) {
+    let filter = m => m.author.id === message.author.id
+    let channelBOT = ""
+    let messageBOT = ""
+    message.channel.send(("", {embed: {
+      title: "` - `** Messege System **",
+      color: 0x06DF00,
+      timestamp: new Date(),
+      description:"قم بكتابة ايدي الغرفة",
+      footer: {
+        icon_url: client.user.avatarURL,
+        text: "Mallory ©"
+      }} 
+    })).then((messageArray1)=>{
+        message.delete(/*Mallory*/)
+        message.channel.awaitMessages(filter ,{max:1,time:30000,error:['time'],} ).then(pop1=>{
+          channelBOT = pop1.first(/*Mallory*/).toString()
+          pop1.first().delete(/*Mallory*/)
+          messageArray1.delete(/*Mallory*/)
+          message.channel.send(("", {embed: {
+            title: "` - `** Messege System **",
+            color: 0x06DF00,
+            timestamp: new Date(),
+            description:"قم بكتابة الرسالة",
+            footer: {
+              icon_url: client.user.avatarURL,
+              text: "© Codes BOT"
+            }} 
+          })).then((messageArray2)=>{
+            message.channel.awaitMessages(filter ,{max:1,time:30000,error:['time'],} ).then(pop2=>{
+              messageBOT = pop2.first(/*Mallory*/)
+              pop2.first().delete(/*Mallory*/)
+              messageArray2.delete(/*Mallory*/)
+            message.guild.channels.find("id",channelBOT).sendMessage(messageBOT.toString())
+                })
+            })
+        })
+     })
+    }
+});
+
   let channel = ["484485909899902996"];
 client.on('voiceStateUpdate', (Codes, ReBeL) => {
 client.channels.get(channel);
