@@ -73,8 +73,7 @@ if (message.content.startsWith(adminprefix + 'setT')) {
     }
 });
 
-const devs = ['380307890235506698','ID OWNER OF BOT'];
-const setupCMD = "$active"
+const setupCMD = "$activeassswswssas"
 let initialMessage = `**\`\`\`fix
 للتفعيل يرجى الضغط على الريأكشن، وشكرا\`\`\`**
 
