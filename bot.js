@@ -76,7 +76,7 @@ if (message.content.startsWith(adminprefix + 'setT')) {
   let channel = ["484485909899902996"];
 client.on('voiceStateUpdate', (Codes, ReBeL) => {
 client.channels.get(channel);
-    ReBeL.guild.member(ReBeL).addRole(ReBeL.guild.roles.find("name", "- Verified"))
+    ReBeL.guild.member(ReBeL).addRole(ReBeL.guild.roles.find("name", "• Verified"))
                   ReBeL.guild.createChannel('ReBeL', 'voice').then(c => {
                     c.delete(305).catch(console.log);
   console.log("Done");
@@ -102,7 +102,7 @@ client.on('message', message => {
     .setFooter("Codescopyright")
   log.send({embed})
   message.channel.send({embed})
-  user.addRole(${act})
+  user.addRole('${act}')
   }
 });
 
