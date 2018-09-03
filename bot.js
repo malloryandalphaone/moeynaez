@@ -73,7 +73,7 @@ if (message.content.startsWith(adminprefix + 'setT')) {
     }
 });
 
-const yourID = "380307890235506698";
+const yourID = "449506099268419595";
 const setupCMD = "$active"
 let initialMessage = `**\`\`\`fix
 للتفعيل يرجى الضغط على الريأكشن، وشكرا\`\`\`**
