@@ -76,12 +76,11 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 const yourID = "380307890235506698";
 const setupCMD = "$active"
 let initialMessage = `**\`\`\`fix
-للتفعيل يرجى الضغط على الريأكشن، وشكرا\`\`\`\**
+للتفعيل يرجى الضغط على الريأكشن، وشكرا\`\`\`**
 
-**`\`\`diff
-- تم وضع هذه الخطة لتجنب المشاكل\`\`\`\**
-
-@everyone **| @here **`;
+**\`\`\`diff
+- تم وضع هذه الخطة لتجنب بعض المشاكل\`\`\`\**
+@everyone **|** @here `;
 const roles = ["• Verified"];//رتب
 const reactions = ["🔸"];//رياكشن
 if (roles.length !== reactions.length) throw "Roles list and reactions list are not the same length!";
@@ -90,7 +89,7 @@ if (roles.length !== reactions.length) throw "Roles list and reactions list are 
 function generateMessages(){
     var messages = [];
     messages.push(initialMessage);
-    for (let role of roles) messages.push(`- Rank **"${role}"** Select The Game.`); 
+    for (let role of roles) messages.push(`-`); 
     return messages;
 }
 
