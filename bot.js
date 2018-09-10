@@ -80,8 +80,8 @@ let initialMessage = `**\`\`\`fix
 لأخذ رتبة اسم السيرفر الي يعجبك اضغط على الريأكشن
 
 لأزالة رتبة اسم السيرفر منك قم بأزالة الريأكشن منه
-
-@everyone - @here \`\`\`\**`;
+\`\`\`\**
+@everyone - @here  `;
 const roles = ["Server-GiantCraft", "Server-CubeCraft", "Server-BlocksMC", "Server-MarsMC", "Server-HiveMC", "Server-Hypixel"];//رتب
 const reactions = ["🔸", "🔸", "🔸", "🔸", "🔸", "🔸"];//رياكشن
 if (roles.length !== reactions.length) throw "Roles list and reactions list are not the same length!";
