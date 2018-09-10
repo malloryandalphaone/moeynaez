@@ -8,6 +8,30 @@ client.user.setGame("966.", "https://www.twitch.tv/idk");
 console.log('966 Community Is Ready!');
 });
 
+const jackeo = ['380307890235506698', 'ID Owner 2']; 
+client.on('message', message => { 
+  if (message.author.bot) return; 
+  if (!message.content.startsWith(prefix)) return; 
+    var argresult = message.content.split(` `).slice(1).join(' '); 
+      if (!jackeo.includes(message.author.id)) return; 
+  let command = message.content.split(" ")[0]; 
+  command = command.slice(prefix.length); 
+  let args = message.content.split(" ").slice(1);  
+  if (command === "say")  { 
+  if(!message.channel.guild) return message.reply('** This command only for servers  **'); 
+          message.delete() 
+    message.channel.sendMessage(args.join(" ")).catch(console.error); 
+  } 
+if (command == "emb")    { 
+  if(!message.channel.guild) return message.reply('** This command only for servers  **'); 
+    let say = new Discord.RichEmbed() 
+    .setDescription(args.join("  ")) 
+    .setColor("#aa2f2f") 
+    message.channel.sendEmbed(say); 
+    message.delete(); 
+  }  
+});
+
     const adminprefix = "$";
 const devs = ['380307890235506698','ID OWNER OF BOT'];
 client.on('message', message => {
@@ -34,7 +58,6 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 
 client.on("message", message => {
     if (message.author.bot || !message.guild) return;
-    const prefix ="="
     let score;
    
     if (message.guild) {
@@ -87,46 +110,6 @@ client.on("message", message => {
     }
    
   });
-
-  client.on("message", message=> {
-  if (message.content.startsWith("$sayTo")) {
-    let filter = m => m.author.id === message.author.id
-    let channelBOT = ""
-    let messageBOT = ""
-    message.channel.send(("", {embed: {
-      title: "966 ..",
-      timestamp: new Date(),
-      description:"قم بكتابة ايدي الغرفة",
-      footer: {
-        icon_url: client.user.avatarURL,
-        text: "966 ©"
-      }} 
-    })).then((messageArray1)=>{
-        message.delete(/*Mallory*/)
-        message.channel.awaitMessages(filter ,{max:1,time:30000,error:['time'],} ).then(pop1=>{
-          channelBOT = pop1.first(/*Mallory*/).toString()
-          pop1.first().delete(/*Mallory*/)
-          messageArray1.delete(/*Mallory*/)
-          message.channel.send(("", {embed: {
-            title: "966 ..",
-            timestamp: new Date(),
-            description:"قم بكتابة الرسالة",
-            footer: {
-              icon_url: client.user.avatarURL,
-              text: "966 ©"
-            }} 
-          })).then((messageArray2)=>{
-            message.channel.awaitMessages(filter ,{max:1,time:30000,error:['time'],} ).then(pop2=>{
-              messageBOT = pop2.first(/*Mallory*/)
-              pop2.first().delete(/*Mallory*/)
-              messageArray2.delete(/*Mallory*/)
-            message.guild.channels.find("id",channelBOT).sendMessage(messageBOT.toString())
-                })
-            })
-        })
-     })
-    }
-});
 
 const yourID = "380307890235506698";
 const setupCMD = "$servers"
