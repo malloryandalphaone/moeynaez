@@ -4,7 +4,7 @@ const client = new Discord.Client();
 const prefix = "$";
 client.on('ready', () => {
 client.user.setStatus('dnd');
-client.user.setGame("َ", "https://www.twitch.tv/idk");
+client.user.setGame("966.", "https://www.twitch.tv/idk");
 console.log('Mallory is ready!');
 });
 
