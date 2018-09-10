@@ -5,7 +5,7 @@ const prefix = "$";
 client.on('ready', () => {
 client.user.setStatus('dnd');
 client.user.setGame("966.", "https://www.twitch.tv/idk");
-console.log('Mallory is ready!');
+console.log('966 Community Is Ready!');
 });
 
     const adminprefix = "$";
