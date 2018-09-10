@@ -32,124 +32,19 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 }
 }); 
 
-client.on('message', async message => {
-  let args = message.content.split(" ");
-  if(message.content.startsWith(prefix + "mute")) {
-    if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply('# - ملحوظة :  يجب ان يكون لديك برمشن أداري . ').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
- 
-    if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply('# - ملحوظة : يجب ان يكون البوت لديه برمشن أداري').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
- 
-    let mention = message.mentions.members.first();
-    if(!mention) return message.reply('# - ملحوظة : يجب ان تقوم بمنشن شخص معين .').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
- 
-    if(mention.highestRole.position >= message.guild.member(message.author).highestRole.positon) return message.reply('# - ملحوظة : لا يمكنك اعطاء ميوت لشخص اعلي من رتبتك .').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-    if(mention.highestRole.positon >= message.guild.member(client.user).highestRole.positon) return message.reply('# - ملحوظه : لا يمكنك اعطاء ميوت لشخص اعلي من رتبتك').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-    if(mention.id === message.author.id) return message.reply('# - ملحوظه : لا يمكنك ان تعطي ميوت لنفسك .').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
- 
-    let duration = args[2];
-    if(!duration) return message.reply('# - ملحوظه : يجب ان تضع وقت .').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
- 
-    if(isNaN(duration)) return message.reply('# - ملحوظه : يجب تحديد وقت زمني صحيح').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
- 
-    let sbb = message.content.split(" ").slice(3).join(" ");
-    if(!sbb) sbb = "لا يوجد سبب .";
- 
-    let thisEmbed = new Discord.RichEmbed()
-    .setAuthor(mention.user.username, mention.user.avatarURL)
-    .setTitle('# - لقد تم أعطائك ميوت .')
-    .addField('# - تم اعطائك ميوت بواسطة',message.author,true)
-    .addField('# - السبب',reason)
- 
-    let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
-    if(!role) try {
-      message.guild.createRole({
-        name: "Muted",
-        permissions: 0
-      }).then(r => {
-        message.guild.channels.forEach(c => {
-          c.overwritePermissions(r , {
-            SEND_MESSAGES: false,
-            READ_MESSAGES_HISTORY: false,
-            ADD_REACTIONS: false
-          });
-        });
-      });
-    } catch(e) {
-      console.log(e.stack);
-    }
-    mention.addRole(role).then(() => {
-      mention.send(thisEmbed);
-      message.channel.send(`**:white_check_mark: ${mention.user.username} Muted ! :zipper_mouth:  **  `);
-      mention.setMute(true);
-    });
-    setTimeout(() => {
-      if(duration === 0) return;
-      if(!mention.has.roles(role)) return;
-      mention.setMute(false);
-      mention.removeRole(role);
-      message.channel.send(`**:white_check_mark: ${mention.user.username} Unmuted **   `);
-    },duration * 60000);
-  } else if(message.content.startsWith(prefix + "unmute")) {
-    let mention = message.mentions.members.first();
-    let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
-    if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply('# - ملحوظة :  يجب ان يكون لديك برمشن أداري . ').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
- 
-    if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply('# - ملحوظة : يجب ان يكون البوت لديه برمشن أداري').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
- 
-    if(!mention) return message.reply('# - ملحوظه : يجب منشن شخص لفك الميوت عنهه .').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
- 
-      mention.removeRole(role);
-      mention.setMute(false);
-      message.channel.send(`**:white_check_mark: ${mention.user.username} Unmuted ! **  `);
-  }
-});
-
   client.on("message", message=> {
   if (message.content.startsWith("$sayTo")) {
     let filter = m => m.author.id === message.author.id
     let channelBOT = ""
     let messageBOT = ""
     message.channel.send(("", {embed: {
-      title: "`Manage System`",
-      color: 0x06DF00,
+      title: "966 ..",
+      color: "#aa2f2f",
       timestamp: new Date(),
       description:"قم بكتابة ايدي الغرفة",
       footer: {
         icon_url: client.user.avatarURL,
-        text: "Mallory ©"
+        text: "966 ©"
       }} 
     })).then((messageArray1)=>{
         message.delete(/*Mallory*/)
@@ -158,13 +53,13 @@ client.on('message', async message => {
           pop1.first().delete(/*Mallory*/)
           messageArray1.delete(/*Mallory*/)
           message.channel.send(("", {embed: {
-            title: "`Manage System`",
-            color: 0x06DF00,
+            title: "966 ..",
+            color: "#aa2f2f",
             timestamp: new Date(),
             description:"قم بكتابة الرسالة",
             footer: {
               icon_url: client.user.avatarURL,
-              text: "Mallory ©"
+              text: "966 ©"
             }} 
           })).then((messageArray2)=>{
             message.channel.awaitMessages(filter ,{max:1,time:30000,error:['time'],} ).then(pop2=>{
@@ -180,19 +75,19 @@ client.on('message', async message => {
 });
 
 const yourID = "380307890235506698";
-const setupCMD = "$games"
+const setupCMD = "$servers"
 let initialMessage = `**\`\`\`fix
-قم بالضغط على الريأكشن لأخذ الرتبة
-قم بأزالة الريأكشن لأزالة الرتبة\`\`\`\**`;
-const roles = ["MineCraft", "CreativeD", "Fortnite", "Brawlhalla", "OverWatch", "PUBG"];//رتب
+لأخذ رتبة اسم السيرفر الي يعجبك اضغط على الريأكشن
+
+لأزالة رتبة اسم السيرفر منك قم بأزالة الريأكشن منه\`\`\`\**`;
+const roles = ["Server GiantCraft", "Server CubeCraft", "Server BlocksMC", "Server MarsMC", "Server HiveMC", "Server Hypixel"];//رتب
 const reactions = ["🔸", "🔸", "🔸", "🔸", "🔸", "🔸"];//رياكشن
 if (roles.length !== reactions.length) throw "Roles list and reactions list are not the same length!";
-
 
 function generateMessages(){
     var messages = [];
     messages.push(initialMessage);
-    for (let role of roles) messages.push(`- Rank **"${role}"** Select The Game.`); 
+    for (let role of roles) messages.push(`- Server MineCraft ( **${role}** ) .`); 
     return messages;
 }
 
@@ -246,18 +141,16 @@ client.on('message', msg => {
     if(!msg.channel.guild) return msg.reply('** هذا الامر فقط للسيرفرات**');
     if(!msg.guild.channels.find('name', 'submit')) return msg.reply('**Create Room : submit**');
     let args = msg.content.split(" ").slice(1);
-    if(!args[1]) return msg.reply('**$submit اسمك + عمرك + خبرتك بأختصار**')
+    if(!args[1]) return msg.reply('**$submit اسمك وعمرك**')
     if(msg.guild.channels.find('name', 'submit')) {
       msg.guild.channels.find('name', 'submit').send(`
-**تم التقديم بواسطة : ** ${msg.member}
+**Submit By** : ${msg.member}
 
-
-**التقديم :** 
-
+**Submit Is** : 
 ${args.join(" ").split(msg.mentions.members.first()).slice(' ')}
 
-@here
-`)
+-
+@here `)
       .then(function (message) {
         message.react('')
         message.react('')
@@ -333,12 +226,12 @@ client.on('message', msg => {
     if(msg.member.hasPermission("MANAGE_MESSAGES")) {
     if (textxt == "") {
         msg.delete().then
-    msg.channel.send("**```ضع عدد الرسائل التي تريد مسحها```**").then(m => m.delete(2000));
+    msg.channel.send("ضع عدد الرسائل التي تريد مسحها").then(m => m.delete(2000));
 } else {
     msg.delete().then
     msg.delete().then
     msg.channel.bulkDelete(textxt);
-        msg.channel.send("**```js\nعدد الرسائل التي تم مسحها: " + textxt + "\n```**").then(m => m.delete(3000));
+        msg.channel.send("عدد الرسائل التي تم مسحها `" + textxt + "`").then(m => m.delete(3000));
         }    
     }
 }
@@ -360,22 +253,9 @@ client.on('message', msg => {
      }
        });
 
-client.on('message' , message => {
-	
-    var args = message.content.split(' ').slice(1).join(' ');
-    if(message.content.startsWith(prefix +'8ol3ne')) {
-	    
-        const planet = message.guild.channels.get('482310304114540556');
-        if(!planet) return;
-        if(planet) {
-            planet.send(args);
-        }
-    }
-});
-
 client.on('message', msg => {
 
-    if (msg.content == '$MallorY') {
+    if (msg.content == '$966ClAN') {
         if (msg.member.voiceChannel) {
 
      if (msg.member.voiceChannel.joinable) {
@@ -394,7 +274,7 @@ var api = `${Math.round(client.ping)}`
 if (message.author.bot) return;
 let embed = new Discord.RichEmbed()
 .setAuthor(message.author.username,message.author.avatarURL)
-.setColor("#f3c98e")
+.setColor("#aa2f2f")
 .addField('**Ping is**',msg + " ms :signal_strength: ")
 message.channel.send({embed:embed});
 }
@@ -430,7 +310,7 @@ client.on('message', message => {
           
       }
         const embed = new Discord.RichEmbed()
-        .setColor("#f3c98e")
+        .setColor("#aa2f2f")
         .setImage(`${x5bzm.avatarURL}`)
       message.channel.sendEmbed(embed);
     }
