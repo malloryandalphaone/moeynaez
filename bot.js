@@ -135,6 +135,7 @@ client.on('raw', event => {
     }   
 });
 
+
 client.on('message', msg => {
 	
   if(msg.content.startsWith('$submit')) {
@@ -160,37 +161,6 @@ ${args.join(" ").split(msg.mentions.members.first()).slice(' ')}
 
 });
 
-let stylie;
-client.on("ready", async  => {
-  let guild = client.guilds.get("462085665371324427"); 
-  let users = guild.members.map(member => member.user.id);
-  let i;
-  stylie=0;
-for (i=0 ; i < users.length ; i++) {
- let   check = guild.members.get(users[i]);
-if(!check.voiceChannelID){
-        continue;
-}else{
-  stylie++;
-}
-}
-guild.channels.find('id', '483077110467133440').setName("Mallory "+stylie+". ");
-  client.setInterval(() =>{
-    let d = Date.now()
-  }, 5000);
-});
-client.on('voiceStateUpdate', (oldMember, newMember) => {
-    let guild = client.guilds.get("462085665371324427");
-let newUserChannel = newMember.voiceChannel
-let oldUserChannel = oldMember.voiceChannel
- if(oldUserChannel === undefined && newUserChannel !== undefined) {
-   stylie++;
-guild.channels.find('id', '483077110467133440').setName("Mallory "+stylie+". ");
-} else if(newUserChannel === undefined){
-  stylie--;
-guild.channels.find('id', '483077110467133440').setName("Mallory "+stylie+". ");
-}
-});
 
 client.on('message', message => {
 	
