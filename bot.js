@@ -82,14 +82,14 @@ let initialMessage = `**\`\`\`fix
 لأزالة رتبة اسم السيرفر منك قم بأزالة الريأكشن منه
 \`\`\`\**
 @everyone - @here  `;
-const roles = ["Server-GiantCraft", "Server-CubeCraft", "Server-BlocksMC", "Server-MarsMC", "Server-HiveMC", "Server-Hypixel"];//رتب
+const roles = ["S.GiantCraft", "S.CubeCraft", "S.BlocksMC", "S.MarsMC", "S.HiveMC", "S.Hypixel"];//رتب
 const reactions = ["🔸", "🔸", "🔸", "🔸", "🔸", "🔸"];//رياكشن
 if (roles.length !== reactions.length) throw "Roles list and reactions list are not the same length!";
 
 function generateMessages(){
     var messages = [];
     messages.push(initialMessage);
-    for (let role of roles) messages.push(`- Server MineCraft ( **${role}** ) .`); 
+    for (let role of roles) messages.push(`- Rank **${role}** .`); 
     return messages;
 }
 
