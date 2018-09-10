@@ -76,12 +76,9 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 
 const yourID = "380307890235506698";
 const setupCMD = "$servers"
-let initialMessage = `**\`\`\`fix
-لأخذ رتبة اسم السيرفر الي يعجبك اضغط على الريأكشن
-
-لأزالة رتبة اسم السيرفر منك قم بأزالة الريأكشن منه
-\`\`\`\**
-@everyone - @here  `;
+let initialMessage = `
+**لأخذ رتبة السيرفر المفضل لديك اضغط على الريأكشن**
+@everyone - @here `;
 const roles = ["Memberssa"];//رتب
 const reactions = ["🔸"];//رياكشن
 if (roles.length !== reactions.length) throw "Roles list and reactions list are not the same length!";
