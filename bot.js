@@ -82,8 +82,8 @@ let initialMessage = `**\`\`\`fix
 لأزالة رتبة اسم السيرفر منك قم بأزالة الريأكشن منه
 \`\`\`\**
 @everyone - @here  `;
-const roles = ["S.GiantCraft", "S.CubeCraft", "S.BlocksMC", "S.MarsMC", "S.HiveMC", "S.Hypixel"];//رتب
-const reactions = ["🔸", "🔸", "🔸", "🔸", "🔸", "🔸"];//رياكشن
+const roles = ["Memberssa"];//رتب
+const reactions = ["🔸"];//رياكشن
 if (roles.length !== reactions.length) throw "Roles list and reactions list are not the same length!";
 
 function generateMessages(){
