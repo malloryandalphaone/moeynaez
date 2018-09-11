@@ -32,6 +32,39 @@ if (command == "emb")    {
   }  
 });
 
+ client.on('message',async message => {
+  let mention = message.mentions.members.first();
+  let acRoom = client.channels.get('483662159277064197');
+  if(message.content.startsWith(prefix + "رفض")) {
+  if(message.guild.id !== '489083208319631360') return;
+  if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
+  if(!mention) return message.reply("منشن آسم المراد رفضه.");
+
+  acRoom.send(`${mention} | تم رفض دخولك للكلآن`)
+  }
+});
+ 
+ 
+ 
+client.on('message',async message => {
+  let mention = message.mentions.members.first();
+  let role = message.content.split(" ").slice(2).join(" ");
+  let mySupport = message.guild.roles.find('name',role);
+  let acRoom = client.channels.get('489083208319631360');
+  if(message.content.startsWith(prefix + "قبول")) {
+    if(message.guild.id !== '488259622730203137') return;
+    if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
+    if(!mention) return message.reply('منشن شخص');
+    if(!role) return message.reply('ادخل اسم رتبة');
+    if(!mySupport) return message.reply('هذه الرتبة غير موجودة');
+    if(mention.roles.has(mySupport)) return message.reply('هذا الشخص معه الرتبة مسبقا');
+
+    mention.addRole(mySupport).then(() => {
+      acRoom.send(`${mention} | تم قبولك بالكلآن ، واعطائك رتبة ${mySupport}`);
+    });
+  }
+});
+
     const adminprefix = "$";
 const devs = ['380307890235506698','ID OWNER OF BOT'];
 client.on('message', message => {
