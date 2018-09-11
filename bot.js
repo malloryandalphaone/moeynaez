@@ -34,9 +34,9 @@ if (command == "emb")    {
 
  client.on('message',async message => {
   let mention = message.mentions.members.first();
-  let acRoom = client.channels.get('483662159277064197');
+  let acRoom = client.channels.get('489083208319631360');
   if(message.content.startsWith(prefix + "رفض")) {
-  if(message.guild.id !== '489083208319631360') return;
+  if(message.guild.id !== '488259622730203137') return;
   if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
   if(!mention) return message.reply("منشن آسم المراد رفضه.");
 
