@@ -60,7 +60,7 @@ client.on('message',async message => {
     if(mention.roles.has(mySupport)) return message.reply('هذا الشخص معه الرتبة مسبقا');
 
     mention.addRole(mySupport).then(() => {
-      acRoom.send(`${mention} | تم قبولك بالكلآن ، واعطائك رتبة ${mySupport}`);
+      acRoom.send(`${mention} | تم قبولك بالكلآن \n\nواعطائك رتبة ${mySupport}`);
     });
   }
 });
