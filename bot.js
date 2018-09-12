@@ -156,13 +156,15 @@ client.on('message', msg => {
     if(!msg.channel.guild) return msg.reply('** هذا الامر فقط للسيرفرات**');
     if(!msg.guild.channels.find('name', 'submit')) return msg.reply('**Create Room : submit**');
     let args = msg.content.split(" ").slice(1);
-    if(!args[1]) return msg.reply('**$submit اسمك وعمرك**')
+    if(!args[1]) return msg.reply('**$submit اسمك الحقيقي، اسمك باللعبة، عمرك**')
     if(msg.guild.channels.find('name', 'submit')) {
-       msg.channel.send(`**تم إرسال تقديمك بنجاح،\nيرجى انتظار الرد من الأدارة،\nكما يرجى مراجعة روم القبول والرفض.**\n\nشكرا لك.`)
+      msg.delete().then
+      msg.channel.send(`**تم إرسال تقديمك بنجاح،\nيرجى انتظار الرد من الأدارة،\nكما يرجى مراجعة روم القبول والرفض.**\n\nشكرا لك.`)
       msg.guild.channels.find('name', 'submit').send(`
 **Submit By** : ${msg.member}
 
 **Submit Is** : 
+
 ${args.join(" ").split(msg.mentions.members.first()).slice(' ')}
 
 -
@@ -175,22 +177,6 @@ ${args.join(" ").split(msg.mentions.members.first()).slice(' ')}
     }
 
 });
-
-client.on('message', async msg => {
-  if(message.content.startsWith(prefix + "submit")) {
-  await  msg.channel.send(`**أكتب اسمك الحقيقي وعمرك، واسمك باللعبة**`)
-    let filter = m => m.author.id === msg.author.id
-      var text = '';
-        let sugsa = msg.channel.awaitMessages(filter, { max: 1, time: 60000})
-          .then(co => {
-            text = co.first().content
-
-              msg.channel.send(`**تم أرسال تقديمك للأدارة، يرجى الانتضار ومراجعة روم #قبول-الرفض لتأكيد قبولك او رفضك، شكرا لك**`)
-                client.channels.get("489083208319631360").send(`**Submit By** : ${msg.member} \n**Submit Is** :\n\n ${text}`)
-
-              })
-            }
-          });
 
 client.on('message', message => {
 	
