@@ -40,7 +40,7 @@ if (command == "emb")    {
   if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
   if(!mention) return message.reply("منشن آسم المراد رفضه.");
 
-  acRoom.send(`${mention} | تم رفض دخولك للكلآن`)
+  acRoom.send(`${mention}\n\nتم رفض دخولك للكلآن.`)
   }
 });
  
@@ -54,13 +54,13 @@ client.on('message',async message => {
   if(message.content.startsWith(prefix + "قبول")) {
     if(message.guild.id !== '488259622730203137') return;
     if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
-    if(!mention) return message.reply('منشن شخص');
+    if(!mention) return message.reply('منشن آسم المراد قبوله');
     if(!role) return message.reply('ادخل اسم رتبة');
     if(!mySupport) return message.reply('هذه الرتبة غير موجودة');
     if(mention.roles.has(mySupport)) return message.reply('هذا الشخص معه الرتبة مسبقا');
 
     mention.addRole(mySupport).then(() => {
-      acRoom.send(`${mention} | تم قبولك بالكلآن \n\nواعطائك رتبة ${mySupport}`);
+      acRoom.send(`${mention}\n\nتم قبول دخولك للكلآن.`);
     });
   }
 });
@@ -158,6 +158,7 @@ client.on('message', msg => {
     let args = msg.content.split(" ").slice(1);
     if(!args[1]) return msg.reply('**$submit اسمك وعمرك**')
     if(msg.guild.channels.find('name', 'submit')) {
+       msg.channel.send(`**تم أرسال تقديمك للأدارة، يرجى الانتضار ومراجعة روم #قبول-الرفض لتأكيد قبولك او رفضك، شكرا لك**`)
       msg.guild.channels.find('name', 'submit').send(`
 **Submit By** : ${msg.member}
 
