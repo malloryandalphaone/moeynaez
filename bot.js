@@ -118,7 +118,7 @@ client.on("message", message => {
             });
         }
     }
-});
+})
 
 
 client.on('raw', event => {
@@ -152,7 +152,7 @@ client.on('raw', event => {
 
 client.on('message', msg => {
 	
-  if(msg.content.startsWith('$submit')) {
+  if(msg.content.startsWith('$submitss')) {
     if(!msg.channel.guild) return msg.reply('** هذا الامر فقط للسيرفرات**');
     if(!msg.guild.channels.find('name', 'submit')) return msg.reply('**Create Room : submit**');
     let args = msg.content.split(" ").slice(1);
