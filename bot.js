@@ -160,8 +160,7 @@ client.on('message', msg => {
     if(!args[1]) return msg.reply('**$submit اسمك الحقيقي، اسمك باللعبة، عمرك**')
     if(msg.guild.channels.find('name', 'submit')) {
       msg.delete().then
-      msg.channel.send(`**تم إرسال تقديمك بنجاح،\nيرجى انتظار الرد من الأدارة،\nكما يرجى مراجعة روم القبول والرفض،**\n\nشكرا لك.\n\n${msg.member}`)
-      msg.delete(10000));	    
+      msg.channel.send(`**تم إرسال تقديمك بنجاح،\nيرجى انتظار الرد من الأدارة،\nكما يرجى مراجعة روم القبول والرفض،**\n\nشكرا لك.\n\n${msg.member}`).then(m => m.delete(9000));	    
       msg.guild.channels.find('name', 'submit').send(`
 **Submit By** : ${msg.member}
 
@@ -306,8 +305,17 @@ client.on('message', message => {
 
 client.on('message', message => {
     if(message.content.includes('discord.gg')){
-                                            if(!message.channel.guild) return message.reply('-');
+        if(!message.channel.guild) return message.reply('**الأنفايتات بهذا السيرفر ممنوع.**').then(m => m.delete(3000));
         if (!message.member.hasPermissions(['ADMINISTRATOR'])){
+        message.delete()
+    }
+}
+});
+
+client.on('message', message => {
+    if(message.content.includes('youtube')){
+        if(!message.channel.guild) return message.reply('**ممنوع نشر روابط اليوتيوب**').then(m => m.delete(3000));
+        if (!message.member.hasPermissions(['MOVE_MEMBERS'])){
         message.delete()
     }
 }
