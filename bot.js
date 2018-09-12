@@ -155,11 +155,13 @@ client.on('message', msg => {
   if(msg.content.startsWith('$submit')) {
     if(!msg.channel.guild) return msg.reply('** هذا الامر فقط للسيرفرات**');
     if(!msg.guild.channels.find('name', 'submit')) return msg.reply('**Create Room : submit**');
+      msg.delete().then
     let args = msg.content.split(" ").slice(1);
     if(!args[1]) return msg.reply('**$submit اسمك الحقيقي، اسمك باللعبة، عمرك**')
     if(msg.guild.channels.find('name', 'submit')) {
       msg.delete().then
-      msg.channel.send(`**تم إرسال تقديمك بنجاح،\nيرجى انتظار الرد من الأدارة،\nكما يرجى مراجعة روم القبول والرفض.**\n\nشكرا لك.`)
+      msg.channel.send(`**تم إرسال تقديمك بنجاح،\nيرجى انتظار الرد من الأدارة،\nكما يرجى مراجعة روم القبول والرفض،**\n\nشكرا لك.\n\n${msg.member}`)
+      msg.delete(10000));	    
       msg.guild.channels.find('name', 'submit').send(`
 **Submit By** : ${msg.member}
 
