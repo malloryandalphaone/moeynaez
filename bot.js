@@ -39,7 +39,7 @@ if (command == "emb")    {
   if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
   if(!mention) return message.reply("منشن آسم المراد رفضه.");
 
-  acRoom.send(`:x: | ${mention}\n\n**تم رفضك من قبل الأدارة.**`)
+  acRoom.send(`:x: | ${mention}\n\n**تم رفضك من قبل الإدارة.**`)
   }
 });
  
@@ -59,7 +59,7 @@ client.on('message',async message => {
     if(mention.roles.has(mySupport)) return message.reply('هذا الشخص معه الرتبة مسبقا');
 
     mention.addRole(mySupport).then(() => {
-      acRoom.send(`:white_check_mark: | ${mention}\n\n**تم رفضك من قبل الأدارة.**`);
+      acRoom.send(`:white_check_mark: | ${mention}\n\n**تم قبولك من قبل الإدارة**`);
     });
   }
 });
