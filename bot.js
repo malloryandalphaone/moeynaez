@@ -162,7 +162,6 @@ client.on('message', msg => {
       msg.channel.send(`**تم إرسال تقديمك بنجاح،\nيرجى انتظار الرد من الأدارة،\nكما يرجى مراجعة روم القبول والرفض،**\n\nشكرا لك.\n\n${msg.member}`).then(m => m.delete(9000));	    
       msg.guild.channels.find('name', 'submit').send(`
 **Submit By** : ${msg.member}
-
 **The Submit Is** : 
 
 ${args.join(" ").split(msg.mentions.members.first()).slice(' ')}
@@ -188,7 +187,7 @@ client.on('message', msg => {
     if(!args[1]) return msg.reply('**$sug You\'r Suggestion.**')
     if(msg.guild.channels.find('name', 'suggestions')) {
       msg.delete().then
-      msg.channel.send(`${msg.member}\n\n**تم إرسال اقتراحك للأدارة، شكراََ لك.**`).then(m => m.delete(3000));	    
+      msg.channel.send(`${msg.member}\n\n**تم إرسال اقتراحك للأدارة، شكراََ لك.**`).then(m => m.delete(3500));	    
       msg.guild.channels.find('name', 'suggestions').send(`
 -** Suggestion By :** ${msg.member}
 
@@ -240,12 +239,12 @@ client.on('message', msg => {
     if(msg.member.hasPermission("MANAGE_MESSAGES")) {
     if (textxt == "") {
         msg.delete().then
-    msg.channel.send("ضع عدد الرسائل التي تريد مسحها").then(m => m.delete(2000));
+    msg.channel.send("ضع عدد الرسائل التي تريد مسحها").then(m => m.delete(1500));
 } else {
     msg.delete().then
     msg.delete().then
     msg.channel.bulkDelete(textxt);
-        msg.channel.send("عدد الرسائل التي تم مسحها `" + textxt + "`").then(m => m.delete(3000));
+        msg.channel.send("عدد الرسائل التي تم مسحها `" + textxt + "`").then(m => m.delete(3500));
         }    
     }
 }
