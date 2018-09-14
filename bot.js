@@ -4,7 +4,6 @@ const client = new Discord.Client();
 const prefix = "$";
 client.on('ready', () => {
 client.user.setStatus('dnd');
-client.user.setGame("966.", "https://www.twitch.tv/idk");
 console.log('966 Community Is Ready!');
 });
 
@@ -40,7 +39,7 @@ if (command == "emb")    {
   if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
   if(!mention) return message.reply("منشن آسم المراد رفضه.");
 
-  acRoom.send(`${mention}\n\nتم رفض دخولك للكلآن.`)
+  acRoom.send(`:x: | ${mention}\n\n**تم رفضك من قبل الأدارة.**`)
   }
 });
  
@@ -60,7 +59,7 @@ client.on('message',async message => {
     if(mention.roles.has(mySupport)) return message.reply('هذا الشخص معه الرتبة مسبقا');
 
     mention.addRole(mySupport).then(() => {
-      acRoom.send(`${mention}\n\nتم قبول دخولك للكلآن.`);
+      acRoom.send(`:white_check_mark: | ${mention}\n\n**تم رفضك من قبل الأدارة.**`);
     });
   }
 });
@@ -164,12 +163,40 @@ client.on('message', msg => {
       msg.guild.channels.find('name', 'submit').send(`
 **Submit By** : ${msg.member}
 
-**Submit Is** : 
+**The Submit Is** : 
 
 ${args.join(" ").split(msg.mentions.members.first()).slice(' ')}
 
 -
 @here `)
+      .then(function (message) {
+        message.react('')
+        message.react('')
+      })
+      }
+    }
+
+});
+
+client.on('message', msg => {
+	
+  if(msg.content.startsWith('$sug')) {
+    if(!msg.channel.guild) return msg.reply('** هذا الامر فقط للسيرفرات**');
+    if(!msg.guild.channels.find('name', 'suggestions')) return msg.reply('**Create Room : suggestions**');
+      msg.delete().then
+    let args = msg.content.split(" ").slice(1);
+    if(!args[1]) return msg.reply('**$sug You\'r Suggestion.**')
+    if(msg.guild.channels.find('name', 'suggestions')) {
+      msg.delete().then
+      msg.channel.send(`${msg.member}\n\n**تم إرسال اقتراحك للأدارة، شكراََ لك.**`).then(m => m.delete(3000));	    
+      msg.guild.channels.find('name', 'suggestions').send(`
+-** Suggestion By :** ${msg.member}
+
+-**The Suggestion is :** 
+
+${args.join(" ").split(msg.mentions.members.first()).slice(' ')}
+
+`)
       .then(function (message) {
         message.react('')
         message.react('')
