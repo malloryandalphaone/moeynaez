@@ -7,6 +7,32 @@ client.user.setStatus('dnd');
 console.log('966 Community Is Ready!');
 });
 
+client.on("message", message => {
+  let men = message.mentions.users.first();
+  if(message.content.startsWith(prefix + "vkick")) {
+    try {
+    if(!men) {
+      message.channel.send("**يرجى اختيار شخص لطردة.**");
+      return;
+    }
+    if(!message.guild.member(men).voiceChannel) return message.channel.send("الشخص المراد لا يوجد بالرومات الصوتيه.");
+    if(!message.member.hasPermission("MOVE_MEMBERS")) return message.channel.send("لا يوجد لديك صلاحيات للطرد.")
+    if(!message.guild.me.hasPermission("MOVE_MEMBERS")) return message.channel.send("لا يوجد لدي صلاحية سحب اعضاء.");
+       if(!message.guild.me.hasPermission("MANAGE_CHANNELS")) return message.channel.send("لا يوجد لدي صلاحية انشاء رومات.")
+
+    message.guild.createChannel("Voice Kick.", "voice").then(c => {
+      message.guild.member(men).setVoiceChannel(c.id)
+    setTimeout(() => {
+      c.delete()
+    }, 100)
+    });
+    message.channel.send(`تم طرده بنجاح\n\n${men.username}.`)
+} catch (e) {
+  message.channel.send("عفوا، الشخص المراد لا يمكنني طرده بسبب صلاحيات او ماشابه.");
+}
+  }
+});
+
 const jackeo = ['380307890235506698', 'ID Owner 2']; 
 client.on('message', message => { 
   if (message.author.bot) return; 
