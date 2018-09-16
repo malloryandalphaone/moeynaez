@@ -7,6 +7,46 @@ client.user.setStatus('dnd');
 console.log('966 Community Is Ready!');
 });
 
+client.on('message' , message => {
+  var prefix = "#";
+  if(message.author.bot) return;
+  if(message.content.startsWith(prefix + "bcrole")) {
+    let args = message.content.split(" ").slice(1);
+
+    if(!args[0]) {
+      message.channel.send("قم بمنشنة الرتبة | *bcrole @everyone رساله");
+        return;
+    }
+    if(!args[1]) {
+      message.channel.send("قم بمنشنة الرتبة | *bcrole @everyone رساله");
+        return;
+    }
+
+      if(args[0] == "@everyone") {
+        message.channel.send(`لقد تم ارسال هذه الرسالة الى ${message.guild.memberCount} اعضاء`);
+        message.guild.members.forEach(mi => {
+          mi.send(
+          "الرسالة :" + "\n" +
+         "**" + `${args[1]}` + "**"
+          );
+        });
+        return;
+      }
+          var role = message.mentions.roles.first();
+            if(!role) {
+              message.reply("لا توجد رتبة بهذا الاسم");
+                return;
+            }
+        message.guild.members.filter(m => m.roles.get(role.id)).forEach(sa => {
+        sa.send(
+          "**الى اعضاء كلآن 966 :**" + "\n" +
+        " " + `${args[1]}` + " "
+          );
+        });
+      message.channel.send(`**لقد تم ارسال هذه الرسالة الى ${message.guild.members.filter(m => m.roles.get(role.id)).size} عضو**`);
+    }
+});
+
 client.on("message", message => {
   let men = message.mentions.users.first();
   if(message.content.startsWith(prefix + "vkick")) {
