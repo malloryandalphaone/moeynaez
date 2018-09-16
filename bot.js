@@ -7,6 +7,72 @@ client.user.setStatus('dnd');
 console.log('966 Community Is Ready!');
 });
 
+const fs = require("fs"); 
+const ms = require("ms");
+
+const alphacodes = [
+  "#credits",
+  "#profile",
+  "#rep",
+  "#top",
+  "#top text",
+  "#top voice",
+  "#mute",
+  "#unmute",
+  "#ban",
+  "#unban",
+  "#kick",
+  "$clear",
+  "$clear 10",
+  "$vkick",
+  "$ban",
+  "#credit",
+  "#id",
+  "!play",
+  "!p",
+  "!!!play",
+  "!!!p",
+  "#server",
+  "#daily",
+  "#colors",
+  "#color",
+  "#clear",
+  "#help",
+  "$help",
+  "$bc",
+  "#bc"
+	
+]
+client.on('message', message => {
+var mute = message.guild.roles.find("name", "Muted.");
+var warn = message.guild.roles.find("name", "Warning.");
+  if(alphacodes.some(word => message.content.includes(word))) {
+  if(message.channel.id !== '488268450431762433') return;
+  if (message.author.bot) return;
+  
+  if(message.member.roles.has()) return;
+  if(!message.member.roles.has()) {
+  message.member.addRole(warn)
+  message.reply(`تم اعطائك تحذير، بسبب استخدام الاوامر بالشات\nعند استخدامك لها مرة اخرى ستعاقب ميوت.`) 
+  }
+  
+  if(message.member.roles.has(warn.id)) {
+      message.member.addRole(mute)
+      message.member.removeRole(warn)
+      let mutetime = "10m";
+    
+    message.reply(`تم أعطائك ميوت، لمدة عشر دقائق.`);
+  
+      setTimeout(function(){
+      message.member.removeRole(mute)
+      message.reply(`لقد انتهت مدة الميوت.`)
+    }, ms(mutetime))    
+     
+  }
+  
+  }
+  });
+
 editedcodes.on("message", (edited) => {
     
   if (edited.content === '-new') {
