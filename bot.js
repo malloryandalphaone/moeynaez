@@ -224,8 +224,6 @@ ${args.join(" ").split(msg.mentions.members.first()).slice(' ')}
         message.react('')
         message.react('')
       })
-      }
-    }
 
 });
 
