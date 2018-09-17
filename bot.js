@@ -35,64 +35,6 @@ client.on("message", message => {
 });
 
 client.on('message', async message => {
-    let args = message.content.split(" ");
-    let command = args[0];
-
-    if(command === prefix + 'tempban') {
-      if(!message.member.hasPermission("BAN_MEMBERS")) return message.reply('انت لا تملك الصلاحيات اللازمة').then(msg => {
-        msg.delete(3500);
-        message.delete(3500);
-      });
-
-      if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply('انا لا املك الصلاحيات اللازمة. يحب توفر صلاحيات `Ban Members , Embed Links`').then(msg => {
-        msg.delete(3500);
-        message.delete(3500);
-      });
-      let mention = message.mentions.members.first();
-      if(!mention) return message.reply('**منشن عضو لطرده**').then(msg => {
-        msg.delete(3500);
-        message.delete(3500);
-      });
-      if(mention.highestRole.position >= message.guild.member(message.author).highestRole.positon) return message.reply('**لا يمكنك طرد شخص رتبته اعلى منك**').then(msg => {
-        msg.delete(3500);
-        message.delete(3500);
-      });
-      if(mention.highestRole.positon >= message.guild.member(client.user).highestRole.positon) return message.reply('**لا يمكنني طرد شخص رتبته اعلى مني**').then(msg => {
-        msg.delete(3500);
-        message.delete(3500);
-      });
-      if(mention.id === message.author.id) return message.reply('**لا يمكنك طرد  نفسك**').then(msg => {
-        msg.delete(3500);
-        message.delete(3500);
-      });
-
-       let duration = args[2];
-       if(!duration) return message.reply('**حدد وقت زمني لفك البان عن الشخص**').then(msg => {
-         msg.delete(3500);
-         message.delete(3500);
-       });
-       if(isNaN(duration)) return message.reply('**حدد وقت زمني صحيح**').then(msg => {
-         msg.delete(3500);
-         message.delete(3500);
-       });
-
-       let reason = message.content.split(" ").slice(3).join(" ");
-       if(!reason) reason = 'Bad.';
-
-       let thisEmbed = new Discord.RichEmbed()
-       .setAuthor(mention.user.username , mention.user.avatarURL)
-       .setTitle('You Have been banned from the Server.')
-       .setThumbnail(mention.avatarURL)
-       .addField('**Server**: ',message.guild.name,true)
-       .addField('**Banned By**: ',message.author,true)
-       .addField('**The Reason**: ',reason)
-       .setFooter(message.author.tag,message.author.avatarURL);
-       mention.send(thisEmbed).then(() => {
-       mention.ban({
-         reason: reason,
-       });
-
-client.on('message', async message => {
   let args = message.content.split(" ");
   if(message.content.startsWith(prefix + "tempmute")) {
     if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply('**أنت لا تملك الخصائص اللازمة . يجب توفر خاصية `Manage Roles`**').then(msg => {
