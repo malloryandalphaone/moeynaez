@@ -204,29 +204,6 @@ ${args.join(" ").split(msg.mentions.members.first()).slice(' ')}
 
 });
 
-client.on('message', msg => {
-	
-    if(!msg.guild.channels.find('name', 'suggestion')) return msg.reply('**Create Room : submit**');
-      msg.delete().then
-    let args = msg.content.split(" ").slice(1);
-    if(msg.guild.channels.find('name', 'suggestions')) {
-      msg.delete().then
-      msg.channel.send(`**تم إرسال تقديمك بنجاح،\nيرجى انتظار الرد من الأدارة،\nكما يرجى مراجعة روم القبول والرفض،**\n\nشكرا لك.\n\n${msg.member}`).then(m => m.delete(9000));	    
-      msg.guild.channels.find('name', 'suggestions').send(`
-**Suggestion By** : ${msg.member}
-**The Suggestion Is** : 
-
-${args.join(" ").split(msg.mentions.members.first()).slice(' ')}
-
--
-@here `)
-      .then(function (message) {
-        message.react('')
-        message.react('')
-      })
-
-});
-
 client.on('message', message => {
 	
   if (message.author.id === client.user.id) return;
