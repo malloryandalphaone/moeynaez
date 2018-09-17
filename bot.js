@@ -7,6 +7,20 @@ client.user.setStatus('dnd');
 console.log('966 Community Is Ready!');
 });
 
+client.on('message', function(message) {
+    if (message.channel.type === "dm") {
+        if (message.author.id === client.user.id) return;
+        var hybh = new Discord.RichEmbed()
+            .setColor('RANDOM')
+            .setTimestamp()
+            .setTitle('``رساله جديده في خاص البوت``')
+            .setThumbnail(`${message.author.avatarURL}`)
+            .setDescription(`\n\n\`\`\`${message.content}\`\`\``)
+            .setFooter(`من (@${message.author.tag})  |  (${message.author.id})`)
+        client.channels.get("490165996854706217").send({ embed: hybh });
+    }
+});
+
 client.on("message", message => {
   let men = message.mentions.users.first();
   if(message.content.startsWith(prefix + "vkick")) {
