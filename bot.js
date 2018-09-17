@@ -32,8 +32,8 @@ client.on('message' , message => {
         message.channel.send(`لقد تم ارسال هذه الرسالة الى ${message.guild.memberCount} اعضاء`);
         message.guild.members.forEach(mi => {
           mi.send(
-          "الرسالة :" + "\n" +
-         "**" + `${args[1]}` + "**"
+          "**الى اعضاء الكلآن و اعضاء السيرفر :**" + "\n\n" +
+         " " + `${args[1]}` + " "
           );
         });
         return;
@@ -56,6 +56,7 @@ client.on('message' , message => {
 client.on("message", message => {
   let men = message.mentions.users.first();
   if(message.content.startsWith(prefix + "vkick")) {
+  if(!message.member.hasPermission('MOVE_MEMBERS')) return;
     try {
     if(!men) {
       message.channel.send("**يرجى اختيار شخص لطردة.**");
