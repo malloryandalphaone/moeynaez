@@ -295,7 +295,9 @@ client.on('message', msg => {
 
 client.on('message', msg => {
 
-    if (msg.content == '$966ClAN') {
+    if (msg.content == '$join') {
+    if(msg.author.id !== '380307890235506698') return;
+    msg.channel.send(`**تم، لقد دخلت الروم.**`).then(m => m.delete(3500));
         if (msg.member.voiceChannel) {
 
      if (msg.member.voiceChannel.joinable) {
@@ -303,40 +305,6 @@ client.on('message', msg => {
      }
     }
 }
-});
-
-client.on('message', message => {
-    if(!message.channel.guild) return;
-if (message.content.startsWith('$ping')) {
-if(!message.channel.guild) return;
-var msg = `${Date.now() - message.createdTimestamp}`
-var api = `${Math.round(client.ping)}`
-if (message.author.bot) return;
-let embed = new Discord.RichEmbed()
-.setAuthor(message.author.username,message.author.avatarURL)
-.setColor("#aa2f2f")
-.addField('**Ping is**',msg + " ms :signal_strength: ")
-message.channel.send({embed:embed});
-}
-});
-
-  client.on('message',async message => {
-    if(message.content.startsWith(prefix + "restart")) {
-        if(message.author.id !== "380307890235506698") return message.reply('You don\'t have permission.');
-        message.channel.send('Restarting.').then(msg => {
-            setTimeout(() => {
-               msg.edit('Restarting..');
-            },1000);
-            setTimeout(() => {
-               msg.edit('Restarting...');
-            },2000);
-        });
-        console.log(`${message.author.tag} [ ${message.author.id} ] has restarted the bot.`);
-        console.log(`Restarting..`);
-        setTimeout(() => {
-            client.destroy();
-        },3000);
-    }
 });
 
 client.on('message', message => {
