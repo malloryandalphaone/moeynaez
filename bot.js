@@ -7,13 +7,6 @@ client.user.setStatus('dnd');
 console.log('966 Community Is Ready!');
 });
 
-////////////////////  Danger \\\\\\\\\\\\\\\\\\\\
-
-
-client.on('guildMemberAdd', member => {
-  member.addRole('name', "- Members.")
-});
-
 client.on('message' , message => {
   if(message.author.bot) return;
   if(message.content.startsWith(prefix + "bcrole")) {
