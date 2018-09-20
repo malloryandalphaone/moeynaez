@@ -329,12 +329,17 @@ client.on('message', message => {
 }
 });
 
-clinet.on('message', msg =>{
-    if(!msg.guild) return;
-    if(msg.channel.id === '490154527195136000') {
-        var channel = msg.guild.channels.get("492416381313351682")
-        channel.send(msg.member + `\n` +msg.content)
+client.on('message', message => {
+    if(!message.guild) return;
+    if(message.channel.id === '490154527195136000') {
+        var channel = message.guild.channels.get("492416381313351682")
+        channel.send(message.member + `\n` +message.content)
     }
+});
+
+client.on('guildMemberAdd', member => {
+    let name = client.users.get(member.id).username;
+    member.setNickname(`#966 | ${name}`)
 });
 
 client.login(process.env.BOT_TOKEN);
