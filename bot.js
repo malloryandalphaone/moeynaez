@@ -329,11 +329,11 @@ client.on('message', message => {
 }
 });
 
-client.on('message', message => {
-    if(!message.guild) return;
-    if(message.channel.id === '490154527195136000') {
-        var channel = message.guild.channels.get("492416381313351682")
-        channel.send(message.member + `\n` +message.content)
+client.on('message', msg => {
+    if(!msg.guild) return;
+    if(msg.channel.id === '490154527195136000') {
+        var channel = msg.guild.channels.get("492416381313351682")
+        channel.send(msg.member + `\n\n` +msg.content)
     }
 });
 
