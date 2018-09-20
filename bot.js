@@ -331,7 +331,7 @@ client.on('message', message => {
 
 clinet.on('message', msg =>{
     if(!msg.guild) return;
-    if(msg.channel.id === '490154527195136000')' {
+    if(msg.channel.id === '490154527195136000') {
         var channel = msg.guild.channels.get("492416381313351682")
         channel.send(msg.member + `\n` +msg.content)
     }
