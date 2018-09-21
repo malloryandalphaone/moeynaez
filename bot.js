@@ -428,6 +428,6 @@ gg.send({embed : new Discord.RichEmbed()
 })
 })
 })
- }
+ });
 
 client.login(process.env.BOT_TOKEN);
