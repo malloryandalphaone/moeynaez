@@ -1,10 +1,11 @@
 const Discord = require('discord.js');
 const moment = require('moment');
 const client = new Discord.Client();
-const prefix = "$";
+const prefix = "#";
 client.on('ready', () => {
 client.channels.get("488269427838681089").join();
 client.user.setStatus('dnd');
+client.user.setActivity("- Britin .",{type: 'LISTENING'})
 console.log('966 Community Is Ready!');
 });
 
@@ -12,15 +13,17 @@ client.on('message', function(message) {
     if (message.channel.type === "dm") {
         if (message.author.id === client.user.id) return;
         var hybh = new Discord.RichEmbed()
-            .setColor('RANDOM')
+            .setColor('#FFFFFF')
             .setTimestamp()
-            .setTitle('``رساله جديده في خاص البوت``')
+            .setTitle('**رساله جديده في خاص البوت**')
             .setThumbnail(`${message.author.avatarURL}`)
-            .setDescription(`\n\n\`\`\`${message.content}\`\`\``)
-            .setFooter(`من (@${message.author.tag})  |  (${message.author.id})`)
+            .setDescription(`\n\n\`\`${message.content}\`\``)
+            .setFooter(`من (@${message.author.tag})`)
         client.channels.get("490165996854706217").send({ embed: hybh });
     }
 });
+
+
 
 client.on("message", message => {
   let men = message.mentions.users.first();
@@ -59,15 +62,17 @@ client.on('message', message => {
   command = command.slice(prefix.length); 
   let args = message.content.split(" ").slice(1);  
   if (command === "say")  { 
+  if(!message.member.hasPermission('ADMINSTRATOR')) return;
   if(!message.channel.guild) return message.reply('** This command only for servers  **'); 
           message.delete() 
     message.channel.sendMessage(args.join(" ")).catch(console.error); 
   } 
-if (command == "emb")    { 
+if (command == "emb")  { 
+if(!message.member.hasPermission('ADMINSTRATOR')) return;
   if(!message.channel.guild) return message.reply('** This command only for servers  **'); 
     let say = new Discord.RichEmbed() 
     .setDescription(args.join("  ")) 
-    .setColor("#aa2f2f") 
+    .setColor("#FFFFFF") 
     message.channel.sendEmbed(say); 
     message.delete(); 
   }  
@@ -106,7 +111,7 @@ client.on('message',async message => {
   }
 });
 
-    const adminprefix = "$";
+    const adminprefix = "#";
 const devs = ['380307890235506698','ID OWNER OF BOT'];
 client.on('message', message => {
   var argresult = message.content.split(` `).slice(1).join(' ');
@@ -193,22 +198,25 @@ client.on('raw', event => {
 
 client.on('message', msg => {
 	
-  if(msg.content.startsWith('$submit')) {
+  if(msg.content.startsWith('#submit')) {
     if(!msg.channel.guild) return msg.reply('** هذا الامر فقط للسيرفرات**');
-    if(!msg.guild.channels.find('name', 'submit')) return msg.reply('**Create Room : submit**');
+    if(!msg.guild.channels.find('name', 'التقديمات')) return msg.reply('**Create Room : التقديمات**');
       msg.delete().then
     let args = msg.content.split(" ").slice(1);
-    if(!args[1]) return msg.reply('**$submit اسمك الحقيقي، اسمك باللعبة، عمرك**')
-    if(msg.guild.channels.find('name', 'submit')) {
+    if(!args[1]) return msg.reply('**#submit اسمك الحقيقي، اسمك المستعار، عمرك**')
+    if(msg.guild.channels.find('name', 'التقديمات')) {
       msg.delete().then
       msg.channel.send(`**تم إرسال تقديمك بنجاح،\nيرجى انتظار الرد من الأدارة،\nكما يرجى مراجعة روم القبول والرفض،**\n\nشكرا لك.\n\n${msg.member}`).then(m => m.delete(9000));	    
-      msg.guild.channels.find('name', 'submit').send(`
-**Submit By** : ${msg.member}
-**The Submit Is** : 
+      msg.guild.channels.find('name', 'التقديمات').send(`
+════════════════════════════════
+
+**بواسطة** : ${msg.member}
+
+**التقديم** : 
 
 ${args.join(" ").split(msg.mentions.members.first()).slice(' ')}
 
--
+════════════════════════════════
 @here `)
       .then(function (message) {
         message.react('')
@@ -282,9 +290,9 @@ client.on('message', msg => {
 
 client.on('message', msg => {
 
-    if (msg.content == '$join') {
+    if (msg.content == '#join') {
     if(msg.author.id !== '380307890235506698') return;
-    msg.channel.send(`**تم، لقد دخلت الروم.**`).then(m => m.delete(3500));
+    msg.channel.send(`**تم، لقد دخلت الروم.**`).then(m => m.delete(2000));
         if (msg.member.voiceChannel) {
 
      if (msg.member.voiceChannel.joinable) {
@@ -295,7 +303,7 @@ client.on('message', msg => {
 });
 
 client.on('message', message => {
-    if (message.content.startsWith("$avatar")) {
+    if (message.content.startsWith("#avatar")) {
         var mentionned = message.mentions.users.first();
     var x5bzm;
       if(mentionned){
@@ -305,7 +313,7 @@ client.on('message', message => {
           
       }
         const embed = new Discord.RichEmbed()
-        .setColor("#aa2f2f")
+        .setColor("#FFFFFF")
         .setImage(`${x5bzm.avatarURL}`)
       message.channel.sendEmbed(embed);
     }
@@ -341,6 +349,46 @@ client.on('message', msg => {
 client.on('guildMemberAdd', member => {
     let name = client.users.get(member.id).username;
     member.setNickname(`#966 | ${name}`)
+});
+
+clinet.on('message', message => {//help msg
+  if (message.author.bot) return;
+   if (message.content === prefix + "Clan") {
+      message.react("☑")            
+
+   
+
+
+      message.author.sendMessage(`
+❖════════════════════❖
+
+**966 Community**
+-
+● #submit \`<اسمك الحقيقي-اسمك المستعار-عمرك>\`
+● #avatar \`<رؤية صورتك-صورة شخص آخر>\`
+
+❖════════════════════❖
+
+**توجيهآت مهمة**
+-
+● للأقتراحات توجه الى روم \`#suggestions\`
+● \`لمعرفة قبولك او رفضك توجه الى روم \`#القبول-الرفض
+
+❖════════════════════❖
+
+**قوآنين يجب إتباعها**
+-
+● عدم النشر بأي طريقة كآنت 
+● عدم الأزعاج بأي وسيلة كآنت
+● عدم التطرق للموآضيع السيآسية والدينية
+● عدم طلب الرتب و مشتقاتها
+
+❖════════════════════❖
+
+**Developer: \`- Britin ⚜#3790\`**
+**The Bot is Private .**`);
+
+}
 });
 
 client.login(process.env.BOT_TOKEN);
