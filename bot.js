@@ -427,12 +427,5 @@ gg.send({embed : new Discord.RichEmbed()
           .setFooter(` Alphacodes.`)
 .setTimestamp()
 });
-}        
-})
-})
-})
-})
-})
-})
-})
+
 client.login(process.env.BOT_TOKEN);
