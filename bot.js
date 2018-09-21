@@ -389,4 +389,45 @@ client.on('message', message => {
 }
 });
 
+client.on('message', async message => {
+  if(message.content.startsWith(prefix + "ssubmit")) {
+    await message.channel.send("**آكتب آسمك آلحقيقي**").then(e => {
+    let filter = m => m.author.id === message.author.id
+    let lan = '';
+    let md = '';
+    let br = '';
+    let chaLan = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
+    .then(collected => {
+      lan = collected.first().content
+      collected.first().delete()
+e.edit(`**آكتب آسمك آلمستعآر باللعبه**`)
+let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
+.then(co => {
+  md = co.first().content
+        co.first().delete()
+        e.edit(`**آكتب عمرك**`)
+let br = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
+.then(col => {
+  br = col.first().content
+        col.first().delete()
+e.edit("**جآري تقديم طلبك للدخول بالكلآن ..**").then(b => {
+        setTimeout(() => {
+  b.edit(`**تم تقديم طلبك، يرجى مرآجعة روم آلقبول والرفض.**`)
+        },2000);
+var gg = message.guild.channels.find('name', 'التقديمات')
+if(!gg) return;
+if(gg) {
+gg.send({embed : new Discord.RichEmbed()
+.setDescription(`**آلآسم :\n${lan}\n\nآلأسم آلمستعآر :\n${md}\n\nآلعمر :\n${br} **\n@here`)  
+          .setFooter(`966 Community.`)
+.setTimestamp()
+});
+}        
+})
+})
+})
+})
+})
+ }
+
 client.login(process.env.BOT_TOKEN);
