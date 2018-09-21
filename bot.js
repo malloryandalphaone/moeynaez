@@ -351,14 +351,12 @@ client.on('guildMemberAdd', member => {
     member.setNickname(`#966 | ${name}`)
 });
 
-clinet.on('message', message => {//help msg
+
+
+client.on('message', message => {
   if (message.author.bot) return;
    if (message.content === prefix + "Clan") {
-      message.react("☑")            
-
-   
-
-
+      message.react("☑")
       message.author.sendMessage(`
 ❖════════════════════❖
 
