@@ -427,7 +427,6 @@ gg.send({embed : new Discord.RichEmbed()
           .setFooter(` Alphacodes.`)
 .setTimestamp()
 });
-})
 }        
 })
 })
