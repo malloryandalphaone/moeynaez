@@ -136,12 +136,10 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 }); 
 
 const yourID = "380307890235506698";
-const setupCMD = "#Yllh"
-let initialMessage = `
-**لأخذ رتبة السيرفر المفضل لديك اضغط على الريأكشن**
-@everyone - @here `;
-const roles = ["HiveMC", "Hypixel", "GiantCraft", "MarsMC", "BlocksMC"];//رتب
-const reactions = ["🔸", "🔸", "🔸", "🔸", "🔸"];//رياكشن
+const setupCMD = "#Sweh.."
+let initialMessage = `**لأخذ رتبة السيرفر المفضل لديك اضغط على الريأكشن**`;
+const roles = ["HiveMC", "Hypixel"];//رتب
+const reactions = ["🔸", "🔸"];//رياكشن
 if (roles.length !== reactions.length) throw "Roles list and reactions list are not the same length!";
 
 function generateMessages(){
@@ -165,8 +163,6 @@ client.on("message", message => {
         }
     }
 })
-
-
 client.on('raw', event => {
     if (event.t === 'MESSAGE_REACTION_ADD' || event.t == "MESSAGE_REACTION_REMOVE"){
         
