@@ -5,7 +5,7 @@ const prefix = "#";
 client.on('ready', () => {
 client.channels.get("488269427838681089").join();
 client.user.setStatus('dnd');
-client.user.setActivity("- Britin .",{type: 'LISTENING'})
+client.user.setActivity("#Community",{type: 'LISTENING'})
 console.log('966 Community Is Ready!');
 });
 
@@ -331,7 +331,7 @@ client.on('message', message => {
 client.on('message', message => {
     if(message.content.includes('youtube')){
         if(!message.channel.guild) return message.reply('**ممنوع نشر روابط اليوتيوب**').then(m => m.delete(3000));
-        if (!message.member.hasPermissions(['MOVE_MEMBERS'])){
+        if (!message.member.hasPermissions(['EMBED_LINKS'])){
         message.delete()
     }
 }
@@ -355,36 +355,25 @@ client.on('guildMemberAdd', member => {
 
 client.on('message', message => {
   if (message.author.bot) return;
-   if (message.content === prefix + "Clan") {
-      message.react("☑")
+   if (message.content === prefix + "clan") {
       message.author.sendMessage(`
 ❖════════════════════❖
 
-**966 Community**
--
-● #submit \`<اسمك الحقيقي-اسمك المستعار-عمرك>\`
-● #avatar \`<رؤية صورتك-صورة شخص آخر>\`
+\`966 Community\` : https://discord.gg/5MNGynn
 
 ❖════════════════════❖
 
-**توجيهآت مهمة**
--
-● للأقتراحات توجه الى روم \`#suggestions\`
-● لمعرفة قبولك او رفضك توجه الى روم \`#القبول-الرفض\`
+آلتقديم و طريقة :
+
+\`1\` **أذهب الى روم الأوامر
+\`2\` **أكتب أمر التقديم **--> \`#submit\`
+\`3\` **#submit \`<أسمك - أسمك المستخدم بالالعاب - عمرك>\`
 
 ❖════════════════════❖
 
-**قوآنين يجب إتباعها**
--
-● عدم النشر بأي طريقة كآنت 
-● عدم الأزعاج بأي وسيلة كآنت
-● عدم التطرق للموآضيع السيآسية والدينية
-● عدم طلب الرتب و مشتقاتها
-
-❖════════════════════❖
-
-**Developer: \`- Britin ⚜#3790\`**
-**The Bot is Private .**`);
+**Check Room #القبول-الرفض
+رآجع غرفة #القبول-الرفض**
+`);
 
 }
 });
