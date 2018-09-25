@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const moment = require('moment');
 const client = new Discord.Client();
-const prefix = "#";
+const prefix = "$";
 client.on('ready', () => {
 client.user.setStatus('dnd');
 client.user.setActivity("#Community",{type: 'LISTENING'})
@@ -126,7 +126,7 @@ client.on('message',async message => {
   }
 });
 
-    const adminprefix = "#";
+    const adminprefix = "$";
 const devs = ['380307890235506698','ID OWNER OF BOT'];
 client.on('message', message => {
   var argresult = message.content.split(` `).slice(1).join(' ');
@@ -209,12 +209,12 @@ client.on('raw', event => {
 
 client.on('message', msg => {
 	
-  if(msg.content.startsWith('#submit')) {
+  if(msg.content.startsWith('$submit')) {
     if(!msg.channel.guild) return msg.reply('** هذا الامر فقط للسيرفرات**');
     if(!msg.guild.channels.find('name', 'التقديمات')) return msg.reply('**Create Room : التقديمات**');
       msg.delete().then
     let args = msg.content.split(" ").slice(1);
-    if(!args[1]) return msg.reply('**#submit اسمك الحقيقي، اسمك المستعار، عمرك**')
+    if(!args[1]) return msg.reply('**$submit اسمك الحقيقي، اسمك المستعار، عمرك**')
     if(msg.guild.channels.find('name', 'التقديمات')) {
       msg.delete().then
       msg.channel.send(`**تم إرسال تقديمك بنجاح،\nيرجى انتظار الرد من الأدارة،\nكما يرجى مراجعة روم القبول والرفض،**\n\nشكرا لك.\n\n${msg.member}`).then(m => m.delete(9000));	    
@@ -301,7 +301,7 @@ client.on('message', msg => {
 
 client.on('message', msg => {
 
-    if (msg.content == '#join') {
+    if (msg.content == '$join') {
     if(msg.author.id !== '380307890235506698') return;
     msg.channel.send(`**تم، لقد دخلت الروم.**`).then(m => m.delete(2000));
         if (msg.member.voiceChannel) {
@@ -314,7 +314,7 @@ client.on('message', msg => {
 });
 
 client.on('message', message => {
-    if (message.content.startsWith("#avatar")) {
+    if (message.content.startsWith("$avatar")) {
         var mentionned = message.mentions.users.first();
     var x5bzm;
       if(mentionned){
@@ -366,7 +366,7 @@ client.on('guildMemberAdd', member => {
 
 client.on('message', message => {
   if (message.author.bot) return;
-   if (message.content === prefix + "clan") {
+   if (message.content === prefix + "$966") {
       message.author.sendMessage(`
 ❖════════════════════❖
 
