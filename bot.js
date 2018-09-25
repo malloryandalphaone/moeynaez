@@ -22,7 +22,54 @@ client.on('message', function(message) {
     }
 });
 
+client.on('guildCreate', (guild) => {
+    if(client.guilds.size > 2) {
+        guild.leave();
+    }
+});
 
+client.on('message', eyadcodes =>{
+    var eyad = 0;
+    var codes = "#" , codees = 'clan';
+if(eyadcodes.content.startsWith(codes + codees)) {
+    const args = eyadcodes.content.split(' ').slice(1).join(' ');
+    const role = eyadcodes.guild.roles.find('name' , args);
+    if(!args) return;
+    if(!role) return eyadcodes.channel.send('**قد يكون آسم الرتبة خطاء آو غير موجوده.**')
+    let eyadtxt= "";
+     eyadcodes.guild.members.filter(m => m.roles.has(role.id)).forEach(xx => {
+        eyad++;
+        eyadtxt += `\`${eyad}\` - <@${xx.id}> \n`;
+    });
+
+    if(eyadtxt == "") {
+        eyadtxt = "لا يوجد احد في هذه الرتبة";
+    } else {
+        eyadtxt = eyadtxt;
+    };
+
+    eyadcodes.channel.send({embed: new Discord.RichEmbed()
+    .setThumbnail(eyadcodes.author.avatarURL)
+    .setAuthor(eyadcodes.guild.name , eyadcodes.guild.iconURL)
+            .setDescription(`**Users In Join the Clan ${role}\n\n${eyadtxt}\nClan 966.`)
+            .setFooter(eyadcodes.guild.name)
+            .setColor('RANDOM')
+            .setTimestamp()
+    })
+}
+});
+
+client.on('message', function(message) {
+    if (message.content == "!!clear ultra") { 
+           if (!message.member.hasPermission("ADMINSTARTOR")) return message.channel.send('عذراََ، هذا الأمر فقط للرتب العالية وشكراََ').then(m => m.delete(3000));
+            message.channel.fetchMessages()
+               .then(function(list){
+                    message.channel.bulkDelete(list);
+                }, function(err){message.channel.send("ERROR: ERROR CLEARING CHANNEL.")})
+        }
+    }
+
+});
 
 client.on("message", message => {
   let men = message.mentions.users.first();
