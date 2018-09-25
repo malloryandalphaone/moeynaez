@@ -30,12 +30,12 @@ client.on('guildCreate', (guild) => {
 
 client.on('message', eyadcodes =>{
     var eyad = 0;
-    var codes = "#" , codees = 'rank';
+    var codes = "!" , codees = 'inrole';
 if(eyadcodes.content.startsWith(codes + codees)) {
     const args = eyadcodes.content.split(' ').slice(1).join(' ');
     const role = eyadcodes.guild.roles.find('name' , args);
     if(!args) return;
-    if(!role) return eyadcodes.channel.send('**قد يكون آسم الرتبة خطاء آو غير موجوده.**')
+    if(!role) return eyadcodes.channel.send('**قد يكون أسم الرتبه خطأ او ليست موجوده !!**')
     let eyadtxt= "";
      eyadcodes.guild.members.filter(m => m.roles.has(role.id)).forEach(xx => {
         eyad++;
@@ -51,13 +51,13 @@ if(eyadcodes.content.startsWith(codes + codees)) {
     eyadcodes.channel.send({embed: new Discord.RichEmbed()
     .setThumbnail(eyadcodes.author.avatarURL)
     .setAuthor(eyadcodes.guild.name , eyadcodes.guild.iconURL)
-            .setDescription(`**Users In Join the Clan ${role}\n\n${eyadtxt}\nClan 966.`)
+            .setDescription(`**Users in this role ${role} \n\n${eyadtxt}**`)
             .setFooter(eyadcodes.guild.name)
             .setColor('RANDOM')
             .setTimestamp()
     })
 }
-});
+})
 
 client.on('message', function(message) {
     if (message.content == "!!clear") {
