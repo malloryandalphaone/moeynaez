@@ -30,7 +30,7 @@ client.on('guildCreate', (guild) => {
 
 client.on('message', eyadcodes =>{
     var eyad = 0;
-    var codes = "#" , codees = 'in';
+    var codes = "#" , codees = 'rank';
 if(eyadcodes.content.startsWith(codes + codees)) {
     const args = eyadcodes.content.split(' ').slice(1).join(' ');
     const role = eyadcodes.guild.roles.find('name' , args);
