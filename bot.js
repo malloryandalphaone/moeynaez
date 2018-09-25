@@ -60,8 +60,8 @@ if(eyadcodes.content.startsWith(codes + codees)) {
 });
 
 client.on('message', function(message) {
-    if (message.content == "!!clear ultra") { 
-           if (!message.member.hasPermission("ADMINSTARTOR")) return message.channel.send('عذراََ، هذا الأمر فقط للرتب العالية وشكراََ').then(m => m.delete(3000));
+    if (message.content == "!!clear") {
+        if (message.member.hasPermission("ADMINSTRATOR")) {
             message.channel.fetchMessages()
                .then(function(list){
                     message.channel.bulkDelete(list);
