@@ -161,8 +161,8 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 
 const yourID = "380307890235506698";
 const setupCMD = "$servers"
-let initialMessage = `**@everyone  rolereact**
-**React to the messages below to get role. If you would like to remove the role remove your reaction!** `;
+let initialMessage = `@everyone **.** Servers
+**لآختيار رتبة سيرفرك اضغط على الريأكشن الموجود تحت الرتبة**.`;
 const roles = ["Hypixel", "HiveMC", "BlocksMC", "MarsMC", "GiantCraft", "CubeCraft"];//رتب
 const reactions = ["😊", "😊", "😊", "😊", "😊", "😊"];//رياكشن
 
