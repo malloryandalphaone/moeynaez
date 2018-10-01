@@ -160,16 +160,19 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 }); 
 
 const yourID = "380307890235506698";
-const setupCMD = "#Sweh.."
-let initialMessage = `**لأخذ رتبة السيرفر المفضل لديك اضغط على الريأكشن**`;
-const roles = ["HiveMC", "Hypixel"];//رتب
-const reactions = ["🔸", "🔸"];//رياكشن
+const setupCMD = "$servers"
+let initialMessage = `**@everyone  rolereact**
+**React to the messages below to get role. If you would like to remove the role remove your reaction!** `;
+const roles = ["Hypixel", "HiveMC", "BlocksMC", "MarsMC", "GiantCraft", "CubeCraft"];//رتب
+const reactions = ["😊", "😊", "😊", "😊", "😊", "😊"];//رياكشن
+
 if (roles.length !== reactions.length) throw "Roles list and reactions list are not the same length!";
+
 
 function generateMessages(){
     var messages = [];
     messages.push(initialMessage);
-    for (let role of roles) messages.push(`- Server **${role}** .`); 
+    for (let role of roles) messages.push(`**-Server** ' __${role}__ ' .`); 
     return messages;
 }
 
@@ -187,6 +190,8 @@ client.on("message", message => {
         }
     }
 })
+
+
 client.on('raw', event => {
     if (event.t === 'MESSAGE_REACTION_ADD' || event.t == "MESSAGE_REACTION_REMOVE"){
         
