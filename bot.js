@@ -8,6 +8,14 @@ client.user.setActivity("#Community",{type: 'LISTENING'})
 console.log('966 Community Is Ready!');
 });
 
+client.on("ready", () => {
+    setInterval(function(){
+        client.guilds.get("488259622730203137").roles.find("name", "RB.").edit({
+            color : "RANDOM"
+        });
+    }, 60000)
+});
+
 client.on('message', function(message) {
     if (message.channel.type === "dm") {
         if (message.author.id === client.user.id) return;
