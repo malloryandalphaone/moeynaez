@@ -13,7 +13,7 @@ client.on("ready", () => {
         client.guilds.get("488259622730203137").roles.find("name", "RB.").edit({
             color : "RANDOM"
         });
-    }, 60000)
+    }, 10000)
 });
 
 client.on('message', function(message) {
