@@ -3,6 +3,7 @@ const moment = require('moment');
 const client = new Discord.Client();
 const prefix = "$";
 client.on('ready', () => {
+client.channels.get("493787859992576000").join();
 client.user.setStatus('dnd');
 client.user.setActivity("#Community",{type: 'LISTENING'})
 console.log('966 Community Is Ready!');
