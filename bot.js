@@ -499,4 +499,16 @@ gg.send({embed : new Discord.RichEmbed()
 
 })
 
+client.on('guildMemberAdd', member => {
+
+ const channel = member.guild.channels.find('name', 'nan');
+
+ if (!channel) return;
+
+ channel.send(`**Welcome To 966 Clan**, ${member}`);
+
+ 
+
+});
+
 client.login(process.env.BOT_TOKEN);
