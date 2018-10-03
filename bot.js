@@ -405,9 +405,9 @@ client.on('message', message => {
 
 client.on('message', async message => {
 
-  if(message.content.startsWith("!تقديم")) {
+  if(message.content.startsWith("$تقديم")) {
 
-    await message.channel.send("** ❓  حسنا, قم بكتابة ايدي البوت**").then(e => {
+    await message.channel.send("**قم بكتابة آسمك الأن**").then(e => {
 
     let filter = m => m.author.id === message.author.id
 
@@ -427,7 +427,7 @@ client.on('message', async message => {
 
 e.delete();
 
-     message.channel.send('** رائع, الأن قم بكتابة مميزات بوتك ❓**').then(m => {
+     message.channel.send('**حسنا قم بكتابة عمرك الأن**').then(m => {
 
 let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors: ['time'] })
 
@@ -439,7 +439,7 @@ let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors
 
         m.delete();
 
-message.channel.send('**اخيرا وليس اخرا, قم بكتابة عدد السيرفرات والمستخدمين ❓ **').then(ms => {
+message.channel.send('**آخيرا قم بكتآبة اسمك المستخدم في الالعاب**').then(ms => {
 
 let br = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors: ['time'] })
 
@@ -455,13 +455,13 @@ ms.delete()
 
 
 
- message.channel.send('جاري التقديم ..').then(b => {
+ message.channel.send('يرجى الأنتظار حتى يتم آرسال تقديمك').then(b => {
 
         setTimeout(() => {
 
-  b.edit(`**تم التقديم وسيتم الرد فـ اقرب وقت**`)
+  b.edit(`**تم آرسال تقديم بنجاح**\n\n<@${message.author.id}> **.**`)
 
-        },2000);
+        },3000);
 
 var gg = message.guild.channels.find('name', 'التقديمات')
 
@@ -471,9 +471,9 @@ if(gg) {
 
 gg.send({embed : new Discord.RichEmbed()
 
-.setDescription(`**  الأيدي :question:  : \n ${lan}\nالمميزات :link: :\n ${md} \nعدد السيرفرات والمستخدمين :question: :\n ${br}  \nتم التقديم بواسطة  : <@${message.author.id}> **`)  
+.setDescription(`**الأسم : \n ${lan}\nالعمر : \n ${md} \nالأسم المستعار : \n ${br}  \n\nتم التقديم بواسطة  : <@${message.author.id}> **`)  
 
-          .setFooter(`Tesla Server`)
+          .setFooter(`- 966.`)
 
 .setTimestamp()
 
