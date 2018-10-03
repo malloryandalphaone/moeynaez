@@ -221,37 +221,6 @@ client.on('raw', event => {
 });
 
 
-client.on('message', msg => {
-	
-  if(msg.content.startsWith('$submit')) {
-    if(!msg.channel.guild) return msg.reply('** هذا الامر فقط للسيرفرات**');
-    if(!msg.guild.channels.find('name', 'التقديمات')) return msg.reply('**Create Room : التقديمات**');
-      msg.delete().then
-    let args = msg.content.split(" ").slice(1);
-    if(!args[1]) return msg.reply('**$submit اسمك الحقيقي، اسمك المستعار، عمرك**')
-    if(msg.guild.channels.find('name', 'التقديمات')) {
-      msg.delete().then
-      msg.channel.send(`**تم إرسال تقديمك بنجاح،\nيرجى انتظار الرد من الأدارة،\nكما يرجى مراجعة روم القبول والرفض،**\n\nشكرا لك.\n\n${msg.member}`).then(m => m.delete(9000));	    
-      msg.guild.channels.find('name', 'التقديمات').send(`
-════════════════════════════════
-
-**بواسطة** : ${msg.member}
-
-**التقديم** : 
-
-${args.join(" ").split(msg.mentions.members.first()).slice(' ')}
-
-════════════════════════════════
-@here `)
-      .then(function (message) {
-        message.react('')
-        message.react('')
-      })
-      }
-    }
-
-});
-
 client.on('message', message => {
 	
   if (message.author.id === client.user.id) return;
