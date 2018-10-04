@@ -4,10 +4,37 @@ const client = new Discord.Client();
 const prefix = "$";
 client.on('ready', () => {
 client.channels.get("493787859992576000").join();
-client.user.setStatus('online');
-client.user.setActivity(".",{type: 'LISTENING'})
+client.user.setStatus('dnd');
+client.user.setGame(".", "https://twitch.tv/idk");
 console.log('966 Community Is Ready!');
 });
+
+var ss = 0;
+ 
+client.on('voiceStateUpdate', (o,n) => {
+    if (o.voiceChannel && !n.voiceChannel) {
+        ss-=1
+        n.guild.channels.get("497360319501565957").edit({
+            name : "Online [" + ss+ "]"
+        })
+    };
+    if (n.voiceChannel && !o.voiceChannel) {
+        ss+=1
+        n.guild.channels.get("497360319501565957").edit({
+            name : "Online [" + ss+ "]"
+        })
+    }
+})
+client.on("ready", () => {
+    client.guilds.get("488259622730203137").members.forEach(m => {
+        if (m.voiceChannel) {
+            ss+=1
+        };
+        client.channels.get("497360319501565957").edit({
+            name : "Online [" + ss+ "]"
+        })
+    });
+    
 
 client.on('message',async msg => {
   if(msg.content.startsWith(prefix + "create")) {
