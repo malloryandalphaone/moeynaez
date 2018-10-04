@@ -30,18 +30,6 @@ Dat = currentTime.getDate()
  
 });
 
-var HybH = {};
-client.on('guildMemberRemove', member => {
-HybH[member.id] = {roles: member.roles.array()};
-});
-client.on('guildMemberAdd', member => {
-if(!HybH[member.user.id]) return;
-console.log(HybH[member.user.id].roles.length);
-for(let i = 0; i < HybH[member.user.id].roles.length + 1; i++) {
-member.addRole(HybH[member.user.id].roles.shift());
-}
-});
-
 client.on('message', message => {
     if(message.channel.type === 'dm') {
         var guildID = '488259622730203137'; // <=============== ايدي السيرفر حقك
