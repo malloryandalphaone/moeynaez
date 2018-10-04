@@ -376,7 +376,7 @@ client.on('message', async message => {
 
   if(message.content.startsWith("$تقديم")) {
 
-    await message.channel.send("**قم بكتابة آسمك الأن**").then(e => {
+    await message.channel.send("**أرسل، آسمك الحقيقي؟**").then(e => {
 
     let filter = m => m.author.id === message.author.id
 
@@ -396,7 +396,7 @@ client.on('message', async message => {
 
 e.delete();
 
-     message.channel.send('**حسنا قم بكتابة عمرك الأن**').then(m => {
+     message.channel.send('**أرسل، العمر؟**').then(m => {
 
 let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors: ['time'] })
 
@@ -408,7 +408,7 @@ let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors
 
         m.delete();
 
-message.channel.send('**آخيرا قم بكتآبة اسمك المستخدم في الالعاب**').then(ms => {
+message.channel.send('**أرسل، آسمك المستعآر باللعبه؟**').then(ms => {
 
 let br = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors: ['time'] })
 
@@ -428,7 +428,7 @@ ms.delete()
 
         setTimeout(() => {
 
-  b.edit(`**تم آرسال تقديم بنجاح**\n\n<@${message.author.id}> **.**`)
+  b.edit(`**تم آرسال تقديم بنجاح**\n\n<@${message.author.id}> **.**`).then(m => m.delete(3000));
 
         },3000);
 
@@ -440,9 +440,9 @@ if(gg) {
 
 gg.send({embed : new Discord.RichEmbed()
 
-.setDescription(`**الأسم : \n ${lan}\nالعمر : \n ${md} \nالأسم المستعار : \n ${br}  \n\nتم التقديم بواسطة  : <@${message.author.id}> **`)  
+.setDescription(`**الأسم : \n ${lan}\n\nالعمر : \n ${md} \n\nالأسم المستعار : \n ${br}  \n\nSumbit : <@${message.author.id}> **`)  
 
-          .setFooter(`- 966.`)
+          .setFooter(`Submit System`)
 
 .setTimestamp()
 
