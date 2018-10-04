@@ -342,34 +342,7 @@ client.on('message', msg => {
 
 client.on('guildMemberAdd', member => {
     let name = client.users.get(member.id).username;
-    member.setNickname(`#966 | ${name}`)
-});
-
-
-
-client.on('message', message => {
-  if (message.author.bot) return;
-   if (message.content === prefix + "$966") {
-      message.author.sendMessage(`
-❖════════════════════❖
-
-\`966 Community\` : https://discord.gg/5MNGynn
-
-❖════════════════════❖
-
-آلتقديم و طريقة :
-
-\`1\` **أذهب الى روم الأوامر
-\`2\` **أكتب أمر التقديم **--> \`#submit\`
-\`3\` **#submit \`<أسمك - أسمك المستخدم بالالعاب - عمرك>\`
-
-❖════════════════════❖
-
-**Check Room #القبول-الرفض
-رآجع غرفة #القبول-الرفض**
-`);
-
-}
+    member.setNickname(`- New | ${name}`)
 });
 
 client.on('message', async message => {
