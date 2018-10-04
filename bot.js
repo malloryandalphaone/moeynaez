@@ -9,33 +9,6 @@ client.user.setGame(".", "https://twitch.tv/idk");
 console.log('966 Community Is Ready!');
 });
 
-var ss = 0;
- 
-client.on('voiceStateUpdate', (o,n) => {
-    if (o.voiceChannel && !n.voiceChannel) {
-        ss-=1
-        n.guild.channels.get("497360319501565957").edit({
-            name : "Online [" + ss+ "]"
-        })
-    };
-    if (n.voiceChannel && !o.voiceChannel) {
-        ss+=1
-        n.guild.channels.get("497360319501565957").edit({
-            name : "Online [" + ss+ "]"
-        })
-    }
-})
-client.on("ready", () => {
-    client.guilds.get("488259622730203137").members.forEach(m => {
-        if (m.voiceChannel) {
-            ss+=1
-        };
-        client.channels.get("497360319501565957").edit({
-            name : "Online [" + ss+ "]"
-        })
-    });
-    
-
 client.on('message',async msg => {
   if(msg.content.startsWith(prefix + "create")) {
   if(!msg.guild.member(msg.author).hasPermissions('MANAGE_CHANNELS')) return msg.reply('❌ **go play minecraft**');
@@ -50,7 +23,7 @@ client.on('message',async msg => {
 Year = currentTime.getFullYear(),
 Month = currentTime.getMonth() + 1,
 Dat = currentTime.getDate()
-      time.setName(`󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀Count [${client.users.size}]`);
+      time.setName(`󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀Count Members : [ ${client.users.size} ]`);
  },1000);
   });
   }
