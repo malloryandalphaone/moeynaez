@@ -401,7 +401,7 @@ ms.delete()
 
         setTimeout(() => {
 
-  b.edit(`**تم آرسال تقديم بنجاح**\n\n<@${message.author.id}> **.**`).then(m => m.delete(3000));
+  b.edit(`**تم آرسال تقديم بنجاح**\n\n<@${message.author.id}> **.**`).then(m => m.delete(10000));
 
         },3000);
 
@@ -413,7 +413,6 @@ if(gg) {
 
 gg.send({embed : new Discord.RichEmbed()
 
-.setTitle(`- @here `)
 .setDescription(`**الأسم** : \n ${lan}\n\n**العمر** : \n ${md} \n\n**الأسم المستعار** : \n ${br}  \n\n**بواسطة** :\n <@${message.author.id}>`)  
 
           .setFooter(`Submit System`)
