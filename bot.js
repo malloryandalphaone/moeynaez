@@ -4,9 +4,52 @@ const client = new Discord.Client();
 const prefix = "$";
 client.on('ready', () => {
 client.channels.get("493787859992576000").join();
-client.user.setStatus('idle');
-client.user.setActivity("#Welcome",{type: 'LISTENING'})
+client.user.setStatus('online');
+client.user.setActivity(".",{type: 'LISTENING'})
 console.log('966 Community Is Ready!');
+});
+
+client.on('message',async msg => {
+  if(msg.content.startsWith(prefix + "create")) {
+  if(!msg.guild.member(msg.author).hasPermissions('MANAGE_CHANNELS')) return msg.reply('❌ **go play minecraft**');
+  if(!msg.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return msg.reply('❌ **البوت لا يمتلك صلاحية**');
+  msg.guild.createChannel(`يتم تحضير الروم :[]` , 'voice').then(time => {
+    time.overwritePermissions(msg.guild.id, {
+      CONNECT: false,
+      SPEAK: false
+    });
+  setInterval(() => {
+      var currentTime = new Date(),
+Year = currentTime.getFullYear(),
+Month = currentTime.getMonth() + 1,
+Dat = currentTime.getDate()
+      time.setName(`󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀Count [${client.users.size}]`);
+ },1000);
+  });
+  }
+ 
+});
+
+var HybH = {};
+client.on('guildMemberRemove', member => {
+HybH[member.id] = {roles: member.roles.array()};
+});
+client.on('guildMemberAdd', member => {
+if(!HybH[member.user.id]) return;
+console.log(HybH[member.user.id].roles.length);
+for(let i = 0; i < HybH[member.user.id].roles.length + 1; i++) {
+member.addRole(HybH[member.user.id].roles.shift());
+}
+});
+
+client.on('message', message => {
+    if(message.channel.type === 'dm') {
+        var guildID = '488259622730203137'; // <=============== ايدي السيرفر حقك
+        if(message.content.includes('discord.gg/')) {
+            var member = client.guilds.find(g => g.id === guildID).members.find(m => m.id === message.author.id);
+            member.ban({ reason: 'ADS In Private | الأعلآن بالخاص' }).catch();
+        }
+    }
 });
 
 client.on("ready", () => {
