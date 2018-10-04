@@ -440,7 +440,7 @@ if(gg) {
 
 gg.send({embed : new Discord.RichEmbed()
 
-.setDescription(`**الأسم : \n ${lan}\n\nالعمر : \n ${md} \n\nالأسم المستعار : \n ${br}  \n\nSumbit : <@${message.author.id}> **`)  
+.setDescription(`**الأسم** : \n ${lan}\n\n**العمر** : \n ${md} \n\n**الأسم المستعار** : \n ${br}  \n\n**بواسطة** :\n <@${message.author.id}>`)  
 
           .setFooter(`Submit System`)
 
