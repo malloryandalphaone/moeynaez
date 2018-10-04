@@ -5,14 +5,14 @@ const prefix = "$";
 client.on('ready', () => {
 client.channels.get("493787859992576000").join();
 client.user.setStatus('dnd');
-client.user.setGame(".", "https://twitch.tv/idk");
-console.log('966 Community Is Ready!');
+client.user.setGame("- Elite LD.", "https://twitch.tv/idk");
+console.log('Elite LD Is Ready!');
 });
 
 client.on('message',async msg => {
   if(msg.content.startsWith(prefix + "create")) {
-  if(!msg.guild.member(msg.author).hasPermissions('MANAGE_CHANNELS')) return msg.reply('❌ **go play minecraft**');
-  if(!msg.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return msg.reply('❌ **البوت لا يمتلك صلاحية**');
+  if(!msg.guild.member(msg.author).hasPermissions('MANAGE_CHANNELS')) return msg.reply('**You Don\'t have Permission**');
+  if(!msg.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return msg.reply('**I Don\'t have Permission**');
   msg.guild.createChannel(`يتم تحضير الروم :[]` , 'voice').then(time => {
     time.overwritePermissions(msg.guild.id, {
       CONNECT: false,
@@ -23,21 +23,11 @@ client.on('message',async msg => {
 Year = currentTime.getFullYear(),
 Month = currentTime.getMonth() + 1,
 Dat = currentTime.getDate()
-      time.setName(`󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀Count Members : [ ${client.users.size} ]`);
+      time.setName(`󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀Elite Count ${client.users.size}.`);
  },1000);
   });
   }
  
-});
-
-client.on('message', message => {
-    if(message.channel.type === 'dm') {
-        var guildID = '488259622730203137'; // <=============== ايدي السيرفر حقك
-        if(message.content.includes('discord.gg/')) {
-            var member = client.guilds.find(g => g.id === guildID).members.find(m => m.id === message.author.id);
-            member.ban({ reason: 'ADS In Private | الأعلآن بالخاص' }).catch();
-        }
-    }
 });
 
 client.on("ready", () => {
@@ -107,12 +97,12 @@ client.on("message", message => {
   }
 });
 
-const jackeo = ['380307890235506698', 'ID Owner 2']; 
+const hybh = ['380307890235506698', 'ID Owner 2']; 
 client.on('message', message => { 
   if (message.author.bot) return; 
   if (!message.content.startsWith(prefix)) return; 
     var argresult = message.content.split(` `).slice(1).join(' '); 
-      if (!jackeo.includes(message.author.id)) return; 
+      if (!hybh.includes(message.author.id)) return; 
   let command = message.content.split(" ")[0]; 
   command = command.slice(prefix.length); 
   let args = message.content.split(" ").slice(1);  
@@ -371,10 +361,7 @@ client.on('message', msg => {
     }
 });
 
-client.on('guildMemberAdd', member => {
-    let name = client.users.get(member.id).username;
-    member.setNickname(`- New | ${name}`)
-});
+
 
 client.on('message', async message => {
 
@@ -478,7 +465,7 @@ client.on('guildMemberAdd', member => {
 
  if (!channel) return;
 
- channel.send(`**Welcome To 966 Clan**, ${member}`);
+ channel.send(`**Welcome To Elite LD**, ${member}`);
 
  
 
