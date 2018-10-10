@@ -30,21 +30,21 @@ Dat = currentTime.getDate()
  
 });
 
-let hybh;
+let hybhs;
 client.on("ready", async  => {
     let guild = client.guilds.get("488259622730203137");
   let users = guild.members.map(member => member.user.id);
   let i;
-  hybh=0;
+  hybhs=0;
 for (i=0 ; i < users.length ; i++) {
  let   check = guild.members.get(users[i]);
 if(!check.voiceChannelID){
         continue;
 }else{
-  hybh++;
+  hybhs++;
 }
 }
-guild.channels.find('id', '499595600011067412').setName("- Elite Online : "+hybh+" ");
+guild.channels.find('id', '499595600011067412').setName("- Elite Online : "+hybhs+" ");
   client.setInterval(() =>{
     let d = Date.now()
   }, 5000);
@@ -54,11 +54,11 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 let newUserChannel = newMember.voiceChannel
 let oldUserChannel = oldMember.voiceChannel
  if(oldUserChannel === undefined && newUserChannel !== undefined) {
-   hybh++;
-guild.channels.find('id', '499595600011067412').setName("- Elite Online : "+hybh+" ");
+   hybhs++;
+guild.channels.find('id', '499595600011067412').setName("- Elite Online : "+hybhs+" ");
 } else if(newUserChannel === undefined){
-  hybh--;
-guild.channels.find('id', '499595600011067412').setName("- Elite Online : "+hybh+" ");
+  hybhs--;
+guild.channels.find('id', '499595600011067412').setName("- Elite Online : "+hybhs+" ");
 }
 });
 
