@@ -620,4 +620,13 @@ client.on('guildMemberAdd', member => {
     }
   });
 
+client.on('message', message => {
+    if (message.content.startsWith("$invites")) {
+
+    message.guild.fetchInvites()
+    .then(invites => message.channel.send(`**Your invitations :** ${invites.find(invite => invite.inviter.id === message.author.id)} .`))
+         
+    }
+});
+
 client.login(process.env.BOT_TOKEN);
