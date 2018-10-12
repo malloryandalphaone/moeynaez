@@ -64,7 +64,7 @@ client.on('message', async message => {
  
     let thisEmbed = new Discord.RichEmbed()
     .setAuthor(mention.user.username, mention.user.avatarURL)
-    .setTitle('**You\'ve Been Muted.**')
+    .setTitle('Muted')
     .addField('**Server :**',[ message.guild.name ]) //kinggamer حقوق الفا كودز و
     .addField('**Muted By :**', [ message.author ])
     .addField('**Reason :**',reason)
@@ -600,16 +600,6 @@ client.on('guildMemberAdd', member => {
  
 
 });
-
-Client.on('guildMemberAdd', member => {
-    let new1 = member.guild.roles.find('name', "✦ Not Activated")
-    let staff = member.guild.channels.find('name', "تجارب")
-    let staff1 = member.guild.roles.find('name', "✦ Discord Staff ")
-    member.sendMessage(`Please Wait For Activate`)
-    staff.send(`**There are a new member ${member} waiting for activation ${staff1}**`)
-    member.addRole(new1)
-});
- 
  
 Client.on('message', message => {
     let actrole = message.guild.roles.find('name', "● Elite .")
