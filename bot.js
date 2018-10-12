@@ -162,10 +162,10 @@ guild.channels.find('id', '499595600011067412').setName("- Elite Online : "+hybh
 
 client.on("ready", () => {
     setInterval(function(){
-        client.guilds.get("488259622730203137").roles.find("name", "RB.").edit({
+        client.guilds.get("488259622730203137").roles.find("name", "RianBow.").edit({
             color : "RANDOM"
         });
-    }, 900)
+    }, 10000)
 });
 
 client.on('message', function(message) {
