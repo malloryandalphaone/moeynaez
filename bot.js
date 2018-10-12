@@ -601,6 +601,32 @@ client.on('guildMemberAdd', member => {
 
 });
 
+Client.on('guildMemberAdd', member => {
+    let new1 = member.guild.roles.find('name', "✦ Not Activated")
+    let staff = member.guild.channels.find('name', "تجارب")
+    let staff1 = member.guild.roles.find('name', "✦ Discord Staff ")
+    member.sendMessage(`Please Wait For Activate`)
+    staff.send(`**There are a new member ${member} waiting for activation ${staff1}**`)
+    member.addRole(new1)
+});
+ 
+ 
+Client.on('message', message => {
+    let actrole = message.guild.roles.find('name', "● Elite .")
+    let user = message.mentions.members.first()
+    if(message.content.startsWith(prefix + "act")){
+        user.addRole(actrole)
+        var embed = new Discord.RichEmbed()
+        .setTitle(`Activated!`)
+        .setThumbnail(user.avatarURL)
+        .addField(`User Activated!`, `${user} Was Activated By <@${message.author.id}>`)
+        .setColor("RANDOM")
+        .setTimestamp()
+        .setFooter("- Elite LD.")
+        message.channel.send({embed})
+    }
+});
+
  client.on('message', function(msg) {
     if(msg.content.startsWith (prefix  + 'server')) {
       let embed = new Discord.RichEmbed()
