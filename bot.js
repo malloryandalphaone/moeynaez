@@ -600,22 +600,6 @@ client.on('guildMemberAdd', member => {
  
 
 });
- 
-Client.on('message', message => {
-    let actrole = message.guild.roles.find('name', "● Elite .")
-    let user = message.mentions.members.first()
-    if(message.content.startsWith(prefix + "act")){
-        user.addRole(actrole)
-        var embed = new Discord.RichEmbed()
-        .setTitle(`Activated!`)
-        .setThumbnail(user.avatarURL)
-        .addField(`User Activated!`, `${user} Was Activated By <@${message.author.id}>`)
-        .setColor("RANDOM")
-        .setTimestamp()
-        .setFooter("- Elite LD.")
-        message.channel.send({embed})
-    }
-});
 
  client.on('message', function(msg) {
     if(msg.content.startsWith (prefix  + 'server')) {
