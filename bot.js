@@ -261,7 +261,7 @@ if(!message.member.hasPermission('ADMINSTRATOR')) return;
   if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
   if(!mention) return message.reply("منشن آسم المراد رفضه.");
 
-  acRoom.send(`:x: | ${mention}\n\n**تم رفضك من قبل الإدارة.**`)
+  acRoom.send(`» Member : ${mention}\n[ :false: ] :: لقد تم رفض العضو`)
   }
 });
  
@@ -281,7 +281,7 @@ client.on('message',async message => {
     if(mention.roles.has(mySupport)) return message.reply('هذا الشخص معه الرتبة مسبقا');
 
     mention.addRole(mySupport).then(() => {
-      acRoom.send(`:white_check_mark: | ${mention}\n\n**تم قبولك من قبل الإدارة**`);
+      acRoom.send(`» Member : ${mention}\n[ :true: ] :: لقد تم قبول العضو واعطائه رتبة الفريق);
     });
   }
 });
@@ -621,12 +621,14 @@ client.on('guildMemberAdd', member => {
   });
 
 client.on('message', message => {
-    if (message.content.startsWith("$invites")) {
-
-    message.guild.fetchInvites()
-    .then(invites => message.channel.send(`**Your invitations :** ${invites.find(invite => invite.inviter.id === message.author.id)} .`))
-         
-    }
+   if(message.content.startsWith(prefix + "invites")) {
+    message.guild.fetchInvites().then(invs => {
+      let user = message.mentions.users.first() || message.author
+      let personalInvites = invs.filter(i => i.inviter.id === user.id);
+      let inviteCount = personalInvites.reduce((p, v) => v.uses + p, 0);
+message.channel.send(`- ${user} Has ${inviteCount} invites.`);
+});
+  }
 });
 
 client.login(process.env.BOT_TOKEN);
