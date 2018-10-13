@@ -261,7 +261,7 @@ if(!message.member.hasPermission('ADMINSTRATOR')) return;
   if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
   if(!mention) return message.reply("منشن آسم المراد رفضه.");
 
-  acRoom.send(`» Member : ${mention}\n[ :false: ] :: لقد تم رفض العضو`)
+  acRoom.send(`» Member : ${mention} \n[ :false: ] :: لقد تم رفض العضو`)
   }
 });
  
@@ -281,7 +281,7 @@ client.on('message',async message => {
     if(mention.roles.has(mySupport)) return message.reply('هذا الشخص معه الرتبة مسبقا');
 
     mention.addRole(mySupport).then(() => {
-      acRoom.send(`» Member : ${mention}\n[ :true: ] :: لقد تم قبول العضو واعطائه رتبة الفريق);
+      acRoom.send(`» Member : ${mention} \n[ :true: ] :: لقد تم قبول العضو واعطائه رتبة الفريق);
     });
   }
 });
