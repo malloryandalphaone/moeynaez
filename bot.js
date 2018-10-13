@@ -255,6 +255,7 @@ if(!message.member.hasPermission('ADMINSTRATOR')) return;
 
  client.on('message',async message => {
   let mention = message.mentions.members.first();
+  let em = client.emojis.find(e => e.name === "false")
   let acRoom = client.channels.get('489083208319631360');
   if(message.content.startsWith(prefix + "رفض")) {
   if(message.guild.id !== '488259622730203137') return;
@@ -269,6 +270,7 @@ if(!message.member.hasPermission('ADMINSTRATOR')) return;
  
 client.on('message',async message => {
   let mention = message.mentions.members.first();
+  let em = client.emojis.find(e => e.name === "true")
   let role = message.content.split(" ").slice(2).join(" ");
   let mySupport = message.guild.roles.find('name',role);
   let acRoom = client.channels.get('489083208319631360');
