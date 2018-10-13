@@ -540,7 +540,7 @@ client.on('message', message => {
       let user = message.mentions.users.first() || message.author
       let personalInvites = invs.filter(i => i.inviter.id === user.id);
       let inviteCount = personalInvites.reduce((p, v) => v.uses + p, 0);
-message.channel.send(`- ${user} Has ${inviteCount} invites.`);
+message.channel.send(`${user} \n**${inviteCount} invites.**`);
 });
   }
 });
