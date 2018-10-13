@@ -281,7 +281,7 @@ client.on('message',async message => {
     if(mention.roles.has(mySupport)) return message.reply('هذا الشخص معه الرتبة مسبقا');
 
     mention.addRole(mySupport).then(() => {
-      acRoom.send(`» Member : ${mention} \n[ :true: ] :: لقد تم قبول العضو واعطائه رتبة الفريق);
+      acRoom.send(`» Member : ${mention} \n[ :true: ] :: لقد تم قبول العضو واعطائه رتبة الفريق`);
     });
   }
 });
