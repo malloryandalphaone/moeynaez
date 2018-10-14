@@ -3,7 +3,7 @@ const moment = require('moment');
 const client = new Discord.Client();
 const prefix = "$";
 client.on('ready', () => {
-client.channels.get("496334126064992257").join();
+client.channels.get("499595501772210177").join();
 client.user.setStatus('dnd');
 client.user.setGame("Development Officer", "https://twitch.tv/idk");
 console.log('Elite LD Is Ready!');
