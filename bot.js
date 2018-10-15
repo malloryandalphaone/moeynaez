@@ -571,4 +571,34 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 }
 }); 
 
+client.on('message', message => {
+    if(!message.channel.guild) return;
+    if (message.author.bot) return;
+
+    if(!message.member.hasPermission('ADMINISTRATOR')) return;
+  
+  if (message.content.startsWith('$send')) {
+
+    var mentionned = message.mentions.users.first();
+    let args = message.content.split(" ").slice(1);
+
+    var elite;
+    if(mentionned){
+        var elite = mentionned;
+      
+    } else {
+      return message.channel.send("لم يتم إرسآل الرسآلة ، بسبب خطاء ما .");
+        
+    }
+
+
+  let say = new Discord.RichEmbed()
+  .setDescription(args.join("  "))
+  .setFooter('Elite Admins : ' + `${message.author.tag}`)
+  .setColor('#4d833e')
+  client.users.get(mentionned.id).sendEmbed(say);
+  
+  }
+});
+
 client.login(process.env.BOT_TOKEN);
