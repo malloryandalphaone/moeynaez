@@ -594,7 +594,7 @@ client.on('message', message => {
 
   let say = new Discord.RichEmbed()
   .setDescription(args.join("  "))
-  .setFooter('Elite Admins : ' + `${message.author.tag}`)
+  .setFooter('Elite Writing | فريق آلنخبة')
   .setColor('#4d833e')
   client.users.get(mentionned.id).sendEmbed(say);
   
