@@ -596,7 +596,7 @@ client.on('message', message => {
   let say = new Discord.RichEmbed()
   .setDescription(args.join("  "))
   .setFooter('${em} فريق النخبــة .')
-  .setColor('#4d833e')
+  .setColor("RANDOM")
   client.users.get(mentionned.id).sendEmbed(say);
   
   }
