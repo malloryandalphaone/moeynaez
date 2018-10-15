@@ -581,6 +581,7 @@ client.on('message', message => {
 
     var mentionned = message.mentions.users.first();
     let args = message.content.split(" ").slice(1);
+    let em = client.emojis.find(e => e.name === "hash~1");
 
     var elite;
     if(mentionned){
@@ -594,7 +595,7 @@ client.on('message', message => {
 
   let say = new Discord.RichEmbed()
   .setDescription(args.join("  "))
-  .setFooter('Elite Writing | فريق آلنخبة')
+  .setFooter('${em} فريق النخبــة .')
   .setColor('#4d833e')
   client.users.get(mentionned.id).sendEmbed(say);
   
