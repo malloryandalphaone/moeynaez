@@ -680,4 +680,9 @@ client.on('message', message => {
     }
 });
 
+client.on('guildMemberAdd', member => {
+    const guild = member.guild;
+    guild.members.get(member.id).addRole(guild.roles.find('name', '- New .'));
+});
+
 client.login(process.env.BOT_TOKEN);
