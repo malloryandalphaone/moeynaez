@@ -605,13 +605,13 @@ client.on('message', message => {
 client.on('message', message => {
     if(message.content.startsWith(prefix + 'new')) {
         let args = message.content.split(' ').slice(1).join(' ');
-        let support = message.guild.roles.find("name","Support Team");
+        let support = message.guild.roles.find("name","- Help .");
         let ticketsStation = message.guild.channels.find("name", "TICKETS");
         if(!args) {
-            return message.channel.send('Please type a subject for the ticket.');
+            return message.channel.send('الرجاء كتابة سبب فتح التذكرة .');
         };
                 if(!support) {
-                    return message.channel.send('**Please make sure that `Support Team` role exists and it\'s not duplicated.**');
+                    return message.channel.send('**Please make sure that `- Help .` role exists and it\'s not duplicated.**');
                 };
             if(!ticketsStation) {
                 message.guild.createChannel("TICKETS", "category");
@@ -634,12 +634,12 @@ client.on('message', message => {
                                     READ_MESSAGES: true
                                 });
                     let embed = new Discord.RichEmbed()
-                                .setTitle('**New Ticket.**')
+                                .setTitle('**New Ticket,**')
                                 .setColor("RANDOM")
                                 .setThumbnail(`${message.author.avatarURL}`)
-                                .addField('Subject', args)
-                                .addField('Author', message.author)
-                                .addField('Channel', `<#${message.channel.id}>`);
+                                .addField('About', args)
+                                .addField('Create By', message.author)
+                                .addField('Create in Channel', `<#${message.channel.id}>`);
  
                                 ticket.sendEmbed(embed);
                 }) .catch();
@@ -650,7 +650,7 @@ client.on('message', message => {
             return;
         };  
                 let embed = new Discord.RichEmbed()
-                    .setAuthor("Do you really want to close this ticket? Repeat the command to make sure. You have 20 seconds.")
+                    .setAuthor("هل آنت متأكد من الغاء آلتذكرة، لديك 60 ثآنية\nأكتب الكلمة مرة آخرى لالغآء التذكرة .")
                     .setColor("RANDOM");
                     message.channel.sendEmbed(embed) .then(codes => {
  
@@ -665,7 +665,7 @@ client.on('message', message => {
                             message.channel.delete();
                         }) .catch(() => {
                             codes.delete()
-                                .then(message.channel.send('**Operation has been cancelled.**')) .then((c) => {
+                                .then(message.channel.send('**تم الغاء التذكرة بنجآح .**')) .then((c) => {
                                     c.delete(4000);
                                 })
                                    
