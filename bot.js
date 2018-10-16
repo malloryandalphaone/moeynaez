@@ -166,7 +166,7 @@ client.on("ready", () => {
         client.guilds.get("488259622730203137").roles.find("name", "RianBow.").edit({
             color : "RANDOM"
         });
-    }, 10000)
+    }, 4000)
 });
 
 client.on('message', function(message) {
