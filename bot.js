@@ -434,7 +434,7 @@ client.on('message', async message => {
 
 e.delete();
 
-     message.channel.send('**أرسل، العمر؟**').then(m => {
+     message.channel.send('**أرسل، عمرك؟**').then(m => {
 
 let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors: ['time'] })
 
@@ -446,7 +446,7 @@ let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors
 
         m.delete();
 
-message.channel.send('**أرسل، آسمك المستعآر باللعبه؟**').then(ms => {
+message.channel.send('**أرسل، آسمك المستخدم باللعبه؟**').then(ms => {
 
 let br = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors: ['time'] })
 
@@ -480,7 +480,7 @@ gg.send({embed : new Discord.RichEmbed()
 
 .setDescription(`**الأسم** : \n ${lan}\n\n**العمر** : \n ${md} \n\n**الأسم المستعار** : \n ${br}  \n\n**بواسطة** :\n <@${message.author.id}>`)  
 
-          .setFooter(`Submit System`)
+          .setFooter(`نظآم التقديم`)
 
 .setTimestamp()
 
