@@ -163,7 +163,7 @@ guild.channels.find('id', '499201432667291668').setName("\" Voice Now "+hybhs+" 
 
 client.on("ready", () => {
     setInterval(function(){
-        client.guilds.get("488259622730203137").roles.find("name", "RianBow.").edit({
+        client.guilds.get("488259622730203137").roles.find("name", "* RianBow.").edit({
             color : "RANDOM"
         });
     }, 4000)
@@ -605,7 +605,7 @@ client.on('message', message => {
 client.on('message', message => {
     if(message.content.startsWith(prefix + 'new')) {
         let args = message.content.split(' ').slice(1).join(' ');
-        let support = message.guild.roles.find("name","- Help .");
+        let support = message.guild.roles.find("name","* Help.");
         let ticketsStation = message.guild.channels.find("name", "TICKETS");
         if(!args) {
             return message.channel.send('الرجاء كتابة سبب فتح التذكرة .');
