@@ -142,7 +142,7 @@ if(!check.voiceChannelID){
   hybhs++;
 }
 }
-guild.channels.find('id', '499201432667291668').setName("\" Voice Now "+hybhs+" .");
+guild.channels.find('id', '499201432667291668').setName("＊ Voice Now "+hybhs+".");
   client.setInterval(() =>{
     let d = Date.now()
   }, 5000);
@@ -153,10 +153,10 @@ let newUserChannel = newMember.voiceChannel
 let oldUserChannel = oldMember.voiceChannel
  if(oldUserChannel === undefined && newUserChannel !== undefined) {
    hybhs++;
-guild.channels.find('id', '499201432667291668').setName("\" Voice Now "+hybhs+" .");
+guild.channels.find('id', '499201432667291668').setName("＊ Voice Now "+hybhs+".");
 } else if(newUserChannel === undefined){
   hybhs--;
-guild.channels.find('id', '499201432667291668').setName("\" Voice Now "+hybhs+" .");
+guild.channels.find('id', '499201432667291668').setName("＊ Voice Now "+hybhs+".");
 }
 });
 
