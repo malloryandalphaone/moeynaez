@@ -463,7 +463,7 @@ let br = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors: [
 ms.delete()
 
 	
-message.channel.send('**أرسل، آسمك المستخدم باللعبه؟**').then(ms => {
+message.channel.send('**أرسل، آي بلد آنت؟**').then(ms => {
 
 let dol = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors: ['time'] })
 
