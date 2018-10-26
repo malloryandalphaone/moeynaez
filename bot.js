@@ -423,8 +423,6 @@ client.on('message', async message => {
     let md = '';
 
     let br = '';
-	    
-    let dol = '';
 
     let chaLan = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors: ['time'] })
 
@@ -462,20 +460,6 @@ let br = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors: [
 
 ms.delete()
 
-	
-message.channel.send('**أرسل، آي بلد آنت؟**').then(ms => {
-
-let dol = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors: ['time'] })
-
-.then(col => {
-
-  br = col.first().content
-
-        col.first().delete()
-
-
-
-ms.delete()
 
 
  message.channel.send('يرجى الأنتظار حتى يتم آرسال تقديمك').then(b => {
@@ -494,7 +478,7 @@ if(gg) {
 
 gg.send({embed : new Discord.RichEmbed()
 
-.setDescription(`**الأسم** : \n ${lan}\n\n**العمر** : \n ${md} \n\n**الأسم المستعار** : \n ${br} \n\n**الدولة** : \n${dol} \n\n**بواسطة** :\n <@${message.author.id}>`)  
+.setDescription(`**الأسم** : \n ${lan}\n\n**العمر** : \n ${md} \n\n**الأسم المستعار** : \n ${br} \n\n**بواسطة** :\n <@${message.author.id}>`)  
 
           .setFooter(`نظآم التقديم`)
 
