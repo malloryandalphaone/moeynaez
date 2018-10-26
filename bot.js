@@ -263,7 +263,7 @@ if(!message.member.hasPermission('ADMINSTRATOR')) return;
   if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
   if(!mention) return message.reply("منشن آسم المراد رفضه.");
 
-  acRoom.send(`» Member : ${mention} \n[ ${em} ] :: لقد تم رفض العضو`)
+  acRoom.send(`» Name **::** ${mention} \n» ${em} **::** تم رفض تقديم العضو .`)
   }
 });
  
@@ -284,7 +284,7 @@ client.on('message',async message => {
     if(mention.roles.has(mySupport)) return message.reply('هذا الشخص معه الرتبة مسبقا');
 
     mention.addRole(mySupport).then(() => {
-      acRoom.send(`» Member : ${mention} \n[ ${em} ] :: لقد تم قبول العضو واعطائه رتبة الفريق`);
+      acRoom.send(`» Name **::** ${mention} \n» ${em} **::** تم قبول تقديم العضو ، واعطائه رتبة الفريق .`);
     });
   }
 });
@@ -423,6 +423,8 @@ client.on('message', async message => {
     let md = '';
 
     let br = '';
+	    
+    let dol = '';
 
     let chaLan = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors: ['time'] })
 
@@ -460,17 +462,31 @@ let br = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors: [
 
 ms.delete()
 
+	
+message.channel.send('**أرسل، آسمك المستخدم باللعبه؟**').then(ms => {
+
+let dol = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors: ['time'] })
+
+.then(col => {
+
+  br = col.first().content
+
+        col.first().delete()
+
+
+
+ms.delete()
 
 
  message.channel.send('يرجى الأنتظار حتى يتم آرسال تقديمك').then(b => {
 
         setTimeout(() => {
 
-  b.edit(`**تم آرسال تقديم بنجاح**\n\n<@${message.author.id}> **.**`).then(m => m.delete(10000));
+  b.edit(`**تم إرسآل التقديم بنجآح ، يرجى أنتظار قبولك**\n\n<@${message.author.id}> **.**`).then(m => m.delete(10000));
 
         },3000);
 
-var gg = message.guild.channels.find('name', 'التقديمات')
+var gg = message.guild.channels.find('name', 'requests')
 
 if(!gg) return;
 
@@ -478,7 +494,7 @@ if(gg) {
 
 gg.send({embed : new Discord.RichEmbed()
 
-.setDescription(`**الأسم** : \n ${lan}\n\n**العمر** : \n ${md} \n\n**الأسم المستعار** : \n ${br}  \n\n**بواسطة** :\n <@${message.author.id}>`)  
+.setDescription(`**الأسم** : \n ${lan}\n\n**العمر** : \n ${md} \n\n**الأسم المستعار** : \n ${br} \n\n**الدولة** : \n${dol} \n\n**بواسطة** :\n <@${message.author.id}>`)  
 
           .setFooter(`نظآم التقديم`)
 
@@ -512,7 +528,7 @@ client.on('guildMemberAdd', member => {
 
  if (!channel) return;
 
- channel.send(`**Welcome To Elite LD**, ${member}`);
+ channel.send(`**Welcome To Elite Skill**, ${member}`);
 
  
 
@@ -608,10 +624,10 @@ client.on('message', message => {
         let support = message.guild.roles.find("name","* Help.");
         let ticketsStation = message.guild.channels.find("name", "TICKETS");
         if(!args) {
-            return message.channel.send('الرجاء كتابة سبب فتح التذكرة .');
+            return message.channel.send('قم بكتآبة ، $new وسبب فتح التذكرة ');
         };
                 if(!support) {
-                    return message.channel.send('**Please make sure that `- Help .` role exists and it\'s not duplicated.**');
+                    return message.channel.send('**Please make sure that `* Help.` role exists and it\'s not duplicated.**');
                 };
             if(!ticketsStation) {
                 message.guild.createChannel("TICKETS", "category");
@@ -634,12 +650,10 @@ client.on('message', message => {
                                     READ_MESSAGES: true
                                 });
                     let embed = new Discord.RichEmbed()
-                                .setTitle('**New Ticket,**')
-                                .setColor("RANDOM")
-                                .setThumbnail(`${message.author.avatarURL}`)
-                                .addField('About', args)
-                                .addField('Create By', message.author)
-                                .addField('Create in Channel', `<#${message.channel.id}>`);
+                                .setTitle('**تذكرة جديده ،**')
+                                .setColor("FFFFFF")
+                                .addField('سبب فتح التذكرة :', args)
+                                .addField('تم انشاء التذكرة بواسطة :', message.author)
  
                                 ticket.sendEmbed(embed);
                 }) .catch();
@@ -682,7 +696,7 @@ client.on('message', message => {
 
 client.on('guildMemberAdd', member => {
     const guild = member.guild;
-    guild.members.get(member.id).addRole(guild.roles.find('name', '- New .'));
+    guild.members.get(member.id).addRole(guild.roles.find('name', '⁎ New,'));
 });
 
 client.login(process.env.BOT_TOKEN);
