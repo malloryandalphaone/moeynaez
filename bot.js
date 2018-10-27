@@ -259,7 +259,7 @@ if(!message.member.hasPermission('ADMINSTRATOR')) return;
   let acRoom = client.channels.get('489083208319631360');
   let em = client.emojis.find(e => e.name === "false");
   if(message.content.startsWith(prefix + "رفض")) {
-  if(message.guild.id !== '488259622730203137') return;
+  if(message.guild.id !== '488695936042795019') return;
   if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
   if(!mention) return message.reply("منشن آسم المراد رفضه.");
 
