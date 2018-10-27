@@ -6,7 +6,7 @@ const prefix = "$";
 client.on('ready', () => {
 client.channels.get("499595501772210177").join();
 client.user.setStatus('dnd');
-client.user.setGame("Reeebel Orders", "https://twitch.tv/idk");
+client.user.setGame("Development Officer", "https://twitch.tv/idk");
 console.log('Elite LD Is Ready!');
 });
 
