@@ -256,7 +256,7 @@ if(!message.member.hasPermission('ADMINSTRATOR')) return;
 
  client.on('message',async message => {
   let mention = message.mentions.members.first();
-  let acRoom = client.channels.get('489083208319631360');
+  let acRoom = client.channels.get('505691650023096320');
   let em = client.emojis.find(e => e.name === "false");
   if(message.content.startsWith(prefix + "رفض")) {
   if(message.guild.id !== '488259622730203137') return;
@@ -273,7 +273,7 @@ client.on('message',async message => {
   let mention = message.mentions.members.first();
   let role = message.content.split(" ").slice(2).join(" ");
   let mySupport = message.guild.roles.find('name',role);
-  let acRoom = client.channels.get('488695936042795019');
+  let acRoom = client.channels.get('505691650023096320');
   let em = client.emojis.find(e => e.name === "true");
   if(message.content.startsWith(prefix + "قبول")) {
     if(message.guild.id !== '488259622730203137') return;
