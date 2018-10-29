@@ -7,7 +7,7 @@ client.on('ready', () => {
 client.channels.get("499595501772210177").join();
 client.user.setStatus('dnd');
 client.user.setGame("Development Officer", "https://twitch.tv/idk");
-console.log('Elite LD Is Ready!');
+console.log('Elite Skill Is Ready!');
 });
 
 client.on('message', async message => {
@@ -166,7 +166,7 @@ client.on("ready", () => {
         client.guilds.get("488259622730203137").roles.find("name", "* RianBow.").edit({
             color : "RANDOM"
         });
-    }, 4000)
+    }, 3000)
 });
 
 client.on('message', function(message) {
@@ -336,7 +336,7 @@ client.on('message', msg => {
 
   client.on('message', message => {
     if(message.content.startsWith(prefix + 'move all')) {
-     if (!message.member.hasPermission("MOVE_MEMBERS")) return message.channel.send('**لايوجد لديك صلاحية سحب الأعضاء**');
+     if (!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send('**لايوجد لديك صلاحية سحب الأعضاء**');
        if(!message.guild.member(client.user).hasPermission("MOVE_MEMBERS")) return message.reply("**لايوجد لدي صلاحية السحب**");
     if (message.member.voiceChannel == null) return message.channel.send(`**الرجاء الدخول لروم صوتي**`)
      var author = message.member.voiceChannelID;
@@ -344,7 +344,7 @@ client.on('message', msg => {
      message.guild.members.filter(m=>m.voiceChannel).forEach(m => {
      m.setVoiceChannel(author)
      })
-     message.channel.send(`**تم سحب جميع الأعضاء الى الروم الصوتي.**`)
+     message.channel.send(`**تم سحب جميع الأعضاء الى الروم الصوتي.**`).then(m => m.delete(2000));
 
 
      }
@@ -478,7 +478,7 @@ if(gg) {
 
 gg.send({embed : new Discord.RichEmbed()
 
-.setDescription(`**الأسم** : \n ${lan}\n\n**العمر** : \n ${md} \n\n**الأسم المستعار** : \n ${br} \n\n**بواسطة** :\n <@${message.author.id}>`)  
+.setDescription(`**Name** : \n ${lan}\n\n**Age** : \n ${md} \n\n**Name Of the Game** : \n ${br} \n\n\n**بواسطة** :\n <@${message.author.id}>`)  
 
           .setFooter(`نظآم التقديم`)
 
@@ -596,7 +596,7 @@ client.on('message', message => {
 
   let say = new Discord.RichEmbed()
   .setDescription(args.join("  "))
-  .setColor("RANDOM")
+  .setColor("FFFFFF")
   client.users.get(mentionned.id).sendEmbed(say);
   
   }
@@ -643,7 +643,7 @@ client.on('message', message => {
                 }) .catch();
     }
     if(message.content.startsWith(prefix + 'close')) {
-            if(!message.member.hasPermission("ADMINISTRATOR")) return;
+            if(!message.member.hasPermission("EMBED_LINKS")) return;
         if(!message.channel.name.startsWith("ticket")) {
             return;
         };  
