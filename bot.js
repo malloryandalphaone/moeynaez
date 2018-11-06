@@ -6,7 +6,7 @@ const prefix = "$";
 client.on('ready', () => {
 client.channels.get("499595501772210177").join();
 client.user.setStatus('dnd');
-client.user.setGame("Development Officer", "https://twitch.tv/idk");
+client.user.setGame("Elite Skill.,", "https://twitch.tv/idk");
 console.log('Elite Skill Is Ready!');
 });
 
@@ -66,7 +66,7 @@ client.on('message', async message => {
     let thisEmbed = new Discord.RichEmbed()
     .setAuthor(mention.user.username, mention.user.avatarURL)
     .setTitle('Muted')
-    .addField('**Server :**',[ message.guild.name ]) //kinggamer حقوق الفا كودز و
+    .addField('**Server :**',[ message.guild.name ])
     .addField('**Muted By :**', [ message.author ])
     .addField('**Reason :**',reason)
     .addField('**Time :**',duration)
@@ -142,7 +142,7 @@ if(!check.voiceChannelID){
   hybhs++;
 }
 }
-guild.channels.find('id', '499201432667291668').setName("＊ Voice Now "+hybhs+".");
+guild.channels.find('id', '499201432667291668').setName("- Elite :: Voice "+hybhs+".");
   client.setInterval(() =>{
     let d = Date.now()
   }, 5000);
@@ -153,10 +153,10 @@ let newUserChannel = newMember.voiceChannel
 let oldUserChannel = oldMember.voiceChannel
  if(oldUserChannel === undefined && newUserChannel !== undefined) {
    hybhs++;
-guild.channels.find('id', '499201432667291668').setName("＊ Voice Now "+hybhs+".");
+guild.channels.find('id', '499201432667291668').setName("- Elite :: Voice "+hybhs+".");
 } else if(newUserChannel === undefined){
   hybhs--;
-guild.channels.find('id', '499201432667291668').setName("＊ Voice Now "+hybhs+".");
+guild.channels.find('id', '499201432667291668').setName("- Elite :: Voice "+hybhs+".");
 }
 });
 
@@ -296,7 +296,7 @@ client.on('message', message => {
  let embed = new Discord.RichEmbed()
   let args = message.content.split(' ').slice(1).join(' ');
 if(message.content.split(' ')[0] == prefix + 'bc') {
-if(message.author.id !== '380307890235506698') return;
+if(message.author.id !== '449506099268419595') return;
       message.guild.members.forEach(m => {
    m.send(args.replace(/\[user]/g,m));
        if(message.attachments.first()){
@@ -519,7 +519,7 @@ client.on('guildMemberAdd', member => {
 });
 
  client.on('message', function(msg) {
-    if(msg.content.startsWith (prefix  + 'server')) {
+    if(msg.content.startsWith (prefix  + 'sserver')) {
       let embed = new Discord.RichEmbed()
       .setColor('RANDOM')
       .setThumbnail(msg.guild.iconURL)
@@ -543,7 +543,7 @@ client.on('message', message => {
       let user = message.mentions.users.first() || message.author
       let personalInvites = invs.filter(i => i.inviter.id === user.id);
       let inviteCount = personalInvites.reduce((p, v) => v.uses + p, 0);
-message.channel.send(`${user} \n**${inviteCount} invites.**`);
+message.channel.send(`${user} \n\n**${inviteCount} invites.**`);
 });
   }
 });
@@ -606,7 +606,7 @@ client.on('message', message => {
     if(message.content.startsWith(prefix + 'new')) {
         let args = message.content.split(' ').slice(1).join(' ');
         let support = message.guild.roles.find("name","* Help.");
-        let ticketsStation = message.guild.channels.find("name", "TICKETS");
+        let ticketsStation = message.guild.channels.find("name", "- Elite :: Tickets.");
         if(!args) {
             return message.channel.send('قم بكتآبة ، $new وسبب فتح التذكرة ');
         };
@@ -614,11 +614,11 @@ client.on('message', message => {
                     return message.channel.send('**Please make sure that `* Help.` role exists and it\'s not duplicated.**');
                 };
             if(!ticketsStation) {
-                message.guild.createChannel("TICKETS", "category");
+                message.guild.createChannel("- Elite :: Tickets.", "category");
             };
                 message.guild.createChannel(`ticket-${message.author.username}`, "text").then(ticket => {
                     message.delete()
-                        message.channel.send(`Your ticket has been created. [ ${ticket} ]`);
+                        message.channel.send(`**You'r Ticket has been Create [ ${ticket} ]**`);
                     ticket.setParent(ticketsStation);
                     ticketsStation.setPosition(1);
                         ticket.overwritePermissions(message.guild.id, {
@@ -649,7 +649,7 @@ client.on('message', message => {
         };  
                 let embed = new Discord.RichEmbed()
                     .setAuthor("هل آنت متأكد من الغاء آلتذكرة، لديك 60 ثآنية\nأكتب الكلمة مرة آخرى لالغآء التذكرة .")
-                    .setColor("RANDOM");
+                    .setColor("FFFFFF");
                     message.channel.sendEmbed(embed) .then(codes => {
  
                    
