@@ -163,10 +163,18 @@ guild.channels.find('id', '499201432667291668').setName("- Elite :: Voice "+hybh
 
 client.on("ready", () => {
     setInterval(function(){
-        client.guilds.get("488259622730203137").roles.find("name", "* RianBow.").edit({
+        client.guilds.get("488259622730203137").roles.find("name", "\" RainBow None "\").edit({
             color : "RANDOM"
         });
     }, 3000)
+});
+
+client.on("ready", () => {
+    setInterval(function(){
+        client.guilds.get("488259622730203137").roles.find("name", "\" RainBow Plus "\").edit({
+            color : "RANDOM"
+        });
+    }, 100)
 });
 
 client.on('message', function(message) {
