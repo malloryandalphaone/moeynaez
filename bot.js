@@ -166,15 +166,7 @@ client.on("ready", () => {
         client.guilds.get("488259622730203137").roles.find("name", "' RainBow None '").edit({
             color : "RANDOM"
         });
-    }, 3000)
-});
-
-client.on("ready", () => {
-    setInterval(function(){
-        client.guilds.get("488259622730203137").roles.find("name", "' RainBow Plus '").edit({
-            color : "RANDOM"
-        });
-    }, 100)
+    }, 10000)
 });
 
 client.on('message', function(message) {
