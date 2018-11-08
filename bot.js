@@ -265,13 +265,26 @@ if(!message.member.hasPermission('ADMINSTRATOR')) return;
  client.on('message',async message => {
   let mention = message.mentions.members.first();
   let acRoom = client.channels.get('505691650023096320');
-  let em = client.emojis.find(e => e.name === "false");
+  let em = client.emojis.find(e => e.name === "dontuse");
   if(message.content.startsWith(prefix + "رفض")) {
   if(message.guild.id !== '488259622730203137') return;
   if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
   if(!mention) return message.reply("منشن آسم المراد رفضه.");
 
   acRoom.send(`» Name **::** ${mention} \n» ${em} **::** تم رفض تقديم العضو .`)
+  }
+});
+
+ client.on('message',async message => {
+  let mention = message.mentions.members.first();
+  let acRoom = client.channels.get('505691650023096320');
+  let em = client.emojis.find(e => e.name === "nolock");
+  if(message.content.startsWith(prefix + "طرد")) {
+  if(message.guild.id !== '488259622730203137') return;
+  if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
+  if(!mention) return message.reply("منشن آسم المراد رفضه.");
+
+  acRoom.send(`» Name **::** ${mention} \n» ${em} **::** تم طرد العضو من الفريق .`)
   }
 });
  
@@ -282,7 +295,7 @@ client.on('message',async message => {
   let role = message.content.split(" ").slice(2).join(" ");
   let mySupport = message.guild.roles.find('name',role);
   let acRoom = client.channels.get('505691650023096320');
-  let em = client.emojis.find(e => e.name === "true");
+  let em = client.emojis.find(e => e.name === "use");
   if(message.content.startsWith(prefix + "قبول")) {
     if(message.guild.id !== '488259622730203137') return;
     if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
