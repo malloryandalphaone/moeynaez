@@ -142,7 +142,7 @@ if(!check.voiceChannelID){
   hybhs++;
 }
 }
-guild.channels.find('id', '499201432667291668').setName("- Elite :: Voice "+hybhs+".");
+guild.channels.find('id', '499201432667291668').setName("‹ Voice "+hybhs+" ›");
   client.setInterval(() =>{
     let d = Date.now()
   }, 5000);
@@ -153,10 +153,10 @@ let newUserChannel = newMember.voiceChannel
 let oldUserChannel = oldMember.voiceChannel
  if(oldUserChannel === undefined && newUserChannel !== undefined) {
    hybhs++;
-guild.channels.find('id', '499201432667291668').setName("- Elite :: Voice "+hybhs+".");
+guild.channels.find('id', '499201432667291668').setName("‹ Voice "+hybhs+" ›");
 } else if(newUserChannel === undefined){
   hybhs--;
-guild.channels.find('id', '499201432667291668').setName("- Elite :: Voice "+hybhs+".");
+guild.channels.find('id', '499201432667291668').setName("‹ Voice "+hybhs+" ›");
 }
 });
 
@@ -627,7 +627,7 @@ client.on('message', message => {
     if(message.content.startsWith(prefix + 'new')) {
         let args = message.content.split(' ').slice(1).join(' ');
         let support = message.guild.roles.find("name","* Help.");
-        let ticketsStation = message.guild.channels.find("name", "- Elite :: Tickets.");
+        let ticketsStation = message.guild.channels.find("name", "‹ Tickets ›");
         if(!args) {
             return message.channel.send('قم بكتآبة ، $new وسبب فتح التذكرة ');
         };
@@ -635,7 +635,7 @@ client.on('message', message => {
                     return message.channel.send('**Please make sure that `* Help.` role exists and it\'s not duplicated.**');
                 };
             if(!ticketsStation) {
-                message.guild.createChannel("- Elite :: Tickets.", "category");
+                message.guild.createChannel("‹ Tickets ›", "category");
             };
                 message.guild.createChannel(`ticket-${message.author.username}`, "text").then(ticket => {
                     message.delete()
