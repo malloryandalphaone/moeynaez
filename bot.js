@@ -163,7 +163,7 @@ guild.channels.find('id', '499201432667291668').setName("‹ Voice "+hybhs+" ›
 
 client.on("ready", () => {
     setInterval(function(){
-        client.guilds.get("488259622730203137").roles.find("name", "' RainBow None '").edit({
+        client.guilds.get("488259622730203137").roles.find("name", ".RB").edit({
             color : "RANDOM"
         });
     }, 10000)
@@ -493,7 +493,7 @@ gg.send({embed : new Discord.RichEmbed()
 
 .setDescription(`**Name** : \n ${lan}\n\n**Age** : \n ${md} \n\n**Name Of the Game** : \n ${br} \n\n\n**بواسطة** :\n <@${message.author.id}>`)  
 
-          .setFooter(`نظآم التقديم`)
+          .setFooter(`System Submit`)
 
 .setTimestamp()
 
@@ -618,7 +618,7 @@ client.on('message', message => {
 client.on('message', message => {
     if(message.content.startsWith(prefix + 'new')) {
         let args = message.content.split(' ').slice(1).join(' ');
-        let support = message.guild.roles.find("name","* Help.");
+        let support = message.guild.roles.find("name",".Help");
         let ticketsStation = message.guild.channels.find("name", "‹ Tickets ›");
         if(!args) {
             return message.channel.send('قم بكتآبة ، $new وسبب فتح التذكرة ');
