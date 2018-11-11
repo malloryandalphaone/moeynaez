@@ -412,16 +412,6 @@ client.on('message', message => {
 }
 });
 
-client.on('message', msg => {
-    if(!msg.guild) return;
-    if(msg.channel.id === '490154527195136000') {
-	msg.delete().then
-        var channel = msg.guild.channels.get("492416381313351682")
-        channel.send(msg.member + `\n\n` +msg.content)
-    }
-});
-
-
 
 client.on('message', async message => {
 
