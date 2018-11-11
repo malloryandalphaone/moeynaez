@@ -511,7 +511,7 @@ gg.send({embed : new Discord.RichEmbed()
 
 client.on('guildMemberAdd', member => {
 
- const channel = member.guild.channels.find('name', 'nan');
+ const channel = member.guild.channels.find('name', 'admins');
 
  if (!channel) return;
 
@@ -526,7 +526,7 @@ client.on('guildMemberAdd', member => {
       let embed = new Discord.RichEmbed()
       .setColor('RANDOM')
       .setThumbnail(msg.guild.iconURL)
-      .setTitle(`Showing Details Of  **${msg.guild.name}*`)
+      .setTitle(`Showing Details Of  **${msg.guild.name}**`)
       .addField('🌐** نوع السيرفر**',`[** __${msg.guild.region}__ **]`,true)
       .addField('🏅** __الرتب__**',`[** __${msg.guild.roles.size}__ **]`,true)
       .addField('🔴**__ عدد الاعضاء__**',`[** __${msg.guild.memberCount}__ **]`,true)
@@ -611,10 +611,10 @@ client.on('message', message => {
         let support = message.guild.roles.find("name",".Help");
         let ticketsStation = message.guild.channels.find("name", "‹ Tickets ›");
         if(!args) {
-            return message.channel.send('قم بكتآبة ، $new وسبب فتح التذكرة ');
+            return message.channel.send('قم بكتآبة\n$new i have a problem');
         };
                 if(!support) {
-                    return message.channel.send('**Please make sure that `* Help.` role exists and it\'s not duplicated.**');
+                    return message.channel.send('**Please make sure that `.Help` role exists and it\'s not duplicated.**');
                 };
             if(!ticketsStation) {
                 message.guild.createChannel("‹ Tickets ›", "category");
@@ -683,7 +683,7 @@ client.on('message', message => {
 
 client.on('guildMemberAdd', member => {
     const guild = member.guild;
-    guild.members.get(member.id).addRole(guild.roles.find('name', '⁎ New,'));
+    guild.members.get(member.id).addRole(guild.roles.find('name', '◆ New'));
 });
 
 client.login(process.env.BOT_TOKEN);
