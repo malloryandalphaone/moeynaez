@@ -6,7 +6,7 @@ const prefix = "$";
 client.on('ready', () => {
 client.channels.get("499595501772210177").join();
 client.user.setStatus('dnd');
-client.user.setGame("Elite Skill.,", "https://twitch.tv/idk");
+client.user.setGame("System.", "https://twitch.tv/idk");
 console.log('Elite Skill Is Ready!');
 });
 
