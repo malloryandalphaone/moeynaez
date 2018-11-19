@@ -4,7 +4,7 @@ const fs = require('fs');
 const client = new Discord.Client();
 const prefix = "$";
 client.on('ready', () => {
-client.channels.get("499595501772210177").join();
+client.channels.get("514076662464249861").join();
 client.user.setStatus('dnd');
 client.user.setGame("System.", "https://twitch.tv/idk");
 console.log('Elite Skill Is Ready!');
@@ -142,7 +142,7 @@ if(!check.voiceChannelID){
   hybhs++;
 }
 }
-guild.channels.find('id', '499201432667291668').setName("‹ Voice "+hybhs+" ›");
+guild.channels.find('id', '499201432667291668').setName("Voice "+hybhs+" ❃");
   client.setInterval(() =>{
     let d = Date.now()
   }, 5000);
@@ -153,21 +153,13 @@ let newUserChannel = newMember.voiceChannel
 let oldUserChannel = oldMember.voiceChannel
  if(oldUserChannel === undefined && newUserChannel !== undefined) {
    hybhs++;
-guild.channels.find('id', '499201432667291668').setName("‹ Voice "+hybhs+" ›");
+guild.channels.find('id', '499201432667291668').setName("Voice "+hybhs+" ❃");
 } else if(newUserChannel === undefined){
   hybhs--;
-guild.channels.find('id', '499201432667291668').setName("‹ Voice "+hybhs+" ›");
+guild.channels.find('id', '499201432667291668').setName("Voice "+hybhs+" ❃");
 }
 });
 
-
-client.on("ready", () => {
-    setInterval(function(){
-        client.guilds.get("488259622730203137").roles.find("name", ".RB").edit({
-            color : "RANDOM"
-        });
-    }, 10000)
-});
 
 client.on('message', function(message) {
     if (message.channel.type === "dm") {
@@ -190,7 +182,7 @@ client.on('guildCreate', (guild) => {
 });
 
 client.on('message', function(message) {
-    if (message.content == "!!clear") {
+    if (message.content == "$clear") {
         if (message.member.hasPermission("ADMINSTRATOR")) {
             message.channel.fetchMessages()
                .then(function(list){
@@ -228,7 +220,7 @@ client.on("message", message => {
   }
 });
 
-const hybh = ['380307890235506698', 'ID Owner 2']; 
+const hybh = ['380307890235506698', '449506099268419595']; 
 client.on('message', message => { 
   if (message.author.bot) return; 
   if (!message.content.startsWith(prefix)) return; 
@@ -256,7 +248,7 @@ if(!message.member.hasPermission('ADMINSTRATOR')) return;
 
  client.on('message',async message => {
   let mention = message.mentions.members.first();
-  let acRoom = client.channels.get('505691650023096320');
+  let acRoom = client.channels.get('513785861511577600');
   let em = client.emojis.find(e => e.name === "dontuse");
   if(message.content.startsWith(prefix + "رفض")) {
   if(message.guild.id !== '488259622730203137') return;
@@ -269,7 +261,7 @@ if(!message.member.hasPermission('ADMINSTRATOR')) return;
 
  client.on('message',async message => {
   let mention = message.mentions.members.first();
-  let acRoom = client.channels.get('505691650023096320');
+  let acRoom = client.channels.get('513785861511577600');
   let em = client.emojis.find(e => e.name === "nolock");
   if(message.content.startsWith(prefix + "طرد")) {
   if(message.guild.id !== '488259622730203137') return;
@@ -286,7 +278,7 @@ client.on('message',async message => {
   let mention = message.mentions.members.first();
   let role = message.content.split(" ").slice(2).join(" ");
   let mySupport = message.guild.roles.find('name',role);
-  let acRoom = client.channels.get('505691650023096320');
+  let acRoom = client.channels.get('513785861511577600');
   let em = client.emojis.find(e => e.name === "use");
   if(message.content.startsWith(prefix + "قبول")) {
     if(message.guild.id !== '488259622730203137') return;
@@ -415,9 +407,9 @@ client.on('message', message => {
 
 client.on('message', async message => {
 
-  if(message.content.startsWith("$تقديم")) {
+  if(message.content.startsWith("$elite")) {
 
-    await message.channel.send("**أرسل، آسمك الحقيقي؟**").then(e => {
+    await message.channel.send("**قم بكتآبة أسمك الحقيقي.**").then(e => {
 
     let filter = m => m.author.id === message.author.id
 
@@ -437,7 +429,7 @@ client.on('message', async message => {
 
 e.delete();
 
-     message.channel.send('**أرسل، عمرك؟**').then(m => {
+     message.channel.send('**قم بكتآبة عمرك.**').then(m => {
 
 let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors: ['time'] })
 
@@ -449,7 +441,7 @@ let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors
 
         m.delete();
 
-message.channel.send('**أرسل، آسمك المستخدم باللعبه؟**').then(ms => {
+message.channel.send('**قم بكتآبة أسمك باللعبة مع مرآعاة الاحرف.**').then(ms => {
 
 let br = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors: ['time'] })
 
@@ -481,9 +473,8 @@ if(gg) {
 
 gg.send({embed : new Discord.RichEmbed()
 
-.setDescription(`**Name** : \n ${lan}\n\n**Age** : \n ${md} \n\n**Name Of the Game** : \n ${br} \n\n\n**بواسطة** :\n <@${message.author.id}>`)  
+.setDescription(`**The name** : \n ${lan}\n\n**The Old** : \n ${md} \n\n**The Name of game** : \n ${br} \n\n\n**بواسطة** :\n <@${message.author.id}>`)  
 
-          .setFooter(`System Submit`)
 
 .setTimestamp()
 
@@ -608,20 +599,20 @@ client.on('message', message => {
 client.on('message', message => {
     if(message.content.startsWith(prefix + 'new')) {
         let args = message.content.split(' ').slice(1).join(' ');
-        let support = message.guild.roles.find("name",".Help");
+        let support = message.guild.roles.find("name","⁎ Official Tickets.");
         let ticketsStation = message.guild.channels.find("name", "‹ Tickets ›");
         if(!args) {
-            return message.channel.send('قم بكتآبة\n$new i have a problem');
+            return message.channel.send('**Type:** $new وسبب فتح التذكرة.');
         };
                 if(!support) {
-                    return message.channel.send('**Please make sure that `.Help` role exists and it\'s not duplicated.**');
+                    return message.channel.send('**Please make sure that `⁎ Official Tickets.` role exists and it\'s not duplicated.**');
                 };
             if(!ticketsStation) {
                 message.guild.createChannel("‹ Tickets ›", "category");
             };
                 message.guild.createChannel(`ticket-${message.author.username}`, "text").then(ticket => {
                     message.delete()
-                        message.channel.send(`**You'r Ticket has been Create [ ${ticket} ]**`);
+                        message.channel.send(`You'r Ticket is ready **::** ${ticket}.`);
                     ticket.setParent(ticketsStation);
                     ticketsStation.setPosition(1);
                         ticket.overwritePermissions(message.guild.id, {
@@ -637,10 +628,10 @@ client.on('message', message => {
                                     READ_MESSAGES: true
                                 });
                     let embed = new Discord.RichEmbed()
-                                .setTitle('**تذكرة جديده ،**')
+                                .setTitle('New a Ticket')
                                 .setColor("FFFFFF")
-                                .addField('سبب فتح التذكرة :', args)
-                                .addField('تم انشاء التذكرة بواسطة :', message.author)
+                                .addField('Reason :', args)
+                                .addField('Open ticket :', message.author)
  
                                 ticket.sendEmbed(embed);
                 }) .catch();
@@ -683,7 +674,7 @@ client.on('message', message => {
 
 client.on('guildMemberAdd', member => {
     const guild = member.guild;
-    guild.members.get(member.id).addRole(guild.roles.find('name', '◆ New'));
+    guild.members.get(member.id).addRole(guild.roles.find('name', '⁎ A New Member.'));
 });
 
 client.login(process.env.BOT_TOKEN);
