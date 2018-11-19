@@ -249,13 +249,13 @@ if(!message.member.hasPermission('ADMINSTRATOR')) return;
  client.on('message',async message => {
   let mention = message.mentions.members.first();
   let acRoom = client.channels.get('513785861511577600');
-  let em = client.emojis.find(e => e.name === "dontuse");
+  let em = client.emojis.find(e => e.name === "false");
   if(message.content.startsWith(prefix + "رفض")) {
   if(message.guild.id !== '488259622730203137') return;
   if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
   if(!mention) return message.reply("منشن آسم المراد رفضه.");
 
-  acRoom.send(`» Name **::** ${mention} \n» ${em} **::** تم رفض تقديم العضو .`)
+  acRoom.send(`» Name **::** ${mention}\n» ${em} تم رفض تقديم العضو .`)
   }
 });
 
@@ -279,7 +279,7 @@ client.on('message',async message => {
   let role = message.content.split(" ").slice(2).join(" ");
   let mySupport = message.guild.roles.find('name',role);
   let acRoom = client.channels.get('513785861511577600');
-  let em = client.emojis.find(e => e.name === "use");
+  let em = client.emojis.find(e => e.name === "true");
   if(message.content.startsWith(prefix + "قبول")) {
     if(message.guild.id !== '488259622730203137') return;
     if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
@@ -289,7 +289,7 @@ client.on('message',async message => {
     if(mention.roles.has(mySupport)) return message.reply('هذا الشخص معه الرتبة مسبقا');
 
     mention.addRole(mySupport).then(() => {
-      acRoom.send(`» Name **::** ${mention} \n» ${em} **::** تم قبول تقديم العضو ، واعطائه رتبة الفريق .`);
+      acRoom.send(`» Name **::** ${mention}\n» ${em} تم قبول تقديم العضو`);
     });
   }
 });
@@ -322,7 +322,7 @@ client.on('message', msg => {
   command = command.slice(prefix.length);
   let args = msg.content.split(" ").slice(1);
 
-    if(command === "clear") {
+    if(command === "$clear") {
         const emoji = client.emojis.find("name", "wastebasket")
     let textxt = args.slice(0).join("");
     if(msg.member.hasPermission("MANAGE_MESSAGES")) {
