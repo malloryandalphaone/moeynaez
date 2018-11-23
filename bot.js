@@ -10,124 +10,6 @@ client.user.setGame("System.", "https://twitch.tv/idk");
 console.log('Elite Skill Is Ready!');
 });
 
-client.on('message', async message => {
-  let args = message.content.split(" ");
-  if(message.content.startsWith(prefix + "mute")) {
-    if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send('').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
- 
-    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.channel.send('').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
- 
-    let mention = message.mentions.members.first();
-    if(!mention) return  message.channel.send('').then(msg => { 
-      msg.delete(3500);
-      message.delete(3500);
-    });
- 
-    if(mention.id === message.author.id) return message.channel.send('**:x:You Cannot give mute to your self**').then(msg => {
-      msg.delete(3500);
-      message.delete(3500); 
-    });
-   
-    if(mention.hasPermission('ADMINISTRATOR')) return message.channel.send(`**:x: لا يمكن آعطاء ميوت لادارة السيرفر**`); 
- 
-    if(message.guild.member(mention).roles.find('name', 'Muted')) return message.channel.send(`**:information_source: ${mention.user.username} Already Muted**`);
- 
-   
-    if(mention.position >= message.guild.member(message.author).positon) return message.channel.send('You Donot Have Permission **Muted_Members** ').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-   
-    if(mention.positon >= message.guild.member(client.user).positon) return message.channel.send('I Donot Have Permission **Muted_Members**').then(msg => {
-      msg.delete(3500);
-      message.delete(3500); 
-    });
-   
-    let duration = args[2];
-    if(!duration) message.channel.send(`**:hash: You Can Use ${prefix}mute @user Time Reason**`).then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
- 
-    if(isNaN(duration))  message.channel.send('').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
- 
-    let reason = message.content.split(" ").slice(3).join(" ");
-    if(!reason) reason = "**Bad.**";
- 
-    let thisEmbed = new Discord.RichEmbed()
-    .setAuthor(mention.user.username, mention.user.avatarURL)
-    .setTitle('Muted')
-    .addField('**Server :**',[ message.guild.name ])
-    .addField('**Muted By :**', [ message.author ])
-    .addField('**Reason :**',reason)
-    .addField('**Time :**',duration)
- 
-    let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
-    if(!role) try {
-      message.guild.createRole({
-        name: "Muted",
-        permissions: 0 
-      }).then(r => {
-        message.guild.channels.forEach(c => {
-          c.overwritePermissions(r , {
-            SEND_MESSAGES: false, 
-            READ_MESSAGES_HISTORY: false,
-            ADD_REACTIONS: false
-          });
-        });
-      });
-    } catch(e) {
-      console.log(e.stack);
-    }
-    mention.addRole(role).then(() => {
-      mention.send(thisEmbed);
-      message.channel.send(`**:white_check_mark: ${mention.user.username}  Muted! .**  `);
-      mention.setMute(true); 
-    });
-    setTimeout(() => {
-      if(duration === 0) return;
-      mention.setMute(false);
-      mention.removeRole(role)
-    },duration * 60000); 
-  }
-});
-client.on('message', async message => {
-    let mention = message.mentions.members.first();
-let command = message.content.split(" ")[0];
-     command = command.slice(prefix.length);
-    let args = message.content.split(" ").slice(1); 
-if(command === `unmute`) {2
-  if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.sendMessage("**You Donot HavePermission Mute_Members**").then(m => m.delete(5000));
-if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply("**I donot Have Permission Mute_Members**").then(msg => msg.delete(6000))
- 
-  let kinggamer = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
-     if(!kinggamer) return message.channel.send('').then(msg => {
-      msg.delete(3500);
-      message.delete(3500); 
-    });
- 
-  let role = message.guild.roles.find (r => r.name === "Muted");
- 
-  if(!role || !kinggamer.roles.has(role.id)) return message.channel.sendMessage(`**:information_source:${mention.user.username} لقد تم فك الميوت عنه مسبقا**`)
- 
-  await kinggamer.removeRole(role) 
-  message.channel.sendMessage(`**:white_check_mark: ${mention.user.username}  Unmuted! **`);
- 
-  return;
- 
-  }
- 
-});
-
 let hybhs;
 client.on("ready", async  => {
     let guild = client.guilds.get("488259622730203137");
@@ -142,7 +24,7 @@ if(!check.voiceChannelID){
   hybhs++;
 }
 }
-guild.channels.find('id', '514076588892094464').setName("Voice "+hybhs+" ❃");
+guild.channels.find('id', '515551933856219156').setName("Voice Now : "+hybhs+".");
   client.setInterval(() =>{
     let d = Date.now()
   }, 5000);
@@ -153,10 +35,10 @@ let newUserChannel = newMember.voiceChannel
 let oldUserChannel = oldMember.voiceChannel
  if(oldUserChannel === undefined && newUserChannel !== undefined) {
    hybhs++;
-guild.channels.find('id', '514076588892094464').setName("Voice "+hybhs+" ❃");
+guild.channels.find('id', '515551933856219156').setName("Voice Now : "+hybhs+".");
 } else if(newUserChannel === undefined){
   hybhs--;
-guild.channels.find('id', '514076588892094464').setName("Voice "+hybhs+" ❃");
+guild.channels.find('id', '515551933856219156').setName("Voice Now : "+hybhs+".");
 }
 });
 
@@ -182,7 +64,7 @@ client.on('guildCreate', (guild) => {
 });
 
 client.on('message', function(message) {
-    if (message.content == "$clear") {
+    if (message.content == "$$clear") {
         if (message.member.hasPermission("ADMINSTRATOR")) {
             message.channel.fetchMessages()
                .then(function(list){
@@ -213,9 +95,9 @@ client.on("message", message => {
       c.delete()
     }, 100)
     });
-    message.channel.send(`تم طرده بنجاح\n\n${message.user.username}.`)
+    message.channel.send(`Done.`)
 } catch (e) {
-  message.channel.send("عفوا، الشخص المراد لا يمكنني طرده بسبب صلاحيات او ماشابه.");
+  message.channel.send("Erorr.");
 }
   }
 });
@@ -258,21 +140,6 @@ if(!message.member.hasPermission('ADMINSTRATOR')) return;
   acRoom.send(`» Name **::** ${mention}\n» ${em} تم رفض تقديم العضو .`)
   }
 });
-
- client.on('message',async message => {
-  let mention = message.mentions.members.first();
-  let acRoom = client.channels.get('513785861511577600');
-  let em = client.emojis.find(e => e.name === "nolock");
-  if(message.content.startsWith(prefix + "طرد")) {
-  if(message.guild.id !== '488259622730203137') return;
-  if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
-  if(!mention) return message.reply("منشن آسم المراد رفضه.");
-
-  acRoom.send(`» Name **::** ${mention} \n» ${em} **::** تم طرد العضو من الفريق .`)
-  }
-});
- 
- 
  
 client.on('message',async message => {
   let mention = message.mentions.members.first();
@@ -502,7 +369,7 @@ gg.send({embed : new Discord.RichEmbed()
 
 client.on('guildMemberAdd', member => {
 
- const channel = member.guild.channels.find('name', 'admins');
+ const channel = member.guild.channels.find('name', 'commands');
 
  if (!channel) return;
 
@@ -576,7 +443,6 @@ client.on('message', message => {
 
     var mentionned = message.mentions.users.first();
     let args = message.content.split(" ").slice(1);
-    let em = client.emojis.find(e => e.name === "hash~1");
 
     var elite;
     if(mentionned){
@@ -597,7 +463,7 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
-    if(message.content.startsWith(prefix + 'new')) {
+    if(message.content.startsWith(prefix + 'ticket')) {
         let args = message.content.split(' ').slice(1).join(' ');
         let support = message.guild.roles.find("name","⁎ Official Tickets.");
         let ticketsStation = message.guild.channels.find("name", "‹ Tickets ›");
@@ -608,9 +474,9 @@ client.on('message', message => {
                     return message.channel.send('**Please make sure that `⁎ Official Tickets.` role exists and it\'s not duplicated.**');
                 };
             if(!ticketsStation) {
-                message.guild.createChannel("‹ Tickets ›", "category");
+                message.guild.createChannel("« Tickets »", "category");
             };
-                message.guild.createChannel(`ticket-${message.author.username}`, "text").then(ticket => {
+                message.guild.createChannel(`ticket_${message.author.username}`, "text").then(ticket => {
                     message.delete()
                         message.channel.send(`You'r Ticket is ready **::** ${ticket}.`);
                     ticket.setParent(ticketsStation);
