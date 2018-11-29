@@ -64,7 +64,7 @@ client.on('guildCreate', (guild) => {
 });
 
 client.on('message', function(message) {
-    if (message.content == "$$clear") {
+    if (message.content == "!!clear") {
         if (message.member.hasPermission("ADMINSTRATOR")) {
             message.channel.fetchMessages()
                .then(function(list){
@@ -102,7 +102,7 @@ client.on("message", message => {
   }
 });
 
-const hybh = ['380307890235506698', '449506099268419595']; 
+const hybh = ['380307890235506698', '449506099268419595', '319172728114642945']; 
 client.on('message', message => { 
   if (message.author.bot) return; 
   if (!message.content.startsWith(prefix)) return; 
@@ -274,9 +274,9 @@ client.on('message', message => {
 
 client.on('message', async message => {
 
-  if(message.content.startsWith("$elite")) {
+  if(message.content.startsWith("$strict")) {
 
-    await message.channel.send("**قم بكتآبة أسمك الحقيقي.**").then(e => {
+    await message.channel.send("**الرجاء كتابة اسمك الحقيقي**").then(e => {
 
     let filter = m => m.author.id === message.author.id
 
@@ -296,7 +296,7 @@ client.on('message', async message => {
 
 e.delete();
 
-     message.channel.send('**قم بكتآبة عمرك.**').then(m => {
+     message.channel.send('**حسناََ، قم بكتابة عمرك**').then(m => {
 
 let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors: ['time'] })
 
@@ -308,7 +308,7 @@ let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors
 
         m.delete();
 
-message.channel.send('**قم بكتآبة أسمك باللعبة مع مرآعاة الاحرف.**').then(ms => {
+message.channel.send('**أكمل، قم بكتابة أسمك باللعبه مع مراعاة الأحرف**').then(ms => {
 
 let br = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors: ['time'] })
 
@@ -324,11 +324,11 @@ ms.delete()
 
 
 
- message.channel.send('يرجى الأنتظار حتى يتم آرسال تقديمك').then(b => {
+ message.channel.send('سيتم إرسال تقديمك،برجاء الأنتظار ...').then(b => {
 
         setTimeout(() => {
 
-  b.edit(`**تم إرسآل التقديم بنجآح ، يرجى أنتظار قبولك**\n\n<@${message.author.id}> **.**`).then(m => m.delete(10000));
+  b.edit(`تم إرسال تقديمك بنجاح، يرجى إنتظار نتيجة القبول أو الرفض\n<@${message.author.id}>`).then(m => m.delete(10000));
 
         },3000);
 
@@ -369,11 +369,11 @@ gg.send({embed : new Discord.RichEmbed()
 
 client.on('guildMemberAdd', member => {
 
- const channel = member.guild.channels.find('name', 'commands');
+ const channel = member.guild.channels.find('name', 'chat');
 
  if (!channel) return;
 
- channel.send(`**Welcome To Elite Skill**, ${member}`);
+ channel.send(`**Welcome To Strict**, ${member}`);
 
  
 
@@ -410,7 +410,7 @@ message.channel.send(`${user} \n\n**${inviteCount} invites.**`);
 });
 
     const adminprefix = "$";
-const devs = ['380307890235506698','449506099268419595'];
+const devs = ['380307890235506698','449506099268419595','319172728114642945'];
 client.on('message', message => {
   var argresult = message.content.split(` `).slice(1).join(' ');
     if (!devs.includes(message.author.id)) return;
