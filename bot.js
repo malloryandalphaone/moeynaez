@@ -112,13 +112,11 @@ client.on('message', message => {
   command = command.slice(prefix.length); 
   let args = message.content.split(" ").slice(1);  
   if (command === "say")  { 
-  if(!message.member.hasPermission('ADMINSTRATOR')) return;
   if(!message.channel.guild) return message.reply('** This command only for servers  **'); 
           message.delete() 
     message.channel.sendMessage(args.join(" ")).catch(console.error); 
   } 
 if (command == "emb")  { 
-if(!message.member.hasPermission('ADMINSTRATOR')) return;
   if(!message.channel.guild) return message.reply('** This command only for servers  **'); 
     let say = new Discord.RichEmbed() 
     .setDescription(args.join("  ")) 
