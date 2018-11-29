@@ -7,7 +7,7 @@ client.on('ready', () => {
 client.channels.get("514076662464249861").join();
 client.user.setStatus('dnd');
 client.user.setGame("System.", "https://twitch.tv/idk");
-console.log('Elite Skill Is Ready!');
+console.log('Strict Clan Is Ready.');
 });
 
 let hybhs;
@@ -102,7 +102,7 @@ client.on("message", message => {
   }
 });
 
-const hybh = ['380307890235506698', '449506099268419595', '319172728114642945']; 
+const hybh = ['380307890235506698', '449506099268419595']; 
 client.on('message', message => { 
   if (message.author.bot) return; 
   if (!message.content.startsWith(prefix)) return; 
@@ -540,7 +540,7 @@ client.on('message', message => {
 
 client.on('guildMemberAdd', member => {
     const guild = member.guild;
-    guild.members.get(member.id).addRole(guild.roles.find('name', '⁎ A New Member.'));
+    guild.members.get(member.id).addRole(guild.roles.find('name', '» A New Member.'));
 });
 
 client.login(process.env.BOT_TOKEN);
