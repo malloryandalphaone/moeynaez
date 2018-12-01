@@ -7,7 +7,7 @@ const prefix = "$";
 client.on('ready', () => {
 client.channels.get("514076662464249861").join();
 client.user.setStatus('dnd');
-client.user.setGame("System.", "https://twitch.tv/idk");
+client.user.setGame("Strict System", "https://twitch.tv/idk");
 console.log('Strict Clan Is Ready.');
 });
 
@@ -607,5 +607,76 @@ client.on('guildMemberAdd', member => {
     const guild = member.guild;
     guild.members.get(member.id).addRole(guild.roles.find('name', '» A New Member.'));
 });
+/////////////////////////////////
+module.exports.run = async (client, message, args, level) => {
+
+let Timer = args[0];
+
+if(!args[0]){
+  return message.channel.send("Please enter a period of time, with either `s,m or h` at the end!");
+}
+
+if(args[0] <= 0){
+  return message.channel.send("Please enter a period of time, with either `s,m or h` at the end!");
+}
+
+message.channel.send(":white_check_mark: Timer has been set for: " + `${ms(ms(Timer), {long: true})}`)
+
+setTimeout(function(){
+  message.channel.send(`Timer has ended, it lasted: ${ms(ms(Timer), {long: true})}` + message.author.toString())
+
+}, ms(Timer));
+}
+exports.conf = {
+  enabled: true,
+  guildOnly: false,
+  aliases: [],
+  permLevel: "User"
+};
+
+exports.help = {
+  name: "timer",
+  category: "Miscelaneous",
+  description: "Sets a timer",
+  usage: "timer"
+};
+
+exports.run = (bot, message, args) => {
+    const reason = args.slice(1).join(' ');
+    bot.unbanReason = reason;
+    bot.unbanAuth = message.author;
+    const user = args[0];
+    const modlog = bot.channels.find('name', 'reeebel');
+    if (!modlog) return message.reply('I cannot find a mod-log channel');
+    if (reason.length < 1) return message.reply('You must supply a reason for the unban.');
+    if (!user) return message.reply('You must supply a User Resolvable, such as a user id.').catch(console.error);
+    message.guild.unban(user);
+    message.reply(`Successfuly unbanned <@${user}>`)
+};
+
+client.on(`guildMemberAdd`, member => {
+    let listedusers = (`User1`, `User2`, `User3`, `etc`);
+    if (member.username = listedusers.username) {
+        member.ban;
+        const lChannel = member.guild.channels.find(`name`, `logs`)
+        lChannel.send(`${member} has been banned because they are blacklisted!`)
+    }
+
+});
+
+module.exports.run = async (bot, message, args) => {
+
+  if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply(":x: **Tu dois préciser le nombre de messages à supprimer .**");
+  if(!args[0]) return message.channel.send(":x: **Tu dois préciser le nombre de messages à supprimer .**");
+  message.channel.bulkDelete(args[0]).then(() => {
+  message.channel.send(`:pencil2: ${args[0]} messages on été supprimer.`).then(msg => msg.delete(2000));
+});
+
+}
+
+module.exports.help = {
+  name: "clear"
+}
+
 
 client.login(process.env.BOT_TOKEN);
