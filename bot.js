@@ -3,7 +3,7 @@ const moment = require('moment');
 const fs = require('fs');
 const ms = require("ms");
 const client = new Discord.Client();
-const prefix = "$";
+const prefix = "!";
 client.on('ready', () => {
 client.channels.get("514076662464249861").join();
 client.user.setStatus('dnd');
@@ -64,17 +64,6 @@ client.on('guildCreate', (guild) => {
     }
 });
 
-client.on('message', function(message) {
-    if (message.content == "!!clear") {
-        if (message.member.hasPermission("ADMINSTRATOR")) {
-            message.channel.fetchMessages()
-               .then(function(list){
-                    message.channel.bulkDelete(list);
-                }, function(err){message.channel.send("ERROR: ERROR CLEARING CHANNEL.")})
-        }
-    }
-
-});
 
 client.on("message", message => {
   let men = message.mentions.users.first();
@@ -131,7 +120,7 @@ if (command == "emb")  {
   let mention = message.mentions.members.first();
   let acRoom = client.channels.get('513785861511577600');
   let em = client.emojis.find(e => e.name === "false");
-  if(message.content.startsWith(prefix + "رفض")) {
+  if(message.content.startsWith(prefix + "refusal")) {
   if(message.guild.id !== '488259622730203137') return;
   if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
   if(!mention) return message.reply("منشن آسم المراد رفضه.");
@@ -146,7 +135,7 @@ client.on('message',async message => {
   let mySupport = message.guild.roles.find('name',role);
   let acRoom = client.channels.get('513785861511577600');
   let em = client.emojis.find(e => e.name === "true");
-  if(message.content.startsWith(prefix + "قبول")) {
+  if(message.content.startsWith(prefix + "accept")) {
     if(message.guild.id !== '488259622730203137') return;
     if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
     if(!mention) return message.reply('منشن آسم المراد قبوله');
@@ -188,7 +177,7 @@ client.on('message', msg => {
   command = command.slice(prefix.length);
   let args = msg.content.split(" ").slice(1);
 
-    if(command === "$clear") {
+    if(command === "!clear") {
         const emoji = client.emojis.find("name", "wastebasket")
     let textxt = args.slice(0).join("");
     if(msg.member.hasPermission("MANAGE_MESSAGES")) {
@@ -223,7 +212,7 @@ client.on('message', msg => {
 
 client.on('message', msg => {
 
-    if (msg.content == '$join') {
+    if (msg.content == '!join') {
     if(msg.author.id !== '380307890235506698') return;
     msg.channel.send(`**تم، لقد دخلت الروم.**`).then(m => m.delete(2000));
         if (msg.member.voiceChannel) {
@@ -236,7 +225,7 @@ client.on('message', msg => {
 });
 
 client.on('message', message => {
-    if (message.content.startsWith("$avatar")) {
+    if (message.content.startsWith("!avatar")) {
         var mentionned = message.mentions.users.first();
     var x5bzm;
       if(mentionned){
@@ -273,7 +262,7 @@ client.on('message', message => {
 
 client.on('message', async message => {
 
-  if(message.content.startsWith("$strict")) {
+  if(message.content.startsWith("!strict")) {
 
     await message.channel.send("**الرجاء كتابة اسمك الحقيقي**").then(e => {
 
@@ -408,7 +397,7 @@ message.channel.send(`${user} \n\n**${inviteCount} invites.**`);
   }
 });
 
-    const adminprefix = "$";
+    const adminprefix = "!";
 const devs = ['380307890235506698','449506099268419595','319172728114642945'];
 client.on('message', message => {
   var argresult = message.content.split(` `).slice(1).join(' ');
@@ -438,7 +427,7 @@ client.on('message', message => {
 
     if(!message.member.hasPermission('ADMINISTRATOR')) return;
   
-  if (message.content.startsWith('$send')) {
+  if (message.content.startsWith('!send')) {
 
     var mentionned = message.mentions.users.first();
     let args = message.content.split(" ").slice(1);
