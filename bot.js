@@ -18,71 +18,32 @@ client.on('message', msg => {
 });
 
 
-client.on('message',   hybh =>{
-    
-    var  args = hybh.content.split(" ").slice(2).join(" ")
-    var men = hybh.mentions.users.first()|| client.users.get(hybh.content.split(' ')[1])
-    var  mas = hybh.author
-                              if(hybh.content.startsWith(prefix + 'sar7')) {
-                              if(hybh.channel.type === "dm"){
-if(!args) return  hybh.channel.send(":black_medium_square: **قم بوضع رسالة الصراحة **");
-if(!men) return  hybh.channel.send(":black_medium_square:**قم بوضع ايدي المراد مصارحتة , ربما يكون الشخص غير موجود في سيرفرات مشتركة بينك وبينة لذلك لن يستطيع البوت الأرسال** ");
-                      var currentTime = new Date(),
-            Year = currentTime.getFullYear(),
-            Month = currentTime.getMonth() + 1,
-            Day = currentTime.getDate();
-     var eyadandr3d = new Discord.RichEmbed()
-     .setAuthor(hybh.author.username , hybh.author.avatarURL)
-     .setThumbnail(men.avatarURL)
-     .setDescription(`**:black_medium_square:  هل انت موافق لآرسال هذه الصراحة  ؟  \nمحتوي الرسالة : ${args}**`)
-     .setTimestamp() 
-     .setFooter(`- By , message.author.name .`)
-     hybh.channel.send(eyadandr3d).then(message => {
- message.react('✅').then(r=>{
- message.react('❌').then(r=>{            
-    var kk = (reaction, user) => reaction.emoji.name === '✅' && user.id === hybh.author.id;    
-    var nn = (reaction, user) => reaction.emoji.name === '❌' && user.id === hybh.author.id;
-    var kkk = message.createReactionCollector(kk, { time: 60000 });
-    var nnn = message.createReactionCollector(nn, { time: 60000 });
-client.on("collect", r => {
-          const embed = new Discord.RichEmbed()
-               .setThumbnail("https://cdn.discordapp.com/attachments/429056808561278979/450412294078332948/download.jpg")   
-               .setColor("RANDOM")
-               .addField('**• السلام عليكم ** ', `<@${men.id}>` , true)
-                    .addField('**• لقد قام شخص ما بمصارحتك **' ,       ` __${args}__ ` , true)
-                    .addField('**• تاريخ المصارحة**' , Day + "-" + Month + "-" + Year , true)
-          client.users.get(men.id).sendEmbed(embed)
-          hybh.reply(`لقد تم ارسال الصراحه للشخص \n <@${men.id}>`)
-message.delete()
-          hybh.delete();
-})
-nnn.on("collect", r => {
-message.delete()
-hybh.reply("`تم الغاء الصراحة`")
-hybh.delete();
-})
-})
-}) 
-})
-}
-}
-});
-
-var dat = JSON.parse("{}");
-function forEachObject(obj, func) {
-    Object.keys(obj).forEach(function (key) { func(key, obj[key]) });
-}
-client.on("ready", () => {
+client.on("guildMemberAdd", (member) => {
+    let channel = member.guild.channels.get("515563356006907923");
+    if (!channel) {
+        console.log("!the channel id it's not correct");
+        return;
+    }
+    if (member.id == client.user.id) {
+        return;
+    }
+    console.log('-');
     var guild;
     while (!guild)
-        guild = client.guilds.get("432942113697562636");
+        guild = client.guilds.get("488259622730203137");
     guild.fetchInvites().then((data) => {
         data.forEach((Invite, key, map) => {
             var Inv = Invite.code;
+            if (dat[Inv])
+                if (dat[Inv] < Invite.uses) {
+ channel.send(`**Member Invite By:** ${Invite.inviter}`) ;         
+ }
             dat[Inv] = Invite.uses;
-        });
+       
+       });
     });
 });
+
 
 
 let hybhs;
