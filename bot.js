@@ -13,7 +13,7 @@ console.log('Strict Clan Is Ready.');
 
 client.on('message', msg => {
   if (msg.content === 'Strict') {
-    msg.reply('I ready..');
+    msg.reply('\nتراني كيوت مَ اوجع احد..');
   }
 });
 
