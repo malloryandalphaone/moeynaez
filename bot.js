@@ -11,6 +11,108 @@ client.user.setGame("Strict System", "https://twitch.tv/idk");
 console.log('Strict Clan Is Ready.');
 });
 
+client.on('message', msg => {
+  if (msg.content === 'Strict') {
+    msg.reply('I ready..');
+  }
+});
+
+
+client.on('message',   hybh =>{
+    
+    var  args = hybh.content.split(" ").slice(2).join(" ")
+    var men = hybh.mentions.users.first()|| client.users.get(hybh.content.split(' ')[1])
+    var  mas = hybh.author
+                              if(hybh.content.startsWith(prefix + 'sar7')) {
+                              if(hybh.channel.type === "dm"){
+if(!args) return  hybh.channel.send(":black_medium_square: **قم بوضع رسالة الصراحة **");
+if(!men) return  hybh.channel.send(":black_medium_square:**قم بوضع ايدي المراد مصارحتة , ربما يكون الشخص غير موجود في سيرفرات مشتركة بينك وبينة لذلك لن يستطيع البوت الأرسال** ");
+                      var currentTime = new Date(),
+            Year = currentTime.getFullYear(),
+            Month = currentTime.getMonth() + 1,
+            Day = currentTime.getDate();
+     var eyadandr3d = new Discord.RichEmbed()
+     .setAuthor(hybh.author.username , hybh.author.avatarURL)
+     .setThumbnail(men.avatarURL)
+     .setDescription(`**:black_medium_square:  هل انت موافق لآرسال هذه الصراحة  ؟  \nمحتوي الرسالة : ${args}**`)
+     .setTimestamp() 
+     .setFooter(`- By , message.author.name .`)
+     hybh.channel.send(eyadandr3d).then(message => {
+ message.react('✅').then(r=>{
+ message.react('❌').then(r=>{            
+    var kk = (reaction, user) => reaction.emoji.name === '✅' && user.id === hybh.author.id;    
+    var nn = (reaction, user) => reaction.emoji.name === '❌' && user.id === hybh.author.id;
+    var kkk = message.createReactionCollector(kk, { time: 60000 });
+    var nnn = message.createReactionCollector(nn, { time: 60000 });
+kkk.on("collect", r => {
+          const embed = new Discord.RichEmbed()
+               .setThumbnail("https://cdn.discordapp.com/attachments/429056808561278979/450412294078332948/download.jpg")   
+               .setColor("RANDOM")
+               .addField('**• السلام عليكم ** ', `<@${men.id}>` , true)
+                    .addField('**• لقد قام شخص ما بمصارحتك **' ,       ` __${args}__ ` , true)
+                    .addField('**• تاريخ المصارحة**' , Day + "-" + Month + "-" + Year , true)
+          client.users.get(men.id).sendEmbed(embed)
+          hybh.reply(`لقد تم ارسال الصراحه للشخص \n <@${men.id}>`)
+message.delete()
+          eyad.delete();
+})
+nnn.on("collect", r => {
+message.delete()
+hybh.reply("`تم الغاء الصراحة`")
+hybh.delete();
+})
+})
+}) 
+})
+}
+}
+});
+
+var dat = JSON.parse("{}");
+function forEachObject(obj, func) {
+    Object.keys(obj).forEach(function (key) { func(key, obj[key]) });
+}
+client.on("ready", () => {
+    var guild;
+    while (!guild)
+        guild = client.guilds.get("432942113697562636");
+    guild.fetchInvites().then((data) => {
+        data.forEach((Invite, key, map) => {
+            var Inv = Invite.code;
+            dat[Inv] = Invite.uses;
+        });
+    });
+});
+
+
+
+client.on("guildMemberAdd", (member) => {
+    let channel = member.guild.channels.get("515563356006907923");
+    if (!channel) {
+        console.log("!the channel id it's not correct");
+        return;
+    }
+    if (member.id == client.user.id) {
+        return;
+    }
+    console.log('-');
+    var guild;
+    while (!guild)
+        guild = client.guilds.get("488259622730203137");
+    guild.fetchInvites().then((data) => {
+        data.forEach((Invite, key, map) => {
+            var Inv = Invite.code;
+            if (dat[Inv])
+                if (dat[Inv] < Invite.uses) {
+ channel.send(`**Member Invite By:** ${Invite.inviter}`) ;         
+ }
+            dat[Inv] = Invite.uses;
+       
+       });
+    });
+});
+
+
 let hybhs;
 client.on("ready", async  => {
     let guild = client.guilds.get("488259622730203137");
@@ -596,52 +698,6 @@ client.on('guildMemberAdd', member => {
     const guild = member.guild;
     guild.members.get(member.id).addRole(guild.roles.find('name', '» A New Member.'));
 });
-/////////////////////////////////
-module.exports.run = async (client, message, args, level) => {
-
-let Timer = args[0];
-
-if(!args[0]){
-  return message.channel.send("Please enter a period of time, with either `s,m or h` at the end!");
-}
-
-if(args[0] <= 0){
-  return message.channel.send("Please enter a period of time, with either `s,m or h` at the end!");
-}
-
-message.channel.send(":white_check_mark: Timer has been set for: " + `${ms(ms(Timer), {long: true})}`)
-
-setTimeout(function(){
-  message.channel.send(`Timer has ended, it lasted: ${ms(ms(Timer), {long: true})}` + message.author.toString())
-
-}, ms(Timer));
-}
-exports.conf = {
-  enabled: true,
-  guildOnly: false,
-  aliases: [],
-  permLevel: "User"
-};
-
-exports.help = {
-  name: "timer",
-  category: "Miscelaneous",
-  description: "Sets a timer",
-  usage: "timer"
-};
-
-exports.run = (bot, message, args) => {
-    const reason = args.slice(1).join(' ');
-    bot.unbanReason = reason;
-    bot.unbanAuth = message.author;
-    const user = args[0];
-    const modlog = bot.channels.find('name', 'reeebel');
-    if (!modlog) return message.reply('I cannot find a mod-log channel');
-    if (reason.length < 1) return message.reply('You must supply a reason for the unban.');
-    if (!user) return message.reply('You must supply a User Resolvable, such as a user id.').catch(console.error);
-    message.guild.unban(user);
-    message.reply(`Successfuly unbanned <@${user}>`)
-};
 
 client.on(`guildMemberAdd`, member => {
     let listedusers = (`User1`, `User2`, `User3`, `etc`);
@@ -653,19 +709,46 @@ client.on(`guildMemberAdd`, member => {
 
 });
 
-module.exports.run = async (bot, message, args) => {
+client.on('message', message => {
+  // Ignore messages that aren't from a guild
+  if (!message.guild) return;
 
-  if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply(":x: **Tu dois préciser le nombre de messages à supprimer .**");
-  if(!args[0]) return message.channel.send(":x: **Tu dois préciser le nombre de messages à supprimer .**");
-  message.channel.bulkDelete(args[0]).then(() => {
-  message.channel.send(`:pencil2: ${args[0]} messages on été supprimer.`).then(msg => msg.delete(2000));
+  // If the message content starts with "!kick"
+  if (message.content.startsWith('!kick')) {
+    // Assuming we mention someone in the message, this will return the user
+    // Read more about mentions over at https://discord.js.org/#/docs/main/stable/class/MessageMentions
+    const user = message.mentions.users.first();
+    // If we have a user mentioned
+    if (user) {
+      // Now we get the member from the user
+      const member = message.guild.member(user);
+      // If the member is in the guild
+      if (member) {
+        /**
+         * Kick the member
+         * Make sure you run this on a member, not a user!
+         * There are big differences between a user and a member
+         */
+        member.kick('Optional reason that will display in the audit logs').then(() => {
+          // We let the message author know we were able to kick the person
+          message.reply(`:white_check_mark: **Successfully kicked** ${user.tag}`);
+        }).catch(err => {
+          // An error happened
+          // This is generally due to the bot not being able to kick the member,
+          // either due to missing permissions or role hierarchy
+          message.reply('I was unable to kick the member');
+          // Log the error
+          console.error(err);
+        });
+      } else {
+        // The mentioned user isn't in this guild
+        message.reply('هذا الشخص غير موجود بالسيرفر ..');
+      }
+    // Otherwise, if no user was mentioned
+    } else {
+      message.reply('لا يمكنك طرد هذا الشخص.. لاسباب خاصة ..');
+    }
+  }
 });
-
-}
-
-module.exports.help = {
-  name: "clear"
-}
-
 
 client.login(process.env.BOT_TOKEN);
