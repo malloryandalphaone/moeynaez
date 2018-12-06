@@ -7,8 +7,9 @@ const ytdl = require("ytdl-core");
 const prefix = "!";
 
 client.on("ready", () => {
+client.user.setStatus('online');
   console.log("Reeebel | Logged in! Server count: ${client.guilds.size}");
-  client.user.setGame(`Strict Clan | ${prefix}buy`);
+  client.user.setGame(`Strict System`);
 });
 
 client.on("message",async(message) => {
@@ -32,13 +33,13 @@ client.on("message",async(message) => {
 }
 
 
-    if (message.content.toLowerCase().startsWith(prefix + `buy`)) {
+    if (message.content.toLowerCase().startsWith(prefix + `clan`)) {
     const reason = message.content.split(" ").slice(1).join(" ");
-    if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`This server doesn't have a \`Support Team\` role made, so the ticket won't be opened.\nIf you are an administrator, make one with that name exactly and give it to users that should be able to see tickets.`);
+    if (!message.guild.roles.exists("name", "‹ Clan Support ›")) return message.channel.send(`This server doesn't have a \`‹ Clan Support ›\` role made, so the ticket won't be opened.\nIf you are an administrator, make one with that name exactly and give it to users that should be able to see tickets.`);
     if (message.guild.channels.exists("name", "ticket-" + message.author.id)) return message.channel.send(`You already have a ticket open.`);
     await num++;
     await message.guild.createChannel(`ticket-${num}`, "text").then(c => {
-        let role = message.guild.roles.find("name", "Support Team");
+        let role = message.guild.roles.find("name", "‹ Clan Support ›");
         let role2 = message.guild.roles.find("name", "@everyone");
         c.overwritePermissions(role, {
             SEND_MESSAGES: true,
@@ -55,7 +56,7 @@ client.on("message",async(message) => {
         message.channel.send(`:white_check_mark: Your ticket has been created, #${c.name}.`);
         const embed = new Discord.RichEmbed()
         .setColor(0xCF40FA)
-        .addField(`Hey ${message.author.username}!`, `**يرجى محاولة شرح سبب فتح هذه التذكرة بأكبر قدر ممكن من التفاصيل. سيكون فريق الدعم لدينا قريبا للمساعدة**`)
+        .addField(`Hey ${message.author.username}!`, `**يرجى شرح سبب فتح التذكرة بأكبر سبب ممكن، وإن توفرت الأدلة ايضاََ، وسيقوم طاقم الدعم الفني بالمساعدة حين تلقي هذه الرسالة.**`)
         .setTimestamp();
         c.send({ embed: embed });
     }).catch(console.error);
