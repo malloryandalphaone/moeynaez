@@ -1,9 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const dateFormat = require('dateformat');
 const fs = require('fs');
 const moment = require('moment');
-const Canvas = require('canvas')
 const ytdl = require("ytdl-core");
 
 const prefix = "!";
