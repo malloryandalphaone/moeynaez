@@ -18,38 +18,6 @@ client.on('message', msg => {
 });
 
 
-let hybhs;
-client.on("ready", async  => {
-    let guild = client.guilds.get("488259622730203137");
-  let users = guild.members.map(member => member.user.id);
-  let i;
-  hybhs=0;
-for (i=0 ; i < users.length ; i++) {
- let   check = guild.members.get(users[i]);
-if(!check.voiceChannelID){
-        continue;
-}else{
-  hybhs++;
-}
-}
-guild.channels.find('id', '515551933856219156').setName("Voice Now : "+hybhs+".");
-  client.setInterval(() =>{
-    let d = Date.now()
-  }, 5000);
-});
-client.on('voiceStateUpdate', (oldMember, newMember) => {
-    let guild = client.guilds.get("488259622730203137");
-let newUserChannel = newMember.voiceChannel
-let oldUserChannel = oldMember.voiceChannel
- if(oldUserChannel === undefined && newUserChannel !== undefined) {
-   hybhs++;
-guild.channels.find('id', '515551933856219156').setName("Voice Now : "+hybhs+".");
-} else if(newUserChannel === undefined){
-  hybhs--;
-guild.channels.find('id', '515551933856219156').setName("Voice Now : "+hybhs+".");
-}
-});
-
 
 client.on('message', function(message) {
     if (message.channel.type === "dm") {
