@@ -5,7 +5,7 @@ const ms = require("ms");
 const client = new Discord.Client();
 const prefix = "!";
 client.on('ready', () => {
-client.channels.get("514076662464249861").join();
+client.channels.get("519502754624962560").join();
 client.user.setStatus('dnd');
 client.user.setGame("Strict System", "https://twitch.tv/idk");
 console.log('Strict Clan Is Ready.');
