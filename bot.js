@@ -340,6 +340,13 @@ client.on('message', async message => {
     }
 });
 
-
+client.on('message', msg => {
+    if(!msg.guild) return;
+    if(msg.channel.id === '520264177126735882') {
+    msg.delete().then
+        var channel = msg.guild.channels.get("520274183796817950")
+        channel.send(msg.member + `\n\n` +msg.content)
+    }
+});
 
 client.login(process.env.BOT_TOKEN);
