@@ -35,11 +35,11 @@ client.on("message",async(message) => {
 
     if (message.content.toLowerCase().startsWith(prefix + `clan`)) {
     const reason = message.content.split(" ").slice(1).join(" ");
-    if (!message.guild.roles.exists("name", "‹ Clan Support ›")) return message.channel.send(`This server doesn't have a \`‹ Clan Support ›\` role made, so the ticket won't be opened.\nIf you are an administrator, make one with that name exactly and give it to users that should be able to see tickets.`);
+    if (!message.guild.roles.exists("name", "Clan Support")) return message.channel.send(`This server doesn't have a \`‹ Clan Support ›\` role made, so the ticket won't be opened.\nIf you are an administrator, make one with that name exactly and give it to users that should be able to see tickets.`);
     if (message.guild.channels.exists("name", "ticket-" + message.author.id)) return message.channel.send(`You already have a ticket open.`);
     await num++;
     await message.guild.createChannel(`ticket-${num}`, "text").then(c => {
-        let role = message.guild.roles.find("name", "‹ Clan Support ›");
+        let role = message.guild.roles.find("name", "Clan Support");
         let role2 = message.guild.roles.find("name", "@everyone");
         c.overwritePermissions(role, {
             SEND_MESSAGES: true,
