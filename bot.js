@@ -13,37 +13,9 @@ console.log('Strict Clan Is Ready.');
 
 client.on('message', msg => {
   if (msg.content === 'Strict') {
-    msg.reply('\nتراني كيوت مَ اوجع احد..');
+    msg.reply('..');
   }
 });
-
-
-client.on("guildMemberAdd", (member) => {
-    let channel = member.guild.channels.get("515563356006907923");
-    if (!channel) {
-        console.log("!the channel id it's not correct");
-        return;
-    }
-    if (member.id == client.user.id) {
-        return;
-    }
-    console.log('-');
-    var guild;
-    while (!guild)
-        guild = client.guilds.get("488259622730203137");
-    guild.fetchInvites().then((data) => {
-        data.forEach((Invite, key, map) => {
-            var Inv = Invite.code;
-            if (dat[Inv])
-                if (dat[Inv] < Invite.uses) {
- channel.send(`**Member Invite By:** ${Invite.inviter}`) ;         
- }
-            dat[Inv] = Invite.uses;
-       
-       });
-    });
-});
-
 
 
 let hybhs;
@@ -94,7 +66,7 @@ client.on('message', function(message) {
 });
 
 client.on('guildCreate', (guild) => {
-    if(client.guilds.size > 2) {
+    if(client.guilds.size > 1) {
         guild.leave();
     }
 });
@@ -184,25 +156,18 @@ client.on('message',async message => {
   }
 });
 
-client.on('message', message => {
-	
-  if (message.author.id === client.user.id) return;
-  if (message.guild) {
- let embed = new Discord.RichEmbed()
-  let args = message.content.split(' ').slice(1).join(' ');
-if(message.content.split(' ')[0] == prefix + 'bc') {
-if(message.author.id !== '449506099268419595') return;
-      message.guild.members.forEach(m => {
-   m.send(args.replace(/\[user]/g,m));
-       if(message.attachments.first()){
-m.sendFile(message.attachments.first().url);
-       }
-   });
-message.delete();    
-  }
-  } else {
-      return;
-  }
+client.on("message", message => {
+
+            if (message.content.startsWith(prefix + "bc")) {
+                         if (!message.member.hasPermission("ADMINISTRATOR"))  return;
+  let args = message.content.split(" ").slice(1);
+  var argresult = args.join(' '); 
+  message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
+ m.send(`${argresult}\n ${m}`);
+})
+ message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`); 
+ message.delete(); 
+};     
 });
 
 client.on('message', msg => {
@@ -249,7 +214,7 @@ client.on('message', msg => {
 
     if (msg.content == '!join') {
     if(msg.author.id !== '380307890235506698') return;
-    msg.channel.send(`**تم، لقد دخلت الروم.**`).then(m => m.delete(2000));
+    msg.channel.send(`دخلت الروم.. أي اوامر ثانية؟`).then(m => m.delete(2000));
         if (msg.member.voiceChannel) {
 
      if (msg.member.voiceChannel.joinable) {
@@ -577,43 +542,49 @@ client.on(`guildMemberAdd`, member => {
 });
 
 client.on('message', message => {
-  // Ignore messages that aren't from a guild
+	
   if (!message.guild) return;
-
-  // If the message content starts with "!kick"
+	
   if (message.content.startsWith('!kick')) {
-    // Assuming we mention someone in the message, this will return the user
-    // Read more about mentions over at https://discord.js.org/#/docs/main/stable/class/MessageMentions
     const user = message.mentions.users.first();
-    // If we have a user mentioned
     if (user) {
-      // Now we get the member from the user
       const member = message.guild.member(user);
-      // If the member is in the guild
       if (member) {
-        /**
-         * Kick the member
-         * Make sure you run this on a member, not a user!
-         * There are big differences between a user and a member
-         */
         member.kick('Optional reason that will display in the audit logs').then(() => {
-          // We let the message author know we were able to kick the person
-          message.reply(`:white_check_mark: **Successfully kicked** ${user.tag}`);
+          message.reply(`:white_check_mark: ${message.author.tag} **kicked from the server !** :airplane: `);
         }).catch(err => {
-          // An error happened
-          // This is generally due to the bot not being able to kick the member,
-          // either due to missing permissions or role hierarchy
           message.reply('I was unable to kick the member');
-          // Log the error
           console.error(err);
         });
       } else {
-        // The mentioned user isn't in this guild
         message.reply('هذا الشخص غير موجود بالسيرفر ..');
       }
-    // Otherwise, if no user was mentioned
     } else {
-      message.reply('لا يمكنك طرد هذا الشخص.. لاسباب خاصة ..');
+      message.reply('يجب أن تكون رتبة البوت اعلى من الشخص المراد طردة');
+    }
+  }
+});
+
+client.on('message', message => {
+	
+  if (!message.guild) return;
+	
+  if (message.content.startsWith('!ban')) {
+    const user = message.mentions.users.first();
+    if (user) {
+      const member = message.guild.member(user);
+      if (member) {
+        member.ban('Optional reason that will display in the audit logs').then(() => {
+          message.reply(`:white_check_mark: ${message.author.tag} **banned from the server !** :airplane: `);
+        }).catch(err => {
+          message.reply('I was unable to kick the member');
+          console.error(err);
+        });
+      } else {
+        message.reply('هذا الشخص غير موجود بالسيرفر ..');
+      }
+    } else {
+      message.reply('لا يمكنني طرد احد الإدارة');
     }
   }
 });
