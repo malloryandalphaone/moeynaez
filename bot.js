@@ -14,31 +14,34 @@ client.user.setStatus('online');
 client.on("message",async(message) => {
   if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-  if (message.content.toLowerCase().startsWith(prefix + `help`)) {
+  if (message.content.toLowerCase().startsWith(prefix + `helpsc`)) {
     const embed = new Discord.RichEmbed()
-    .setTitle(`Help Command Strict Clan`)
-    .setColor(`#FFFFFF`)
-    .addField(`Tickets`, ``)
-    .addField(`Invite`, ``)
-    .addField(`Other`, ``)
+    .setTitle(`:mailbox_with_mail: Help`)
+    .setColor(0xCF40FA)
+    .setDescription(`هذا البوت للمساعدة فقط `)
+    .addField(`Tickets`, `[${prefix}buy]() > **يفتح تذكرة جديدة ويضع علامات على فريق الدعم**\n[${prefix}c]() > **يغلق تذكرة تم حلها أو تم فتحها عن طريق الصدفة**
+`)
+    .addField(`Invite`, `[${prefix}Invites]() > **لمعرفة كام دخلت اشخاص**\n[${prefix}invite-codes]() > **لمعرفة اكواد الني صنعطها**
+`)
+    .addField(`Other`, `[${prefix}hchannel]() > **اخفاء الشات**\n[${prefix}schannel]() **اضهار الشات المخفية**\n[${prefix}ping]() > **قم بتدوير البرنامج لمعرفة المدة التي يستغرقها التفاعل**\n[${prefix}mute]() > **@user <reason> | اعطاء العضو ميوت لازم رتبة <Muted>**\n[${prefix}unmute]() > **@user | لفك الميوت عن الشخص**\n[${prefix}mutechannel]() > **تقفيل الشات**\n[${prefix}unmutechannel]() > **فتح الشات**\n[${prefix}kick]() > **@user <reason> | طرد الشخص من السيرفر**\n[${prefix}ban]() > **@user <reason> | حضر الشخص من السيرفر	**\n[${prefix}bc]() > **رسالة جماعية الى كل اعضاء السيرفر**`)
     message.channel.send({ embed: embed });
   }
 
 	
   if (message.content.toLowerCase().startsWith(prefix + `ping`)) {
     message.channel.send(`Hoold on!`).then(m => {
-    m.edit(`:ping_pong: \nMessage edit time is ` + (m.createdTimestamp - message.createdTimestamp) + `ms, Discord Strict.. ` + Math.round(client.ping) + `ms.`);
+    m.edit(`:ping_pong: Wew, made it over the ~waves~ ! **Pong!**\nMessage edit time is ` + (m.createdTimestamp - message.createdTimestamp) + `ms, Discord API heartbeat is ` + Math.round(client.ping) + `ms.`);
     });
 }
 
 
     if (message.content.toLowerCase().startsWith(prefix + `buy`)) {
     const reason = message.content.split(" ").slice(1).join(" ");
-    if (!message.guild.roles.exists("name", "Support")) return message.channel.send(`This server doesn't have a \`Support\` role made, so the ticket won't be opened.\nIf you are an administrator, make one with that name exactly and give it to users that should be able to see tickets.`);
+    if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`This server doesn't have a \`Support Team\` role made, so the ticket won't be opened.\nIf you are an administrator, make one with that name exactly and give it to users that should be able to see tickets.`);
     if (message.guild.channels.exists("name", "ticket-" + message.author.id)) return message.channel.send(`You already have a ticket open.`);
     await num++;
     await message.guild.createChannel(`ticket-${num}`, "text").then(c => {
-        let role = message.guild.roles.find("name", "Support");
+        let role = message.guild.roles.find("name", "Support Team");
         let role2 = message.guild.roles.find("name", "@everyone");
         c.overwritePermissions(role, {
             SEND_MESSAGES: true,
@@ -55,7 +58,7 @@ client.on("message",async(message) => {
         message.channel.send(`:white_check_mark: Your ticket has been created, #${c.name}.`);
         const embed = new Discord.RichEmbed()
         .setColor(0xCF40FA)
-        .addField(`Hey ${message.author.username}!`, `**يرجى شرح سبب فتح التذكرة بأكبر سبب ممكن، وإن توفرت الأدلة ايضاََ، وسيقوم طاقم الدعم الفني بالمساعدة حين تلقي هذه الرسالة.**`)
+        .addField(`Hey ${message.author.username}!`, `**يرجى محاولة شرح سبب فتح هذه التذكرة بأكبر قدر ممكن من التفاصيل. سيكون فريق الدعم لدينا قريبا للمساعدة**`)
         .setTimestamp();
         c.send({ embed: embed });
     }).catch(console.error);
@@ -101,7 +104,18 @@ client.on('message', function(message) {
 
 
 
+client.on("guildMemberAdd", member => {
+  member.createDM().then(function (channel) {
+  return channel.send(`${member}
 
+- Welcome to Stict Clan.
+- مرحباََ بك في فريق الصآرمين.
+
+أمر التقديم :
+
+\`!Strict .``) 
+}).catch(console.error)
+});
 
 
 
