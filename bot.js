@@ -107,12 +107,12 @@ client.on("message", async message => {
 client.on("message", async message => {
     if(message.content.startsWith(prefix + "teams")) {
         if(!message.guild) return;
-                if(!message.member.hasPermission('SEND_MESSAGE')) return message.channel.send('**Sorry But You Dont Have Permission** `BAN_MEMBERS`' );
+                if(!message.member.hasPermission('CONNECT')) return message.channel.send('**Sorry But You Dont Have Permission** `CONNECT`' );
         message.guild.fetchBans()
         .then(bans => {
             let b = bans.size;
             let bb = bans.map(a => `${a}`).join(" - ");
-            message.channel.send(`**Teams :\n\n**.** Reeebel\n**.** Mr447\n**.** IceCrash_\n**.** ImAbuSalem\n**.** iLuvkill\n**.** vD7oomy\n**.** ii9l3a_\n**.** s7pg\n**.** HeRoYeeN\n**.** xM3ark_\n**.** NightS3m\n**.** CuzImHassanYT\n**.** 8wl\n**.** K1nqLxrD\n**.** Quixxyy\n**.** ImTry\n**.** WeOnlySmile\n**.** `);
+            message.channel.send(`**Teams Clan Strict** :\n\n**.** Reeebel\n**.** Mr447\n**.** IceCrash_\n**.** ImAbuSalem\n**.** iLuvkill\n**.** vD7oomy\n**.** ii9l3a_\n**.** s7pg\n**.** HeRoYeeN\n**.** xM3ark_\n**.** NightS3m\n**.** CuzImHassanYT\n**.** 8wl\n**.** K1nqLxrD\n**.** Quixxyy\n**.** ImTry\n**.** WeOnlySmile`);
         });
     }
 });
