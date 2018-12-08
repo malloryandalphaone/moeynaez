@@ -11,6 +11,30 @@ client.user.setStatus('online');
   client.user.setGame(`Strict System`);
 });
 
+
+client.on("ready", async  => {
+setInterval(function(){
+client.channels.find('id', '520251788016877568').setName("\" W");
+client.channels.find('id', '520251788016877568').setName("\" We");
+client.channels.find('id', '520251788016877568').setName("\" Wel");
+client.channels.find('id', '520251788016877568').setName("\" Welc");
+client.channels.find('id', '520251788016877568').setName("\" Welco");
+client.channels.find('id', '520251788016877568').setName("\" Welcom");
+client.channels.find('id', '520251788016877568').setName("\" Welcome");
+client.channels.find('id', '520251788016877568').setName("\" Welcome T");
+client.channels.find('id', '520251788016877568').setName("\" Welcome To");
+client.channels.find('id', '520251788016877568').setName("\" Welcome To S");
+client.channels.find('id', '520251788016877568').setName("\" Welcome To St");
+client.channels.find('id', '520251788016877568').setName("\" Welcome To Str");
+client.channels.find('id', '520251788016877568').setName("\" Welcome To Stri");
+client.channels.find('id', '520251788016877568').setName("\" Welcome To Stric");
+client.channels.find('id', '520251788016877568').setName("\" Welcome To Strict");
+client.channels.find('id', '520251788016877568').setName("\" Welcome To Strict.");
+  }, 3000);
+});
+
+
+
 client.on("message",async(message) => {
   if (!message.content.startsWith(prefix) || message.author.bot) return;
 
