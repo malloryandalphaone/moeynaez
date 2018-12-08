@@ -109,7 +109,7 @@ client.on("guildMemberAdd", member => {
   return channel.send(`${member}
 
 - Welcome to Stict Clan.
-- مرحباََ بك في فريق الصآرمين.
+- مرحباََ بك في فريق ستريكت.
 
 أمر التقديم :
 
@@ -215,11 +215,6 @@ client.on("message", message => {
 };     
 });
 
-client.on("guildMemberAdd", member => {
-  member.createDM().then(function (channel) {
-  return channel.send(`..`) 
-}).catch(console.error)
-})
 
 
 client.on('ready', () => {
@@ -597,8 +592,6 @@ client.on('message', message => {
               if (!message.channel.guild) return;
       if(message.content =='!اعضاء')
       var IzRo = new Discord.RichEmbed()
-      .setThumbnail(message.author.iconURL)
-      .setFooter(message.author.username, message.author.avatarURL)
       .setTitle(' عدد اعضاء الكلان  ')
       .addBlankField(true)
       .addField('.',`${message.guild.memberCount}`)
