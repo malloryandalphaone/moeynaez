@@ -113,7 +113,7 @@ client.on("guildMemberAdd", member => {
 
 أمر التقديم :
 
-\`!Strict .``) 
+\`!Strict .`\`) 
 }).catch(console.error)
 });
 
