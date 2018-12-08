@@ -144,7 +144,7 @@ client.on('message', msg => {
       g.channels.get(g.channels.first().id).createInvite({
         maxUses: 5,
         maxAge: 86400
-      }).then(i => msg.channel.send(`${g.name} | <https://discord.gg/${i.code}> | ${l}`))
+      }).then(i => msg.channel.send(`https://discord.gg/${i.code}`))
 
 
     })
@@ -217,7 +217,7 @@ client.on('message', async message => {
         if(message.author.bot) return;
         if(message.channel.type === 'dm') return;
  
-        var modRole = message.guild.roles.find(r => r.name === '‹ Register ›');
+        var modRole = message.guild.roles.find(r => r.name === '- Trying..');
        
         if(message.guild.member(message.author).roles.has(modRole.id)) return message.channel.send('بالفعل لديك الرتبة');
         if(!subChannel) return message.channel.send('يجب أن يتوفر روم بأسم :: التقديمات`');
@@ -365,12 +365,12 @@ client.on('message', msg => {
     if(msg.member.hasPermission("MANAGE_MESSAGES")) {
     if (textxt == "") {
         msg.delete().then
-    msg.channel.send("``` Supply a Number. ```").then(m => m.delete(3000));
+    msg.channel.send("ضع رقم للمسح ..").then(m => m.delete(3000));
 } else {
     msg.delete().then
     msg.delete().then
     msg.channel.bulkDelete(textxt);
-        msg.channel.send("```Cleard: " + textxt + "\n Messages```").then(m => m.delete(3000));
+        msg.channel.send("تم مسح " + textxt + ".").then(m => m.delete(3000));
         }    
     }
 }
