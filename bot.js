@@ -1,9 +1,9 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 var prefix = "!"
-const fs = require("fs"); 
-const moment = require("moment");  
+const fs = require("fs");   
 const ms = require("ms");
+const moment = require("moment");
 
 client.on("ready", () => {
 client.user.setStatus('online');
