@@ -14,6 +14,7 @@ client.user.setStatus('online');
 
 client.on("ready", async  => {
 setInterval(function(){
+client.channels.find('id', '520251788016877568').setName("\" ");
 client.channels.find('id', '520251788016877568').setName("\" W");
 client.channels.find('id', '520251788016877568').setName("\" We");
 client.channels.find('id', '520251788016877568').setName("\" Wel");
