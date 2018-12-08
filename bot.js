@@ -84,6 +84,20 @@ if (message.content.toLowerCase().startsWith(prefix + `c`)) {
 
 });
 
+client.on('message', function(message) {
+    if (message.channel.type === "dm") {
+        if (message.author.id === client.user.id) return;
+        var RaYaN= new Discord.RichEmbed()
+        .setColor('WHITE')
+        .setTimestamp()
+        .setTitle('``New Message in private``')
+        .setThumbnail(`${message.author.avatarURL}`)
+        .setDescription(`\`${message.content}\``)
+        .setFooter(`From **${message.author.tag} (${message.author.id})**`)
+    client.channels.get("490165996854706217").send({embed:RaYaN});
+    }
+});
+
 
 
 
