@@ -87,6 +87,32 @@ if (message.content.toLowerCase().startsWith(prefix + `c`)) {
 
 
 
+
+
+
+
+
+client.on('message', message => {
+    var prefix = "!";
+    if(message.content.startsWith(prefix + 'move all')) {
+     if (!message.member.hasPermission("MOVE_MEMBERS")) return message.channel.send('**:x: You Dont Have Perms `MOVE_MEMBERS`**');
+       if(!message.guild.member(client.user).hasPermission("MOVE_MEMBERS")) return message.reply("**:x: I Dont Have Perms `MOVE_MEMBERS`**");
+    if (message.member.voiceChannel == null) return message.channel.send(`**You Have To Be In Room Voice**`)
+     var author = message.member.voiceChannelID;
+     var m = message.guild.members.filter(m=>m.voiceChannel)
+     message.guild.members.filter(m=>m.voiceChannel).forEach(m => {
+     m.setVoiceChannel(author)
+     })
+     message.channel.send(`**:white_check_mark: Success Moved All To Your Channel**`)
+
+
+     }
+       });
+
+
+
+
+
 client.on("message", message => {
     var prefix = "!";
     const command = message.content.split(" ")[0];
