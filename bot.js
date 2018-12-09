@@ -137,7 +137,7 @@ client.on("message", async message => {
         .then(bans => {
             let b = bans.size;
             let bb = bans.map(a => `${a}`).join(" - ");
-            message.channel.send(`**Teams Clan Strict** :\n\n**.**\` Reeebel\`\n**.**\` Mr447\`\n**.**\` IceCrash_\`\n**.**\` ImAbuSalem\`\n**.**\` iLuvkill\`\n**.**\` vD7oomy\`\n**.**\` ii9l3a_\`\n**.**\` s7pg\`\n**.**\` HeRoYeeN\`\n**.**\` xM3ark_\`\n**.**\` NightS3m\`\n**.**\` CuzImHassanYT\`\n**.**\` 8wl\`\n**.**\` K1nqLxrD\`\n**.**\` Quixxyy\`\n**.**\` ImTry\`\n**.**\` xFn_\``);
+            message.channel.send(`**Teams Clan Strict** :\n\n**.**\` Reeebel\`\n**.**\` Mr447\`\n**.**\` IceCrash_\`\n**.**\` ImAbuSalem\`\n**.**\` iLuvkill\`\n**.**\` vD7oomy\`\n**.**\` ii9l3a_\`\n**.**\` s7pg\`\n**.**\` HeRoYeeN\`\n**.**\` xM3ark_\`\n**.**\` NightS3m\`\n**.**\` CuzImHassanYT\`\n**.**\` 8wl\`\n**.**\` K1nqLxrD\`\n**.**\` Quixxyy\`\n**.**\` ImTry\`\n**.**\` xFn_\`\n**.**\` x3be6\`\n**.**\` i_zull\\n**.**\` Hima_YT\```);
         });
     }
 });
