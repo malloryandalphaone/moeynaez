@@ -1,12 +1,12 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 var prefix = "!"
-const fs = require("fs");   
+const fs = require("fs"); 
+const moment = require("moment");  
 const ms = require("ms");
-const moment = require("moment");
 
 client.on("ready", () => {
-client.user.setStatus('online');
+client.user.setStatus('dnd');
   console.log("Reeebel | Logged in! Server count: ${client.guilds.size}");
   client.user.setGame(`Strict System`);
 });
@@ -32,84 +32,6 @@ client.channels.find('id', '520251788016877568').setName("#. Welcome To Stric");
 client.channels.find('id', '520251788016877568').setName("#. Welcome To Strict");
 client.channels.find('id', '520251788016877568').setName("#. Welcome To Strict.");
   }, 3000);
-});
-
-
-
-client.on("message",async(message) => {
-  if (!message.content.startsWith(prefix) || message.author.bot) return;
-
-  if (message.content.toLowerCase().startsWith(prefix + `helpsc`)) {
-    const embed = new Discord.RichEmbed()
-    .setTitle(`:mailbox_with_mail: Help`)
-    .setColor(0xCF40FA)
-    .setDescription(`هذا البوت للمساعدة فقط `)
-    .addField(`Tickets`, `[${prefix}buy]() > **يفتح تذكرة جديدة ويضع علامات على فريق الدعم**\n[${prefix}c]() > **يغلق تذكرة تم حلها أو تم فتحها عن طريق الصدفة**
-`)
-    .addField(`Invite`, `[${prefix}Invites]() > **لمعرفة كام دخلت اشخاص**\n[${prefix}invite-codes]() > **لمعرفة اكواد الني صنعطها**
-`)
-    .addField(`Other`, `[${prefix}hchannel]() > **اخفاء الشات**\n[${prefix}schannel]() **اضهار الشات المخفية**\n[${prefix}ping]() > **قم بتدوير البرنامج لمعرفة المدة التي يستغرقها التفاعل**\n[${prefix}mute]() > **@user <reason> | اعطاء العضو ميوت لازم رتبة <Muted>**\n[${prefix}unmute]() > **@user | لفك الميوت عن الشخص**\n[${prefix}mutechannel]() > **تقفيل الشات**\n[${prefix}unmutechannel]() > **فتح الشات**\n[${prefix}kick]() > **@user <reason> | طرد الشخص من السيرفر**\n[${prefix}ban]() > **@user <reason> | حضر الشخص من السيرفر	**\n[${prefix}bc]() > **رسالة جماعية الى كل اعضاء السيرفر**`)
-    message.channel.send({ embed: embed });
-  }
-
-	
-  if (message.content.toLowerCase().startsWith(prefix + `ping`)) {
-    message.channel.send(`Hoold on!`).then(m => {
-    m.edit(`:ping_pong: Wew, made it over the ~waves~ ! **Pong!**\nMessage edit time is ` + (m.createdTimestamp - message.createdTimestamp) + `ms, Discord API heartbeat is ` + Math.round(client.ping) + `ms.`);
-    });
-}
-
-
-    if (message.content.toLowerCase().startsWith(prefix + `buy`)) {
-    const reason = message.content.split(" ").slice(1).join(" ");
-    if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`This server doesn't have a \`Support Team\` role made, so the ticket won't be opened.\nIf you are an administrator, make one with that name exactly and give it to users that should be able to see tickets.`);
-    if (message.guild.channels.exists("name", "ticket-" + message.author.id)) return message.channel.send(`You already have a ticket open.`);
-    await num++;
-    await message.guild.createChannel(`ticket-${num}`, "text").then(c => {
-        let role = message.guild.roles.find("name", "Support Team");
-        let role2 = message.guild.roles.find("name", "@everyone");
-        c.overwritePermissions(role, {
-            SEND_MESSAGES: true,
-            READ_MESSAGES: true
-        });
-        c.overwritePermissions(role2, {
-            SEND_MESSAGES: false,
-            READ_MESSAGES: false
-        });
-        c.overwritePermissions(message.author, {
-            SEND_MESSAGES: true,
-            READ_MESSAGES: true
-        });
-        message.channel.send(`:white_check_mark: Your ticket has been created, #${c.name}.`);
-        const embed = new Discord.RichEmbed()
-        .setColor(0xCF40FA)
-        .addField(`Hey ${message.author.username}!`, `**يرجى محاولة شرح سبب فتح هذه التذكرة بأكبر قدر ممكن من التفاصيل. سيكون فريق الدعم لدينا قريبا للمساعدة**`)
-        .setTimestamp();
-        c.send({ embed: embed });
-    }).catch(console.error);
-}
-if (message.content.toLowerCase().startsWith(prefix + `c`)) {
-    if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`You can't use the close command outside of a ticket channel.`);
-
-    message.channel.send(`Are you sure? Once confirmed, you cannot reverse this action!\nTo confirm, type \`-confirm\`. This will time out in 10 seconds and be cancelled.`)
-    .then((m) => {
-      message.channel.awaitMessages(response => response.content === '-confirm', {
-        max: 1,
-        time: 10000,
-        errors: ['time'],
-      })
-      .then((collected) => {
-          message.channel.delete();
-          num-=1;
-        })
-        .catch(() => {
-          m.edit('Ticket close timed out, the ticket was not closed.').then(m2 => {
-              m2.delete();
-          }, 3000);
-        });
-    });
-}
-
 });
 
 
@@ -618,45 +540,73 @@ if (message.content.startsWith(adminprefix + 'stream')) {
 });
 
 
-
-
- client.on('message', async message => {
-            let muteReason = message.content.split(" ").slice(3).join(" ");
-            let mutePerson = message.mentions.users.first();
-            let messageArray = message.content.split(" ");
-            let muteRole = message.guild.roles.find("name", "Muted");
-            let time = messageArray[2];
-            if(message.content.startsWith(prefix + "tempmute")) {
-                if(!message.member.hasPermission('MUTE_MEMBERS')) return message.channel.send('**Sorry But You Dont Have Permission** `MUTE_MEMBERS`' );
-                if(!mutePerson) return message.channel.send('**Mention Someone**')
-                if(mutePerson === message.author) return message.channel.send('**You Cant Mute Yourself**');
-                if(mutePerson === client.user) return message.channel.send('**You Cant Mute The Bot**');
-                if(message.guild.member(mutePerson).roles.has(muteRole.id)) return message.channel.send('**This Person Already Tempmuted !**');
-                if(!muteRole) return message.guild.createRole({ name: "Muted", permissions: [] });
-                if(!time) return message.channel.send("**Type The Duration**");
-                if(!time.match(/[1-60][s,m,h,d,w]/g)) return message.channel.send('**The Bot Not Support This Time**');
-                if(!muteReason) return message.channel.send('Please Type The Reason')
-                message.guild.member(mutePerson).addRole(muteRole);
-                message.channel.send(`**:white_check_mark: ${mutePerson} has been muted ! :zipper_mouth: **`)
-                message.delete()
-                let muteEmbed = new Discord.RichEmbed()
-                .setTitle(`New Temp Muted User`)
-                .setThumbnail(message.guild.iconURL)
-                .addField('- Muted By:',message.author,true)
-                .addField('- Muted User:', `${mutePerson}`)
-                .addField('- Reason:',muteReason,true)
-                .addField('- Duration:',`${mmss(mmss(time), {long: true})}`)
-                .setFooter(message.author.username,message.author.avatarURL);
-                let incidentchannel = message.guild.channels.find(`name`, `${log[message.guild.id].channel}`);
-                if(!incidentchannel) return message.channel.send("Can't find log channel. To Set The Log Channel Type >setLog and answer the questions");
-                incidentchannel.sendEmbed(muteEmbed)
-                mutePerson.send(`**You Are has been temp muted in ${message.guild.name} reason: ${muteReason}**`)
-                .then(() => { setTimeout(() => {
-                   message.guild.member(mutePerson).removeRole(muteRole);
-               }, mmss(time));
-            });
-            }
+client.on('message', async message =>{
+  var prefix = "!";
+if (message.author.omar) return;
+if (!message.content.startsWith(prefix)) return;
+if(!message.channel.guild) return message.channel.send('').then(m => m.delete(5000));
+if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**I Don't Have `MANAGE_ROLES` Permission**").then(msg => msg.delete(6000))
+var command = message.content.split(" ")[0];
+command = command.slice(prefix.length);
+var args = message.content.split(" ").slice(1);
+    if(command == "mute") {
+    let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if(!tomute) return message.reply("**Mention any member ..**") .then(m => m.delete(5000));
+    if(tomute.hasPermission("MANAGE_MESSAGES"))return      message.channel.send('**للأسف لا أمتلك صلاحية** `MANAGE_MASSAGEES`');
+    let muterole = message.guild.roles.find(`name`, "Muted");
+    //start of create role
+    if(!muterole){
+      try{
+        muterole = await message.guild.createRole({
+          name: "Muted",
+          color: "#070000",
+          permissions:[]
+        })
+        message.guild.channels.forEach(async (channel, id) => {
+          await channel.overwritePermissions(muterole, {
+            SEND_MESSAGES: false,
+            ADD_REACTIONS: false,
+            SPEAK : false
+          });
         });
+      }catch(e){
+        console.log(e.stack);
+      }
+    }
+    //end of create role
+    let mutetime = args[1];
+    if(!mutetime) return message.reply("**يرجى تحديد وقت الميوت**❌");
+ 
+    await(tomute.addRole(muterole.id));
+message.reply(`<@${tomute.id}> **تم اعطائه ميوت ومدة الميوت** : ${ms(ms(mutetime))}`);
+setTimeout(function(){
+      tomute.removeRole(muterole.id);
+      message.channel.send(`<@${tomute.id}> **انقضى الوقت وتم فك الميوت عن الشخص**✅ `);
+    }, ms(mutetime));
+ 
+ 
+ 
+  }
+if(command === `unmute`) {
+  if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.sendMessage("**ليس لديك صلاحية لفك عن الشخص ميوت**❌ ").then(m => m.delete(5000));
+if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**I Don't Have `MANAGE_ROLES` Permission**").then(msg => msg.delete(6000))
+ 
+  let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
+  if(!toMute) return message.channel.sendMessage("**عليك المنشن أولاّ**❌ ");
+ 
+  let role = message.guild.roles.find (r => r.name === "Muted");
+ 
+  if(!role || !toMute.roles.has(role.id)) return message.channel.sendMessage("**لم يتم اعطاء هذه شخص ميوت من الأساس**❌")
+ 
+  await toMute.removeRole(role)
+  message.channel.sendMessage("**لقد تم فك الميوت عن شخص بنجاح**✅");
+ 
+  return;
+ 
+  }
+ 
+});
+
 
 
 client.on('message', message => {
