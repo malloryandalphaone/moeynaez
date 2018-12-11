@@ -581,7 +581,7 @@ var args = message.content.split(" ").slice(1);
 message.channel.send(`:white_check_mark: <@${tomute.id}> **Muted ${ms(ms(mutetime))}! :zipper_mouth: **`);
 setTimeout(function(){
       tomute.removeRole(muterole.id);
-      message.channel.send(`<@${tomute.id}> **UnMuted Tiomeout!**`);
+      message.channel.send(`<@${tomute.id}> **UnMuted Timeout!**`);
     }, ms(mutetime));
  
  
