@@ -552,7 +552,7 @@ var args = message.content.split(" ").slice(1);
     if(command == "mute") {
     let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!tomute) return message.reply("**Mention any member ..**") .then(m => m.delete(5000));
-    if(tomute.hasPermission("MANAGE_ROLES"))return      message.channel.send('**Sorry, I Don\'t Have Permission ..**');
+    if(tomute.hasPermission("MANAGE_MESSAGE")) return message.channel.send('**Sorry, I Don\'t Have Permission ..**');
     let muterole = message.guild.roles.find(`name`, "Muted");
     //start of create role
     if(!muterole){
