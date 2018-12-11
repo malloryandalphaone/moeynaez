@@ -151,7 +151,7 @@ client.on("message", async message => {
         .then(bans => {
             let b = bans.size;
             let bb = bans.map(a => `${a}`).join(" - ");
-            message.channel.send(`**Blocked List** :\n\n**- **\` IxNight\`\n**- **\` Fqkess\`\n**- **\` HeyImMaliK_\`\n**- **\` Fqkee\`\n**- **\` ClownssDeath\`\n**- **\` S4ICE\`\n\n- ${message.member}`);
+            message.channel.send(`**Blocked List** :\n\n**- **\` IxNight\`\n**- **\` Fqkess\`\n**- **\` HeyImMaliK_\`\n**- **\` Fqkee\`\n**- **\` ClownssDeath\`\n**- **\` S4ICE\`\n**- **\` AmirGamer_78\`\n**- **\` swfleh\`\n**- **\` _Ii3zo\`\n**- **\` 1E_\`\n**- **\` 1YaqSIn\`\n\n- ${message.member}`);
         });
     }
 });
