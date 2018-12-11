@@ -545,14 +545,14 @@ client.on('message', async message =>{
 if (message.author.omar) return;
 if (!message.content.startsWith(prefix)) return;
 if(!message.channel.guild) return message.channel.send('').then(m => m.delete(5000));
-if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**I Don't Have `MANAGE_ROLES` Permission**").then(msg => msg.delete(6000))
+if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**I Don't Have Permission ..**").then(msg => msg.delete(6000))
 var command = message.content.split(" ")[0];
 command = command.slice(prefix.length);
 var args = message.content.split(" ").slice(1);
     if(command == "mute") {
     let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!tomute) return message.reply("**Mention any member ..**") .then(m => m.delete(5000));
-    if(tomute.hasPermission("MANAGE_MESSAGES"))return      message.channel.send('**للأسف لا أمتلك صلاحية** `MANAGE_MASSAGEES`');
+    if(tomute.hasPermission("MANAGE_MESSAGES"))return      message.channel.send('**Sorry, I Don\'t Have Permission ..**');
     let muterole = message.guild.roles.find(`name`, "Muted");
     //start of create role
     if(!muterole){
@@ -575,31 +575,31 @@ var args = message.content.split(" ").slice(1);
     }
     //end of create role
     let mutetime = args[1];
-    if(!mutetime) return message.reply("**يرجى تحديد وقت الميوت**❌");
+    if(!mutetime) return message.reply("**Please use Time ..**");
  
     await(tomute.addRole(muterole.id));
-message.reply(`<@${tomute.id}> **تم اعطائه ميوت ومدة الميوت** : ${ms(ms(mutetime))}`);
+message.channel.send(`<:white_check_mark: <@${tomute.id}> **Muted ${ms(ms(mutetime))}! :zipper_mouth: `);
 setTimeout(function(){
       tomute.removeRole(muterole.id);
-      message.channel.send(`<@${tomute.id}> **انقضى الوقت وتم فك الميوت عن الشخص**✅ `);
+      message.channel.send(`<@${tomute.id}> **UnMuted Tiomeout!**`);
     }, ms(mutetime));
  
  
  
   }
 if(command === `unmute`) {
-  if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.sendMessage("**ليس لديك صلاحية لفك عن الشخص ميوت**❌ ").then(m => m.delete(5000));
-if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**I Don't Have `MANAGE_ROLES` Permission**").then(msg => msg.delete(6000))
+  if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.sendMessage("**You don't have Permission ..**").then(m => m.delete(5000));
+if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**I don't have Permission .. **").then(msg => msg.delete(6000))
  
   let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
-  if(!toMute) return message.channel.sendMessage("**عليك المنشن أولاّ**❌ ");
+  if(!toMute) return message.channel.sendMessage("**Mention Any Member ..**");
  
   let role = message.guild.roles.find (r => r.name === "Muted");
  
-  if(!role || !toMute.roles.has(role.id)) return message.channel.sendMessage("**لم يتم اعطاء هذه شخص ميوت من الأساس**❌")
+  if(!role || !toMute.roles.has(role.id)) return message.channel.sendMessage("**You Already UnMuted!**")
  
   await toMute.removeRole(role)
-  message.channel.sendMessage("**لقد تم فك الميوت عن شخص بنجاح**✅");
+  message.channel.sendMessage(":white_check_mark: **Player Has UnMuted!**");
  
   return;
  
