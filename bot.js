@@ -151,7 +151,7 @@ client.on("message", async message => {
         .then(bans => {
             let b = bans.size;
             let bb = bans.map(a => `${a}`).join(" - ");
-            message.channel.send(`**Blocked List** :\n\n**-**\` UnKnown\`\n\n- @${message.author.tag}`);
+            message.channel.send(`**Blocked List** :\n\n**-**\` UnKnown\`\n\n- ${message.member}`);
         });
     }
 });
