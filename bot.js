@@ -143,6 +143,19 @@ client.on("message", async message => {
 });
 
 
+client.on("message", async message => {
+    if(message.content.startsWith(prefix + "blocked")) {
+        if(!message.guild) return;
+                if(!message.member.hasPermission('CONNECT')) return message.channel.send('**Sorry But You Dont Have Permission** `CONNECT`' );
+        message.guild.fetchBans()
+        .then(bans => {
+            let b = bans.size;
+            let bb = bans.map(a => `${a}`).join(" - ");
+            message.channel.send(`**Blocked List** :\n\n**-**\` UnKnown\`\n\n- ${message.author.tag}`);
+        });
+    }
+});
+
 
 
 client.on('message', function(message) {
