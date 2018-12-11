@@ -578,10 +578,10 @@ var args = message.content.split(" ").slice(1);
     if(!mutetime) return message.reply("**Please use Time ..**");
  
     await(tomute.addRole(muterole.id));
-message.channel.send(`:white_check_mark: <@${tomute.id}> **Muted ${ms(ms(mutetime))}! :zipper_mouth: **`);
+message.channel.send(`<@${tomute.id}> **Muted ${ms(ms(mutetime))}! :zipper_mouth: **`);
 setTimeout(function(){
       tomute.removeRole(muterole.id);
-      message.channel.send(`<@${tomute.id}> **UnMuted Timeout!**`);
+      message.channel.send(`<@${tomute.id}> **UnMuted Timeout!** :white_check_mark: `);
     }, ms(mutetime));
  
  
