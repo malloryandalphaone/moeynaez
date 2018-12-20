@@ -366,12 +366,12 @@ client.on('message', async message => {
                                                         msgS.delete();
                                                         message.author.send(`:white_check_mark: | تم قبولك بالفريق، وسيتم إختبار مهاراتك \n**${message.guild.name}**`);
                                                         message.guild.member(message.author).addRole(modRole.id);
-                                                        message.guild.channels.find(r => r.name === 'النتائج').send(`:white_check_mark: | **تم قبول العضو بالفريق، يرجى إخباره بمراجعة الرسائل الخاصة به**\n\n<@${message.author.id}>`);
+                                                        message.guild.channels.find(r => r.name === 'التقديمات').send(`:white_check_mark: | **تم قبول العضو بالفريق، يرجى إخباره بمراجعة الرسائل الخاصة به**\n\n<@${message.author.id}>`);
                                                     }).catch();
                                                     noAcceptRe.on('collect', r => {
                                                         msgS.delete();
                                                         message.author.send(`:x: | تم رفضك بسيرفر **${message.guild.name}**`);
-                                                        message.guild.channels.find(r => r.name === 'النتائج').send(`:x: | **تم رفض العضو باسباب أدت الى عدم قبوله**\n\n<@${message.author.id}>`);
+                                                        message.guild.channels.find(r => r.name === 'التقديمات').send(`:x: | **تم رفض العضو باسباب أدت الى عدم قبوله**\n\n<@${message.author.id}>`);
                                                     }).catch();
                                                 })
                                             });// Alpha Codes
