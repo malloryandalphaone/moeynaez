@@ -14,23 +14,23 @@ client.user.setStatus('dnd');
 
 client.on("ready", async  => {
 setInterval(function(){
-client.channels.find('id', '520251788016877568').setName("#. ");
-client.channels.find('id', '520251788016877568').setName("#. W");
-client.channels.find('id', '520251788016877568').setName("#. We");
-client.channels.find('id', '520251788016877568').setName("#. Wel");
-client.channels.find('id', '520251788016877568').setName("#. Welc");
-client.channels.find('id', '520251788016877568').setName("#. Welco");
-client.channels.find('id', '520251788016877568').setName("#. Welcom");
-client.channels.find('id', '520251788016877568').setName("#. Welcome");
-client.channels.find('id', '520251788016877568').setName("#. Welcome T");
-client.channels.find('id', '520251788016877568').setName("#. Welcome To");
-client.channels.find('id', '520251788016877568').setName("#. Welcome To S");
-client.channels.find('id', '520251788016877568').setName("#. Welcome To St");
-client.channels.find('id', '520251788016877568').setName("#. Welcome To Str");
-client.channels.find('id', '520251788016877568').setName("#. Welcome To Stri");
-client.channels.find('id', '520251788016877568').setName("#. Welcome To Stric");
-client.channels.find('id', '520251788016877568').setName("#. Welcome To Strict");
-client.channels.find('id', '520251788016877568').setName("#. Welcome To Strict.");
+client.channels.find('id', '520251788016877568').setName("- ");
+client.channels.find('id', '520251788016877568').setName("- W");
+client.channels.find('id', '520251788016877568').setName("- We");
+client.channels.find('id', '520251788016877568').setName("- Wel");
+client.channels.find('id', '520251788016877568').setName("- Welc");
+client.channels.find('id', '520251788016877568').setName("- Welco");
+client.channels.find('id', '520251788016877568').setName("- Welcom");
+client.channels.find('id', '520251788016877568').setName("- Welcome");
+client.channels.find('id', '520251788016877568').setName("- Welcome T");
+client.channels.find('id', '520251788016877568').setName("- Welcome To");
+client.channels.find('id', '520251788016877568').setName("- Welcome To S");
+client.channels.find('id', '520251788016877568').setName("- Welcome To St");
+client.channels.find('id', '520251788016877568').setName("- Welcome To Str");
+client.channels.find('id', '520251788016877568').setName("- Welcome To Stri");
+client.channels.find('id', '520251788016877568').setName("- Welcome To Stric");
+client.channels.find('id', '520251788016877568').setName("- Welcome To Strict");
+client.channels.find('id', '520251788016877568').setName("- Welcome To Strict.");
   }, 3000);
 });
 
@@ -356,8 +356,8 @@ client.on('message', async message => {
                                                 subChannel.send(subMsg).then(msgS => {
                                                     msgS.react('✅').then(() => msgS.react('❎'))
                                                    
-                                                    let accept = (reaction, user) => reaction.emoji.name === '✅'  && user.id === '274255457747468289'
-                                                    let noAccept = (reaction, user) => reaction.emoji.name === '❎' && user.id === '274255457747468289'
+                                                    let accept = (reaction, user) => reaction.emoji.name === '✅'  && user.id === '518113766915702789'
+                                                    let noAccept = (reaction, user) => reaction.emoji.name === '❎' && user.id === '518113766915702789'
                                                    
                                                     let acceptRe = msgS.createReactionCollector(accept);
                                                     let noAcceptRe = msgS.createReactionCollector(noAccept);
@@ -534,7 +534,7 @@ client.user.setAvatar(argresult);
   message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
       } else     
 if (message.content.startsWith(adminprefix + 'stream')) {
-  client.user.setGame(argresult, "https://www.twitch.tv/idk");//wennnn
+  client.user.setGame(argresult, "https://www.twitch.tv/Reeebel");//wennnn
     message.channel.sendMessage(`**تم تغيير تويتش البوت إلى  ${argresult}**`)
 }
 });
@@ -545,14 +545,14 @@ client.on('message', async message =>{
 if (message.author.omar) return;
 if (!message.content.startsWith(prefix)) return;
 if(!message.channel.guild) return message.channel.send('').then(m => m.delete(5000));
-if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**You Don't Have Permission ..**").then(msg => msg.delete(6000))
+if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply("**You Don't Have Permission ..**").then(msg => msg.delete(6000))
 var command = message.content.split(" ")[0];
 command = command.slice(prefix.length);
 var args = message.content.split(" ").slice(1);
     if(command == "mute") {
     let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!tomute) return message.reply("**Mention any member ..**") .then(m => m.delete(5000));
-    if(tomute.hasPermission("MUTE_MEMBERS")) return message.channel.send('**Sorry, I Don\'t Have Permission ..**');
+    if(tomute.hasPermission("MANAGE_ROLE")) return message.channel.send('**Sorry, I Don\'t Have Permission ..**');
     let muterole = message.guild.roles.find(`name`, "Muted");
     //start of create role
     if(!muterole){
@@ -615,7 +615,7 @@ client.on('message', message => {
       var IzRo = new Discord.RichEmbed()
       .setTitle(' عدد اعضاء الكلان  ')
       .addBlankField(true)
-      .addField('.',`${message.guild.memberCount}`)
+      .addField(`${message.guild.memberCount}`)
       message.channel.send(IzRo);
     });
 
@@ -628,6 +628,52 @@ client.on('message', msg => {
         channel.send(msg.member + `\n\n` +msg.content)
     }
 });
+
+client.on('guildMemberAdd', member => {
+     var guild;
+    while (!guild)
+        guild = client.guilds.get("ايدي السيرفر") 
+let channel = member.guild.channels.find('name', 'chát');
+  if (!channel) return; 
+client.channels.get("520252400485793813").send(`عضو ما .. قام بالدخول الى الفريق\nيرجى من الإدارة شرح له طريقة التقديم.\n\n@here`) 
+});
+
+
+client.on('message', msg => {
+
+    if (msg.content == '!join') {
+        if (msg.member.voiceChannel) {
+
+     if (msg.member.voiceChannel.joinable) {
+         msg.member.voiceChannel.join().then(msg.react('white_check_mark'));
+     }
+    }
+}
+})
+client.on('ready', () => {
+    client.channels.get("525832765661380608").join(); 
+    });
+
+
+client.on('message',async message => {
+  if(message.content === '+unbanall') {
+    var user = message.mentions.users.first();
+    if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('❌|**\`ADMINISTRATOR\`لا توجد لديك صلاحية `**');
+    if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**I Don't Have ` BAN_MEMBERS ` Permission**");
+    const guild = message.guild;
+
+  message.guild.fetchBans().then(ba => {
+  ba.forEach(ns => {
+  message.guild.unban(ns);
+  const embed= new Discord.RichEmbed()
+        .setColor("FFFFFF")
+        .setDescription(`**:white_check_mark: Has Been Unban For All**`)
+  message.channel.sendEmbed(embed);
+  guild.owner.send(`:white_check_mark: **All has Been Unban By <@${message.author.id}> **`) 
+  });
+  });
+  }
+  });
 
 
 
