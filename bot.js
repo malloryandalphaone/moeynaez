@@ -35,22 +35,6 @@ client.channels.find('id', '520251788016877568').setName("- Welcome To Strict.")
 });
 
 
-
-client.on("message", async message => {
-    if(message.content.startsWith(prefix + "banlist")) {
-        if(!message.guild) return;
-                if(!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send('**Sorry But You Dont Have Permission** `BAN_MEMBERS`' );
-        message.guild.fetchBans()
-        .then(bans => {
-            let b = bans.size;
-            let bb = bans.map(a => `${a}`).join(" - ");
-            message.channel.send(`**\`${b}\` | ${bb}**`);
-        });
-    }
-});
-
-
-
 client.on("message", async message => {
     if(message.content.startsWith(prefix + "teams")) {
         if(!message.guild) return;
@@ -167,33 +151,6 @@ client.on("message", message => {
 });
 
 
-
-
-
-client.on('message', message => {
-
-if (message.content === prefix + "mutechannel") {
-if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**You don’t have `Manage Messages` permissions**');
-           message.channel.overwritePermissions(message.guild.id, {
-         SEND_MESSAGES: false
-
-           }).then(() => {
-               message.reply("Channel Muted ✅ ")
-           });
-}
-  if (message.content === prefix + "unmutechannel") {
-if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**You don’t have `Manage Messages` permissions**');
-           message.channel.overwritePermissions(message.guild.id, {
-         SEND_MESSAGES: true
-
-           }).then(() => {
-               message.reply("Channel UnMuted ✅ ")
-           });
-}
-  
-
-});
-
 client.on("message", message => {
 
             if (message.content.startsWith(prefix + "bc")) {
@@ -208,11 +165,6 @@ client.on("message", message => {
 };     
 });
 
-
-
-client.on('ready', () => {
-	console.log('I am ready!'); 
-  });
 
 client.on('message', msg => {
   if(msg.author.bot) return;
@@ -263,24 +215,6 @@ if (!message.member.hasPermission("ADMINISTRATOR"))  return;
 
 
 });
-
-
-
- client.on("message",  message => {
-         let args = message.content.split(' ').slice(1);
-    if(message.content.startsWith(prefix + 'nick')) {
-        if (!message.member.hasPermission("MANAGE_NICKNAMES")) {
-            message.channel.send("يجب أن تضع اسم ..")
-        } else {
-            if (!message.guild.member(client.user).hasPermission('MANAGE_NICKNAMES')) return message.reply(' :x:البوت ما عنده خاصية MANAGE_NICKNAMES.').catch(console.error);
-            let changenick = message.mentions.users.first();
-            let username = args.slice(1).join(' ')
-            if (username.length < 1) return message.reply('حط الاسم').catch(console.error);
-            if (message.mentions.users.size < 1) return message.author.send('You must mention a user to change their nickname. :x:').catch(console.error);
-            message.guild.member(changenick.id).setNickname(username);
-            message.channel.send("تم تغيير الاسم الى: " + changenick + "")
-        }
-    }});
 
 
 client.on('message', async message => {
@@ -545,14 +479,14 @@ client.on('message', async message =>{
 if (message.author.omar) return;
 if (!message.content.startsWith(prefix)) return;
 if(!message.channel.guild) return message.channel.send('').then(m => m.delete(5000));
-if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply("**You Don't Have Permission ..**").then(msg => msg.delete(6000))
+if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**You Don't Have Permission ..**").then(msg => msg.delete(6000))
 var command = message.content.split(" ")[0];
 command = command.slice(prefix.length);
 var args = message.content.split(" ").slice(1);
     if(command == "mute") {
     let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!tomute) return message.reply("**Mention any member ..**") .then(m => m.delete(5000));
-    if(tomute.hasPermission("MANAGE_ROLE")) return message.channel.send('**Sorry, I Don\'t Have Permission ..**');
+    if(tomute.hasPermission("MUTE_MEMBERS")) return message.channel.send('**Sorry, I Don\'t Have Permission ..**');
     let muterole = message.guild.roles.find(`name`, "Muted");
     //start of create role
     if(!muterole){
@@ -614,8 +548,7 @@ client.on('message', message => {
       if(message.content =='!اعضاء')
       var IzRo = new Discord.RichEmbed()
       .setTitle(' عدد اعضاء الكلان  ')
-      .addBlankField(true)
-      .addField(`${message.guild.memberCount}`)
+      .setDiscreption(`${message.guild.memberCount}`)
       message.channel.send(IzRo);
     });
 
@@ -632,7 +565,7 @@ client.on('message', msg => {
 client.on('guildMemberAdd', member => {
      var guild;
     while (!guild)
-        guild = client.guilds.get("ايدي السيرفر") 
+        guild = client.guilds.get("488259622730203137") 
 let channel = member.guild.channels.find('name', 'chát');
   if (!channel) return; 
 client.channels.get("520252400485793813").send(`عضو ما .. قام بالدخول الى الفريق\nيرجى من الإدارة شرح له طريقة التقديم.\n\n@here`) 
