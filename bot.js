@@ -12,6 +12,64 @@ client.user.setStatus('dnd');
 });
 
 
+client.on('message', message => {
+  const port = '25565'
+  if(message.content.startsWith('!stats')) {
+ const args = message.content.split(" ").slice(1).join(" ")
+    if (!args) return message.channel.send("** Write Server IP . **");
+        let embed = new Discord.RichEmbed()
+        .setColor('WHITE')
+        .setThumbnail(`https://api.minetools.eu/favicon/${args}/25565`)
+        .addField("📜 Server NIP",`${args}`,true)
+        .addField("🌐 Server Port",`${port}`)
+        .setImage(`http://status.mclive.eu/${args}/${args}/25565/banner.png`)
+        .setFooter(`Server MineCraft Stats`)
+    message.channel.send(embed)      
+}});
+
+
+
+
+client.on("message", msg => { 
+  if(msg.author.bot) return;
+  if(msg.channel.type === 'dm') return;
+let prefix = '!'; //البرفكس
+let msgarray = msg.content.split(" ");
+let cmd = msgarray[0];
+let args = msgarray.slice(1);
+if(cmd === `${prefix}warn`){//الامر
+  
+  
+
+  let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
+if(!rUser) return msg.channel.send("Couldn't find users.");
+    let reason = args.join(" ").slice(22);
+
+    let reportembed = new Discord.RichEmbed()
+    .setDescription("Warn")
+    .setColor("WHITE")
+    .addField("Warn User", `${rUser} with ID: ${rUser.id}`)
+    .addField("Warn By", `${msg.author} with ID: ${msg.author.id}`)
+    .addField("Reason",`${reason}`)
+    
+    
+    let reportchannel = msg.guild.channels.find(`name`,"・chát"); //حط هنا اسم الروم الي يوريك بعض المعلومات
+    if(!reportchannel) return msg.channel.send("Couldn't find `・chát` channel. "); //ط هنا اسم الروم الي يوريك بعض المعلومات
+    
+    msg.delete().catch(O_o=>{});
+    reportchannel.send(reportembed);
+    let role = msg.guild.roles.find(`name`, '・Warn'); //حط هنا اسم الرتبة
+    if(!role) return msg.guild.channel.send("Could't find `اسم الرتبة` role."); //حط هنا اسم الرتبة
+    rUser.addRole(role);
+    
+        return;
+    }
+    });
+
+
+
+
+
 client.on("ready", async  => {
 setInterval(function(){
 client.channels.find('id', '520251788016877568').setName("✦");
@@ -566,7 +624,7 @@ client.on('guildMemberAdd', member => {
      var guild;
     while (!guild)
         guild = client.guilds.get("488259622730203137") 
-let channel = member.guild.channels.find('name', 'chát');
+let channel = member.guild.channels.find('name', '・chát');
   if (!channel) return; 
 client.channels.get("520252400485793813").send(`عضو ما .. قام بالدخول الى الفريق\nيرجى من الإدارة شرح له طريقة التقديم.\n\n@here`) 
 });
