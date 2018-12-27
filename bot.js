@@ -283,7 +283,7 @@ client.on('message', async message => {
     var fromwhere = '';
     var fa2dh = '';
     var filter = m => m.author.id === message.author.id;
-    var subChannel = message.guild.channels.find(c => c.name === 'requests');
+    var subChannel = message.guild.channels.find(c => c.name === '・requests');
    
     if(command == prefix + 'strict') {
         if(message.author.bot) return;
