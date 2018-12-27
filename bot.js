@@ -38,19 +38,19 @@ let msgarray = msg.content.split(" ");
 let cmd = msgarray[0];
 let args = msgarray.slice(1);
 if(cmd === `${prefix}warn`){//الامر
-  
+if (!msg.member.hasPermission("MANAGE_ROLES")) return msg.channel.send('**:x: You don\'t have Permission.**');
   
 
   let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
-if(!rUser) return msg.channel.send("Couldn't find users.");
+if(!rUser) return msg.channel.send("يجب أن يتم تحديد شخص لإعطائه إنذار ..");
     let reason = args.join(" ").slice(22);
 
     let reportembed = new Discord.RichEmbed()
-    .setDescription("Warn")
+    .setDescription("إنذار جديد بشأن مخالفة")
     .setColor("WHITE")
-    .addField("Warn User", `${rUser} with ID: ${rUser.id}`)
-    .addField("Warn By", `${msg.author} with ID: ${msg.author.id}`)
-    .addField("Reason",`${reason}`)
+    .addField("- Warn User", `${rUser}`)
+    .addField("- Warn By", `${msg.author}`)
+    .addField("- Reason",`${reason}`)
     
     
     let reportchannel = msg.guild.channels.find(`name`,"・chát"); //حط هنا اسم الروم الي يوريك بعض المعلومات
