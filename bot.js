@@ -624,7 +624,7 @@ client.on('guildMemberAdd', member => {
      var guild;
     while (!guild)
         guild = client.guilds.get("488259622730203137") 
-let channel = member.guild.channels.find('name', '・chát');
+let channel = member.guild.channels.find('name', 'chát');
   if (!channel) return; 
 client.channels.get("520252400485793813").send(`عضو ما .. قام بالدخول الى الفريق\nيرجى من الإدارة شرح له طريقة التقديم.\n\n@here`) 
 });
