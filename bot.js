@@ -292,7 +292,7 @@ client.on('message', async message => {
         var modRole = message.guild.roles.find(r => r.name === '- Trying..');
        
         if(message.guild.member(message.author).roles.has(modRole.id)) return message.channel.send('بالفعل لديك الرتبة');
-        if(!subChannel) return message.channel.send('يجب أن يتوفر روم بأسم :: التقديمات`');
+        if(!subChannel) return message.channel.send('يجب أن يتوفر روم بأسم :: Requests');
        
         message.channel.send(':timer: | **أرسل، إسمك الحقيقي**').then(msgS => {
             message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] }).then(collected => {
