@@ -667,8 +667,6 @@ client.on('message',async message => {
   });
 
 
-
-const ms = require("ms");
   client.on("message", message => {
  if(!message.channel.guild) return;  
   if (message.author.bot) return;
