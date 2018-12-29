@@ -537,14 +537,14 @@ client.on('message', async message =>{
 if (message.author.omar) return;
 if (!message.content.startsWith(prefix)) return;
 if(!message.channel.guild) return message.channel.send('').then(m => m.delete(5000));
-if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply("**I don't have permission**").then(msg => msg.delete(6000))
+if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**I don't have permission**").then(msg => msg.delete(6000))
 var command = message.content.split(" ")[0];
 command = command.slice(prefix.length);
 var args = message.content.split(" ").slice(1);
     if(command == "mute") {
     let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!tomute) return message.reply("**Mention Player..**") .then(m => m.delete(5000));
-    if(tomute.hasPermission("MUTE_MEMBERS"))return message.channel.send('**I don\'t have permission.**');
+    if(tomute.hasPermission("MANAGE_ROLES"))return message.channel.send('**I don\'t have permission.**');
     let muterole = message.guild.roles.find(`name`, "Muted");
     //start of create role
     if(!muterole){
