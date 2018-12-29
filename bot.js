@@ -67,32 +67,6 @@ if(!rUser) return msg.channel.send("يجب أن يتم تحديد شخص لإع�
     });
 
 
-
-
-
-client.on("ready", async  => {
-setInterval(function(){
-client.channels.find('id', '520251788016877568').setName("✦");
-client.channels.find('id', '520251788016877568').setName("✦ }ٍ W");
-client.channels.find('id', '520251788016877568').setName("✦ }ٍ We");
-client.channels.find('id', '520251788016877568').setName("✦ }ٍ Wel");
-client.channels.find('id', '520251788016877568').setName("✦ }ٍ Welc");
-client.channels.find('id', '520251788016877568').setName("✦ }ٍ Welco");
-client.channels.find('id', '520251788016877568').setName("✦ }ٍ Welcom");
-client.channels.find('id', '520251788016877568').setName("✦ }ٍ Welcome");
-client.channels.find('id', '520251788016877568').setName("✦ }ٍ Welcome T");
-client.channels.find('id', '520251788016877568').setName("✦ }ٍ Welcome To");
-client.channels.find('id', '520251788016877568').setName("✦ }ٍ Welcome To S");
-client.channels.find('id', '520251788016877568').setName("✦ }ٍ Welcome To St");
-client.channels.find('id', '520251788016877568').setName("✦ }ٍ Welcome To Str");
-client.channels.find('id', '520251788016877568').setName("✦ }ٍ Welcome To Stri");
-client.channels.find('id', '520251788016877568').setName("✦ }ٍ Welcome To Stric");
-client.channels.find('id', '520251788016877568').setName("✦ }ٍ Welcome To Strict");
-client.channels.find('id', '520251788016877568').setName("✦ }ٍ Welcome To Strict.");
-  }, 3000);
-});
-
-
 client.on("message", async message => {
     if(message.content.startsWith(prefix + "teams")) {
         if(!message.guild) return;
@@ -143,12 +117,12 @@ client.on("guildMemberAdd", member => {
   member.createDM().then(function (channel) {
   return channel.send(`${member}
 
-- Welcome to Stict Clan.
-- مرحباََ بك في فريق ستريكت.
+- Welcome to Cavalier Team.
+- مرحباََ بك في فريق الفرسآن.
 
 أمر التقديم :
 
-\`!Strict .\``) 
+\`!cr .\``) 
 }).catch(console.error)
 });
 
@@ -283,13 +257,13 @@ client.on('message', async message => {
     var fromwhere = '';
     var fa2dh = '';
     var filter = m => m.author.id === message.author.id;
-    var subChannel = message.guild.channels.find(c => c.name === '・requests');
+    var subChannel = message.guild.channels.find(c => c.name === 'requests');
    
-    if(command == prefix + 'strict') {
+    if(command == prefix + 'cr') {
         if(message.author.bot) return;
         if(message.channel.type === 'dm') return;
  
-        var modRole = message.guild.roles.find(r => r.name === '- Trying..');
+        var modRole = message.guild.roles.find(r => r.name === '⁎ Cavalier.');
        
         if(message.guild.member(message.author).roles.has(modRole.id)) return message.channel.send('بالفعل لديك الرتبة');
         if(!subChannel) return message.channel.send('يجب أن يتوفر روم بأسم :: Requests');
@@ -386,7 +360,7 @@ client.on('message', async message => {
 
 client.on ("guildMemberAdd", member => {
   
-   var role = member.guild.roles.find ("name", "- Want to join Stict Clan,");
+   var role = member.guild.roles.find ("name", "⁎ Join Cavaliers Team.");
    member.addRole (role);
   
 });
@@ -409,7 +383,7 @@ client.on ("guildMemberAdd", member => {
   if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**I Don't Have ` BAN_MEMBERS ` Permission**");
   let user = message.mentions.users.first();
   
-  if (message.mentions.users.size < 1) return message.reply("**منشن شخص**");
+  if (message.mentions.users.size < 1) return message.channel.send("**Mention any Members.**");
   if (!message.guild.member(user)
   .bannable) return message.reply("**يجب ان تكون رتبة البوت اعلي من رتبه الشخص المراد تبنيدة**");
 
@@ -468,8 +442,8 @@ const prefix = "!";
   let user = message.mentions.users.first();
   let reason = message.content.split(" ").slice(2).join(" ");
 
-  if (message.mentions.users.size < 1) return message.reply("منشن شخص");
-  if(!reason) return message.reply ("اكتب سبب الطرد");
+  if (message.mentions.users.size < 1) return message.channel.send("**Mention Any Members.**");
+  if(!reason) return message.channel.send("**Supply a Reason.**");
   if (!message.guild.member(user)
   .bannable) return message.reply("لايمكنني طرد شخص اعلى من رتبتي");
 
@@ -604,19 +578,16 @@ if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return mess
 
 client.on('message', message => {
               if (!message.channel.guild) return;
-      if(message.content =='!اعضاء')
-      var IzRo = new Discord.RichEmbed()
-      .setTitle(' عدد اعضاء الكلان  ')
-      .setDiscreption(`${message.guild.memberCount}`)
-      message.channel.send(IzRo);
+      if(message.content =='!cavalier')
+      message.channel.send('**- Cavalier Members : __`${message.guild.memberCount}`__**');
     });
 
 
 client.on('message', msg => {
     if(!msg.guild) return;
-    if(msg.channel.id === '520264177126735882') {
+    if(msg.channel.id === '528499542274867200') {
     msg.delete().then
-        var channel = msg.guild.channels.get("520780758818750474")
+        var channel = msg.guild.channels.get("528511961563136000")
         channel.send(msg.member + `\n\n` +msg.content)
     }
 });
@@ -625,9 +596,9 @@ client.on('guildMemberAdd', member => {
      var guild;
     while (!guild)
         guild = client.guilds.get("488259622730203137") 
-let channel = member.guild.channels.find('name', '・chát');
+let channel = member.guild.channels.find('name', 'cavalier');
   if (!channel) return; 
-client.channels.get("520252400485793813").send(`عضو ما .. قام بالدخول الى الفريق\nيرجى من الإدارة شرح له طريقة التقديم.\n\n@here`) 
+client.channels.get("528498338417606656").send(`عضو ما .. قام بالدخول الى الفريق\nيرجى من الإدارة شرح له طريقة التقديم.\n\n@here`) 
 });
 
 
