@@ -8,7 +8,7 @@ const ms = require("ms");
 client.on("ready", () => {
 client.user.setStatus('dnd');
   console.log("Reeebel | Logged in! Server count: ${client.guilds.size}");
-  client.user.setGame(`Strict System`);
+  client.user.setGame(`Cavalier .`);
 });
 
 
