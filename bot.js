@@ -544,7 +544,7 @@ var args = message.content.split(" ").slice(1);
     if(command == "mute") {
      if(!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send(':x: **You don\'t have permission.**');
     let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!tomute) return message.reply("**Mention Player..**") .then(m => m.delete(5000));
+    if(!tomute) return message.channel.send("**Mention Player..**") .then(m => m.delete(5000));
     let muterole = message.guild.roles.find(`name`, "Muted");
     //start of create role
     if(!muterole){
@@ -567,10 +567,10 @@ var args = message.content.split(" ").slice(1);
     }
     //end of create role
     let mutetime = args[1];
-    if(!mutetime) return message.reply(":x: **Supply Time.**");
+    if(!mutetime) return message.channel.send(":x: **Supply Time.**");
  
     await(tomute.addRole(muterole.id));
-message.reply(`<@${tomute.id}> ****Muted ${ms(ms(mutetime))} **:zipper_mouth:`);
+message.channel.send(`<@${tomute.id}> **Muted ${ms(ms(mutetime))}** :zipper_mouth:`);
 setTimeout(function(){
       tomute.removeRole(muterole.id);
       message.channel.send(`<@${tomute.id}> **UnMuted Timeout!** :white_check_mark:`);
@@ -661,7 +661,7 @@ client.on('message',async message => {
         .setColor("FFFFFF")
         .setDescription(`**:white_check_mark: Has Been Unban For All**`)
   message.channel.sendEmbed(embed);
-  guild.owner.send(`:white_check_mark: **All has Been Unban By <@${message.author.id}> **`) 
+  guild.owner.send(`:white_check_mark: **has Been Unban By <@${message.author.id}> **`) 
   });
   });
   }
