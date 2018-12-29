@@ -581,7 +581,7 @@ setTimeout(function(){
   }
 if(command === `unmute`) {
   if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.sendMessage("**You don't have Permission ..**").then(m => m.delete(5000));
-if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**I don't have Permission .. **").then(msg => msg.delete(6000))
+  if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**I don't have Permission .. **").then(msg => msg.delete(6000))
  
   let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
   if(!toMute) return message.channel.sendMessage("**Mention Any Member ..**");
@@ -717,7 +717,7 @@ client.on('message',function(message) {
        .then(() => { setTimeout(() => {
            muteMember.removeRole(muteRole)
            muteMember.setMute(false)
-       }, mmss(muteDuration));
+       }, ms(muteDuration));
        });
    }
 });
