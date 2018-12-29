@@ -442,6 +442,7 @@ const prefix = "!";
 
 client.on('message', message => {
     if (message.content.startsWith("!avatar")) {
+    if (!message.member.hasPermission("ADMINSTRATOR")) return message.channel.send('**You don\'t have permission.**');
         var mentionned = message.mentions.users.first();
     var x5bzm;
       if(mentionned){
