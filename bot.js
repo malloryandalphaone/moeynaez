@@ -456,7 +456,7 @@ client.on('message', message => {
 });
 
 
-const adminprefix = "!";
+const adminprefix = "!!";
 const devs = ['ايدي2','518113766915702789'];
 client.on('message', message => {
   var argresult = message.content.split(` `).slice(1).join(' ');
