@@ -532,20 +532,20 @@ if (message.content.startsWith(adminprefix + 'stream')) {
 });
 
 
+
 client.on('message', async message =>{
-  var prefix = "!";
 if (message.author.omar) return;
 if (!message.content.startsWith(prefix)) return;
 if(!message.channel.guild) return message.channel.send('').then(m => m.delete(5000));
-if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply(":x: **You Don't Have Permission ..**").then(msg => msg.delete(6000))
+if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**I don't have permission**").then(msg => msg.delete(6000))
 var command = message.content.split(" ")[0];
 command = command.slice(prefix.length);
 var args = message.content.split(" ").slice(1);
-    if(command == "mute") {  
-    if (!message.member.hasPermission('MANAGE_ROLES')) return;
+    if(command == "mute") {
+     if(!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send(':x: **You don\'t have permission.');
     let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!tomute) return message.reply("**Mention any member ..**") .then(m => m.delete(5000));
-    if(tomute.hasPermission("MANAGE_ROLES")) return message.channel.send(':x: **I Don\'t Have Permission ..**');
+    if(!tomute) return message.reply("**Mention Player..**") .then(m => m.delete(5000));
+    if(tomute.hasPermission("MANAGE_MESSAGES"))return      message.channel.send('**I don\'t have permission.**');
     let muterole = message.guild.roles.find(`name`, "Muted");
     //start of create role
     if(!muterole){
@@ -568,10 +568,10 @@ var args = message.content.split(" ").slice(1);
     }
     //end of create role
     let mutetime = args[1];
-    if(!mutetime) return message.reply("**Please use Time ..**");
+    if(!mutetime) return message.reply(":x: **Supply Time.**");
  
     await(tomute.addRole(muterole.id));
-message.channel.send(`<@${tomute.id}> **Muted ${ms(ms(mutetime))}! :zipper_mouth:**`);
+message.reply(`<@${tomute.id}> ****Muted ${ms(ms(mutetime))} **:zipper_mouth:`);
 setTimeout(function(){
       tomute.removeRole(muterole.id);
       message.channel.send(`<@${tomute.id}> **UnMuted Timeout!** :white_check_mark:`);
@@ -581,24 +581,25 @@ setTimeout(function(){
  
   }
 if(command === `unmute`) {
-  if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.sendMessage("**You don't have Permission ..**").then(m => m.delete(5000));
-  if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**I don't have Permission .. **").then(msg => msg.delete(6000))
+  if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.sendMessage("**You don't have permission.").then(m => m.delete(5000));
+if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**I don't have permission**").then(msg => msg.delete(6000))
  
   let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
-  if(!toMute) return message.channel.sendMessage("**Mention Any Member ..**");
+  if(!toMute) return message.channel.sendMessage(":x: **Mention**");
  
   let role = message.guild.roles.find (r => r.name === "Muted");
  
-  if(!role || !toMute.roles.has(role.id)) return message.channel.sendMessage("**You Already UnMuted!**")
+  if(!role || !toMute.roles.has(role.id)) return message.channel.sendMessage("** Already UnMuted!**")
  
   await toMute.removeRole(role)
-  message.channel.sendMessage(":white_check_mark: **Player Has UnMuted!**");
+  message.channel.sendMessage(":white_check_mark: **Player has been UnMuted!**");
  
   return;
  
   }
  
 });
+
 
 
 
