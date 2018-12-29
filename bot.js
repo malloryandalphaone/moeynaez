@@ -67,33 +67,17 @@ if(!rUser) return msg.channel.send("يجب أن يتم تحديد شخص لإع�
     });
 
 
-client.on("message", async message => {
-    if(message.content.startsWith(prefix + "teams")) {
-        if(!message.guild) return;
-                if(!message.member.hasPermission('CONNECT')) return message.channel.send('**Sorry But You Dont Have Permission** `CONNECT`' );
-        message.guild.fetchBans()
-        .then(bans => {
-            let b = bans.size;
-            let bb = bans.map(a => `${a}`).join(" - ");
-            message.channel.send(`**Teams Clan Strict** :\n\n**.**\` Reeebel\`\n**.**\` Mr447\`\n**.**\` IceCrash_\`\n**.**\` ImAbuSalem\`\n**.**\` iLuvkill\`\n**.**\` vD7oomy\`\n**.**\` ii9l3a_\`\n**.**\` s7pg\`\n**.**\` HeRoYeeN\`\n**.**\` OnlyRiZx\`\n**.**\` NightS3m\`\n**.**\` CuzImHassanYT\`\n**.**\` Abdullah_Boss\`\n**.**\` K1nqLxrD\`\n**.**\` Quixxyy\`\n**.**\` ImTry\`\n**.**\` xFn_\`\n**.**\` CuzImAlbors\`\n**.**\` i_zull\`\n**.**\` Hima_YT\`\n**.**\`enseleit\``);
-        });
-    }
-});
+client.on('message', message => {
+              if (!message.channel.guild) return;
+      if(message.content =='!cavalier')
+      message.channel.send('**- Cavalier Teams :**\n- `ReeeBeL`\n- `Mr447`\n- `IceCrash_`\n- `s7pg`\n- `iLukill`\n- `CuzImHassanYT`\n- `1iLegqend`\n- `1zull`\n- `HeRoYeeN`\n- `AbuSalem`\n- `ImTry`\n- `Quixxyy`\n- `ii9l3a_`\n- `ii_Mosleh`\n- `OnlyRiZx`\n- `vD7oomy`\n- `xFn_`\n- `Hima_YT`\n- `NightS3m`\n- `iTzCommander`\n- `K1nqLxrD`\n- `enseleit`');
+    });
 
-
-client.on("message", async message => {
-    if(message.content.startsWith(prefix + "blocked")) {
-        if(!message.guild) return;
-                if(!message.member.hasPermission('CONNECT')) return message.channel.send('**Sorry But You Dont Have Permission** `CONNECT`' );
-        message.guild.fetchBans()
-        .then(bans => {
-            let b = bans.size;
-            let bb = bans.map(a => `${a}`).join(" - ");
-            message.channel.send(`**Blocked List** :\n\n**- **\` IxNight\`\n**- **\` Fqkess\`\n**- **\` HeyImMaliK_\`\n**- **\` Fqkee\`\n**- **\` ClownssDeath\`\n**- **\` S4ICE\`\n**- **\` AmirGamer_78\`\n**- **\` swfleh\`\n**- **\` _Ii3zo\`\n**- **\` 1E_\`\n**- **\` 1YaqSIn\`\n\n- ${message.member}`);
-        });
-    }
-});
-
+cclient.on('message', message => {
+              if (!message.channel.guild) return;
+      if(message.content =='!cavalier')
+      message.channel.send('**- Cavalier Blacklist :**\n- `ClownsFqkess`\n- `ClownsDeath`\n- `S4ICE`\n- `_Ii3zo`\n- `ClownsFqkess`\n- `IxNight`\n- `AmirGamer_78`\n- `HeyImMaLik_`\n- `1YqSIn`\n- `1E_`\n- `swfleh`');
+    });
 
 
 client.on('message', function(message) {
@@ -573,14 +557,6 @@ if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return mess
  
 });
 
-
-
-
-client.on('message', message => {
-              if (!message.channel.guild) return;
-      if(message.content =='!cavalier')
-      message.channel.send('**- Cavalier Members : ${message.guild.memberCount} **');
-    });
 
 
 client.on('message', msg => {
