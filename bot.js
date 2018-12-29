@@ -438,11 +438,8 @@ const prefix = "!";
 }
 });
 
-
-
 client.on('message', message => {
-    if (message.content.startsWith("!avatar")) {
-    if (!message.member.hasPermission("ADMINSTRATOR")) return message.channel.send('**You don\'t have permission.**');
+    if (message.content.startsWith("!aavatarr")) {
         var mentionned = message.mentions.users.first();
     var x5bzm;
       if(mentionned){
@@ -457,12 +454,6 @@ client.on('message', message => {
       message.channel.sendEmbed(embed);
     }
 });
-
-
-
-
-
-
 
 
 const adminprefix = "!";
