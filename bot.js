@@ -602,22 +602,6 @@ client.channels.get("528498338417606656").send(`عضو ما .. قام بالدخ
 });
 
 
-client.on('message', msg => {
-
-    if (msg.content == '!join') {
-        if (msg.member.voiceChannel) {
-
-     if (msg.member.voiceChannel.joinable) {
-         msg.member.voiceChannel.join().then(msg.react('white_check_mark'));
-     }
-    }
-}
-})
-client.on('ready', () => {
-    client.channels.get("525832765661380608").join(); 
-    });
-
-
 client.on('message',async message => {
   if(message.content === '!unbans') {
     var user = message.mentions.users.first();
