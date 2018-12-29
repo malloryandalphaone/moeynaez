@@ -579,7 +579,7 @@ if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return mess
 client.on('message', message => {
               if (!message.channel.guild) return;
       if(message.content =='!cavalier')
-      message.channel.send('**- Cavalier Members : __`${message.guild.memberCount}`__**');
+      message.channel.send('**- Cavalier Members : ${message.guild.memberCount} **');
     });
 
 
