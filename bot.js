@@ -53,8 +53,8 @@ if(!rUser) return msg.channel.send("يجب أن يتم تحديد شخص لإع�
     .addField("- Reason",`${reason}`)
     
     
-    let reportchannel = msg.guild.channels.find(`name`,"・chát"); //حط هنا اسم الروم الي يوريك بعض المعلومات
-    if(!reportchannel) return msg.channel.send("Couldn't find `・chát` channel. "); //ط هنا اسم الروم الي يوريك بعض المعلومات
+    let reportchannel = msg.guild.channels.find(`name`,"cavalier"); //حط هنا اسم الروم الي يوريك بعض المعلومات
+    if(!reportchannel) return msg.channel.send("Couldn't find `cavalier` channel. "); //ط هنا اسم الروم الي يوريك بعض المعلومات
     
     msg.delete().catch(O_o=>{});
     reportchannel.send(reportembed);
