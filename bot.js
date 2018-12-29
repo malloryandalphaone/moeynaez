@@ -544,7 +544,7 @@ var args = message.content.split(" ").slice(1);
     if(command == "mute") {
     let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!tomute) return message.reply("**Mention any member ..**") .then(m => m.delete(5000));
-    if(tomute.hasPermission("MUTE_MEMBERS")) return message.channel.send('**Sorry, I Don\'t Have Permission ..**');
+    if(tomute.hasPermission("MANAGE_ROLES")) return message.channel.send('**Sorry, I Don\'t Have Permission ..**');
     let muterole = message.guild.roles.find(`name`, "Muted");
     //start of create role
     if(!muterole){
@@ -624,7 +624,7 @@ client.on('guildMemberAdd', member => {
      var guild;
     while (!guild)
         guild = client.guilds.get("488259622730203137") 
-let channel = member.guild.channels.find('name', 'chát');
+let channel = member.guild.channels.find('name', '・chát');
   if (!channel) return; 
 client.channels.get("520252400485793813").send(`عضو ما .. قام بالدخول الى الفريق\nيرجى من الإدارة شرح له طريقة التقديم.\n\n@here`) 
 });
