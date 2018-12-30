@@ -70,7 +70,7 @@ if(!rUser) return msg.channel.send("يجب أن يتم تحديد شخص لإع�
 client.on('message', message => {
               if (!message.channel.guild) return;
       if(message.content =='!cavaliers')
-      message.channel.send('**- Cavalier Teams :**\n- `ReeeBeL`\n- `Mr447`\n- `IceCrash_`\n- `s7pg`\n- `iLukill`\n- `CuzImHassanYT`\n- `1iLegqend`\n- `1zull`\n- `HeRoYeeN`\n- `AbuSalem`\n- `ImTry`\n- `Quixxyy`\n- `ii9l3a_`\n- `ii_Mosleh`\n- `OnlyRiZx`\n- `vD7oomy`\n- `xFn_`\n- `Hima_YT`\n- `NightS3m`\n- `iTzCommander`\n- `K1nqLxrD`\n- `enseleit`');
+      message.channel.send('**- Cavalier Teams :**\n- `ReeeBeL`\n- `Mr447`\n- `IceCrash_`\n- `s7pg`\n- `iLukill`\n- `CuzImHassanYT`\n- `1iLegqend`\n- `1zull`\n- `HeRoYeeN`\n- `AbuSalem`\n- `ImTry`\n- `Quixxyy`\n- `ii9l3a_`\n- `ii_Mosleh`\n- `OnlyRiZx`\n- `vD7oomy`\n- `xFn_`\n- `Hima_YT`\n- `R2haf`\n- `iTzCommander`\n- `K1nqLxrD`\n- `enseleit`');
     });
 
 client.on('message', message => {
