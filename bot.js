@@ -108,14 +108,12 @@ if(!rUser) return msg.channel.send("يجب أن يتم تحديد شخص لإع�
 client.on('message', message => {
               if (!message.channel.guild) return;
       if(message.content =='!cavaliers')
-      if (!message.member.hasPermission("PRIORITY_SPEAKER")) return message.channel.send('**:x: You don\'t have permissions**');
       message.channel.send('**- Cavaliers Team :**\n- `ReeeBeL`\n- `Mr447`\n- `IceCrash_`\n- `s7pg`\n- `iLukill`\n- `CuzImHassanYT`\n- `1iLegqend`\n- `1zull`\n- `HeRoYeeN`\n- `AbuSalem`\n- `ImTry`\n- `Quixxyy`\n- `ii9l3a_`\n- `ii_Mosleh`\n- `OnlyRiZx`\n- `vD7oomy`\n- `xFn_`\n- `Hima_YT`\n- `R2haf`\n- `iTzCommander`\n- `K1nqLxrD`\n- `enseleit`');
     });
 
 client.on('message', message => {
               if (!message.channel.guild) return;
       if(message.content =='!blacklist')
-     if (!message.member.hasPermission("PRIORITY_SPEAKER")) return message.channel.send('**:x: You don\'t have permissions**');
       message.channel.send('**- Cavalier Blacklist :**\n- `ClownsFqkess`\n- `ClownsDeath`\n- `S4ICE`\n- `_Ii3zo`\n- `ClownsFqkess`\n- `IxNight`\n- `AmirGamer_78`\n- `HeyImMaLik_`\n- `1YqSIn`\n- `1E_`\n- `swfleh`');
     });
 
