@@ -14,7 +14,7 @@ client.user.setStatus('dnd');
 
 client.on('message', message => {
   const port = '25565'
-  if(message.content.startsWith('!stats')) {
+  if(message.content.startsWith('!server')) {
  const args = message.content.split(" ").slice(1).join(" ")
     if (!args) return message.channel.send("** Write Server IP . **");
         let embed = new Discord.RichEmbed()
@@ -26,6 +26,44 @@ client.on('message', message => {
         .setFooter(`Server MineCraft Stats`)
     message.channel.send(embed)      
 }});
+
+
+
+client.on("message", msg => { 
+  if(msg.author.bot) return;
+  if(msg.channel.type === 'dm') return;
+let prefix = '!'; //البرفكس
+let msgarray = msg.content.split(" ");
+let cmd = msgarray[0];
+let args = msgarray.slice(1);
+if(cmd === `${prefix}warn2`){//الامر
+if (!msg.member.hasPermission("MANAGE_ROLES")) return msg.channel.send('**:x: You don\'t have Permission.**');
+  
+
+  let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
+if(!rUser) return msg.channel.send("**Mention Any Member ..**");
+    let reason = args.join(" ").slice(22);
+
+    let reportembed = new Discord.RichEmbed()
+    .setDescription("You have Warning 2")
+    .setColor("WHITE")
+    .addField("- Warn User", `${rUser}`)
+    .addField("- Warn By", `${msg.author}`)
+    .addField("- Reason",`${reason}`)
+    
+    
+    let reportchannel = msg.guild.channels.find(`name`,"cavalier"); //حط هنا اسم الروم الي يوريك بعض المعلومات
+    if(!reportchannel) return msg.channel.send("Couldn't find `cavalier` channel. "); //ط هنا اسم الروم الي يوريك بعض المعلومات
+    
+    msg.delete().catch(O_o=>{});
+    reportchannel.send(reportembed);
+    let role = msg.guild.roles.find(`name`, '・Warn 2'); //حط هنا اسم الرتبة
+    if(!role) return msg.guild.channel.send("Could't find `اسم الرتبة` role."); //حط هنا اسم الرتبة
+    rUser.addRole(role);
+    
+        return;
+    }
+    });
 
 
 
@@ -70,12 +108,14 @@ if(!rUser) return msg.channel.send("يجب أن يتم تحديد شخص لإع�
 client.on('message', message => {
               if (!message.channel.guild) return;
       if(message.content =='!cavaliers')
-      message.channel.send('**- Cavalier Teams :**\n- `ReeeBeL`\n- `Mr447`\n- `IceCrash_`\n- `s7pg`\n- `iLukill`\n- `CuzImHassanYT`\n- `1iLegqend`\n- `1zull`\n- `HeRoYeeN`\n- `AbuSalem`\n- `ImTry`\n- `Quixxyy`\n- `ii9l3a_`\n- `ii_Mosleh`\n- `OnlyRiZx`\n- `vD7oomy`\n- `xFn_`\n- `Hima_YT`\n- `R2haf`\n- `iTzCommander`\n- `K1nqLxrD`\n- `enseleit`');
+      if (!message.member.hasPermission("PRIORITY_SPEAKER")) return message.channel.send('**:x: You don\'t have permissions**');
+      message.channel.send('**- Cavaliers Team :**\n- `ReeeBeL`\n- `Mr447`\n- `IceCrash_`\n- `s7pg`\n- `iLukill`\n- `CuzImHassanYT`\n- `1iLegqend`\n- `1zull`\n- `HeRoYeeN`\n- `AbuSalem`\n- `ImTry`\n- `Quixxyy`\n- `ii9l3a_`\n- `ii_Mosleh`\n- `OnlyRiZx`\n- `vD7oomy`\n- `xFn_`\n- `Hima_YT`\n- `R2haf`\n- `iTzCommander`\n- `K1nqLxrD`\n- `enseleit`');
     });
 
 client.on('message', message => {
               if (!message.channel.guild) return;
       if(message.content =='!blacklist')
+     if (!message.member.hasPermission("PRIORITY_SPEAKER")) return message.channel.send('**:x: You don\'t have permissions**');
       message.channel.send('**- Cavalier Blacklist :**\n- `ClownsFqkess`\n- `ClownsDeath`\n- `S4ICE`\n- `_Ii3zo`\n- `ClownsFqkess`\n- `IxNight`\n- `AmirGamer_78`\n- `HeyImMaLik_`\n- `1YqSIn`\n- `1E_`\n- `swfleh`');
     });
 
@@ -99,14 +139,22 @@ client.on('message', function(message) {
 
 client.on("guildMemberAdd", member => {
   member.createDM().then(function (channel) {
-  return channel.send(`${member}
+  return channel.send(`
+**اهلاََ وسهلآ .. نورت السيرفر يَ بعد قلبي .**
+**
+- اولاََ :**
+السيرفر مقسوم لقسمين قسم عآم وهو للجميع .. وقسم خآص وهو لفريق معين خآص فينا .
+**
+- ثآنياََ :**
+مخآلفة القوآنين تطبق على جميع الموجودين بالسيرفر .. ولن يستثنى شخص .
+**
+- ثآلثاََ :**
+سيتم إعطائك رتبه واحتمآلية للإدارة فور إثبات تفاعلك واستحقاقك لها .. ولن تكن محصوره للفريق .
 
-- Welcome to Cavalier Team.
-- مرحباََ بك في فريق الفرسآن.
+**
+أمر دخول الفريق : \`!cr\`**
 
-أمر التقديم :
-
-\`!cr .\``) 
+${member} :rose:`) 
 }).catch(console.error)
 });
 
@@ -146,12 +194,12 @@ client.on("message", message => {
 
         var member = message.guild.members.get(message.mentions.users.array()[0].id);
         if(!message.mentions.users){
-            message.reply("please mention the member")
+            message.reply("**Mention Any Member ..**")
             return;
         }
 
     if(!member.voiceChannel){
-    message.reply("i can't include voice channel for member!")
+    message.reply("**i Can't ..**")
     return;
     }
               message.guild.createChannel('voicekick', 'voice').then(c => {
@@ -344,7 +392,7 @@ client.on('message', async message => {
 
 client.on ("guildMemberAdd", member => {
   
-   var role = member.guild.roles.find ("name", "⁎ Join Cavaliers Team.");
+   var role = member.guild.roles.find ("name", "⁎ Just Member.");
    member.addRole (role);
   
 });
@@ -400,7 +448,7 @@ client.on('message', msg => {
     msg.delete().then
     msg.delete().then
     msg.channel.bulkDelete(textxt);
-        msg.channel.send("تم مسح " + textxt + ".").then(m => m.delete(3000));
+        msg.channel.send("تم مسح** " + textxt + ".**").then(m => m.delete(3000));
         }    
     }
 }
@@ -566,7 +614,11 @@ client.on('guildMemberAdd', member => {
         guild = client.guilds.get("488259622730203137") 
 let channel = member.guild.channels.find('name', 'cavalier');
   if (!channel) return; 
-client.channels.get("528498338417606656").send(`عضو ما .. قام بالدخول الى الفريق\nيرجى من الإدارة شرح له طريقة التقديم.\n\n@here`) 
+client.channels.get("528498338417606656").send(`**- Welcome to Cavaliers .**
+
+#laws .
+
+${member}`) 
 });
 
 
