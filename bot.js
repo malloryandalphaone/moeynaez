@@ -588,9 +588,9 @@ if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return mess
 
 client.on('message', msg => {
     if(!msg.guild) return;
-    if(msg.channel.id === '528499542274867200') {
+    if(msg.channel.id === '529441755892809728') {
     msg.delete().then
-        var channel = msg.guild.channels.get("528511961563136000")
+        var channel = msg.guild.channels.get("529441960331837441")
         channel.send(msg.member + `\n\n` +msg.content)
     }
 });
@@ -599,7 +599,7 @@ client.on('guildMemberAdd', member => {
      var guild;
     while (!guild)
         guild = client.guilds.get("488259622730203137") 
-let channel = member.guild.channels.find('name', 'cavalier');
+let channel = member.guild.channels.find('name', 'vast');
   if (!channel) return; 
 client.channels.get("528498338417606656").send(`**- Welcome to Vast .** :rose:
 
@@ -658,21 +658,19 @@ client.on('message',async message => {
  
 client.on('message',function(message) {
  if(!message.channel.guild) return;    let messageArray = message.content.split(' ');
-    let muteRole =  message.guild.roles.find('name', 'Muted');
+    let muteRole =  message.guild.roles.find('name', '- The Best.');
     let muteMember = message.mentions.members.first();
     let muteReason = messageArray[2];
     let muteDuration = messageArray[3];
- if (message.content.split(" ")[0].toLowerCase() === prefix + "muteprem") {
+ if (message.content.split(" ")[0].toLowerCase() === prefix + "best") {
            
   if (message.author.bot) return;
-       if(!muteRole) return message.guild.createRole({name: 'Muted'}).then(message.guild.channels.forEach(chan => chan.overwritePermissions(muteRole, {SEND_MESSAGES:false,ADD_REACTIONS:false})));
+       if(!muteRole) return message.guild.createRole({name: '- The Best'}).then(message.guild.channels.forEach(chan => chan.overwritePermissions(muteRole, {SEND_MESSAGES:false,ADD_REACTIONS:false})));
        if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return message.channel.send(' Error : You Need `` MANAGE_ROLES ``Permission ');
        if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.channel.send(' Error : I Don’t Have `` MANAGE_ROLES ``Permission ');
-       if(!muteMember) return message.channel.send(' Error : ``Mention a User``').then(message => message.delete(4000))
-       if(!muteReason) return message.channel.send(' Error : ``Supply a Reason``').then(message => message.delete(4000))
-       if(!muteDuration) return message.channel.send(' Error : `` Supply Mute Time `` \n Ex: #mute @user reason 1m ').then(message => message.delete(4000))
-       if(!muteDuration.match(/[1-7][s,m,h,d,w]/g)) return message.channel.send(' Error : `` Invalid Mute Duration``').then(message => message.delete(4000))
-       message.channel.send(`${muteMember} Has Been Muted.`).then(message => message.delete(5000))
+       if(!muteMember) return message.channel.send('**Mention Any Member ..**').then(message => message.delete(4000))
+       if(!muteReason) return message.channel.send('**Supply A Reason ..**').then(message => message.delete(4000))
+       message.channel.send(`${muteMember} \n\n:white_check_mark: **has been given Rank \`The Best\`**`).then(message => message.delete(5000))
        muteMember.addRole(muteRole);
        muteMember.setMute(true)
        .then(() => { setTimeout(() => {
