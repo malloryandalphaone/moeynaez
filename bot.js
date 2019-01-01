@@ -666,7 +666,7 @@ client.on('message',async message => {
         if (!message.member.hasPermission('MANAGE_ROLES')) return;
   let user = message.mentions.users.first();
   let modlog = client.channels.find('name', 'log');
-  let muteRole = client.guilds.get(message.guild.id).roles.find('name', '-)»\' Mods.');
+  let muteRole = client.guilds.get(message.guild.id).roles.find('name', '·)» Mods.');
   if (!muteRole) return message.reply("**I Can't Find rank ..**").catch(console.error).then(message => message.delete(4000))
   if (message.mentions.users.size < 1) return message.reply('**Mention Any Member ..**').catch(console.error).then(message => message.delete(4000))
   if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return;
