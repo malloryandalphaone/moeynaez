@@ -80,7 +80,7 @@ if (!msg.member.hasPermission("MANAGE_ROLES")) return msg.channel.send('**:x: Yo
   
 
   let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
-if(!rUser) return msg.channel.send("يجب أن يتم تحديد شخص لإعطائه إنذار ..");
+if(!rUser) return msg.channel.send("**Mention Any Member ..**");
     let reason = args.join(" ").slice(22);
 
     let reportembed = new Discord.RichEmbed()
@@ -220,7 +220,7 @@ client.on("message", message => {
 client.on('message', msg => {
   if(msg.author.bot) return;
   
-  if(msg.content === 'رابط') {
+  if(msg.content === 'link') {
     client.guilds.forEach(g => {
       
       let l = g.id
@@ -282,7 +282,7 @@ client.on('message', async message => {
         if(message.author.bot) return;
         if(message.channel.type === 'dm') return;
  
-        var modRole = message.guild.roles.find(r => r.name === '- Vast.');
+        var modRole = message.guild.roles.find(r => r.name === 'Vaaast !');
        
         if(message.guild.member(message.author).roles.has(modRole.id)) return message.channel.send('**You Already have a Rank ..**');
         if(!subChannel) return message.channel.send('يجب أن يتوفر روم بأسم :: Requests');
@@ -379,8 +379,8 @@ client.on('message', async message => {
 
 client.on ("guildMemberAdd", member => {
   
-   var role = member.guild.roles.find ("name", "- Vast.");
-   member.addRole (role);
+   var role = member.guild.roles.find("name", "- New.");
+   member.addRole(role);
   
 });
 
@@ -601,7 +601,7 @@ client.on('guildMemberAdd', member => {
         guild = client.guilds.get("488259622730203137") 
 let channel = member.guild.channels.find('name', 'vast');
   if (!channel) return; 
-client.channels.get("528498338417606656").send(`**- Welcome to Vast .** :rose:
+client.channels.get("529435960778424331").send(`**- Welcome to Vast .** :rose:
 
 ${member}`) 
 });
