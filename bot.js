@@ -52,13 +52,13 @@ if(!rUser) return msg.channel.send("**Mention Any Member ..**");
     .addField("- Reason",`${reason}`)
     
     
-    let reportchannel = msg.guild.channels.find(`name`,"cavalier"); //حط هنا اسم الروم الي يوريك بعض المعلومات
-    if(!reportchannel) return msg.channel.send("Couldn't find `cavalier` channel. "); //ط هنا اسم الروم الي يوريك بعض المعلومات
+    let reportchannel = msg.guild.channels.find(`name`,"vast"); //حط هنا اسم الروم الي يوريك بعض المعلومات
+    if(!reportchannel) return msg.channel.send("Couldn't find `vast` channel. "); //ط هنا اسم الروم الي يوريك بعض المعلومات
     
     msg.delete().catch(O_o=>{});
     reportchannel.send(reportembed);
     let role = msg.guild.roles.find(`name`, '・Warn 2'); //حط هنا اسم الرتبة
-    if(!role) return msg.guild.channel.send("Could't find `اسم الرتبة` role."); //حط هنا اسم الرتبة
+    if(!role) return msg.guild.channel.send("Could't find `vast` role."); //حط هنا اسم الرتبة
     rUser.addRole(role);
     
         return;
@@ -91,13 +91,13 @@ if(!rUser) return msg.channel.send("يجب أن يتم تحديد شخص لإع�
     .addField("- Reason",`${reason}`)
     
     
-    let reportchannel = msg.guild.channels.find(`name`,"cavalier"); //حط هنا اسم الروم الي يوريك بعض المعلومات
-    if(!reportchannel) return msg.channel.send("Couldn't find `cavalier` channel. "); //ط هنا اسم الروم الي يوريك بعض المعلومات
+    let reportchannel = msg.guild.channels.find(`name`,"vast"); //حط هنا اسم الروم الي يوريك بعض المعلومات
+    if(!reportchannel) return msg.channel.send("Couldn't find `vast` channel. "); //ط هنا اسم الروم الي يوريك بعض المعلومات
     
     msg.delete().catch(O_o=>{});
     reportchannel.send(reportembed);
     let role = msg.guild.roles.find(`name`, '・Warn'); //حط هنا اسم الرتبة
-    if(!role) return msg.guild.channel.send("Could't find `اسم الرتبة` role."); //حط هنا اسم الرتبة
+    if(!role) return msg.guild.channel.send("Could't find `vast` role."); //حط هنا اسم الرتبة
     rUser.addRole(role);
     
         return;
@@ -117,7 +117,7 @@ client.on('message', function(message) {
         .setThumbnail(`${message.author.avatarURL}`)
         .setDescription(`\`${message.content}\``)
         .setFooter(`From **${message.author.tag} (${message.author.id})**`)
-    client.channels.get("490165996854706217").send({embed:RaYaN});
+    client.channels.get("529445412252155924").send({embed:RaYaN});
     }
 });
 
@@ -278,13 +278,13 @@ client.on('message', async message => {
     var filter = m => m.author.id === message.author.id;
     var subChannel = message.guild.channels.find(c => c.name === 'requests');
    
-    if(command == prefix + 'cr') {
+    if(command == prefix + 'vast') {
         if(message.author.bot) return;
         if(message.channel.type === 'dm') return;
  
-        var modRole = message.guild.roles.find(r => r.name === '⁎ Cavalier.');
+        var modRole = message.guild.roles.find(r => r.name === '- Vast.');
        
-        if(message.guild.member(message.author).roles.has(modRole.id)) return message.channel.send('بالفعل لديك الرتبة');
+        if(message.guild.member(message.author).roles.has(modRole.id)) return message.channel.send('**You Already have a Rank ..**');
         if(!subChannel) return message.channel.send('يجب أن يتوفر روم بأسم :: Requests');
        
         message.channel.send(':timer: | **أرسل، إسمك الحقيقي**').then(msgS => {
@@ -295,7 +295,7 @@ client.on('message', async message => {
                     message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] }).then(collected => {
                         age = collected.first().content;
                         collected.first().delete();
-                        msgS.edit(':timer: | **أكتب اسم دولتك، ومن اين**').then(msgS => {
+                        msgS.edit(':timer: | **أكتب اسم دولتك**').then(msgS => {
                             message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] }).then(collected => {
                                 fromwhere = collected.first().content;
                                 collected.first().delete();
@@ -310,7 +310,7 @@ client.on('message', async message => {
                                         .addField('الاسم', name, true)
                                         .addField('العمر', age, true)
                                         .addField('من وين', fromwhere, true)
-                                        .addField('اسمك في ماين كرافت', fa2dh, true)
+                                        .addField('اسمك في الالعاب', fa2dh, true)
                                         .setTimestamp()
                                         .setFooter(message.guild.name, message.guild.iconURL)
                                        
@@ -334,9 +334,9 @@ client.on('message', async message => {
                                                 .addField('أسمه :', name)
                                                 .addField('العمر :', age)
                                                 .addField('من وين :', fromwhere)
-                                                .addField('اسمه مآين كرافت :', fa2dh)
-                                                .addField('حسابه', message.author)
-                                                .addField('ايدي حسابه', message.author.id, true)
+                                                .addField('اسمه بالالعاب :', fa2dh)
+                                                .addField('الحساب', message.author)
+                                                .addField('ايدي الحساب', message.author.id, true)
                                                
                                                 subChannel.send(subMsg).then(msgS => {
                                                     msgS.react('✅').then(() => msgS.react('❎'))
@@ -349,20 +349,20 @@ client.on('message', async message => {
                                                    
                                                     acceptRe.on('collect', r => {
                                                         msgS.delete();
-                                                        message.author.send(`:white_check_mark: | تم قبولك بالفريق \n**${message.guild.name}**`);
+                                                        message.author.send(`:white_check_mark: **You Accepting for clan.**`);
                                                         message.guild.member(message.author).addRole(modRole.id);
-                                                        message.guild.channels.find(r => r.name === 'التقديمات').send(`:white_check_mark: | **تم قبول العضو بالفريق، يرجى إخباره بمراجعة الرسائل الخاصة به**\n\n<@${message.author.id}>`);
+                                                        message.guild.channels.find(r => r.name === 'requests').send(`:white_check_mark: **Member has been accepted to join the team**\n\n<@${message.author.id}>`);
                                                     }).catch();
                                                     noAcceptRe.on('collect', r => {
                                                         msgS.delete();
-                                                        message.author.send(`:x: | تم رفضك من دخول الفريق\n\n **${message.guild.name}**`);
-                                                        message.guild.channels.find(r => r.name === 'التقديمات').send(`:x: | **تم رفض العضو باسباب أدت الى عدم قبوله**\n\n<@${message.author.id}>`);
+                                                        message.author.send(`:x: **You Denied for clan.**`);
+                                                        message.guild.channels.find(r => r.name === 'requests').send(`:x: **The member has been denied access to the team**\n\n<@${message.author.id}>`);
                                                     }).catch();
                                                 })
                                             });// Alpha Codes
                                             dontSend.on('collect', r => {
                                                 msgS.delete();
-                                                message.channel.send(':x: | تم الغاء تقديمك');// Alpha Codes
+                                                message.channel.send(':x: **تم إلغاء تقديمك .**');// Alpha Codes
                                             });
                                         })
                                     })
@@ -379,7 +379,7 @@ client.on('message', async message => {
 
 client.on ("guildMemberAdd", member => {
   
-   var role = member.guild.roles.find ("name", "⁎ Just Member.");
+   var role = member.guild.roles.find ("name", "- Vast.");
    member.addRole (role);
   
 });
@@ -404,7 +404,7 @@ client.on ("guildMemberAdd", member => {
   
   if (message.mentions.users.size < 1) return message.channel.send("**Mention any Members.**");
   if (!message.guild.member(user)
-  .bannable) return message.reply("**يجب ان تكون رتبة البوت اعلي من رتبه الشخص المراد تبنيدة**");
+  .bannable) return message.reply("**I Can't ..**");
 
 
   message.guild.member(user).ban(7, user);
@@ -464,7 +464,7 @@ const prefix = "!";
   if (message.mentions.users.size < 1) return message.channel.send("**Mention Any Members.**");
   if(!reason) return message.channel.send("**Supply a Reason.**");
   if (!message.guild.member(user)
-  .bannable) return message.reply("لايمكنني طرد شخص اعلى من رتبتي");
+  .bannable) return message.reply("**I Can't ..**");
 
   message.guild.member(user).kick(7, user);
 
@@ -601,9 +601,7 @@ client.on('guildMemberAdd', member => {
         guild = client.guilds.get("488259622730203137") 
 let channel = member.guild.channels.find('name', 'cavalier');
   if (!channel) return; 
-client.channels.get("528498338417606656").send(`**- Welcome to Cavaliers .**
-
-#laws .
+client.channels.get("528498338417606656").send(`**- Welcome to Vast .** :rose:
 
 ${member}`) 
 });
@@ -612,8 +610,8 @@ ${member}`)
 client.on('message',async message => {
   if(message.content === '!unbans') {
     var user = message.mentions.users.first();
-    if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('❌|**\`ADMINISTRATOR\`لا توجد لديك صلاحية `**');
-    if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**I Don't Have ` BAN_MEMBERS ` Permission**");
+    if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send(':x: **You don\'t have permission.**');
+    if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**Hmmm..**");
     const guild = message.guild;
 
   message.guild.fetchBans().then(ba => {
@@ -621,7 +619,7 @@ client.on('message',async message => {
   message.guild.unban(ns);
   const embed= new Discord.RichEmbed()
         .setColor("FFFFFF")
-        .setDescription(`**:white_check_mark: Has Been Unban For All**`)
+        .setDescription(`**:white_check_mark: Done.**`)
   message.channel.sendEmbed(embed);
   guild.owner.send(`:white_check_mark: **has Been Unban By <@${message.author.id}> **`) 
   });
@@ -664,7 +662,7 @@ client.on('message',function(message) {
     let muteMember = message.mentions.members.first();
     let muteReason = messageArray[2];
     let muteDuration = messageArray[3];
- if (message.content.split(" ")[0].toLowerCase() === prefix + "mute2") {
+ if (message.content.split(" ")[0].toLowerCase() === prefix + "muteprem") {
            
   if (message.author.bot) return;
        if(!muteRole) return message.guild.createRole({name: 'Muted'}).then(message.guild.channels.forEach(chan => chan.overwritePermissions(muteRole, {SEND_MESSAGES:false,ADD_REACTIONS:false})));
