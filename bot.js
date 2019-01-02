@@ -234,7 +234,7 @@ client.on("message", message => {
   let args = message.content.split(" ").slice(1);
   var argresult = args.join(' ');
  message.guild.members.forEach(m => {
- m.send(`${argresult}\n ${m}`);
+ m.send(args.replace(/[user]/g,m)).catch();
 })
  message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`); 
  message.delete(); 
