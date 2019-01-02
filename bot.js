@@ -229,7 +229,7 @@ client.on("message", message => {
 
 client.on("message", message => {
 
-  if (message.content.startsWith(prefix + "bc")) {
+  if (message.content.startsWith(prefix + "bc2")) {
   if (!message.member.hasPermission("ADMINISTRATOR"))  return;
   let args = message.content.split(" ").slice(1);
   var argresult = args.join(' ');
@@ -240,6 +240,44 @@ client.on("message", message => {
  message.delete(); 
 };     
 });
+
+
+client.on('message', msg =>{
+    let message=msg;
+    if(message.content.startsWith("!bc")){
+        var args = message.content.split(' ').slice(1).join(' ');
+    msg.guild.members.forEach(m=>{
+        m.send(args.replace(/[user]/g,m)).catch();
+    if(message.attachments.first()){
+m.sendFile(message.attachments.first().url).catch();
+    }
+    })    ;
+    }
+});
+
+
+client.on('message', msg => {
+
+    if (msg.content == '!join') {
+        if (msg.member.voiceChannel) {
+
+     if (msg.member.voiceChannel.joinable) {
+         msg.member.voiceChannel.join();
+     }
+    }
+}
+});
+
+
+
+client.on(`message`, message => {
+    var args = message.content.split(/[ ]+/)
+    if(message.content.includes(`discord.gg`)){
+    message.delete()
+    return message.reply(`:broken_heart: **You can't Send Invite Discord .**`)
+}
+});
+
 
 
 client.on('message', message => {
