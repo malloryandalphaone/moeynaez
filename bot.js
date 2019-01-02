@@ -103,26 +103,26 @@ if (msg.author.bot) return;
             .setTitle("# Team Vást .")
             .setDescription(`
 
-- ReeeBeL
-- Mr447
-- s7poge
-- iLuvkill
-- 1zull
-- CuzImHassanYT
-- CuzImAlbros
-- Coffin_
-- HeRoYeeN
-- ii9l3a_
-- AbuSalem
-- ImTry
-- R2haf
-- ii_Mosleh
-- Im3ziz_Pro_
-- K1nqLxrD
-- OnlyRiZx
-- iTzCommander_
-- xFn_
-- Hima_YT
+- \`ReeeBeL\`
+- \`Mr447\`
+- \`s7poge\`
+- \`iLuvkill\`
+- \`1zull\`
+- \`CuzImHassanYT\`
+- \`CuzImAlbros\`
+- \`Coffin_\`
+- \`HeRoYeeN\`
+- \`ii9l3a_\`
+- \`AbuSalem\`
+- \`ImTry\`
+- \`R2haf\`
+- \`ii_Mosleh\`
+- \`Im3ziz_Pro_\`
+- \`K1nqLxrD\`
+- \`OnlyRiZx\`
+- \`iTzCommander_\`
+- \`xFn_\`
+- \`Hima_YT\`
 
 **أسمك مو موجود بالقائمة**
 **تكلم مع اي اداري يضيفه لك .**`)
