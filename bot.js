@@ -359,7 +359,6 @@ client.on('message', async message => {
 
 
 client.on ("guildMemberAdd", member => {
-  
    var role = member.guild.roles.find("name", "- New.");
    member.addRole(role);
   
