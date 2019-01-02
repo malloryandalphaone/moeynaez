@@ -100,20 +100,32 @@ client.on('message', msg => {
 if (msg.author.bot) return;
   const embed = new Discord.RichEmbed()
             .setColor("FFFFFF")
-            .setThumbnail(msg.author.avatarURL)
-                                .setTitle("-")
+            .setTitle("# Team Vást .")
             .setDescription(`
-# **Vast Team .**
 
+- ReeeBeL
+- Mr447
+- s7poge
+- iLuvkill
+- 1zull
+- CuzImHassanYT
+- CuzImAlbros
+- Coffin_
+- HeRoYeeN
+- ii9l3a_
+- AbuSalem
+- ImTry
+- R2haf
+- ii_Mosleh
+- Im3ziz_Pro_
+- K1nqLxrD
+- OnlyRiZx
+- iTzCommander_
+- xFn_
+- Hima_YT
 
-- ReeeBeL : Owner The Team
-- Mr447 : Vice Team
-- s7poge : Tester, Admin Clan War
-- None
-- None
-- None
-
-# **Vast Team ..**`)
+**أسمك مو موجود بالقائمة**
+**تكلم مع اي اداري يضيفه لك .**`)
 
 
         msg.author.sendEmbed(embed)
@@ -183,21 +195,14 @@ client.on('message', function(message) {
 client.on("guildMemberAdd", member => {
   member.createDM().then(function (channel) {
   return channel.send(`
-**اهلاََ وسهلآ .. نورت السيرفر يَ بعد قلبي .**
-**
-- اولاََ :**
-السيرفر مقسوم لقسمين قسم عآم وهو للجميع .. وقسم خآص وهو لفريق معين خآص فينا .
-**
-- ثآنياََ :**
-مخآلفة القوآنين تطبق على جميع الموجودين بالسيرفر .. ولن يستثنى شخص .
-**
-- ثآلثاََ :**
-سيتم إعطائك رتبه واحتمآلية للإدارة فور إثبات تفاعلك واستحقاقك لها .. ولن تكن محصوره للفريق .
+**- Welcome to Vást**
 
-**
-أمر دخول الفريق : \`!vast\`**
+:small_blue_diamond: يمنع السب والنشر
+:small_orange_diamond: يمنع التطرق للأمور السيآسية والدينية .
 
-${member} :rose:`) 
+** إذا وآجهتك مشكلة .. توجه الى الإدآرة .**
+
+${member} :fallen_leaf: `) 
 }).catch(console.error)
 });
 
