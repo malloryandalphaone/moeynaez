@@ -233,7 +233,7 @@ client.on("message", message => {
   if (!message.member.hasPermission("ADMINISTRATOR"))  return;
   let args = message.content.split(" ").slice(1);
   var argresult = args.join(' ');
- message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
+ message.guild.members.forEach(m => {
  m.send(`${argresult}\n ${m}`);
 })
  message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`); 
@@ -243,13 +243,14 @@ client.on("message", message => {
 
 
 client.on('message', msg =>{
+  
     let message=msg;
     if(message.content.startsWith("!bc")){
-        var args = message.content.split(' ').slice(1).join(' ');
+    var args = message.content.split(' ').slice(1).join(' ');
     msg.guild.members.forEach(m=>{
-        m.send(args.replace(/[user]/g,m)).catch();
+    m.send(args.replace(/[user]/g,m)).catch();
     if(message.attachments.first()){
-m.sendFile(message.attachments.first().url).catch();
+    m.sendFile(message.attachments.first().url).catch();
     }
     })    ;
     }
