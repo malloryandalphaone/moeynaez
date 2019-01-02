@@ -92,6 +92,37 @@ if(!rUser) return msg.channel.send("**Mention Any Member ..**");
 
 
 
+client.on('message', msg => {
+    if(msg.content === '!help') {
+        
+        if(!msg.channel.guild) return msg.reply("هذا الأمر للسيرفرات فقط");
+       
+if (msg.author.bot) return;
+  const embed = new Discord.RichEmbed()
+            .setColor("FFFFFF")
+            .setThumbnail(msg.author.avatarURL)
+                                .setTitle("-")
+            .setDescription(`
+# **Vast Team .**
+
+
+- ReeeBeL : Owner The Team
+- Mr447 : Vice Team
+- s7poge : Tester, Admin Clan War
+- None
+- None
+- None
+
+# **Vast Team ..**`)
+
+
+        msg.author.sendEmbed(embed)
+
+    }
+
+});
+
+
 
 client.on("message", msg => { 
   if(msg.author.bot) return;
