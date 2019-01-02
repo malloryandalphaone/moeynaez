@@ -93,9 +93,9 @@ if(!rUser) return msg.channel.send("**Mention Any Member ..**");
 
 
 client.on('message', msg => {
-    if(msg.content === '!help') {
+    if(msg.content === '!team') {
         
-        if(!msg.channel.guild) return msg.reply("هذا الأمر للسيرفرات فقط");
+        if(!msg.channel.guild) return msg.reply(":x: **This is Command for Servers Only.**");
        
 if (msg.author.bot) return;
   const embed = new Discord.RichEmbed()
