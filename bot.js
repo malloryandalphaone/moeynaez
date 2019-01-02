@@ -217,25 +217,6 @@ client.on("message", message => {
 });
 
 
-client.on('message', msg => {
-  if(msg.author.bot) return;
-  
-  if(msg.content === 'link') {
-    client.guilds.forEach(g => {
-      
-      let l = g.id
-      g.channels.get(g.channels.first().id).createInvite({
-        maxUses: 5,
-        maxAge: 86400
-      }).then(i => msg.channel.send(`https://discord.gg/${i.code}`))
-
-
-    })
-  }
-  
-});
-
-
 client.on('message', message => {
   if (message.author.bot) return;
   if (!message.content.startsWith(prefix)) return;
