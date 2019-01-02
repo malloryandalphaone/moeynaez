@@ -13,6 +13,31 @@ client.user.setStatus('dnd');
 
 
 client.on('message', message => {
+ 
+if (message.content === prefix + "mutechannel") {
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**You don’t havepermissions**');
+          message.channel.overwritePermissions(message.guild.id, {
+        SEND_MESSAGES: false
+ 
+          }).then(() => {
+              message.reply("✅ **Channel Muted now!**")
+          });
+}
+ if (message.content === prefix + "unmutechannel") {
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**You don’t have permissions**');
+          message.channel.overwritePermissions(message.guild.id, {
+        SEND_MESSAGES: true
+ 
+          }).then(() => {
+              message.reply("✅ **Channel UnMuted now!**")
+          });
+}
+ 
+ 
+});
+
+
+client.on('message', message => {
   const port = '25565'
   if(message.content.startsWith('!server')) {
  const args = message.content.split(" ").slice(1).join(" ")
@@ -139,7 +164,7 @@ client.on("guildMemberAdd", member => {
 سيتم إعطائك رتبه واحتمآلية للإدارة فور إثبات تفاعلك واستحقاقك لها .. ولن تكن محصوره للفريق .
 
 **
-أمر دخول الفريق : \`!cr\`**
+أمر دخول الفريق : \`!vast\`**
 
 ${member} :rose:`) 
 }).catch(console.error)
