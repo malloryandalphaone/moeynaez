@@ -13,6 +13,31 @@ client.user.setStatus('dnd');
 
 
 
+client.on('message',message =>{
+    var prefix = "!"
+  var command = message.content.toLowerCase().split(" ")[0];
+    var args = message.content.toLowerCase().split(" ");
+    var userM = message.mentions.users.first()
+    if(command == prefix + 'unban') {//SnOw Code
+        if(!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send(':x: **You don\'t have permission.**'); //SnOw Code
+        if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.channel.send('**hmmm..**');//SnOw Code
+        if(!args[1]) return  message.channel.send('**Mention Any Member..**');
+        if(args[1].length < 16) return message.reply(':x: **This is Id Not For Any User..**');//SnOw Code
+        message.guild.fetchBans().then(bans => {//SnOw Code
+            var Found = bans.find(m => m.id === args[1]);
+            if(!Found) return message.channel.send(`:x: **This is User is Not Banned!,** <@${message.author.id}>`);//SnOw Code
+            message.guild.unban(args[1]);
+            message.channel.send(`:white_check_mark: **Successfully Unbanned <@${args[1]}> From the server!**`);
+            }
+ 
+        )}
+      });
+
+
+
+
+
+
 
 client.on('message', message => { 
     var prefix = "!";
