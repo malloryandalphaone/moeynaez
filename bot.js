@@ -22,14 +22,14 @@ client.on('message', message => {
     command = command.slice(prefix.length);
     if (command == "add") {
     if (!message.channel.guild) return;
-    if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return message.reply("**:no_entry_sign:انت لا تملك صلاحيات **").then(msg => msg.delete(5000));;
-    if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("البوت لايملك صلاحيات ").then(msg => msg.delete(5000));;
+    if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return message.reply("**You don't have Permission.**").then(msg => msg.delete(5000));;
+    if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**hmmm..**").then(msg => msg.delete(5000));;
     let user = message.mentions.users.first();
-    if (message.mentions.users.size < 1) return message.reply('**Mention Any Members ..**').then(msg => {msg.delete(5000)});
+    if (message.mentions.users.size < 1) return message.channel.send('**Mention Any Members ..**').then(msg => {msg.delete(5000)});
     let MRole = message.content.split(" ").slice(2).join(" ");
-    if(!MRole)return message.reply("**Select Rank ..**").then(msg => {msg.delete(5000)});
+    if(!MRole)return message.channel.send("**Select Rank ..**").then(msg => {msg.delete(5000)});
     message.guild.member(user).addRole(message.guild.roles.find("name", MRole));
-    message.reply(':white_check_mark: **Done .**').then(msg => {msg.delete(10000)});
+    message.channel.send(':white_check_mark: **Done .**').then(msg => {msg.delete(10000)});
     }
     });
 
@@ -105,7 +105,7 @@ client.on("message", (message) => {
 
 client.on('message', message => {
  
-if (message.content === prefix + "mutechannel") {
+if (message.content === prefix + "muted") {
 if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**You don’t havepermissions**');
           message.channel.overwritePermissions(message.guild.id, {
         SEND_MESSAGES: false
@@ -114,7 +114,7 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**You
               message.reply("✅ **Channel Muted now!**")
           });
 }
- if (message.content === prefix + "unmutechannel") {
+ if (message.content === prefix + "unmuted") {
 if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**You don’t have permissions**');
           message.channel.overwritePermissions(message.guild.id, {
         SEND_MESSAGES: true
@@ -535,14 +535,6 @@ client.on('message', async message => {
 });
 
 
-client.on ("guildMemberAdd", member => {
-   var role = member.guild.roles.find("name", "- New.");
-   member.addRole(role);
-  
-});
-
-
-
   client.on('message', message => {
   if (message.author.codes) return;
   if (!message.content.startsWith(prefix)) return;
@@ -592,7 +584,7 @@ client.on('message', msg => {
     msg.delete().then
     msg.delete().then
     msg.channel.bulkDelete(textxt);
-        msg.channel.send("تم مسح** " + textxt + ".**").then(m => m.delete(3000));
+        msg.channel.send("**تم مسح " + textxt + ".**").then(m => m.delete(3000));
         }    
     }
 }
@@ -823,7 +815,7 @@ client.on('message',async message => {
         if (!message.member.hasPermission('MANAGE_ROLES')) return;
   let user = message.mentions.users.first();
   let modlog = client.channels.find('name', 'log');
-  let muteRole = client.guilds.get(message.guild.id).roles.find('name', '·)» Mods.');
+  let muteRole = client.guilds.get(message.guild.id).roles.find('name', '.Mods');
   if (!muteRole) return message.reply("**I Can't Find rank ..**").catch(console.error).then(message => message.delete(4000))
   if (message.mentions.users.size < 1) return message.reply('**Mention Any Member ..**').catch(console.error).then(message => message.delete(4000))
   if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return;
