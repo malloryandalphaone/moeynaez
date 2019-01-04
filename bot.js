@@ -70,12 +70,12 @@ client.on("message", (message) => {
     }
  
  
-  if (message.content.startsWith("-close")) {
+  if (message.content.startsWith("!close")) {
         if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`You can't use the close command outside of a ticket channel.`);
  
-       message.channel.send(`**Are u Sure Close the ticket?\n\nType : .confirm**`)
+       message.channel.send(`**Are u Sure Close the ticket?\n\nType : !confirm**`)
            .then((m) => {
-               message.channel.awaitMessages(response => response.content === '.confirm', {
+               message.channel.awaitMessages(response => response.content === '!confirm', {
                        max: 1,
                        time: 10000,
                        errors: ['time'],
