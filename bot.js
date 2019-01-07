@@ -12,6 +12,93 @@ client.user.setStatus('dnd');
 });
 
 
+
+const invites = {};
+
+const wait = require('util').promisify(setTimeout);
+
+client.on('ready', () => {
+  wait(1000);
+
+  client.guilds.forEach(g => {
+    g.fetchInvites().then(guildInvites => {
+      invites[g.id] = guildInvites;
+    });
+  });
+});
+
+client.on('guildMemberAdd', member => {
+  member.guild.fetchInvites().then(guildInvites => {
+    const ei = invites[member.guild.id];
+    invites[member.guild.id] = guildInvites;
+    const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
+    const inviter = client.users.get(invite.inviter.id);
+    const logChannel = member.guild.channels.find(channel => channel.name === "vast");
+    logChannel.send(`${member} Invited by: <@${inviter.id}>`);
+  });
+});
+
+
+
+
+
+
+
+client.on('voiceStateUpdate', (oldM, newM) => {
+  let rebel1 = oldM.serverMute;
+  let rebel2 = newM.serverMute;
+  let codes1 = oldM.serverDeaf;
+  let codes2 = newM.serverDeaf;
+  let ch = oldM.guild.channels.find('name', 'staff')
+  if(!ch) return;//ReBeL & Codes
+    oldM.guild.fetchAuditLogs()
+    .then(logs => {
+      let user = logs.entries.first().executor.username
+    if(rebel1 === false && rebel2 === true) {
+       let embed = new Discord.RichEmbed()
+       .setAuthor(`${newM.user.tag}`, newM.user.avatarURL)
+       .setDescription(`${newM} تم إعطآئه ميوت صوتي`)
+       .setFooter(`بوآسطهه : ${user}`)
+        .setColor('#FFFFFF')
+       ch.send(embed)
+    }
+    if(rebel1 === true && rebel2 === false) {
+       let embed = new Discord.RichEmbed()
+       .setAuthor(`${newM.user.tag}`, newM.user.avatarURL)
+       .setDescription(`${newM} تم فك الميوت الصوتي `)
+       .setFooter(`بواسطه : ${user}`)
+        .setColor('#FFFFFF')
+       .setTimestamp()
+       ch.send(embed)
+    }
+    if(codes1 === false && codes2 === true) {
+       let embed = new Discord.RichEmbed()
+       .setAuthor(`${newM.user.tag}`, newM.user.avatarURL)
+       .setDescription(`${newM} تم إعطآئه ديفن أو سمآعهه`)
+       .setFooter(`بوآسطه : ${user}`)
+        .setColor('#FFFFFF')
+       .setTimestamp()
+       ch.send(embed)
+    }
+    if(codes1 === true && codes2 === false) {
+       let embed = new Discord.RichEmbed()
+       .setAuthor(`${newM.user.tag}`, newM.user.avatarURL)
+       .setDescription(`${newM} تم فك عنهه الديفن أو السمآعهه`)
+       .setFooter(`بوآسطه : ${user}`)
+        .setColor('#FFFFFF')
+       .setTimestamp()
+       ch.send(embed)
+    }
+  })
+});
+
+
+
+
+
+
+
+
 client.on('message',message =>{
     var prefix = "!"
   var command = message.content.toLowerCase().split(" ")[0];
