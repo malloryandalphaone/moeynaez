@@ -39,6 +39,64 @@ client.on('guildMemberAdd', member => {
 
 
 
+client.on('message', async message => {
+     let user = message.mentions.users.first() || message.author;
+if(message.author.bot) return;
+if (message.channel.guild) {
+if (message.content === '!!!S!!!') {
+message.author.send(`الرسآلهه`).catch(RebeL =>{console.log('`Error`: ' + RebeL);
+message.channel.send(`${user} خاصك مقفول`);
+});
+}}});
+
+
+
+client.on('message', message => {
+   if(!message.channel.guild) return;
+if(message.content.startsWith(prefix + 'bc')) {
+if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
+if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send(':no_entry: | You dont have **ADMINISTRATOR** Permission!' );
+let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
+let BcList = new Discord.RichEmbed()
+.setThumbnail(message.author.avatarURL)
+.setAuthor(`محتوى الرساله ${args}`)
+.setDescription(`برودكاست بـ امبد 📝\nبرودكاست بدون امبد✏ \nلديك دقيقه للأختيار قبل الغاء البرودكاست`)
+if (!args) return message.reply('**يجب عليك كتابة كلمة او جملة لإرسال البرودكاست**');message.channel.send(BcList).then(msg => {
+msg.react('📝')
+.then(() => msg.react('✏'))
+.then(() =>msg.react('📝'))
+ 
+let EmbedBcFilter = (reaction, user) => reaction.emoji.name === '📝' && user.id === message.author.id;
+let NormalBcFilter = (reaction, user) => reaction.emoji.name === '✏' && user.id === message.author.id;
+ 
+let EmbedBc = msg.createReactionCollector(EmbedBcFilter, { time: 60000 });
+let NormalBc = msg.createReactionCollector(NormalBcFilter, { time: 60000 });
+ 
+EmbedBc.on("collect", r => {
+message.channel.send(`:ballot_box_with_check: تم ارسال الرساله بنجاح`).then(m => m.delete(5000));
+message.guild.members.forEach(m => {
+var bc = new
+Discord.RichEmbed()
+.setColor('RANDOM')
+  .setTitle('`-Broadcast-`')
+.setAuthor(`Server : ${message.guild.name}`)
+.setFooter(`Sender : ${message.author.username}`)
+.setDescription(`Message : ${args}`)
+.setThumbnail(message.author.avatarURL)
+m.send({ embed: bc })
+msg.delete();
+})
+})
+NormalBc.on("collect", r => {
+  message.channel.send(`:ballot_box_with_check: تم ارسال الرساله بنجاح`).then(m => m.delete(5000));
+message.guild.members.forEach(m => {
+m.send(args);
+msg.delete();
+})
+})
+})
+}
+});
 
 
 
@@ -155,7 +213,7 @@ client.on('message', message => {
 antibots[message.guild.id] = {
 onoff: 'On',
 }
-message.channel.send(`**✅ The AntiBots Is __𝐎𝐍__ !**`)
+message.channel.send(`**✅ AntiBots On Now !.**`)
           fs.writeFile("./antibots.json", JSON.stringify(antibots), (err) => {
             if (err) console.error(err)
             .catch(err => {
@@ -176,7 +234,7 @@ client.on('message', message => {
 antibots[message.guild.id] = {
 onoff: 'Off',
 }
-message.channel.send(`**⛔ The AntiBots Is __𝐎𝐅𝐅__ !**`)
+message.channel.send(`**:white_check_mark: AntiBots Off Now !.**`)
           fs.writeFile("./antibots.json", JSON.stringify(antibots), (err) => {
             if (err) console.error(err)
             .catch(err => {
@@ -387,7 +445,6 @@ if (msg.author.bot) return;
 - \`xFn_\`
 - \`Hima_YT\`
 - \`K1nqS3m\`
-- \`mt3h\`
 
 **إذا اسمك مو موجود بالقائمة .. وانت بالكلآن**
 كلم أي اداري موجود بالكلآن .. وقله اسمك عشآن يضيفك`)
@@ -529,18 +586,18 @@ client.on("message", message => {
 
 
 
-client.on('message', msg =>{
-  
-    let message=msg;
-    if(message.content.startsWith("!bc")){
-    var args = message.content.split(' ').slice(1).join(' ');
-    msg.guild.members.forEach(m=>{
-    m.send(args.replace(/[user]/g,m)).catch();
-    if(message.attachments.first()){
-    m.sendFile(message.attachments.first().url).catch();
-    }
-    })    ;
-    }
+client.on("message", message => {
+
+            if (message.content.startsWith(prefix + "bc")) {
+            if (!message.member.hasPermission("ADMINISTRATOR"))  return;
+  let args = message.content.split(" ").slice(1);
+  var argresult = args.join(' '); 
+  message.guild.members.filter(m => m.presence.status !== 'idle').forEach(m => {
+ m.send(`${argresult}\n ${m}`);
+})
+ message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`); 
+ message.delete(); 
+};     
 });
 
 
