@@ -9,7 +9,7 @@ const wait = require('util').promisify(setTimeout);
 client.on("ready", () => {
 client.user.setStatus('dnd');
   console.log("Reeebel | Logged in! Server count: ${client.guilds.size}");
-  client.user.setActivity("System.",{type: 'WATCHING'});
+  client.user.setActivity("System.",{type: 'LISTENING'});
 });
 
 
