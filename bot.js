@@ -53,6 +53,53 @@ message.channel.send(`${user} خاصك مقفول`);
 
 
 
+ client.on('message',message => {
+
+  if (true) {
+
+if (message.content === '.invite') {
+
+      message.author.send('https://discord.gg/xWxYx8R').catch(e =>console.log(e.stack));
+
+ 
+
+    }
+
+   }
+
+  });
+
+ 
+
+ 
+
+client.on('message', message => {
+
+     if (message.content === "رابط") {
+
+     let embed = new Discord.RichEmbed()
+
+
+  .setColor("#FFFFFF")
+
+  .setDiscrption(":white_check_mark: **Check You'r DM .**")
+
+     
+
+     
+
+     
+
+  message.channel.sendEmbed(embed);
+
+    }
+
+});
+
+
+
+
+
 client.on('voiceStateUpdate', (oldM, newM) => {
   let rebel1 = oldM.serverMute;
   let rebel2 = newM.serverMute;
