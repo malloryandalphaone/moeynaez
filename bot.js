@@ -58,7 +58,7 @@ client.on('voiceStateUpdate', (oldM, newM) => {
   let rebel2 = newM.serverMute;
   let codes1 = oldM.serverDeaf;
   let codes2 = newM.serverDeaf;
-  let ch = oldM.guild.channels.find('name', 'staff')
+  let ch = oldM.guild.channels.find('name', 'system')
   if(!ch) return;//ReBeL & Codes
     oldM.guild.fetchAuditLogs()
     .then(logs => {
@@ -66,7 +66,7 @@ client.on('voiceStateUpdate', (oldM, newM) => {
     if(rebel1 === false && rebel2 === true) {
        let embed = new Discord.RichEmbed()
        .setAuthor(`${newM.user.tag}`, newM.user.avatarURL)
-       .setDescription(`${newM} تم إعطآئه ميوت صوتي`)
+       .setDescription(`${newM} Mute .`)
        .setFooter(`بوآسطهه : ${user}`)
         .setColor('#FFFFFF')
        ch.send(embed)
@@ -74,7 +74,7 @@ client.on('voiceStateUpdate', (oldM, newM) => {
     if(rebel1 === true && rebel2 === false) {
        let embed = new Discord.RichEmbed()
        .setAuthor(`${newM.user.tag}`, newM.user.avatarURL)
-       .setDescription(`${newM} تم فك الميوت الصوتي `)
+       .setDescription(`${newM} UnMute . `)
        .setFooter(`بواسطه : ${user}`)
         .setColor('#FFFFFF')
        .setTimestamp()
@@ -83,7 +83,7 @@ client.on('voiceStateUpdate', (oldM, newM) => {
     if(codes1 === false && codes2 === true) {
        let embed = new Discord.RichEmbed()
        .setAuthor(`${newM.user.tag}`, newM.user.avatarURL)
-       .setDescription(`${newM} تم إعطآئه ديفن أو سمآعهه`)
+       .setDescription(`${newM} Deafen .`)
        .setFooter(`بوآسطه : ${user}`)
         .setColor('#FFFFFF')
        .setTimestamp()
@@ -92,7 +92,7 @@ client.on('voiceStateUpdate', (oldM, newM) => {
     if(codes1 === true && codes2 === false) {
        let embed = new Discord.RichEmbed()
        .setAuthor(`${newM.user.tag}`, newM.user.avatarURL)
-       .setDescription(`${newM} تم فك عنهه الديفن أو السمآعهه`)
+       .setDescription(`${newM} UnDeafen .`)
        .setFooter(`بوآسطه : ${user}`)
         .setColor('#FFFFFF')
        .setTimestamp()
@@ -130,7 +130,7 @@ client.on('ready', () => {//لا تغير شي هنا
                       role.edit({color : "RANDOM"});//Codes Server
                   };
       });//Codes Server
-  }, 2000);//سرعه تغير الالوان
+  }, 1200);//سرعه تغير الالوان
 })//Codes Server
 
 
