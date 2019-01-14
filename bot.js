@@ -105,6 +105,36 @@ client.on('voiceStateUpdate', (oldM, newM) => {
 
 
 
+client.on('message', message => {
+if(!message.channel.guild) return;
+  if(message.content.startsWith(prefix + 'rainbow')) {
+      let role = message.guild.roles.find('name', '- RainBow ,')
+    if(role) return message.channel.send(`**The Rank is Already Created.**`)
+  if(!role){
+    rainbow =  message.guild.createRole({
+   name: "- RainBow ,",//اسم الرتبه
+   color: "#000000",//الون الاساسي للرنبو
+   permissions:[]//الرتبه المسموح بيها للرنبو  مثال MANAGE_ROLES ADMINISTRATOR  
+ //نهايه الكود هنا
+})
+ 
+}
+message.channel.send('🌈 **The Rank RainBow has been Created.**')//if the step completed
+}})
+ 
+client.on('ready', () => {//لا تغير شي هنا
+  setInterval(function(){//Codes Server
+      client.guilds.forEach(g => {//Codes Server
+                  var role = g.roles.find('name', '- RainBow ,');//اسم رتبه رنبو
+                  if (role) {//Codes Server
+                      role.edit({color : "RANDOM"});//Codes Server
+                  };
+      });//Codes Server
+  }, 2000);//سرعه تغير الالوان
+})//Codes Server
+
+
+
 
 
 
