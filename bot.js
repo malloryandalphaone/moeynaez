@@ -57,7 +57,7 @@ message.channel.send(`${user} خاصك مقفول`);
 
   if (true) {
 
-if (message.content === '.invite') {
+if (message.content === 'رابط') {
 
       message.author.send('https://discord.gg/xWxYx8R').catch(e =>console.log(e.stack));
 
