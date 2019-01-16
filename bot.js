@@ -39,6 +39,245 @@ client.on('guildMemberAdd', member => {
 
 
 
+
+
+const devs = ["518113766915702789"]
+ 
+const adminprefix = "!";//Narox
+client.on('message', message => {
+    var argresult = message.content.split(` `).slice(1).join(' ');
+      if (!devs.includes(message.author.id)) return;
+     
+  if (message.content.startsWith(adminprefix + 'pt')) {
+    client.user.setGame(argresult);
+      message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
+  } else
+    if (message.content === (adminprefix + "Percie")) {
+    message.guild.leave();        
+  } else  
+  if (message.content.startsWith(adminprefix + 'wt')) {// لجعل البوت في حاله الواتشنق
+  client.user.setActivity(argresult, {type:'WATCHING'});
+      message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
+  } else
+  if (message.content.startsWith(adminprefix + 'setprefix')) {//لتغير البريفكس
+  client.user.setPrefix(argresult).then
+      message.channel.send(`**Prefix Changed :white_check_mark: ${argresult}** `)
+  } else
+  if (message.content.startsWith(adminprefix + 'ls')) {// لجعل البوت في حاله الاستماع
+  client.user.setActivity(argresult , {type:'LISTENING'});
+      message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
+  } else     //Narox
+    if (message.content.startsWith(adminprefix + 'setname')) {// لتغير اسم البوت
+  client.user.setUsername(argresult).then
+      message.channel.sendMessage(`**${argresult}** : Done `)
+  return message.reply("**Name Changed :white_check_mark:**");
+  } else
+    if (message.content.startsWith(adminprefix + 'setavatar')) {// لتغير صوره البوت
+  client.user.setAvatar(argresult);
+    message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
+        } else    
+  if (message.content.startsWith(adminprefix + 'st')) {// لعمل ستريمنق للبوت
+    client.user.setGame(argresult, "https://www.twitch.tv/idk");
+      message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
+  }
+    if(message.content === adminprefix + "restart") {// لعمل ريسترت للبوت
+      if (!devs.includes(message.author.id)) return;
+          message.channel.send(`:warning:️ **Bot restarting by ${message.author.username}**`);
+        console.log("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        console.log(`⚠️ Bot restarting... ⚠️`);
+        console.log("===============================================\n\n");
+        client.destroy();
+        child_process.fork(__dirname + "/bot.js");
+        console.log(`Bot Successfully Restarted`);
+    }
+ 
+  });
+
+
+
+client.on("message", message => {
+  if(message.content.startsWith("%verify")) { // الامر والبريفكس
+    let num = Math.floor((Math.random() * 4783) + 10);
+ 
+        message.channel.send(`**يرجى كتآبة الرقم التآلي :**\n**${num}**`).then(m => {
+      message.channel.awaitMessages(res => res.content == `${num}`, {
+        max: 1,
+        time: 60000,
+        errors: ['time'],
+      }).then(collected => {
+        message.delete();
+        m.delete();
+        message.member.addRole(message.guild.roles.find(c => c.name == "Members")); // اسم الرتبة
+      }).catch(() => {
+        m.edit(`لقد أخذت وقتًا طويلاً لكتابة الرقم.  قم بإعادة كتابة الأمر مرة أخرى إذا كنت تريد التحقق من هويتك..`).then(m2 => m.delete(15000));
+      });
+    });
+  }
+});
+
+
+
+
+const userslist = new Set();
+var bestsupports = ['','','','','','','','','','',''];// ايديات الي يقدرو يضيفو
+client.on('message',async message => {
+  if(!bestsupports.includes(message.auhtor.id)) return;
+  if(message.content.startsWith(prefix + "addBlack")) {
+    let user = message.mentions.users.first();
+    if(userslist.has(user.id)) return message.reply('**الشخص في البلاك لست من قبل**')
+    userslist.add(user.id);
+    message.channel.send(`Added user: ${user}`);
+  } else {
+    if(message.content.startsWith(prefix + "remBlack")) {
+    let user = message.mentions.users.first();
+    if(!userslist.has(user.id)) return message.reply('**لا يوجد شخص بـ هذ المنشن**');
+    userslist.delete(user.id);
+    message.channel.send(`Removed user: ${user}`);
+  }
+  }
+});
+
+
+
+
+
+client.on('message', message => {
+    if (message.author.bot) return;
+    if (!message.content.startsWith(prefix)) return;
+ 
+    if (message.content.startsWith(prefix + 'edit')) {
+        message.channel.sendMessage('Edit me').then(msg=>{msg.edit('Done edit')});
+    }
+});
+
+
+
+
+client.on("message", (message) => {
+    if(message.content.startsWith(prefix+"c.gmail")) {
+        message.channel.send(JSON.stringify({
+            email: Math.random().toString(36).slice(4).trim()+"@gmail.com",
+            password: Math.random().toString(36).slice(4).trim()
+        }))
+    }
+});
+
+
+
+
+client.on("message", msg => {
+  if(msg.content === '!' + "id") {
+      const embed = new Discord.RichEmbed();
+  embed.addField("🔱| اسم الحساب :", `${msg.author.username}#${msg.author.discriminator}`, true)
+          .addField("🆔| الاي دي :", `${msg.author.id}`, true)
+          .setColor("WHITE")
+          .setFooter(msg.author.username , msg.author.avatarURL)
+          .addField('📛| الحالة :', `${msg.author.presence.status.toUpperCase()}`, true)
+          .addField('🎲| بلاينج :', `${msg.author.presence.game === null ? "No Game" : msg.author.presence.game.name}`, true)
+          .addField('🏅| الرتب : ', `${msg.member.roles.filter(r => r.name).size}`, true)
+          .addField('📅| تم الانضمام للديسكورد في :', `${msg.createdAt}`,true)
+          .addField('🤖| هل هو بوت ؟', `${msg.author.bot.toString().toUpperCase()}`, true);
+      msg.channel.send({embed: embed})
+  }
+});
+
+
+
+
+
+client.on('message', message => {
+            let args = message.content.split(' ').slice(1);
+            if(message.content.split(' ')[0] == `${prefix}color`){
+            const embedd = new Discord.RichEmbed()
+            .setFooter('Requested by '+message.author.username, message.author.avatarURL)
+            .setDescription(`**لا يوجد لون بهذا الأسم ** ❌ `)
+            .setColor(`ff0000`)
+           
+            if(!isNaN(args) && args.length > 0)
+           
+           
+            if    (!(message.guild.roles.find("name",`${args}`))) return  message.channel.sendEmbed(embedd);
+           
+           
+            var a = message.guild.roles.find("name",`${args}`)
+             if(!a)return;
+            const embed = new Discord.RichEmbed()
+           
+            .setFooter('Requested by '+message.author.username, message.author.avatarURL)
+            .setDescription(`**Done , تم تغير لونك . ✅ **`)
+           
+            .setColor(`${a.hexColor}`)
+            message.channel.sendEmbed(embed);
+            if (!args)return;
+            setInterval(function(){})
+               let count = 0;
+               let ecount = 0;
+            for(let x = 1; x < 201; x++){
+           
+            message.member.removeRole(message.guild.roles.find("name",`${x}`))
+           
+            }
+             message.member.addRole(message.guild.roles.find("name",`${args}`));
+           
+           
+            }
+            });
+
+
+
+
+
+client.on("message", msg => {// الحقوق محفوظ لذا سيرفر ناروكس ديفAll CopyRight For Narox Dev
+    if(msg.author.bot) return;
+if(msg.channel.type === 'dm') return;
+
+let p = "!";//البرفكس
+let msgarray = msg.content.split(" ");
+let cmd = msgarray[0];
+let args = msgarray.slice(1);
+
+if(cmd === `${p}report`){
+
+
+    let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
+if(!rUser) return msg.channel.send("Couldn't find users.");
+    let reason = args.join(" ").slice(22);
+
+
+let reportembed = new Discord.RichEmbed()
+.setDescription("Reports")
+.setColor("WHITE")
+.addField("Report User", `${rUser}`)
+.addField("Report By", `${msg.author}`)
+.addField("Channel", msg.channel)
+.addField("Time", msg.createdAt)
+.addField("Reason",`${reason}`)
+
+
+let reportchannel = msg.guild.channels.find(`name`,"reports")
+if(!reportchannel) return msg.channel.send("Couldn't find `reports` channel. ")
+
+msg.delete().catch(O_o=>{});
+reportchannel.send(reportembed);
+    return;
+}
+});
+
+
+
+
+
+client.on("guildMemberAdd", member => {
+  let guild = member.guild;
+  guild.defaultChannel.sendMessage(`${member.user} **join this server.**`).catch(console.error);
+});
+ 
+client.on("guildMemberRemove", member => {
+  let guild = member.guild;
+  guild.defaultChannel.sendMessage(`${member.user} **left this server.**`).catch(console.error);
+});
+
+
 client.on('message', async message => {
      let user = message.mentions.users.first() || message.author;
 if(message.author.bot) return;
@@ -51,6 +290,76 @@ message.channel.send(`${user} خاصك مقفول`);
 
 
 
+
+client.on('message', message => {
+    if (!message.guild) return;
+    if (message.content.startsWith("invite")) {
+
+        message.channel.createInvite({
+        thing: true,
+        maxUses: 5,
+        maxAge: 86400
+    }).then(invite =>
+      message.author.sendMessage(invite.url)
+    )
+  message.channel.send(`** تم أرسال الرابط برسالة خاصة **`)
+
+      message.author.send(`**مدة الرابط : يـوم
+ عدد استخدامات الرابط : 5 **`)
+    }
+});
+
+
+
+client.on("message", msg => {
+    var prefix = '!'//البركفس
+    if(msg.content.startsWith(prefix + 'account')){
+      let embed = new Discord.RichEmbed()
+      .setThumbnail(msg.guild.iconURL)
+      .setColor("RANDOM")
+      .addField("Year 📆",msg.guild.createdAt.getFullYear())
+      .addField("Hour 📆", msg.guild.createdAt.getHours())
+      .addField("Day 📆", msg.guild.createdAt.getDay())
+      .addField("Month 📆", msg.guild.createdAt.getMonth())
+      .addField("Minutes 📆", msg.guild.createdAt.getMinutes())
+      .addField("Seconds 📆", msg.guild.createdAt.getSeconds())
+      .addField("Full 📆", msg.guild.createdAt.toLocaleString())
+      .setTimestamp()
+      msg.channel.send(embed);
+    }
+  });
+
+
+
+
+
+
+
+
+////////
+
+
+//// client.on("ready", () => { 
+///    console.log('By : m7md'); client.user.setPresence({ 
+//          status: 'online', 
+//          game: { type: 0, name: 'Narox 🍷 , Road To 1K',
+//          details: `https://discord.gg/29KpKJy`, 
+//          url: 'http://twitch.tv/M7md_Salih', 
+//          state: `Deving & Coding`, 
+//         application_id: '532682436471947264', 
+//   
+//         assets: { 
+//   small_image: `535061300569571329`, 
+//   
+//   small_text: 'Narox Devs', 
+//   large_image: `535061300569571329`, large_text: `Road To 1K` } 
+//   
+//   } 
+//   
+//   }); 
+//   });
+
+////
 
 
 client.on('voiceStateUpdate', (oldM, newM) => {
