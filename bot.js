@@ -117,7 +117,7 @@ client.on("message", message => {
 
 
 const userslist = new Set();
-var bestsupports = ['','','','','','','','','','',''];// ايديات الي يقدرو يضيفو
+var bestsupports = ['518113766915702789','','','','','','','','','',''];// ايديات الي يقدرو يضيفو
 client.on('message',async message => {
   if(!bestsupports.includes(message.auhtor.id)) return;
   if(message.content.startsWith(prefix + "addBlack")) {
