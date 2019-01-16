@@ -117,9 +117,10 @@ client.on("message", message => {
 
 
 const userslist = new Set();
-var bestsupports = ['518113766915702789','','','','','','','','','',''];// ايديات الي يقدرو يضيفو
+var devs = ['518113766915702789'];
+
 client.on('message',async message => {
-  if(!bestsupports.includes(message.auhtor.id)) return;
+  if(!devs.includes(message.auhtor.id)) return;
   if(message.content.startsWith(prefix + "addBlack")) {
     let user = message.mentions.users.first();
     if(userslist.has(user.id)) return message.reply('**الشخص في البلاك لست من قبل**')
