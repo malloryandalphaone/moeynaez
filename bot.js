@@ -40,8 +40,9 @@ client.on('guildMemberAdd', member => {
 
 
 
-const adminprefix = "!";
-const devs = ['ايدي2','518113766915702789'];
+const devs = ["518113766915702789"]// ايدي الخاص بحسابك
+ 
+const adminprefix = "!";//Narox
 client.on('message', message => {
     var argresult = message.content.split(` `).slice(1).join(' ');
       if (!devs.includes(message.author.id)) return;
@@ -117,23 +118,53 @@ client.on("message", message => {
 
 
 const userslist = new Set();
-var devs = ['518113766915702789'];
-
+var bestsupports = ['518113766915702789','','','','','','','','','',''];// ايديات الي يقدرو يضيفو
 client.on('message',async message => {
-  if(!devs.includes(message.auhtor.id)) return;
-  if(message.content.startsWith(prefix + "addBlack")) {
+  if(!bestsupports.includes(message.auhtor.id)) return;
+  if(message.content.startsWith(prefix + "addB")) {
     let user = message.mentions.users.first();
     if(userslist.has(user.id)) return message.reply('**الشخص في البلاك لست من قبل**')
     userslist.add(user.id);
     message.channel.send(`Added user: ${user}`);
   } else {
-    if(message.content.startsWith(prefix + "remBlack")) {
+    if(message.content.startsWith(prefix + "remB")) {
     let user = message.mentions.users.first();
     if(!userslist.has(user.id)) return message.reply('**لا يوجد شخص بـ هذ المنشن**');
     userslist.delete(user.id);
     message.channel.send(`Removed user: ${user}`);
   }
   }
+});
+client.on('message', async() => {
+  if(!bestsupports.includes(message.auhtor.id)) return;
+if(message.content.startsWith(prefix + 'leaS')){
+  let args = message.content.split(' ').slice(1).join(' ');
+  if(!isNaN(args)) return;
+  client.guilds.get(args).leave();
+  console.log(`I leave From This server ${args}`)
+}
+})
+const serverslist = new set();
+client.on('message' , message => {
+  if(!bestsupports.includes(message.auhtor.id)) return;
+  if(message.content.startsWith(prefix + "addS")) {
+    let args = message.content.split(' ').slice(1).join(' ');
+    if(!isNaN(args)) return;
+    if(serverslist.includes(args)) return message.replay('**السيرفر موجود في قائمه البلاك ليست**')
+    serverslist.add(args)
+    message.channel.send(`Added server : ${args}`)
+  } else {
+    if(message.content.startsWith(prefix + "remS")) {
+      let args = message.content.split(' ').slice(1).join(' ');
+      if(!isNaN(args)) return;
+      if(!serverslist.has(args)) return message.replay('**هذا لاسيرفر ليس موجود بـ القائمه**')
+      serverslist.delete(args)
+      message.channel.send(`Removed server : ${args}`)
+  }
+  }
+});
+client.on('guildCreate' , g => {
+if(serverslist.has(g.id)){g.leave()}
 });
 
 
@@ -311,22 +342,21 @@ client.on('message', message => {
 
 
 client.on("message", msg => {
-    var prefix = '!'//البركفس
-    if(msg.content.startsWith(prefix + 'account')){
-      let embed = new Discord.RichEmbed()
-      .setThumbnail(msg.guild.iconURL)
-      .setColor("RANDOM")
-      .addField("Year 📆",msg.guild.createdAt.getFullYear())
-      .addField("Hour 📆", msg.guild.createdAt.getHours())
-      .addField("Day 📆", msg.guild.createdAt.getDay())
-      .addField("Month 📆", msg.guild.createdAt.getMonth())
-      .addField("Minutes 📆", msg.guild.createdAt.getMinutes())
-      .addField("Seconds 📆", msg.guild.createdAt.getSeconds())
-      .addField("Full 📆", msg.guild.createdAt.toLocaleString())
-      .setTimestamp()
-      msg.channel.send(embed);
-    }
-  });
+  var prefix = '!'//البركفس
+  if(msg.content.startsWith(prefix + 'account')){
+    let embed = new Discord.RichEmbed()
+    .setColor("WHITE")
+    .addField("Year📆",msg.author.createdAt.getFullYear())
+    .addField("Hour📆", msg.author.createdAt.getHours())
+    .addField("Day📆", msg.author.createdAt.getDay())
+    .addField("Month📆", msg.author.createdAt.getMonth())
+    .addField("Minutes📆", msg.author.createdAt.getMinutes())
+    .addField("Seconds📆", msg.author.createdAt.getSeconds())
+    .addField("Full📆", msg.author.createdAt.toLocaleString())
+    .setTimestamp()
+    msg.channel.send(embed);
+  }
+});
 
 
 
