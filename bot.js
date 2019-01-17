@@ -131,11 +131,11 @@ const membersSize = (client) => {
 
 
 client.on('ready', () => {
-client.channels.get(voiceChannel).setName(`Voice Online: [${membersSize(client)}]`)
+client.channels.get(voiceChannel).setName(`❆ , Voice Now ${membersSize(client)} .`)
 }); 
 
 client.on('voiceStateUpdate', () => {
-client.channels.get(voiceChannel).setName(`Voice Online: [${membersSize(client)}]`)
+client.channels.get(voiceChannel).setName(`❆ , Voice Now ${membersSize(client)} .`)
 })
 
 
