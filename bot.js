@@ -12,7 +12,35 @@ client.user.setStatus('dnd');
   client.user.setActivity("System.",{type: 'LISTENING'});
 });
 
+client.on('message', msg => {
+    if(!message.guild.member(msg.author).hasPermission("ADMINSTATOR")) return msg.reply("**You don't have Permission.**").then(msg => msg.delete(5000));;
+    if (msg.author.bot) return;
+    if (!msg.content.startsWith(prefix))
+    var args = msg.content.split(" ");
+    var cmd = args[0];
+    switch(cmd) {
+        case "send":
+            if (!args[1]) return msg.reply(`${prefix}send @user [message]`);
+            if (!args[2]) return msg.reply(`${prefix}send @user [message]`);
+            if (!msg.mentions.users.first()) return msg.reply(`${prefix}send @user [message]`);
+            msg.mentions.users.first().send(args.join(" ").slice(args[1].length + args[0].length));
+        break;
+    }
+})
 
+client.on('message', message => {
+    let args = message.content.split(' ').slice(1);
+    if(!message.guild.member(message.author).hasPermission("ADMINSTRATOR")) return message.reply("**You don't have Permission.**").then(msg => msg.delete(5000));;
+    if(message.content.startsWith(prefix + 'dm')) {
+        let mnt = message.mentions.users.first();
+        if(!mnt) return message.reply('Please mention someone!');
+        mnt.send(args.join(' ').replace(mnt, '')).then(() => {
+            message.channel.send('Successfully sent the message!');
+        }).catch(() => {
+            message.channel.send('The user have dms disabled');
+        });
+    };
+})
 
 const invites = {};
 
