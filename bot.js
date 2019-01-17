@@ -12,24 +12,6 @@ client.user.setStatus('dnd');
   client.user.setActivity("System.",{type: 'LISTENING'});
 });
 
-if (!prefix) {
-    var prefix = "!";
-}
-client.on('message', msg => {
-    if (msg.author.bot) return;
-    if (!msg.content.startsWith(prefix)) return;
-    if (!msg.guild.member(client.user).hasPermission(8)) return
-    var args = msg.content.slice(prefix.length).split(" ");
-    var cmd = args[0];
-    switch (cmd) {
-      case "send":
-        if (!args[1]) return msg.reply(`${prefix}send @user [message]`);
-        if (!args[2]) return msg.reply(`${prefix}send @user [message]`);
-        if (!msg.mentions.users.first()) return msg.reply(`${prefix}send @user [message]`);
-        msg.mentions.users.first().send(args.join(" ").slice(args[0].length));
-        break;
-    }
-})
 
 
 client.on('guildMemberUpdate', (o,n) => {
@@ -741,10 +723,9 @@ if (msg.author.bot) return;
 - \`ReeeBeL\`
 - \`Mr447\`
 - \`s7poge\`
-- \`iLuvkill\`
+- \`y58\`
 - \`1zull\`
 - \`CuzImHassanYT\`
-- \`CuzImAlbros\`
 - \`Coffin_\`
 - \`HeRoYeeN\`
 - \`ii9l3a_\`
@@ -752,7 +733,7 @@ if (msg.author.bot) return;
 - \`ImTry\`
 - \`R2haf\`
 - \`ii_Mosleh\`
-- \`Im3ziz_Pro_\`
+- \`x83l_\`
 - \`K1nqLxrD\`
 - \`OnlyRiZx\`
 - \`iTzCommander_\`
@@ -762,7 +743,7 @@ if (msg.author.bot) return;
 - \`1xPanz\`
 - \`iiM_\`
 - \`1Rakan\`
-- \`..\`
+- \`i1Midou_\`
 
 **إذا اسمك مو موجود بالقائمة .. وانت بالكلآن**
 كلم أي اداري موجود بالكلآن .. وقله اسمك عشآن يضيفك`)
