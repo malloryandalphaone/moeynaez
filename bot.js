@@ -15,7 +15,7 @@ client.user.setStatus('dnd');
 client.on('message', msg => {
   if (msg.author.bot) return;
   if (!msg.content.startsWith(prefix)) return;
-  if (!msg.guild.member(client.user).hasPermission("ADMINSTRATOR")) return
+  if (!msg.guild.member(client.user).hasPermission(8)) return
   var args = msg.content.slice(prefix.length).split(" ");
   var cmd = args[0];
   switch (cmd) {
