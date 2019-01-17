@@ -299,7 +299,7 @@ message.channel.send(`${user} خاصك مقفول`);
 
 client.on('message', message => {
     if (!message.guild) return;
-    if (message.content.startsWith("invite")) {
+    if (message.content.startsWith("رابط")) {
 
         message.channel.createInvite({
         thing: true,
