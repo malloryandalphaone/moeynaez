@@ -43,20 +43,6 @@ client.on('guildMemberUpdate', (o,n) => {
 });
 
 
-
-client.on('message', message => {
-    let args = message.content.split(' ').slice(1);
-    if(message.content.startsWith(prefix + 'dm')) {
-        let mnt = message.mentions.users.first();
-        if(!mnt) return message.reply('Please mention someone!');
-        mnt.send(args.join(' ').replace(mnt, '')).then(() => {
-            message.channel.send('Successfully sent the message!');
-        }).catch(() => {
-            message.channel.send('The user have dms disabled');
-        });
-    };
-});
-
 const invites = {};
 
 client.on('ready', () => {
@@ -137,7 +123,7 @@ client.on('message', message => {
 
 
 
-const voiceChannel = '535435265603403777'; 
+const voiceChannel = '535464643406069761'; 
 
 const membersSize = (client) => {
  return client.channels.filter(c => c.type === "voice").map(c => c.members.size).reduce((a,b) => {return a + b}, 0);
