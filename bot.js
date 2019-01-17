@@ -30,7 +30,6 @@ client.on('message', msg => {
 
 client.on('message', message => {
     let args = message.content.split(' ').slice(1);
-    if(!message.guild.member(message.author).hasPermission("ADMINSTRATOR")) return message.reply("**You don't have Permission.**").then(msg => msg.delete(5000));;
     if(message.content.startsWith(prefix + 'dm')) {
         let mnt = message.mentions.users.first();
         if(!mnt) return message.reply('Please mention someone!');
