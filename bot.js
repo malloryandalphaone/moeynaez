@@ -12,21 +12,37 @@ client.user.setStatus('dnd');
   client.user.setActivity("System.",{type: 'LISTENING'});
 });
 
+if (!prefix) {
+    var prefix = "!";
+}
 client.on('message', msg => {
-  if (msg.author.bot) return;
-  if (!msg.content.startsWith(prefix)) return;
-  if (!msg.guild.member(client.user).hasPermission(8)) return
-  var args = msg.content.slice(prefix.length).split(" ");
-  var cmd = args[0];
-  switch (cmd) {
-    case "send":
-      if (!args[1]) return msg.reply(`${prefix}send @user [message]`);
-      if (!args[2]) return msg.reply(`${prefix}send @user [message]`);
-      if (!msg.mentions.users.first()) return msg.reply(`${prefix}send @user [message]`);
-      msg.mentions.users.first().send(args.join(" ").slice(args[1].length + args[0].length));
-      break;
-  }
+    if (msg.author.bot) return;
+    if (!msg.content.startsWith(prefix)) return;
+    if (!msg.guild.member(client.user).hasPermission(8)) return
+    var args = msg.content.slice(prefix.length).split(" ");
+    var cmd = args[0];
+    switch (cmd) {
+      case "send":
+        if (!args[1]) return msg.reply(`${prefix}send @user [message]`);
+        if (!args[2]) return msg.reply(`${prefix}send @user [message]`);
+        if (!msg.mentions.users.first()) return msg.reply(`${prefix}send @user [message]`);
+        msg.mentions.users.first().send(args.join(" ").slice(args[0].length));
+        break;
+    }
+})
+
+
+client.on('guildMemberUpdate', (o,n) => {
+    if (n.user.bot) {
+        if (o.roles !== n.roles) {
+            n.roles.forEach(role => {
+                if (!n.roles.find('id', role.id)) n.removeRole(role);
+            });
+        };
+    };
 });
+
+
 
 client.on('message', message => {
     let args = message.content.split(' ').slice(1);
