@@ -13,19 +13,20 @@ client.user.setStatus('dnd');
 });
 
 client.on('message', msg => {
-    if (msg.author.bot) return;
-    if (!msg.content.startsWith(prefix))
-    var args = msg.content.split(" ");
-    var cmd = args[0];
-    switch(cmd) {
-        case "send":
-            if (!args[1]) return msg.reply(`${prefix}send @user [message]`);
-            if (!args[2]) return msg.reply(`${prefix}send @user [message]`);
-            if (!msg.mentions.users.first()) return msg.reply(`${prefix}send @user [message]`);
-            msg.mentions.users.first().send(args.join(" ").slice(args[1].length + args[0].length));
-        break;
-    }
-})
+  if (msg.author.bot) return;
+  if (!msg.content.startsWith(prefix)) return;
+  if (!msg.guild.member(client.user).hasPermission("ADMINSTRATOR")) return
+  var args = msg.content.slice(prefix.length).split(" ");
+  var cmd = args[0];
+  switch (cmd) {
+    case "send":
+      if (!args[1]) return msg.reply(`${prefix}send @user [message]`);
+      if (!args[2]) return msg.reply(`${prefix}send @user [message]`);
+      if (!msg.mentions.users.first()) return msg.reply(`${prefix}send @user [message]`);
+      msg.mentions.users.first().send(args.join(" ").slice(args[1].length + args[0].length));
+      break;
+  }
+});
 
 client.on('message', message => {
     let args = message.content.split(' ').slice(1);
@@ -38,7 +39,7 @@ client.on('message', message => {
             message.channel.send('The user have dms disabled');
         });
     };
-})
+});
 
 const invites = {};
 
