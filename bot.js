@@ -717,6 +717,7 @@ client.on('message', msg => {
 if (msg.author.bot) return;
   const embed = new Discord.RichEmbed()
             .setColor("FFFFFF")
+            .setFooter("إذ لم تجد أسمك كعضو بالفريق توجه الى الإدارة لإضافته .")
             .setTitle("# Team Vást .")
             .setDescription(`
 
@@ -745,9 +746,7 @@ if (msg.author.bot) return;
 - \`1Rakan\`
 - \`i1Midou_\`
 - \`iNolan_\`
-
-**إذا اسمك مو موجود بالقائمة .. وانت بالكلآن**
-كلم أي اداري موجود بالكلآن .. وقله اسمك عشآن يضيفك`)
+`)
 
 
         msg.author.sendEmbed(embed)
