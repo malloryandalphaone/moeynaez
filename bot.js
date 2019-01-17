@@ -270,13 +270,12 @@ if(!rUser) return msg.channel.send("Couldn't find users.");
 
 
 let reportembed = new Discord.RichEmbed()
-.setDescription("Reports")
+.setDescription("معلومآت البلآغ ")
 .setColor("WHITE")
-.addField("Report User", `${rUser}`)
-.addField("Report By", `${msg.author}`)
-.addField("Channel", msg.channel)
-.addField("Time", msg.createdAt)
-.addField("Reason",`${reason}`)
+.addField("- Report too", `${rUser}`)
+.addField("- Report By", `${msg.author}`)
+.addField("- Channel", msg.channel)
+.addField("- Reason",`${reason}`)
 
 
 let reportchannel = msg.guild.channels.find(`name`,"reports")
