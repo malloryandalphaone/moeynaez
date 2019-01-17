@@ -13,7 +13,6 @@ client.user.setStatus('dnd');
 });
 
 client.on('message', msg => {
-    if(!message.guild.member(msg.author).hasPermission("ADMINSTATOR")) return msg.reply("**You don't have Permission.**").then(msg => msg.delete(5000));;
     if (msg.author.bot) return;
     if (!msg.content.startsWith(prefix))
     var args = msg.content.split(" ");
