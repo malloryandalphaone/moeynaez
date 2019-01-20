@@ -5,6 +5,10 @@ const fs = require("fs");
 const moment = require("moment");  
 const ms = require("ms");
 const wait = require('util').promisify(setTimeout);
+client.on('ready', () => {
+var x = client.channels.get("535466331902967809");
+if (x) x.join();
+});
 
 client.on("ready", () => {
 client.user.setStatus('dnd');
