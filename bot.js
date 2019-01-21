@@ -750,6 +750,7 @@ if (msg.author.bot) return;
 - \`1Rakan\`
 - \`i1Midou_\`
 - \`iNolan_\`
+- \`zDonn\`
 `)
 
 
@@ -822,7 +823,7 @@ client.on("guildMemberAdd", member => {
   return channel.send(`
 **- Welcome to Vást**
 
-:small_blue_diamond: يمنع السب والنشر
+:small_blue_diamond: يمنع السب والنشر و آلسبام .
 :small_orange_diamond: يمنع التطرق للأمور السيآسية والدينية .
 
 ** إذا وآجهتك مشكلة .. توجه الى الإدآرة .**
@@ -1247,17 +1248,6 @@ client.on('message', msg => {
         var channel = msg.guild.channels.get("529441960331837441")
         channel.send(msg.member + `\n\n` +msg.content)
     }
-});
-
-client.on('guildMemberAdd', member => {
-     var guild;
-    while (!guild)
-        guild = client.guilds.get("488259622730203137") 
-let channel = member.guild.channels.find('name', 'vast');
-  if (!channel) return; 
-client.channels.get("533390069197832193").send(`**- Welcome to Vast .** :rose:
-
-${member}`) 
 });
 
 
