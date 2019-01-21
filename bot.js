@@ -256,7 +256,7 @@ if(!rUser) return msg.channel.send("Couldn't find users.");
 
 
 let reportembed = new Discord.RichEmbed()
-.setDescription("معلومآت البلآغ ")
+.setDescription("Report Information :")
 .setColor("WHITE")
 .addField("- Report too", `${rUser}`)
 .addField("- Report By", `${msg.author}`)
@@ -669,7 +669,7 @@ client.on('message', message => {
         .addField("📜 Server NIP",`${args}`,true)
         .addField("🌐 Server Port",`${port}`)
         .setImage(`http://status.mclive.eu/${args}/${args}/25565/banner.png`)
-        .setFooter(`Server MineCraft Stats`)
+        .setFooter(`Stats MineCraft Server , Vast.`)
     message.channel.send(embed)      
 }});
 
@@ -691,14 +691,14 @@ if(!rUser) return msg.channel.send("**Mention Any Member ..**");
     let reason = args.join(" ").slice(22);
 
     let reportembed = new Discord.RichEmbed()
-    .setDescription("You have Warning 2")
+    .setDescription("Warning Number Two :")
     .setColor("WHITE")
     .addField("- Warn User", `${rUser}`)
     .addField("- Warn By", `${msg.author}`)
     .addField("- Reason",`${reason}`)
     
     
-    let reportchannel = msg.guild.channels.find(`name`,"vast"); //حط هنا اسم الروم الي يوريك بعض المعلومات
+    let reportchannel = msg.guild.channels.find(`name`,"warns"); //حط هنا اسم الروم الي يوريك بعض المعلومات
     if(!reportchannel) return msg.channel.send("Couldn't find `vast` channel. "); //ط هنا اسم الروم الي يوريك بعض المعلومات
     
     msg.delete().catch(O_o=>{});
@@ -777,14 +777,14 @@ if(!rUser) return msg.channel.send("**Mention Any Member ..**");
     let reason = args.join(" ").slice(22);
 
     let reportembed = new Discord.RichEmbed()
-    .setDescription("إنذار جديد بشأن مخالفة")
+    .setDescription("Warning Number One :")
     .setColor("WHITE")
     .addField("- Warn User", `${rUser}`)
     .addField("- Warn By", `${msg.author}`)
     .addField("- Reason",`${reason}`)
     
     
-    let reportchannel = msg.guild.channels.find(`name`,"vast"); //حط هنا اسم الروم الي يوريك بعض المعلومات
+    let reportchannel = msg.guild.channels.find(`name`,"warns"); //حط هنا اسم الروم الي يوريك بعض المعلومات
     if(!reportchannel) return msg.channel.send("Couldn't find `vast` channel. "); //ط هنا اسم الروم الي يوريك بعض المعلومات
     
     msg.delete().catch(O_o=>{});
@@ -1255,7 +1255,7 @@ client.on('guildMemberAdd', member => {
         guild = client.guilds.get("488259622730203137") 
 let channel = member.guild.channels.find('name', 'vast');
   if (!channel) return; 
-client.channels.get("529435960778424331").send(`**- Welcome to Vast .** :rose:
+client.channels.get("533390069197832193").send(`**- Welcome to Vast .** :rose:
 
 ${member}`) 
 });
