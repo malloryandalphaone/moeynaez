@@ -178,16 +178,6 @@ client.on("message", message => {
 
 
 
-client.on('message', message => {
-    if (message.author.bot) return;
-    if (!message.content.startsWith(prefix)) return;
- 
-    if (message.content.startsWith(prefix + 'edit')) {
-        message.channel.sendMessage('Edit me').then(msg=>{msg.edit('Done edit')});
-    }
-});
-
-
 
 
 client.on("message", (message) => {
@@ -301,17 +291,6 @@ reportchannel.send(reportembed);
 
 
 
-
-
-client.on("guildMemberAdd", member => {
-  let guild = member.guild;
-  guild.defaultChannel.sendMessage(`${member.user} **join this server.**`).catch(console.error);
-});
- 
-client.on("guildMemberRemove", member => {
-  let guild = member.guild;
-  guild.defaultChannel.sendMessage(`${member.user} **left this server.**`).catch(console.error);
-});
 
 
 client.on('message', async message => {
@@ -753,7 +732,7 @@ if (msg.author.bot) return;
 
 - \`ReeeBeL\`
 - \`Mr447\`
-- \`s7poge\`
+- \`s7pg\`
 - \`y58\`
 - \`1zull\`
 - \`CuzImHassanYT\`
@@ -766,7 +745,7 @@ if (msg.author.bot) return;
 - \`ii_Mosleh\`
 - \`x83l_\`
 - \`K1nqLxrD\`
-- \`OnlyRiZx\`
+- \`JustCute_\`
 - \`iTzCommander_\`
 - \`xFn_\`
 - \`Hima_YT\`
