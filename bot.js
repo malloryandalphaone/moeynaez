@@ -48,7 +48,7 @@ client.on('guildMemberAdd', member => {
     const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
     const inviter = client.users.get(invite.inviter.id);
     const logChannel = member.guild.channels.find(channel => channel.name === "vast");
-    logChannel.send(`${member} Invited by <@${inviter.id}>`);
+    logChannel.send(`**- ${member} \n- Invite By | <@${inviter.id}>**`);
   });
 });
 
@@ -70,7 +70,7 @@ client.on('guildMemberAdd', member => {
     const embed = new Discord.RichEmbed()
     
     .setColor("WHITE")
-    .setDescription(`**تاريخ دخولك للدسكورد منذ ${createdAt.toFixed(0)} يوم**`)
+    .setDescription(`- Join Discord in __${createdAt.toFixed(0)}__ Day.`)
     .setAuthor(member.user.tag, member.user.avatarURL);
     channel.sendEmbed(embed);
 
@@ -120,18 +120,24 @@ client.on('message', message => {
     client.user.setGame(argresult, "https://www.twitch.tv/idk");
       message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
   }
-    if(message.content === adminprefix + "restart") {// لعمل ريسترت للبوت
-      if (!devs.includes(message.author.id)) return;
-          message.channel.send(`:warning:️ **Bot restarting by ${message.author.username}**`);
-        console.log("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        console.log(`⚠️ Bot restarting... ⚠️`);
-        console.log("===============================================\n\n");
-        client.destroy();
-        child_process.fork(__dirname + "/bot.js");
-        console.log(`Bot Successfully Restarted`);
+    if(message.content.startsWith("!restart")) {
+        if(message.author.id !== "518113766915702789") return message.reply('You aren\'t the bot owner.');
+        message.channel.send('zZz').then(msg => {
+            setTimeout(() => {
+               msg.edit('zZzZz');
+            },1000);
+            setTimeout(() => {
+               msg.edit('zZzZzZz');
+            },2000);
+        });
+        console.log(${message.author.tag} [ ${message.author.id} ] has restarted the bot.);
+        console.log(zZzZz);
+        setTimeout(() => {
+            client.destroy();
+            client.login(process.env.BOT_TOKEN);
+        },3000);
     }
- 
-  });
+});
 
 
 
@@ -195,15 +201,14 @@ client.on("message", (message) => {
 client.on("message", msg => {
   if(msg.content === '!' + "id") {
       const embed = new Discord.RichEmbed();
-  embed.addField("🔱| اسم الحساب :", `${msg.author.username}#${msg.author.discriminator}`, true)
-          .addField("🆔| الاي دي :", `${msg.author.id}`, true)
+  embed.addField("Name Account :", `${msg.author.username}#${msg.author.discriminator}`, true)
+          .addField("Id :", `${msg.author.id}`, true)
           .setColor("WHITE")
           .setFooter(msg.author.username , msg.author.avatarURL)
-          .addField('📛| الحالة :', `${msg.author.presence.status.toUpperCase()}`, true)
-          .addField('🎲| بلاينج :', `${msg.author.presence.game === null ? "No Game" : msg.author.presence.game.name}`, true)
-          .addField('🏅| الرتب : ', `${msg.member.roles.filter(r => r.name).size}`, true)
-          .addField('📅| تم الانضمام للديسكورد في :', `${msg.createdAt}`,true)
-          .addField('🤖| هل هو بوت ؟', `${msg.author.bot.toString().toUpperCase()}`, true);
+          .addField('The Stats :', `${msg.author.presence.status.toUpperCase()}`, true)
+          .addField('Playing :', `${msg.author.presence.game === null ? "No Game" : msg.author.presence.game.name}`, true)
+          .addField('Ranks :', `${msg.member.roles.filter(r => r.name).size}`, true)
+          .addField('Join Discord in :', `${msg.createdAt}`,true)
       msg.channel.send({embed: embed})
   }
 });
@@ -667,7 +672,7 @@ client.on('message', message => {
   const port = '25565'
   if(message.content.startsWith('!server')) {
  const args = message.content.split(" ").slice(1).join(" ")
-    if (!args) return message.channel.send("** Write Server IP . **");
+    if (!args) return message.channel.send("**Write Server IP . **");
         let embed = new Discord.RichEmbed()
         .setColor('WHITE')
         .setThumbnail(`https://api.minetools.eu/favicon/${args}/25565`)
@@ -812,7 +817,7 @@ client.on('message', function(message) {
         var RaYaN= new Discord.RichEmbed()
         .setColor('WHITE')
         .setTimestamp()
-        .setTitle('``New Message in private``')
+        .setTitle('`New Message in private`')
         .setThumbnail(`${message.author.avatarURL}`)
         .setDescription(`\`${message.content}\``)
         .setFooter(`From **${message.author.tag} (${message.author.id})**`)
