@@ -18,6 +18,61 @@ client.user.setStatus('dnd');
 
 
 
+
+client.on('message', msg => {
+    if(msg.content === '!team') {
+        
+        if(!msg.channel.guild) return msg.reply(":x: **This is Command for Servers Only.**");
+       
+if (msg.author.bot) return;
+  const embed = new Discord.RichEmbed()
+            .setColor("FFFFFF")
+            .setFooter("إذ لم تجد أسمك كعضو بالفريق توجه الى الإدارة لإضافته .")
+            .setTitle("# Team Vást .")
+            .setDescription(`
+
+- \`ReeeBeL\`
+- \`Mr447\`
+- \`s7pg\`
+- \`y58\`
+- \`1zull\`
+- \`CuzImHassanYT\`
+- \`Coffin_\`
+- \`HeRoYeeN\`
+- \`ii9l3a_\`
+- \`AbuSalem\`
+- \`ImTry\`
+- \`R2haf\`
+- \`ii_Mosleh\`
+- \`x83l_\`
+- \`K1nqLxrD\`
+- \`JustCute_\`
+- \`iTzCommander_\`
+- \`xFn_\`
+- \`Hima_YT\`
+- \`K1nqS3m\`
+- \`1xPanz\`
+- \`iiM_\`
+- \`1Rakan\`
+- \`i1Midou_\`
+- \`iNolan_\`
+- \`zDonn\`
+- \`wHybH\`
+- \`Quixxyy\`
+`)
+
+
+        msg.author.sendEmbed(embed)
+
+    }
+
+});
+
+
+
+
+
+
 client.on('guildMemberUpdate', (o,n) => {
     if (n.user.bot) {
         if (o.roles !== n.roles) {
@@ -706,52 +761,7 @@ if(!rUser) return msg.channel.send("**Mention Any Member ..**");
 
 
 
-client.on('message', msg => {
-    if(msg.content === '!team') {
-        
-        if(!msg.channel.guild) return msg.reply(":x: **This is Command for Servers Only.**");
-       
-if (msg.author.bot) return;
-  const embed = new Discord.RichEmbed()
-            .setColor("FFFFFF")
-            .setFooter("إذ لم تجد أسمك كعضو بالفريق توجه الى الإدارة لإضافته .")
-            .setTitle("# Team Vást .")
-            .setDescription(`
 
-- \`ReeeBeL\`
-- \`Mr447\`
-- \`s7pg\`
-- \`y58\`
-- \`1zull\`
-- \`CuzImHassanYT\`
-- \`Coffin_\`
-- \`HeRoYeeN\`
-- \`ii9l3a_\`
-- \`AbuSalem\`
-- \`ImTry\`
-- \`R2haf\`
-- \`ii_Mosleh\`
-- \`x83l_\`
-- \`K1nqLxrD\`
-- \`JustCute_\`
-- \`iTzCommander_\`
-- \`xFn_\`
-- \`Hima_YT\`
-- \`K1nqS3m\`
-- \`1xPanz\`
-- \`iiM_\`
-- \`1Rakan\`
-- \`i1Midou_\`
-- \`iNolan_\`
-- \`zDonn\`
-`)
-
-
-        msg.author.sendEmbed(embed)
-
-    }
-
-});
 
 
 
