@@ -13,7 +13,7 @@ if (x) x.join();
 client.on("ready", () => {
 client.user.setStatus('dnd');
   console.log("Reeebel | Logged in! Server count: ${client.guilds.size}");
-  client.user.setActivity("System.",{type: 'LISTENING'});
+  client.user.setActivity("Development.",{type: 'WATCHING'});
 });
 
 
@@ -130,14 +130,6 @@ client.on('message', message => {
                msg.edit('zZzZzZz');
             },2000);
         });
-        console.log(${message.author.tag} [ ${message.author.id} ] has restarted the bot.);
-        console.log(zZzZz);
-        setTimeout(() => {
-            client.destroy();
-            client.login(process.env.BOT_TOKEN);
-        },3000);
-    }
-});
 
 
 
