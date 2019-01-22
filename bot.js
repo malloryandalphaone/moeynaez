@@ -120,16 +120,7 @@ client.on('message', message => {
     client.user.setGame(argresult, "https://www.twitch.tv/idk");
       message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
   }
-    if(message.content.startsWith("!restart")) {
-        if(message.author.id !== "518113766915702789") return message.reply('You aren\'t the bot owner.');
-        message.channel.send('zZz').then(msg => {
-            setTimeout(() => {
-               msg.edit('zZzZz');
-            },1000);
-            setTimeout(() => {
-               msg.edit('zZzZzZz');
-            },2000);
-        });
+});
 
 
 
