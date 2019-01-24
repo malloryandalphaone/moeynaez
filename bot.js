@@ -870,7 +870,7 @@ client.on("message", message => {
     if(command == prefix+"vkick"){
           if (!message.guild.member(message.author).roles.has('⁎ Voice kick Access.')) return;
         //if (!message.guild.member(message.author).hasPermission('MOVE_MEMBERS') || !message.guild.member(message.author).hasPermission('ADMINISTRATOR')) {
-            return message.reply('you do not have permission to perform this action!');
+           // return message.reply('you do not have permission to perform this action!');
         }
 
         var member = message.guild.members.get(message.mentions.users.array()[0].id);
