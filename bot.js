@@ -21,7 +21,7 @@ client.user.setStatus('dnd');
 
 client.on('message', msg => {
     if(msg.content === '!team') {
-        
+        if (!msg.guild.member(msg.author).roles.has('Clan Access')) return;
         if(!msg.channel.guild) return msg.reply(":x: **This is Command for Servers Only.**");
        
 if (msg.author.bot) return;
@@ -510,8 +510,9 @@ client.on('message',message =>{
     var args = message.content.toLowerCase().split(" ");
     var userM = message.mentions.users.first()
     if(command == prefix + 'unban') {//SnOw Code
-        if(!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send(':x: **You don\'t have permission.**'); //SnOw Code
-        if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.channel.send('**hmmm..**');//SnOw Code
+        if (!message.guild.member(message.author).roles.has('⁎ Revoke Ban.')) return;
+        //if(!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send(':x: **You don\'t have permission.**'); //SnOw Code
+        //if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.channel.send('**hmmm..**');//SnOw Code
         if(!args[1]) return  message.channel.send('**Mention Any Member..**');
         if(args[1].length < 16) return message.reply(':x: **This is Id Not For Any User..**');//SnOw Code
         message.guild.fetchBans().then(bans => {//SnOw Code
@@ -684,7 +685,8 @@ client.on("message", (message) => {
 client.on('message', message => {
  
 if (message.content === prefix + "muted") {
-if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**You don’t havepermissions**');
+if (!message.guild.member(message.author).roles.has('⁎ Channel Manage.')) return;
+//if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**You don’t havepermissions**');
           message.channel.overwritePermissions(message.guild.id, {
         SEND_MESSAGES: false
  
@@ -693,7 +695,8 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**You
           });
 }
  if (message.content === prefix + "unmuted") {
-if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**You don’t have permissions**');
+ if (!message.guild.member(message.author).roles.has('⁎ Channel Manage.')) return;
+//if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**You don’t have permissions**');
           message.channel.overwritePermissions(message.guild.id, {
         SEND_MESSAGES: true
  
@@ -731,8 +734,8 @@ let msgarray = msg.content.split(" ");
 let cmd = msgarray[0];
 let args = msgarray.slice(1);
 if(cmd === `${prefix}warn2`){//الامر
-if (!msg.member.hasPermission("MANAGE_ROLES")) return msg.channel.send('**:x: You don\'t have Permission.**');
-  
+//if (!msg.member.hasPermission("MANAGE_ROLES")) return msg.channel.send('**:x: You don\'t have Permission.**');
+  if (!msg.guild.member(msg.author).roles.has('⁎ Warnings Access.')) return;
 
   let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
 if(!rUser) return msg.channel.send("**Mention Any Member ..**");
@@ -773,8 +776,8 @@ let msgarray = msg.content.split(" ");
 let cmd = msgarray[0];
 let args = msgarray.slice(1);
 if(cmd === `${prefix}warn`){//الامر
-if (!msg.member.hasPermission("MANAGE_ROLES")) return msg.channel.send('**:x: You don\'t have Permission.**');
-  
+//if (!msg.member.hasPermission("MANAGE_ROLES")) return msg.channel.send('**:x: You don\'t have Permission.**');
+  if (!msg.guild.member(msg.author).roles.has('⁎ Warnings Access.')) return;
 
   let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
 if(!rUser) return msg.channel.send("**Mention Any Member ..**");
@@ -841,8 +844,9 @@ ${member} :fallen_leaf: `)
 client.on('message', message => {
     var prefix = "!";
     if(message.content.startsWith(prefix + 'move all')) {
-     if (!message.member.hasPermission("MOVE_MEMBERS")) return message.channel.send('**:x: You Dont Have Perms `MOVE_MEMBERS`**');
-       if(!message.guild.member(client.user).hasPermission("MOVE_MEMBERS")) return message.reply("**:x: I Dont Have Perms `MOVE_MEMBERS`**");
+    if (!message.guild.member(message.author).roles.has('⁎ Move Access.')) return;
+     //if (!message.member.hasPermission("MOVE_MEMBERS")) return message.channel.send('**:x: You Dont Have Perms `MOVE_MEMBERS`**');
+       //if(!message.guild.member(client.user).hasPermission("MOVE_MEMBERS")) return message.reply("**:x: I Dont Have Perms `MOVE_MEMBERS`**");
     if (message.member.voiceChannel == null) return message.channel.send(`**You Have To Be In Room Voice**`)
      var author = message.member.voiceChannelID;
      var m = message.guild.members.filter(m=>m.voiceChannel)
@@ -864,8 +868,8 @@ client.on("message", message => {
     const command = message.content.split(" ")[0];
 
     if(command == prefix+"vkick"){
-
-        if (!message.guild.member(message.author).hasPermission('MOVE_MEMBERS') || !message.guild.member(message.author).hasPermission('ADMINISTRATOR')) {
+          if (!message.guild.member(message.author).roles.has('⁎ Voice kick Access.')) return;
+        //if (!message.guild.member(message.author).hasPermission('MOVE_MEMBERS') || !message.guild.member(message.author).hasPermission('ADMINISTRATOR')) {
             return message.reply('you do not have permission to perform this action!');
         }
 
@@ -1078,9 +1082,9 @@ client.on('message', async message => {
 
   if (command == "ban") {
                if(!message.channel.guild) return message.reply('** This command only for servers**');
-         
-  if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("**انت لا تملك الصلاحيات المطلوبه**");
-  if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**I Don't Have ` BAN_MEMBERS ` Permission**");
+                 if (!message.guild.member(message.author).roles.has('⁎ Ban Access.')) return;
+  //if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("**انت لا تملك الصلاحيات المطلوبه**");
+  //if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**I Don't Have ` BAN_MEMBERS ` Permission**");
   let user = message.mentions.users.first();
   
   if (message.mentions.users.size < 1) return message.channel.send("**Mention any Members.**");
@@ -1108,7 +1112,8 @@ client.on('message', msg => {
     if(command === "clear") {
         const emoji = client.emojis.find("name", "wastebasket")
     let textxt = args.slice(0).join("");
-    if(msg.member.hasPermission("MANAGE_MESSAGES")) {
+    //if(msg.member.hasPermission("MANAGE_MESSAGES")) {
+      if (!msg.guild.member(msg.author).roles.has('⁎ Clear Chat.')) return;
     if (textxt == "") {
         msg.delete().then
     msg.channel.send("ضع رقم للمسح ..").then(m => m.delete(3000));
@@ -1137,8 +1142,9 @@ const prefix = "!";
   if (command == "kick") {
                if(!message.channel.guild) return;
          
-  if(!message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return message.reply("You Don't Have KICK_MEMBERS Permission").then(msg => msg.delete(5000));
-  if(!message.guild.member(client.user).hasPermission("KICK_MEMBERS")) return message.reply("I Don't Have KICK_Members Permission");
+  //if(!message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return message.reply("You Don't Have KICK_MEMBERS Permission").then(msg => msg.delete(5000));
+  //if(!message.guild.member(client.user).hasPermission("KICK_MEMBERS")) return message.reply("I Don't Have KICK_Members Permission");
+    if (!message.guild.member(message.author).roles.has('⁎ Kick Access.')) return;
   let user = message.mentions.users.first();
   let reason = message.content.split(" ").slice(2).join(" ");
 
@@ -1155,7 +1161,8 @@ const prefix = "!";
 });
 
 client.on('message', message => {
-    if (message.content.startsWith("!aavatarr")) {
+    if (message.content.startsWith("!avatar")) {
+    if (!message.guild.member(message.author).roles.has('⁎ Avatar.')) return;
         var mentionned = message.mentions.users.first();
     var x5bzm;
       if(mentionned){
@@ -1185,7 +1192,8 @@ var command = message.content.split(" ")[0];
 command = command.slice(prefix.length);
 var args = message.content.split(" ").slice(1);
     if(command == "mute") {
-     if(!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send(':x: **You don\'t have permission.**');
+      if (!message.guild.member(message.author).roles.has('⁎ Mute Access.')) return;
+     //if(!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send(':x: **You don\'t have permission.**');
     let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!tomute) return message.channel.send("**Mention Player..**") .then(m => m.delete(5000));
     let muterole = message.guild.roles.find(`name`, "Muted");
@@ -1223,7 +1231,8 @@ setTimeout(function(){
  
   }
 if(command === `unmute`) {
-  if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.sendMessage("**You don't have permission.").then(m => m.delete(5000));
+  if (!message.guild.member(message.author).roles.has('⁎ Mute Access.')) return;
+  //if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.sendMessage("**You don't have permission.").then(m => m.delete(5000));
 if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**I don't have permission**").then(msg => msg.delete(6000))
  
   let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
