@@ -21,7 +21,7 @@ client.user.setStatus('dnd');
 
 client.on('message', msg => {
     if(msg.content === '!team') {
-        if (!msg.guild.member(msg.author).roles.has('Clan Access')) return;
+        if (!msg.guild.member(msg.author).roles.has('⁎ Clan joined.')) return;
         if(!msg.channel.guild) return msg.reply(":x: **This is Command for Servers Only.**");
        
 if (msg.author.bot) return;
