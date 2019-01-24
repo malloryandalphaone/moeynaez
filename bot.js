@@ -892,7 +892,7 @@ client.on("message", message => {
     
       });
      });
-    }
+    
 });
 
 
