@@ -1124,7 +1124,7 @@ client.on('message', msg => {
         msg.channel.send("**تم مسح " + textxt + ".**").then(m => m.delete(3000));
         }    
     }
-}
+
 });
 
 
