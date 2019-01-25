@@ -6,14 +6,14 @@ const moment = require("moment");
 const ms = require("ms");
 const wait = require('util').promisify(setTimeout);
 client.on('ready', () => {
-var x = client.channels.get("535466331902967809");
+var x = client.channels.get("538385783971905546");
 if (x) x.join();
 });
 
 client.on("ready", () => {
 client.user.setStatus('dnd');
   console.log("Reeebel | Logged in! Server count: ${client.guilds.size}");
-  client.user.setActivity("Development.",{type: 'WATCHING'});
+  client.user.setActivity("Royal Orders.",{type: 'WATCHING'});
 });
 
 
@@ -179,7 +179,7 @@ client.on('message', message => {
 
 
 
-const voiceChannel = '535464643406069761'; 
+const voiceChannel = '538385699125329940'; 
 
 const membersSize = (client) => {
  return client.channels.filter(c => c.type === "voice").map(c => c.members.size).reduce((a,b) => {return a + b}, 0);
@@ -187,11 +187,11 @@ const membersSize = (client) => {
 
 
 client.on('ready', () => {
-client.channels.get(voiceChannel).setName(`❆ , Voice Now ${membersSize(client)} .`)
+client.channels.get(voiceChannel).setName(`✾, - Voice Now ${membersSize(client)} .`)
 }); 
 
 client.on('voiceStateUpdate', () => {
-client.channels.get(voiceChannel).setName(`❆ , Voice Now ${membersSize(client)} .`)
+client.channels.get(voiceChannel).setName(`✾, - Voice Now ${membersSize(client)} .`)
 })
 
 
@@ -726,47 +726,6 @@ client.on('message', message => {
 
 
 
-client.on("message", msg => { 
-  if(msg.author.bot) return;
-  if(msg.channel.type === 'dm') return;
-let prefix = '!'; //البرفكس
-let msgarray = msg.content.split(" ");
-let cmd = msgarray[0];
-let args = msgarray.slice(1);
-if(cmd === `${prefix}warn2`){//الامر
-//if (!msg.member.hasPermission("MANAGE_ROLES")) return msg.channel.send('**:x: You don\'t have Permission.**');
-  if (!msg.guild.member(msg.author).roles.has('538054323490521088')) return;
-
-  let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
-if(!rUser) return msg.channel.send("**Mention Any Member ..**");
-    let reason = args.join(" ").slice(22);
-
-    let reportembed = new Discord.RichEmbed()
-    .setDescription("Warning Number Two :")
-    .setColor("WHITE")
-    .addField("- Warn User", `${rUser}`)
-    .addField("- Warn By", `${msg.author}`)
-    .addField("- Reason",`${reason}`)
-    
-    
-    let reportchannel = msg.guild.channels.find(`name`,"warns"); //حط هنا اسم الروم الي يوريك بعض المعلومات
-    if(!reportchannel) return msg.channel.send("Couldn't find `vast` channel. "); //ط هنا اسم الروم الي يوريك بعض المعلومات
-    
-    msg.delete().catch(O_o=>{});
-    reportchannel.send(reportembed);
-    let role = msg.guild.roles.find(`name`, '・Warn 2'); //حط هنا اسم الرتبة
-    if(!role) return msg.guild.channel.send("Could't find `vast` role."); //حط هنا اسم الرتبة
-    rUser.addRole(role);
-    
-        return;
-    }
-    });
-
-
-
-
-
-
 
 client.on("message", msg => { 
   if(msg.author.bot) return;
@@ -791,12 +750,85 @@ if(!rUser) return msg.channel.send("**Mention Any Member ..**");
     .addField("- Reason",`${reason}`)
     
     
-    let reportchannel = msg.guild.channels.find(`name`,"warns"); //حط هنا اسم الروم الي يوريك بعض المعلومات
+    let reportchannel = msg.guild.channels.find(`name`,"royal"); //حط هنا اسم الروم الي يوريك بعض المعلومات
     if(!reportchannel) return msg.channel.send("Couldn't find `vast` channel. "); //ط هنا اسم الروم الي يوريك بعض المعلومات
     
     msg.delete().catch(O_o=>{});
     reportchannel.send(reportembed);
-    let role = msg.guild.roles.find(`name`, '・Warn'); //حط هنا اسم الرتبة
+    let role = msg.guild.roles.find(`name`, '» Warning 1.'); //حط هنا اسم الرتبة
+    if(!role) return msg.guild.channel.send("Could't find `vast` role."); //حط هنا اسم الرتبة
+    rUser.addRole(role);
+    
+        return;
+    }
+    });
+
+
+client.on("message", msg => { 
+  if(msg.author.bot) return;
+  if(msg.channel.type === 'dm') return;
+let prefix = '!'; //البرفكس
+let msgarray = msg.content.split(" ");
+let cmd = msgarray[0];
+let args = msgarray.slice(1);
+if(cmd === `${prefix}warn2`){//الامر
+//if (!msg.member.hasPermission("MANAGE_ROLES")) return msg.channel.send('**:x: You don\'t have Permission.**');
+  if (!msg.guild.member(msg.author).roles.has('538054323490521088')) return;
+
+  let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
+if(!rUser) return msg.channel.send("**Mention Any Member ..**");
+    let reason = args.join(" ").slice(22);
+
+    let reportembed = new Discord.RichEmbed()
+    .setDescription("Warning Number Two :")
+    .setColor("WHITE")
+    .addField("- Warn User", `${rUser}`)
+    .addField("- Warn By", `${msg.author}`)
+    .addField("- Reason",`${reason}`)
+    
+    
+    let reportchannel = msg.guild.channels.find(`name`,"royal"); //حط هنا اسم الروم الي يوريك بعض المعلومات
+    if(!reportchannel) return msg.channel.send("Couldn't find `vast` channel. "); //ط هنا اسم الروم الي يوريك بعض المعلومات
+    
+    msg.delete().catch(O_o=>{});
+    reportchannel.send(reportembed);
+    let role = msg.guild.roles.find(`name`, '» Warning 1.'); //حط هنا اسم الرتبة
+    if(!role) return msg.guild.channel.send("Could't find `vast` role."); //حط هنا اسم الرتبة
+    rUser.addRole(role);
+    
+        return;
+    }
+    });
+
+client.on("message", msg => { 
+  if(msg.author.bot) return;
+  if(msg.channel.type === 'dm') return;
+let prefix = '!'; //البرفكس
+let msgarray = msg.content.split(" ");
+let cmd = msgarray[0];
+let args = msgarray.slice(1);
+if(cmd === `${prefix}warn3`){//الامر
+//if (!msg.member.hasPermission("MANAGE_ROLES")) return msg.channel.send('**:x: You don\'t have Permission.**');
+  if (!msg.guild.member(msg.author).roles.has('538054323490521088')) return;
+
+  let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
+if(!rUser) return msg.channel.send("**Mention Any Member ..**");
+    let reason = args.join(" ").slice(22);
+
+    let reportembed = new Discord.RichEmbed()
+    .setDescription("Warning Number Three :")
+    .setColor("WHITE")
+    .addField("- Warn User", `${rUser}`)
+    .addField("- Warn By", `${msg.author}`)
+    .addField("- Reason",`${reason}`)
+    
+    
+    let reportchannel = msg.guild.channels.find(`name`,"royal"); //حط هنا اسم الروم الي يوريك بعض المعلومات
+    if(!reportchannel) return msg.channel.send("Couldn't find `vast` channel. "); //ط هنا اسم الروم الي يوريك بعض المعلومات
+    
+    msg.delete().catch(O_o=>{});
+    reportchannel.send(reportembed);
+    let role = msg.guild.roles.find(`name`, '» Warning 3.'); //حط هنا اسم الرتبة
     if(!role) return msg.guild.channel.send("Could't find `vast` role."); //حط هنا اسم الرتبة
     rUser.addRole(role);
     
@@ -827,7 +859,7 @@ client.on('message', function(message) {
 client.on("guildMemberAdd", member => {
   member.createDM().then(function (channel) {
   return channel.send(`
-**- Welcome to Vást**
+**- Welcome to Royal ;**
 
 :small_blue_diamond: يمنع السب والنشر و آلسبام .
 :small_orange_diamond: يمنع التطرق للأمور السيآسية والدينية .
