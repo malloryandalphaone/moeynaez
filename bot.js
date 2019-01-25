@@ -108,7 +108,7 @@ client.on('guildMemberAdd', member => {
 });
 
 
-hero.on('message',async message => {
+client.on('message',async message => {
 if(message.author.bot || message.channel.type === 'dm') return;
 let args = message.content.split(" ").slice(1);
 let cmd = message.content.split(" ")[0].substring(prefix.length);
@@ -122,10 +122,10 @@ if(cmd === "info") {
        
           await i.setColor("#36393e");
       await i.setThumbnail(message.author.avatarURL);
-          await i.addField('- **General Information**', `» Servers: \`${hero.guilds.size}\`\n» Mutual: \`${hero.guilds.filter(r => r.members.array().includes(message.author.id)).size}\`\n» Users: \`${hero.users.size}\``);
+          await i.addField('- **General Information**', `» Servers: \`${client.guilds.size}\`\n» Mutual: \`${client.guilds.filter(r => r.members.array().includes(message.author.id)).size}\`\n» Users: \`${client.users.size}\``);
       await i.addField('- **Memory Information**', `» CPU: \`${Math.round((process.cpuUsage().user + process.cpuUsage().system) / 2048)} MB ( ${cpu.num()} % )\`\n» Ram: \`${Math.round((stackos.memory.total / 1000000))} MB ( ${ustat.usedmem('kb') % 100} % )\``);
       await i.addField('- **System Information**', `» Platform: \`${stackos.os} ( ${stackos.arch} Bit )\`\n» Processor: \`${(stackos.cpus.model).split("(R)")[1]} ( ${stackos.cpus.cores} Cores )\``);
-      await i.addField('- **Additional Information**', `» Latency: \`${Math.round(hero.ping)} ms\`\n» Node.js: \`${process.version.replace('v', '') + ' v'}\`\n» Discord.js: \`${require('./package.json').dependencies["discord.js"].replace('^', '') + ' v'}\`\n» Uptime: \`${pretty(hero.uptime, { verbose: true })}\``);
+      await i.addField('- **Additional Information**', `» Latency: \`${Math.round(client.ping)} ms\`\n» Node.js: \`${process.version.replace('v', '') + ' v'}\`\n» Discord.js: \`${require('./package.json').dependencies["discord.js"].replace('^', '') + ' v'}\`\n» Uptime: \`${pretty(client.uptime, { verbose: true })}\``);
       await i.setFooter('- © YouseeF.', 'https://cdn.discordapp.com/avatars/475396751549792277/67c29dd84da4abe7144af04e11c8120b.png?size=2048');
       await message.channel.send(i);
   }
