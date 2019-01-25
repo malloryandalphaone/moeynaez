@@ -21,44 +21,44 @@ client.user.setStatus('dnd');
 
 client.on('message', msg => {
     if(msg.content === '!team') {
-        if (!msg.guild.member(msg.author).roles.has('&538049725274783744')) return;
+        if (!msg.guild.member(msg.author).roles.has('538049725274783744')) return;
         if(!msg.channel.guild) return msg.reply(":x: **This is Command for Servers Only.**");
        
 if (msg.author.bot) return;
   const embed = new Discord.RichEmbed()
             .setColor("FFFFFF")
             .setFooter("إذ لم تجد أسمك كعضو بالفريق توجه الى الإدارة لإضافته .")
-            .setTitle("# Team Vást .")
+            .setTitle("# Team Royal .")
             .setDescription(`
 
-- \`ReeeBeL\`
-- \`Mr447\`
-- \`s7pg\`
-- \`y58\`
-- \`1zull\`
-- \`CuzImHassanYT\`
-- \`Coffin_\`
-- \`HeRoYeeN\`
-- \`ii9l3a_\`
-- \`AbuSalem\`
-- \`ImTry\`
-- \`R2haf\`
-- \`ii_Mosleh\`
-- \`x83l_\`
-- \`K1nqLxrD\`
-- \`JustCute_\`
-- \`iTzCommander_\`
-- \`xFn_\`
-- \`Hima_YT\`
-- \`K1nqS3m\`
-- \`1xPanz\`
-- \`iiM_\`
-- \`1Rakan\`
-- \`i1Midou_\`
-- \`iNolan_\`
-- \`zDonn\`
-- \`wHybH\`
-- \`Quixxyy\`
+» \`ReeeBeL\`
+» \`Mr447\`
+» \`s7pg\`
+» \`y58\`
+» \`1zull\`
+» \`CuzImHassanYT\`
+» \`Coffin_\`
+» \`HeRoYeeN\`
+» \`ii9l3a_\`
+» \`AbuSalem\`
+» \`ImTry\`
+» \`R2haf\`
+» \`ii_Mosleh\`
+» \`x83l_\`
+» \`K1nqLxrD\`
+» \`JustCute_\`
+» \`iTzCommander_\`
+» \`xFn_\`
+» \`Hima_YT\`
+» \`K1nqS3m\`
+» \`1xPanz\`
+» \`iiM_\`
+» \`1Rakan\`
+» \`i1Midou_\`
+» \`iNolan_\`
+» \`zDonn\`
+» \`wHybH\`
+» \`Quixxyy\`
 `)
 
 
@@ -103,16 +103,38 @@ client.on('guildMemberAdd', member => {
     const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
     const inviter = client.users.get(invite.inviter.id);
     const logChannel = member.guild.channels.find(channel => channel.name === "vast");
-    logChannel.send(`**- ${member} \n- Invite By | <@${inviter.id}>**`);
+    logChannel.send(`**» Name : ${member} \n» Invite By : <@${inviter.id}>**`);
   });
 });
 
+
+client.on('message',async message => {
+if(message.author.bot || message.channel.type === 'dm') return;
+let args = message.content.split(" ").slice(1);
+let cmd = message.content.split(" ")[0].substring(prefix.length);
+if(!message.content.startsWith(prefix)) return;
+if(cmd === "info") {
+        let ustat = require('ustat');
+        let stackos = require('stackos').info;
+        let cpu = require('cpu');
+        let pretty = require('pretty-ms');
+        let i = new Discord.RichEmbed(); 
+  
+      await i.setColor("#36393e");
+      await i.setThumbnail(message.author.avatarURL);
+      await i.addField('- **General Information**', `» Servers: \`${client.guilds.size}\`\n» Mutual: \`${client.guilds.filter(r => r.members.array().includes(message.author.id)).size}\`\n» Users: \`${client.users.size}\``);
+      await i.addField('- **Memory Information**', `» CPU: \`${Math.round((process.cpuUsage().user + process.cpuUsage().system) / 2048)} MB ( ${cpu.num()} % )\`\n» Ram: \`${Math.round((stackos.memory.total / 1000000))} MB ( ${ustat.usedmem('kb') % 100} % )\``);
+      await i.addField('- **System Information**', `» Platform: \`${stackos.os} ( ${stackos.arch} Bit )\`\n» Processor: \`${(stackos.cpus.model).split("(R)")[1]} ( ${stackos.cpus.cores} Cores )\``);
+      await i.addField('- **Additional Information**', `» Latency: \`${Math.round(client.ping)} ms\`\n» Node.js: \`${process.version.replace('v', '') + ' v'}\`\n» Discord.js: \`${require('./package.json').dependencies["discord.js"].replace('^', '') + ' v'}\`\n» Uptime: \`${pretty(client.uptime, { verbose: true })}\``);
+      await message.channel.send(i);
+  }
+});
 
 
 
 client.on('guildMemberAdd', member => {
 
-    const channel = member.guild.channels.find('name', 'vast');
+    const channel = member.guild.channels.find('name', 'royal');
   
     const millis = new Date().getTime() - member.user.createdAt.getTime();
     const now = new Date();
@@ -125,7 +147,7 @@ client.on('guildMemberAdd', member => {
     const embed = new Discord.RichEmbed()
     
     .setColor("WHITE")
-    .setDescription(`- Join Discord in __${createdAt.toFixed(0)}__ Day.`)
+    .setDescription(`» Join Discord in __${createdAt.toFixed(0)}__ Day.`)
     .setAuthor(member.user.tag, member.user.avatarURL);
     channel.sendEmbed(embed);
 
@@ -243,10 +265,10 @@ client.on("message", msg => {
           .addField("Id :", `${msg.author.id}`, true)
           .setColor("WHITE")
           .setFooter(msg.author.username , msg.author.avatarURL)
-          .addField('The Stats :', `${msg.author.presence.status.toUpperCase()}`, true)
-          .addField('Playing :', `${msg.author.presence.game === null ? "No Game" : msg.author.presence.game.name}`, true)
-          .addField('Ranks :', `${msg.member.roles.filter(r => r.name).size}`, true)
-          .addField('Join Discord in :', `${msg.createdAt}`,true)
+          .addField('» The Stats :', `${msg.author.presence.status.toUpperCase()}`, true)
+          .addField('» Playing :', `${msg.author.presence.game === null ? "No Game" : msg.author.presence.game.name}`, true)
+          .addField('» Ranks :', `${msg.member.roles.filter(r => r.name).size}`, true)
+          .addField('» Join Discord in :', `${msg.createdAt}`,true)
       msg.channel.send({embed: embed})
   }
 });
@@ -317,10 +339,10 @@ if(!rUser) return msg.channel.send("Couldn't find users.");
 let reportembed = new Discord.RichEmbed()
 .setDescription("Report Information :")
 .setColor("WHITE")
-.addField("- Report too", `${rUser}`)
-.addField("- Report By", `${msg.author}`)
-.addField("- Channel", msg.channel)
-.addField("- Reason",`${reason}`)
+.addField("» Report too", `${rUser}`)
+.addField("» Report By", `${msg.author}`)
+.addField("» Channel", msg.channel)
+.addField("» Reason",`${reason}`)
 
 
 let reportchannel = msg.guild.channels.find(`name`,"reports")
@@ -369,22 +391,22 @@ client.on('message', message => {
 
 
 
-client.on("message", msg => {
-  var prefix = '!'//البركفس
-  if(msg.content.startsWith(prefix + 'account')){
-    let embed = new Discord.RichEmbed()
-    .setColor("WHITE")
-    .addField("Year📆",msg.author.createdAt.getFullYear())
-    .addField("Hour📆", msg.author.createdAt.getHours())
-    .addField("Day📆", msg.author.createdAt.getDay())
-    .addField("Month📆", msg.author.createdAt.getMonth())
-    .addField("Minutes📆", msg.author.createdAt.getMinutes())
-    .addField("Seconds📆", msg.author.createdAt.getSeconds())
-    .addField("Full📆", msg.author.createdAt.toLocaleString())
-    .setTimestamp()
-    msg.channel.send(embed);
-  }
-});
+//client.on("message", msg => {
+//  var prefix = '!'//البركفس
+//  if(msg.content.startsWith(prefix + 'account')){
+//    let embed = new Discord.RichEmbed()
+  //  .setColor("WHITE")
+   // .addField("Year📆",msg.author.createdAt.getFullYear())
+  //  .addField("Hour📆", msg.author.createdAt.getHours())
+  //  .addField("Day📆", msg.author.createdAt.getDay())
+//    .addField("Month📆", msg.author.createdAt.getMonth())
+  //  .addField("Minutes📆", msg.author.createdAt.getMinutes())
+  //  .addField("Seconds📆", msg.author.createdAt.getSeconds())
+  //  .addField("Full📆", msg.author.createdAt.toLocaleString())
+   // .setTimestamp()
+ //   msg.channel.send(embed);
+ // }
+//});
 
 
 
@@ -717,10 +739,10 @@ client.on('message', message => {
         let embed = new Discord.RichEmbed()
         .setColor('WHITE')
         .setThumbnail(`https://api.minetools.eu/favicon/${args}/25565`)
-        .addField("📜 Server NIP",`${args}`,true)
-        .addField("🌐 Server Port",`${port}`)
+        .addField("» 📜 Server NIP",`${args}`,true)
+        .addField("» 🌐 Server Port",`${port}`)
         .setImage(`http://status.mclive.eu/${args}/${args}/25565/banner.png`)
-        .setFooter(`Stats MineCraft Server , Vast.`)
+        .setFooter(`Stats MineCraft Server , Royal.`)
     message.channel.send(embed)      
 }});
 
@@ -745,9 +767,9 @@ if(!rUser) return msg.channel.send("**Mention Any Member ..**");
     let reportembed = new Discord.RichEmbed()
     .setDescription("Warning Number One :")
     .setColor("WHITE")
-    .addField("- Warn User", `${rUser}`)
-    .addField("- Warn By", `${msg.author}`)
-    .addField("- Reason",`${reason}`)
+    .addField("» Warn User", `${rUser}`)
+    .addField("» Warn By", `${msg.author}`)
+    .addField("» Reason",`${reason}`)
     
     
     let reportchannel = msg.guild.channels.find(`name`,"royal"); //حط هنا اسم الروم الي يوريك بعض المعلومات
@@ -782,9 +804,9 @@ if(!rUser) return msg.channel.send("**Mention Any Member ..**");
     let reportembed = new Discord.RichEmbed()
     .setDescription("Warning Number Two :")
     .setColor("WHITE")
-    .addField("- Warn User", `${rUser}`)
-    .addField("- Warn By", `${msg.author}`)
-    .addField("- Reason",`${reason}`)
+    .addField("» Warn User", `${rUser}`)
+    .addField("» Warn By", `${msg.author}`)
+    .addField("» Reason",`${reason}`)
     
     
     let reportchannel = msg.guild.channels.find(`name`,"royal"); //حط هنا اسم الروم الي يوريك بعض المعلومات
@@ -818,9 +840,9 @@ if(!rUser) return msg.channel.send("**Mention Any Member ..**");
     let reportembed = new Discord.RichEmbed()
     .setDescription("Warning Number Three :")
     .setColor("WHITE")
-    .addField("- Warn User", `${rUser}`)
-    .addField("- Warn By", `${msg.author}`)
-    .addField("- Reason",`${reason}`)
+    .addField("» Warn User", `${rUser}`)
+    .addField("» Warn By", `${msg.author}`)
+    .addField("» Reason",`${reason}`)
     
     
     let reportchannel = msg.guild.channels.find(`name`,"royal"); //حط هنا اسم الروم الي يوريك بعض المعلومات
@@ -1004,13 +1026,13 @@ client.on('message', async message => {
     var filter = m => m.author.id === message.author.id;
     var subChannel = message.guild.channels.find(c => c.name === 'requests');
    
-    if(command == prefix + 'vast') {
+    if(command == prefix + 'royal') {
         if(message.author.bot) return;
         if(message.channel.type === 'dm') return;
  
-        var modRole = message.guild.roles.find(r => r.name === 'Vaáast');
+        var modRole = message.guild.roles.find(r => r.name === '- Clan Royal.');
        
-        if(message.guild.member(message.author).roles.has(modRole.id)) return message.channel.send('**You Already have a Rank ..**');
+        if(message.guild.member(message.author).roles.has(modRole.id)) return message.channel.send(':x: **You Already have a Rank ..**');
         if(!subChannel) return message.channel.send('يجب أن يتوفر روم بأسم :: Requests');
        
         message.channel.send(':timer: | **أرسل، إسمك الحقيقي**').then(msgS => {
@@ -1025,7 +1047,7 @@ client.on('message', async message => {
                             message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] }).then(collected => {
                                 fromwhere = collected.first().content;
                                 collected.first().delete();
-                                msgS.edit(':timer: | **من فضلك أكتب اسمك في ماين كرافت، مع مراعاة الأحرف**').then(msgS => {
+                                msgS.edit(':timer: | **من فضلك أكتب اسمك في اللعبه مع مراعاة الأحرف**').then(msgS => {
                                     message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] }).then(collected => {
                                         fa2dh = collected.first().content;
                                         collected.first().delete();
@@ -1033,10 +1055,10 @@ client.on('message', async message => {
                                         let embedS = new Discord.RichEmbed()
                                         .setDescription('**\n هل انت متأكد انك تريد التقديم؟**')
                                         .setColor('WHITE')
-                                        .addField('الاسم', name, true)
-                                        .addField('العمر', age, true)
-                                        .addField('من وين', fromwhere, true)
-                                        .addField('اسمك في الالعاب', fa2dh, true)
+                                        .addField('- الاسم :', name, true)
+                                        .addField('- العمر :', age, true)
+                                        .addField('- من وين :', fromwhere, true)
+                                        .addField('- اسمك في اللعبه :', fa2dh, true)
                                         .setTimestamp()
                                         .setFooter(message.guild.name, message.guild.iconURL)
                                        
@@ -1057,12 +1079,12 @@ client.on('message', async message => {
                                                 let subMsg = new Discord.RichEmbed()
                                                 .setColor('WHITE')
                                                 .setThumbnail(message.author.avatarURL)
-                                                .addField('أسمه :', name)
-                                                .addField('العمر :', age)
-                                                .addField('من وين :', fromwhere)
-                                                .addField('اسمه بالالعاب :', fa2dh)
-                                                .addField('الحساب', message.author)
-                                                .addField('ايدي الحساب', message.author.id, true)
+                                                .addField('**» The Name :**', name)
+                                                .addField('**» The Age :**', age)
+                                                .addField('**» The Country :**', fromwhere)
+                                                .addField('**» The Name in Games :**', fa2dh)
+                                                .addField('- Account :', message.author)
+                                                .addField('- The ID :', message.author.id, true)
                                                
                                                 subChannel.send(subMsg).then(msgS => {
                                                     msgS.react('✅').then(() => msgS.react('❎'))
@@ -1085,10 +1107,10 @@ client.on('message', async message => {
                                                         message.guild.channels.find(r => r.name === 'requests').send(`:x: **The member has been denied access to the team**\n\n<@${message.author.id}>`);
                                                     }).catch();
                                                 })
-                                            });// Alpha Codes
+                                            });
                                             dontSend.on('collect', r => {
                                                 msgS.delete();
-                                                message.channel.send(':x: **تم إلغاء تقديمك .**');// Alpha Codes
+                                                message.channel.send(':x: **Your submission has been canceled.**');// Alpha Codes
                                             });
                                         })
                                     })
