@@ -1296,7 +1296,6 @@ setTimeout(function(){
  
  
   }
-  let em = client.emojis.find(e => e.name === "true");
 if(command === `unmute`) {
   if (!message.guild.member(message.author).roles.has('538054323460898847')) return;
   //if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.sendMessage("**You don't have permission.").then(m => m.delete(5000));
