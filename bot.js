@@ -12,8 +12,9 @@ if (x) x.join();
 
 client.on("ready", () => {
 client.user.setStatus('dnd');
+client.user.setGame("Royal System", "https://www.twitch.tv/idk");
   console.log("Reeebel | Logged in! Server count: ${client.guilds.size}");
-  client.user.setActivity("Royal Orders.",{type: 'WATCHING'});
+ // client.user.setActivity("Royal Orders.",{type: 'WATCHING'});
 });
 
 
@@ -374,6 +375,7 @@ message.channel.send(`${user} خاصك مقفول`);
 
 client.on('message', message => {
     if (!message.guild) return;
+    let em = client.emojis.find(e => e.name === "true");
     if (message.content.startsWith("رابط")) {
 
         message.channel.createInvite({
@@ -383,7 +385,7 @@ client.on('message', message => {
     }).then(invite =>
       message.author.sendMessage(invite.url)
     )
-  message.channel.send(`** تم أرسال الرابط برسالة خاصة **`)
+  message.channel.send(`${em} **Check Your DM.**`)
 
       message.author.send(`**مدة الرابط : يـوم
  عدد استخدامات الرابط : 5 **`)
