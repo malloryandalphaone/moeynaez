@@ -562,18 +562,18 @@ client.on('message', message => {
     if (message.author.boss) return;
     if (!message.content.startsWith(prefix)) return;
     let command = message.content.split(" ")[0];
-    let em = client.emojis.find(e => e.name === "true");
-    command = command.slice(prefix.length);
+    command = command.slice(prefix.length)
     if (command == "add") {
     if (!message.channel.guild) return;
     if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return message.reply("**You don't have Permission.**").then(msg => msg.delete(5000));;
     if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**hmmm..**").then(msg => msg.delete(5000));;
     let user = message.mentions.users.first();
+    let em = client.emojis.find(e => e.name === "true");
     if (message.mentions.users.size < 1) return message.channel.send('**Mention Any Members ..**').then(msg => {msg.delete(5000)});
     let MRole = message.content.split(" ").slice(2).join(" ");
     if(!MRole)return message.channel.send("**Select Rank ..**").then(msg => {msg.delete(5000)});
     message.guild.member(user).addRole(message.guild.roles.find("name", MRole));
-    message.channel.send('${em} **Done .**').then(msg => {msg.delete(10000)});
+    message.channel.send(':white_check_mark: **Done .**').then(msg => {msg.delete(10000)});
     }
     });
 
@@ -711,7 +711,6 @@ client.on("message", (message) => {
 
 client.on('message', message => {
  
-let em = client.emojis.find(e => e.name === "true");
 if (message.content === prefix + "muted") {
 if (!message.guild.member(message.author).roles.has('538051773089447987')) return;
 //if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**You don’t havepermissions**');
@@ -719,7 +718,7 @@ if (!message.guild.member(message.author).roles.has('538051773089447987')) retur
         SEND_MESSAGES: false
  
           }).then(() => {
-              message.reply("${em} **Channel Muted now!**")
+              message.reply(":white_check_mark: **Channel Muted now!**")
           });
 }
  if (message.content === prefix + "unmuted") {
@@ -729,7 +728,7 @@ if (!message.guild.member(message.author).roles.has('538051773089447987')) retur
         SEND_MESSAGES: true
  
           }).then(() => {
-              message.reply("${em} **Channel UnMuted now!**")
+              message.reply(":white_check_mark: **Channel UnMuted now!**")
           });
 }
  
@@ -1026,6 +1025,8 @@ if (!message.member.hasPermission("ADMINISTRATOR"))  return;
 client.on('message', async message => {
     var command = message.content.toLowerCase().split(" ")[0];
     var prefix = '!';
+    
+    let em = client.emojis.find(e => e.name === "true");
     var name = '';
     var age = '';
     var fromwhere = '';
@@ -1081,7 +1082,7 @@ client.on('message', async message => {
                                            
                                             yesSend.on('collect', r => {
                                                 msgS.delete();
-                                                message.channel.send('${em} | **تم إرسال تقديمك بدخول الفريق، يرجى انتظار الرد من قبل الإدارة.**').then(msg => msg.delete(5000));
+                                                message.channel.send(':white_check_mark: | **تم إرسال تقديمك بدخول الفريق، يرجى انتظار الرد من قبل الإدارة.**').then(msg => msg.delete(5000));
                                                
                                                 let subMsg = new Discord.RichEmbed()
                                                 .setColor('WHITE')
@@ -1165,18 +1166,21 @@ message.channel.send(`**${em} ${user.tag} banned from the server ! :airplane: **
 
 client.on('message', msg => {
     var prefix = "!";
+  
+  let em = client.emojis.find(e => e.name === "true");
   if (msg.author.bot) return;
   if (!msg.content.startsWith(prefix)) return;
   let command = msg.content.split(" ")[0];
   command = command.slice(prefix.length);
   let args = msg.content.split(" ").slice(1);
   
-  let em = client.emojis.find(e => e.name === "true");
   
   
     if(command === "clear") {
         const emoji = client.emojis.find("name", "wastebasket")
     let textxt = args.slice(0).join("");
+    
+  let em = client.emojis.find(e => e.name === "true");
     //if(msg.member.hasPermission("MANAGE_MESSAGES")) {
       if (!msg.guild.member(msg.author).roles.has('538054325629485063')) return;
     if (textxt == "") {
@@ -1186,7 +1190,7 @@ client.on('message', msg => {
     msg.delete().then
     msg.delete().then
     msg.channel.bulkDelete(textxt);
-        msg.channel.send("${em} **Message " + textxt + " Clear.**").then(m => m.delete(3000));
+        msg.channel.send(":white_check_mark: **Message " + textxt + " Clear.**").then(m => m.delete(3000));
         }    
     }
 
@@ -1296,6 +1300,8 @@ setTimeout(function(){
  
  
   }
+  
+  let esm = client.emojis.find(e => e.name === "true");
 if(command === `unmute`) {
   if (!message.guild.member(message.author).roles.has('538054323460898847')) return;
   //if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.sendMessage("**You don't have permission.").then(m => m.delete(5000));
@@ -1309,7 +1315,7 @@ if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return mess
   if(!role || !toMute.roles.has(role.id)) return message.channel.sendMessage("** Already UnMuted!**")
  
   await toMute.removeRole(role)
-  message.channel.sendMessage("${em} **Player has been UnMuted!**");
+  message.channel.sendMessage(":white_check_mark: **Player has been UnMuted!**");
  
   return;
  
