@@ -722,7 +722,6 @@ if (!message.guild.member(message.author).roles.has('538051773089447987')) retur
               message.reply("${em} **Channel Muted now!**")
           });
 }
- let em = client.emojis.find(e => e.name === "true");
  if (message.content === prefix + "unmuted") {
  if (!message.guild.member(message.author).roles.has('538051773089447987')) return;
 //if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**You don’t have permissions**');
