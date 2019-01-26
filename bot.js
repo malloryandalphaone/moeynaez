@@ -534,15 +534,16 @@ client.on('message',message =>{
   var command = message.content.toLowerCase().split(" ")[0];
     var args = message.content.toLowerCase().split(" ");
     var userM = message.mentions.users.first()
+    let em = client.emojis.find(e => e.name === "false");
     if(command == prefix + 'unban') {//SnOw Code
         if (!message.guild.member(message.author).roles.has('538051771143159808')) return;
         //if(!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send(':x: **You don\'t have permission.**'); //SnOw Code
         //if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.channel.send('**hmmm..**');//SnOw Code
         if(!args[1]) return  message.channel.send('**Mention Any Member..**');
-        if(args[1].length < 16) return message.reply(':x: **This is Id Not For Any User..**');//SnOw Code
+        if(args[1].length < 16) return message.reply('**This is Id Not For Any User..**');//SnOw Code
         message.guild.fetchBans().then(bans => {//SnOw Code
             var Found = bans.find(m => m.id === args[1]);
-            if(!Found) return message.channel.send(`:x: **This is User is Not Banned!,** <@${message.author.id}>`);//SnOw Code
+            if(!Found) return message.channel.send(`${em} **This is User is Not Banned!,** <@${message.author.id}>`);//SnOw Code
             message.guild.unban(args[1]);
             message.channel.send(`:white_check_mark: **Successfully Unbanned <@${args[1]}> From the server!**`);
             }
@@ -561,6 +562,7 @@ client.on('message', message => {
     if (message.author.boss) return;
     if (!message.content.startsWith(prefix)) return;
     let command = message.content.split(" ")[0];
+    let em = client.emojis.find(e => e.name === "true");
     command = command.slice(prefix.length);
     if (command == "add") {
     if (!message.channel.guild) return;
@@ -571,7 +573,7 @@ client.on('message', message => {
     let MRole = message.content.split(" ").slice(2).join(" ");
     if(!MRole)return message.channel.send("**Select Rank ..**").then(msg => {msg.delete(5000)});
     message.guild.member(user).addRole(message.guild.roles.find("name", MRole));
-    message.channel.send(':white_check_mark: **Done .**').then(msg => {msg.delete(10000)});
+    message.channel.send('${em} **Done .**').then(msg => {msg.delete(10000)});
     }
     });
 
@@ -709,6 +711,7 @@ client.on("message", (message) => {
 
 client.on('message', message => {
  
+let em = client.emojis.find(e => e.name === "true");
 if (message.content === prefix + "muted") {
 if (!message.guild.member(message.author).roles.has('538051773089447987')) return;
 //if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**You don’t havepermissions**');
@@ -716,9 +719,10 @@ if (!message.guild.member(message.author).roles.has('538051773089447987')) retur
         SEND_MESSAGES: false
  
           }).then(() => {
-              message.reply("✅ **Channel Muted now!**")
+              message.reply("${em} **Channel Muted now!**")
           });
 }
+ let em = client.emojis.find(e => e.name === "true");
  if (message.content === prefix + "unmuted") {
  if (!message.guild.member(message.author).roles.has('538051773089447987')) return;
 //if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**You don’t have permissions**');
@@ -726,7 +730,7 @@ if (!message.guild.member(message.author).roles.has('538051773089447987')) retur
         SEND_MESSAGES: true
  
           }).then(() => {
-              message.reply("✅ **Channel UnMuted now!**")
+              message.reply("${em} **Channel UnMuted now!**")
           });
 }
  
@@ -776,12 +780,12 @@ if(!rUser) return msg.channel.send("**Mention Any Member ..**");
     
     
     let reportchannel = msg.guild.channels.find(`name`,"royal"); //حط هنا اسم الروم الي يوريك بعض المعلومات
-    if(!reportchannel) return msg.channel.send("Couldn't find `vast` channel. "); //ط هنا اسم الروم الي يوريك بعض المعلومات
+    if(!reportchannel) return msg.channel.send("Couldn't find `royal` channel. "); //ط هنا اسم الروم الي يوريك بعض المعلومات
     
     msg.delete().catch(O_o=>{});
     reportchannel.send(reportembed);
     let role = msg.guild.roles.find(`name`, '» Warning 1.'); //حط هنا اسم الرتبة
-    if(!role) return msg.guild.channel.send("Could't find `vast` role."); //حط هنا اسم الرتبة
+    if(!role) return msg.guild.channel.send("Could't find `royal` role."); //حط هنا اسم الرتبة
     rUser.addRole(role);
     
         return;
@@ -849,12 +853,12 @@ if(!rUser) return msg.channel.send("**Mention Any Member ..**");
     
     
     let reportchannel = msg.guild.channels.find(`name`,"royal"); //حط هنا اسم الروم الي يوريك بعض المعلومات
-    if(!reportchannel) return msg.channel.send("Couldn't find `vast` channel. "); //ط هنا اسم الروم الي يوريك بعض المعلومات
+    if(!reportchannel) return msg.channel.send("Couldn't find `royal` channel. "); //ط هنا اسم الروم الي يوريك بعض المعلومات
     
     msg.delete().catch(O_o=>{});
     reportchannel.send(reportembed);
     let role = msg.guild.roles.find(`name`, '» Warning 3.'); //حط هنا اسم الرتبة
-    if(!role) return msg.guild.channel.send("Could't find `vast` role."); //حط هنا اسم الرتبة
+    if(!role) return msg.guild.channel.send("Could't find `royal` role."); //حط هنا اسم الرتبة
     rUser.addRole(role);
     
         return;
@@ -900,6 +904,7 @@ ${member} :fallen_leaf: `)
 
 client.on('message', message => {
     var prefix = "!";
+    let em = client.emojis.find(e => e.name === "true");
     if(message.content.startsWith(prefix + 'move all')) {
     if (!message.guild.member(message.author).roles.has('538054323662356502')) return;
      //if (!message.member.hasPermission("MOVE_MEMBERS")) return message.channel.send('**:x: You Dont Have Perms `MOVE_MEMBERS`**');
@@ -910,7 +915,7 @@ client.on('message', message => {
      message.guild.members.filter(m=>m.voiceChannel).forEach(m => {
      m.setVoiceChannel(author)
      })
-     message.channel.send(`**:white_check_mark: Success Moved All To Your Channel**`)
+     message.channel.send(`**${em} Success Moved All To Your Channel**`)
 
 
      }
@@ -1054,7 +1059,7 @@ client.on('message', async message => {
                                     message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] }).then(collected => {
                                         fa2dh = collected.first().content;
                                         collected.first().delete();
-                                       
+                                        let em = client.emojis.find(e => e.name === "true");
                                         let embedS = new Discord.RichEmbed()
                                         .setDescription('**\n هل انت متأكد انك تريد التقديم؟**')
                                         .setColor('WHITE')
@@ -1077,7 +1082,7 @@ client.on('message', async message => {
                                            
                                             yesSend.on('collect', r => {
                                                 msgS.delete();
-                                                message.channel.send(':white_check_mark: | **تم إرسال تقديمك بدخول الفريق، يرجى انتظار الرد من قبل الإدارة.**').then(msg => msg.delete(5000));
+                                                message.channel.send('${em} | **تم إرسال تقديمك بدخول الفريق، يرجى انتظار الرد من قبل الإدارة.**').then(msg => msg.delete(5000));
                                                
                                                 let subMsg = new Discord.RichEmbed()
                                                 .setColor('WHITE')
@@ -1134,7 +1139,8 @@ client.on('message', async message => {
 
   let command = message.content.split(" ")[0];
   command = command.slice(prefix.length);
-
+  
+  let em = client.emojis.find(e => e.name === "true");
   let args = message.content.split(" ").slice(1);
 
   if (command == "ban") {
@@ -1151,7 +1157,7 @@ client.on('message', async message => {
 
   message.guild.member(user).ban(7, user);
 
-message.channel.send(`**:white_check_mark: ${user.tag} banned from the server ! :airplane: **  `)
+message.channel.send(`**${em} ${user.tag} banned from the server ! :airplane: **  `)
 
 }
 });
@@ -1165,7 +1171,10 @@ client.on('message', msg => {
   let command = msg.content.split(" ")[0];
   command = command.slice(prefix.length);
   let args = msg.content.split(" ").slice(1);
-
+  
+  let em = client.emojis.find(e => e.name === "true");
+  
+  
     if(command === "clear") {
         const emoji = client.emojis.find("name", "wastebasket")
     let textxt = args.slice(0).join("");
@@ -1178,7 +1187,7 @@ client.on('message', msg => {
     msg.delete().then
     msg.delete().then
     msg.channel.bulkDelete(textxt);
-        msg.channel.send("**تم مسح " + textxt + ".**").then(m => m.delete(3000));
+        msg.channel.send("${em} **Message " + textxt + " Clear.**").then(m => m.delete(3000));
         }    
     }
 
@@ -1195,7 +1204,7 @@ const prefix = "!";
   command = command.slice(prefix.length);
 
   let args = message.content.split(" ").slice(1);
-
+  let em = client.emojis.find(e => e.name === "true");
   if (command == "kick") {
                if(!message.channel.guild) return;
          
@@ -1212,7 +1221,7 @@ const prefix = "!";
 
   message.guild.member(user).kick(7, user);
 
- message.channel.send(`**:white_check_mark: ${user.tag} kicked from the server ! :airplane: **  `)
+ message.channel.send(`**${em} ${user.tag} kicked from the server ! :airplane: **  `)
 
 }
 });
@@ -1244,6 +1253,7 @@ client.on('message', async message =>{
 if (message.author.omar) return;
 if (!message.content.startsWith(prefix)) return;
 if(!message.channel.guild) return message.channel.send('').then(m => m.delete(5000));
+let em = client.emojis.find(e => e.name === "true");
 if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**I don't have permission** #1").then(msg => msg.delete(6000))
 var command = message.content.split(" ")[0];
 command = command.slice(prefix.length);
@@ -1281,12 +1291,13 @@ var args = message.content.split(" ").slice(1);
 message.channel.send(`<@${tomute.id}> **Muted ${ms(ms(mutetime))}** :zipper_mouth:`);
 setTimeout(function(){
       tomute.removeRole(muterole.id);
-      message.channel.send(`<@${tomute.id}> **UnMuted Timeout!** :white_check_mark:`);
+      message.channel.send(`<@${tomute.id}> **UnMuted Timeout!** ${em}`);
     }, ms(mutetime));
  
  
  
   }
+  let em = client.emojis.find(e => e.name === "true");
 if(command === `unmute`) {
   if (!message.guild.member(message.author).roles.has('538054323460898847')) return;
   //if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.sendMessage("**You don't have permission.").then(m => m.delete(5000));
@@ -1300,7 +1311,7 @@ if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return mess
   if(!role || !toMute.roles.has(role.id)) return message.channel.sendMessage("** Already UnMuted!**")
  
   await toMute.removeRole(role)
-  message.channel.sendMessage(":white_check_mark: **Player has been UnMuted!**");
+  message.channel.sendMessage("${em} **Player has been UnMuted!**");
  
   return;
  
