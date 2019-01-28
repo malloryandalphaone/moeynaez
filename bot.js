@@ -1061,11 +1061,11 @@ client.on('message', async message => {
                                         collected.first().delete();
                                         let em = client.emojis.find(e => e.name === "true");
                                         let embedS = new Discord.RichEmbed()
-                                        .setDescription('**\n هل انت متأكد انك تريد التقديم؟**')
+                                        .setDescription('**\n هل ترغب بإرسآل المعلومات ادناه الى الإدارة؟**')
                                         .setColor('WHITE')
                                         .addField('- الاسم :', name, true)
                                         .addField('- العمر :', age, true)
-                                        .addField('- من وين :', fromwhere, true)
+                                        .addField('- المدينة :', fromwhere, true)
                                         .addField('- اسمك في اللعبه :', fa2dh, true)
                                         .setTimestamp()
                                         .setFooter(message.guild.name, message.guild.iconURL)
@@ -1082,7 +1082,7 @@ client.on('message', async message => {
                                            
                                             yesSend.on('collect', r => {
                                                 msgS.delete();
-                                                message.channel.send(':white_check_mark: | **تم إرسال تقديمك بدخول الفريق، يرجى انتظار الرد من قبل الإدارة.**').then(msg => msg.delete(5000));
+                                                message.channel.send('**- تم إرسآل طلب تقديمك للدخول الى الفريق**\nيجب أن تكون الرسائل الخاصة بك مفتوحة ليتمكن\nالبوت من إرسال النتيجة اليك.').then(msg => msg.delete(5000));
                                                
                                                 let subMsg = new Discord.RichEmbed()
                                                 .setColor('WHITE')
@@ -1105,20 +1105,20 @@ client.on('message', async message => {
                                                    
                                                     acceptRe.on('collect', r => {
                                                         msgS.delete();
-                                                        message.author.send(`:white_check_mark: **You Accepting for clan.**`);
+                                                        message.author.send(`**- تم قبول تقديمك للدخول الى فريق رويآل**\n\nيرجى التفاعل لتجنب الإنذارات والتي ستلحق بالطرد من الفريق.`);
                                                         message.guild.member(message.author).addRole(modRole.id);
-                                                        message.guild.channels.find(r => r.name === 'requests').send(`:white_check_mark: **Member has been accepted to join the team**\n\n<@${message.author.id}>`);
+                                                        message.guild.channels.find(r => r.name === 'requests').send(`<@${message.author.id}> :leaves: \n\n**The Member has accepting for join Clan** __Royal__.`);
                                                     }).catch();
                                                     noAcceptRe.on('collect', r => {
                                                         msgS.delete();
-                                                        message.author.send(`:x: **You Denied for clan.**`);
-                                                        message.guild.channels.find(r => r.name === 'requests').send(`:x: **The member has been denied access to the team**\n\n<@${message.author.id}>`);
+                                                        message.author.send(`**- عذراََ لقد تم رفض تقديمك للدخول الى فريق رويآل**\n\nللأستفسار حول رفضك يرجى مخاطبة الإدارة العليا.`);
+                                                        message.guild.channels.find(r => r.name === 'requests').send(`<@${message.author.id}> :maple_leaf: \n\n**The Member is not accepting for join Clan** __Royal__.`);
                                                     }).catch();
                                                 })
                                             });
                                             dontSend.on('collect', r => {
                                                 msgS.delete();
-                                                message.channel.send(':x: **Your submission has been canceled.**');// Alpha Codes
+                                                message.channel.send('**- تم إلغاء تقديمك.**');// Alpha Codes
                                             });
                                         })
                                     })
