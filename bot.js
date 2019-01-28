@@ -1040,7 +1040,7 @@ client.on('message', async message => {
  
         var modRole = message.guild.roles.find(r => r.name === '- Clan Royal.');
        
-        if(message.guild.member(message.author).roles.has(modRole.id)) return message.channel.send(':x: **You Already have a Rank ..**');
+        if(message.guild.member(message.author).roles.has(modRole.id)) return message.channel.send('**- أنت بالفعل لديك رتبة الفريق.**');
         if(!subChannel) return message.channel.send('يجب أن يتوفر روم بأسم :: Requests');
        
         message.channel.send(':timer: | **أرسل، إسمك الحقيقي**').then(msgS => {
@@ -1097,8 +1097,8 @@ client.on('message', async message => {
                                                 subChannel.send(subMsg).then(msgS => {
                                                     msgS.react('✅').then(() => msgS.react('❎'))
                                                    
-                                                    let accept = (reaction, user) => reaction.emoji.name === '✅'  && user.id === '518113766915702789'
-                                                    let noAccept = (reaction, user) => reaction.emoji.name === '❎' && user.id === '518113766915702789'
+                                                    let accept = (reaction, user) => reaction.emoji.name === '✅'  && user.id === '380307890235506698'
+                                                    let noAccept = (reaction, user) => reaction.emoji.name === '❎' && user.id === '380307890235506698'
                                                    
                                                     let acceptRe = msgS.createReactionCollector(accept);
                                                     let noAcceptRe = msgS.createReactionCollector(noAccept);
