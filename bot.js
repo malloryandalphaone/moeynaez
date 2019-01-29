@@ -18,6 +18,17 @@ client.user.setGame("Royal System", "https://www.twitch.tv/idk");
 });
 
 
+client.on('message' , message => {
+  if(message.author.bot) return;
+  if(message.content.startsWith(prefix + "ping")) {
+ message.channel.send('pong').then((msg) => {
+var PinG = `${Date.now() - msg.createdTimestamp}`
+var ApL = `${Math.round(client.ping)}`
+      msg.edit(`\`\`\`javascript\nTime taken: ${PinG} ms.\nDiscord API: ${ApL} ms.\`\`\``);
+ })
+  }  
+ });
+
 
 
 client.on('message', msg => {
@@ -34,7 +45,6 @@ if (msg.author.bot) return;
 
 » \`ReeeBeL\`
 » \`Mr447\`
-» \`s7pg\`
 » \`y58\`
 » \`1zull\`
 » \`CuzImHassanYT\`
@@ -44,7 +54,6 @@ if (msg.author.bot) return;
 » \`AbuSalem\`
 » \`ImTry\`
 » \`R2haf\`
-» \`ii_Mosleh\`
 » \`x83l_\`
 » \`K1nqLxrD\`
 » \`JustCute_\`
@@ -52,7 +61,6 @@ if (msg.author.bot) return;
 » \`xFn_\`
 » \`Hima_YT\`
 » \`K1nqS3m\`
-» \`1xPanz\`
 » \`iiM_\`
 » \`1Rakan\`
 » \`i1Midou_\`
@@ -103,7 +111,7 @@ client.on('guildMemberAdd', member => {
     invites[member.guild.id] = guildInvites;
     const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
     const inviter = client.users.get(invite.inviter.id);
-    const logChannel = member.guild.channels.find(channel => channel.name === "vast");
+    const logChannel = member.guild.channels.find(channel => channel.name === "royal");
     logChannel.send(`**» Name : ${member} \n» Invite By : <@${inviter.id}>**`);
   });
 });
@@ -127,7 +135,7 @@ if(cmd === "info") {
       await i.addField('- **Memory Information**', `» CPU: \`${Math.round((process.cpuUsage().user + process.cpuUsage().system) / 2048)} MB ( ${cpu.num()} % )\`\n» Ram: \`${Math.round((stackos.memory.total / 1000000))} MB ( ${ustat.usedmem('kb') % 100} % )\``);
       await i.addField('- **System Information**', `» Platform: \`${stackos.os} ( ${stackos.arch} Bit )\`\n» Processor: \`${(stackos.cpus.model).split("(R)")[1]} ( ${stackos.cpus.cores} Cores )\``);
       await i.addField('- **Additional Information**', `» Latency: \`${Math.round(client.ping)} ms\`\n» Node.js: \`${process.version.replace('v', '') + ' v'}\`\n» Discord.js: \`${require('./package.json').dependencies["discord.js"].replace('^', '') + ' v'}\`\n» Uptime: \`${pretty(client.uptime, { verbose: true })}\``);
-      await i.setFooter('- © YouseeF.', 'https://cdn.discordapp.com/avatars/475396751549792277/67c29dd84da4abe7144af04e11c8120b.png?size=2048');
+      await i.setFooter('- © Royal', 'https://cdn.discordapp.com/avatars/475396751549792277/67c29dd84da4abe7144af04e11c8120b.png?size=2048');
       await message.channel.send(i);
   }
 });
