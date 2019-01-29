@@ -338,7 +338,7 @@ let msgarray = msg.content.split(" ");
 let cmd = msgarray[0];
 let args = msgarray.slice(1);
 
-if(cmd === `${p}report`){
+if(cmd === `${p}repsaort`){
 
 
     let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
@@ -393,7 +393,7 @@ client.on('message', message => {
     }).then(invite =>
       message.author.sendMessage(invite.url)
     )
-  message.channel.send(`${em} **Check Your DM.**`)
+  message.channel.send(`:white_check_mark: **Check Your DM.**`)
 
       message.author.send(`**مدة الرابط : يـوم
  عدد استخدامات الرابط : 5 **`)
@@ -726,7 +726,7 @@ if (!message.guild.member(message.author).roles.has('538051773089447987')) retur
         SEND_MESSAGES: false
  
           }).then(() => {
-              message.reply(":white_check_mark: **Channel Muted now!**")
+              message.reply("**:white_check_mark: Channel has been muted !")
           });
 }
  if (message.content === prefix + "unmuted") {
@@ -736,7 +736,7 @@ if (!message.guild.member(message.author).roles.has('538051773089447987')) retur
         SEND_MESSAGES: true
  
           }).then(() => {
-              message.reply(":white_check_mark: **Channel UnMuted now!**")
+              message.reply("**:white_check_mark: Channel has been Unmuted !**")
           });
 }
  
@@ -1165,7 +1165,7 @@ client.on('message', async message => {
 
   message.guild.member(user).ban(7, user);
 
-message.channel.send(`**${em} ${user.tag} banned from the server ! :airplane: **  `)
+message.channel.send(`**:white_check_mark: ${user.tag} banned from the server ! :airplane: **  `)
 
 }
 });
@@ -1299,10 +1299,10 @@ var args = message.content.split(" ").slice(1);
     if(!mutetime) return message.channel.send(":x: **Supply Time.**");
  
     await(tomute.addRole(muterole.id));
-message.channel.send(`<@${tomute.id}> **Muted ${ms(ms(mutetime))}** :zipper_mouth:`);
+message.channel.send(`**:white_check_mark: <@${tomute.id}> has been muted ! :zipper_mouth:**`); //${ms(ms(mutetime))}
 setTimeout(function(){
       tomute.removeRole(muterole.id);
-      message.channel.send(`<@${tomute.id}> **UnMuted Timeout!** ${em}`);
+      message.channel.send(`<@${tomute.id}> **Unmuted Timeout!**.`);
     }, ms(mutetime));
  
  
@@ -1316,14 +1316,14 @@ if(command === `unmute`) {
 if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**I don't have permission**").then(msg => msg.delete(6000))
  
   let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
-  if(!toMute) return message.channel.sendMessage(":x: **Mention**");
+  if(!toMute) return message.channel.sendMessage(":x: **Mention Any Members.**");
  
   let role = message.guild.roles.find (r => r.name === "Muted");
  
   if(!role || !toMute.roles.has(role.id)) return message.channel.sendMessage("** Already UnMuted!**")
  
   await toMute.removeRole(role)
-  message.channel.sendMessage(":white_check_mark: **Player has been UnMuted!**");
+  message.channel.sendMessage(":white_check_mark: **Member has been muted !**");
  
   return;
  
