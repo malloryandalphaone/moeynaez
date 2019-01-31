@@ -1396,7 +1396,7 @@ client.on('message',async message => {
 
 //if(!reeebel) {
   //  let reeebel = client;
-}
+//}
 // client.on('message',async message => {
    // if(message.author.bot || message.channel.type === 'dm') return;
    // if(message.content.split(' ')[0] === `${prefix}uptime`) {
