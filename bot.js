@@ -1397,16 +1397,16 @@ client.on('message',async message => {
 //if(!reeebel) {
   //  let reeebel = client;
 }
-client.on('message',async message => {
-    if(message.author.bot || message.channel.type === 'dm') return;
-    if(message.content.split(' ')[0] === `${prefix}uptime`) {
-    let uptime = client.uptime;
-    let days = Math.round(uptime * 1.1574E-8);
-    let hours = Math.round(uptime * 2.7778E-7);
-    let minutes = Math.round(uptime * 1.6667E-5);
-    message.channel.send(`**- Uptime :**\n**${days} Day's ${hours} Hour's ${minutes} Minute's**`);
-}
-});
+// client.on('message',async message => {
+   // if(message.author.bot || message.channel.type === 'dm') return;
+   // if(message.content.split(' ')[0] === `${prefix}uptime`) {
+   // let uptime = client.uptime;
+   // let days = Math.round(uptime * 1.1574E-8);
+    // let hours = Math.round(uptime * 2.7778E-7);
+    // let minutes = Math.round(uptime * 1.6667E-5);
+  //  message.channel.send(`**- Uptime :**\n**${days} Day's ${hours} Hour's ${minutes} Minute's**`);
+//}
+//});
 
 
   client.on("message", message => {
