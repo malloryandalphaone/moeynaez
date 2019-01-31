@@ -1519,7 +1519,7 @@ client.on('message', async message => {
 
 
 
-const prefix = "!";
+//const prefix = "!";
 client.on("message", function(message) {
   if (message.author.bot) return;
   if (message.content.indexOf(prefix) !== 0) return;
