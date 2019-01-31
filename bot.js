@@ -506,30 +506,31 @@ client.on('voiceStateUpdate', (oldM, newM) => {
 
 client.on('message', message => {
 if(!message.channel.guild) return;
-  if(message.content.startsWith(prefix + 'rainbow')) {
-      let role = message.guild.roles.find('name', '- RainBow ,')
+  if(message.content.startsWith(prefix + 'rainbows')) {
+  if(!message.guild.member(message.author).hasPermission("8")) return message.reply("**You don't have Permission.**").then(msg => msg.delete(5000));;
+      let role = message.guild.roles.find('name', '❃, VIP | RainBow.')
     if(role) return message.channel.send(`**The Rank is Already Created.**`)
   if(!role){
     rainbow =  message.guild.createRole({
-   name: "- RainBow ,",//اسم الرتبه
+   name: "❃, VIP | RainBow.",//اسم الرتبه
    color: "#000000",//الون الاساسي للرنبو
    permissions:[]//الرتبه المسموح بيها للرنبو  مثال MANAGE_ROLES ADMINISTRATOR  
  //نهايه الكود هنا
 })
  
 }
-message.channel.send('🌈 **The Rank RainBow has been Created.**')//if the step completed
+message.channel.send(':white_check_mark: **The Rank RainBow has been Created.**')//if the step completed
 }})
  
 client.on('ready', () => {//لا تغير شي هنا
   setInterval(function(){//Codes Server
       client.guilds.forEach(g => {//Codes Server
-                  var role = g.roles.find('name', '- RainBow ,');//اسم رتبه رنبو
+                  var role = g.roles.find('name', '❃, VIP | RainBow.');//اسم رتبه رنبو
                   if (role) {//Codes Server
                       role.edit({color : "RANDOM"});//Codes Server
                   };
       });//Codes Server
-  }, 1200);//سرعه تغير الالوان
+  }, 3200);//سرعه تغير الالوان
 })//Codes Server
 
 
@@ -921,7 +922,7 @@ client.on('message', message => {
      message.guild.members.filter(m=>m.voiceChannel).forEach(m => {
      m.setVoiceChannel(author)
      })
-     message.channel.send(`**${em} Success Moved All To Your Channel**`)
+     message.channel.send(`**:white_check_mark: Success Moved All To Your Channel**`)
 
 
      }
@@ -1370,11 +1371,12 @@ client.on('message',async message => {
  
   let command = message.content.split(" ")[0];
  
-  if (message.content.split(" ")[0].toLowerCase() === prefix + "best") {
-        if (!message.member.hasPermission('MANAGE_ROLES')) return;
+  if (message.content.split(" ")[0].toLowerCase() === prefix + "rainbow") {
+  if (!message.guild.member(message.author).roles.has('540554460536242176')) return;
+  if (!message.member.hasPermission('MANAGE_ROLES')) return;
   let user = message.mentions.users.first();
-  let modlog = client.channels.find('name', 'log');
-  let muteRole = client.guilds.get(message.guild.id).roles.find('name', '- The Vastest.');
+  let modlog = client.channels.find('name', 'system');
+  let muteRole = client.guilds.get(message.guild.id).roles.find('name', '❃, VIP | RainBow.');
   if (!muteRole) return message.reply("**I Can't Find rank ..**").catch(console.error).then(message => message.delete(4000))
   if (message.mentions.users.size < 1) return message.reply('**Mention Any Member ..**').catch(console.error).then(message => message.delete(4000))
   if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return;
@@ -1392,6 +1394,21 @@ client.on('message',async message => {
 });
 
 
+if(!reeebel) {
+    let reeebel = client;
+}
+client.on('message',async message => {
+    if(message.author.bot || message.channel.type === 'dm') return;
+    if(message.content.split(' ')[0] === `${prefix}uptime`) {
+    let uptime = client.uptime;
+    let days = Math.round(uptime * 1.1574E-8);
+    let hours = Math.round(uptime * 2.7778E-7);
+    let minutes = Math.round(uptime * 1.6667E-5);
+    message.channel.send(`**- Uptime :**\n**${days} Day's ${hours} Hour's ${minutes} Minute's**`);
+}
+});
+
+
   client.on("message", message => {
  if(!message.channel.guild) return;  
   if (message.author.bot) return;
@@ -1399,13 +1416,10 @@ client.on('message',async message => {
   let command = message.content.split(" ")[0];
  
   if (message.content.split(" ")[0].toLowerCase() === prefix + "joined") {
-        if (!message.member.hasPermission('MANAGE_ROLES')) return;
+   //     if (!message.member.hasPermission('MANAGE_ROLES')) return;
   let user = message.mentions.users.first();
-  let modlog = client.channels.find('name', 'log');
-  let muteRole = client.guilds.get(message.guild.id).roles.find('name', '.Mods');
-  if (!muteRole) return message.reply("**I Can't Find rank ..**").catch(console.error).then(message => message.delete(4000))
-  if (message.mentions.users.size < 1) return message.reply('**Mention Any Member ..**').catch(console.error).then(message => message.delete(4000))
-  if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return;
+  let muteRole = client.guilds.get(message.guild.id).roles.find('name', '❃, VIP | RainBow.');
+//  if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return;
  
   if (message.guild.member(user).addRole(muteRole.id)) {
       return message.channel.send(":white_check_mark: **User has Joined for Officials.**").catch(console.error).then(message => message.delete(4000))
@@ -1503,6 +1517,100 @@ client.on('message', async message => {
 
 
 
+
+
+const prefix = "!";
+client.on("message", function(message) {
+  if (message.author.bot) return;
+  if (message.content.indexOf(prefix) !== 0) return;
+  const args = message.content.slice(prefix.length).trim().split(/ +/g);
+  const command = args.shift().toLowerCase();
+ 
+  if (command === "del") {
+    message.channel.send("اختر الروم الذي تريد حذفه")
+      .then(() => {
+        message.channel.awaitMessages(res => res.author.id == message.author.id , {
+        max: 1,
+        time: 30000,
+        errors: ['time']
+      })
+        .then((collected) => {
+          let mentionMessage = collected.first();
+          let channel = mentionMessage.mentions.channels.first();
+          mentionMessage.channel.send("select a time format\nwhere:\n[1] = second\n[2] = minute\n[3] = hour")
+            .then(function(botMessage) {
+              console.log(botMessage)
+              botMessage.react("1⃣")
+                .then(() => botMessage.react("2⃣") )
+                .then(() => botMessage.react("3⃣") )
+                .then(() => {
+                  let filter = (reaction, user) => user.id === message.author.id
+                  botMessage.awaitReactions(filter, {
+                    max: 1,
+                    time: 30000,
+                    errors: ['time']
+                  })
+                    .then(collected => {
+                      var reaction = collected.first();              
+                      if (reaction._emoji.name == "1⃣") {
+                        message.channel.send("اكتب عدد الثواني")
+                          .then(() => {
+                            message.channel.awaitMessages(res => res.author.id == message.author.id , {
+                              max: 1,
+                              time: 30000,
+                              errors: ['time']
+                            })
+                              .then((collected1) => {
+                                let content = collected1.first().content;
+                                message.channel.send(" سوف يتم حذف الروم بعد انتهاء الوقت")
+                                setTimeout(function() {
+                                  channel.delete()
+                                  message.channel.send(channel.name + " تم حذف روم")
+                                }, (1000*parseInt(content)))
+                              }).catch(console.error)
+                            }).catch(console.error)
+                        } else if (reaction._emoji.name == "2⃣") {
+                          message.channel.send("اكتب عدد الدقائق")
+                            .then(() => {
+                              message.channel.awaitMessages(res => res.author.id == message.author.id , {
+                                max: 1,
+                                time: 30000,
+                                errors: ['time']
+                            })
+                              .then((collected2) => {
+                                let content = collected2.first().content;
+                                message.channel.send(" سوف يتم حذف الروم بعد انتهاء الوقت")
+                                setTimeout(function() {
+                                  channel.delete()
+                                  message.channel.send(channel.name + "  تم حذف روم")
+                                }, (60000*parseInt(content)))
+                              }).catch(console.error)
+                          }).catch(console.error)
+                        } else if(reaction._emoji.name == "3⃣") {
+                          message.channel.send("اكتب عدد الساعات")
+                            .then(() => {
+                              message.channel.awaitMessages(res => res.author.id == message.author.id , {
+                                max: 1,
+                                time: 30000,
+                                errors: ['time']
+                              })
+                                .then((collected3) => {
+                                  let content = collected3.first().content;
+                                  message.channel.send(" سوف يتم حذف الروم بعد انتهاء الوقت")
+                                  setTimeout(function() {
+                                    channel.delete()
+                                    message.channel.send(channel.name + " تم حذف روم")
+                                  }, (3600000*parseInt(content)))
+                                }).catch(console.error)
+                            }).catch(console.error)
+                        }
+                      }).catch(console.error);
+                  }).catch(console.error)
+              }).catch(console.error);
+          }).catch(console.error);
+      });
+  }
+});
 
 
 
