@@ -48,6 +48,7 @@ if (msg.author.bot) return;
 » \`y58\`
 » \`1zull\`
 » \`CuzImHassanYT\`
+» \`s7pg\`
 » \`Coffin_\`
 » \`HeRoYeeN\`
 » \`ii9l3a_\`
