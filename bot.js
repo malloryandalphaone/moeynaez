@@ -1394,8 +1394,8 @@ client.on('message',async message => {
 });
 
 
-if(!reeebel) {
-    let reeebel = client;
+//if(!reeebel) {
+  //  let reeebel = client;
 }
 client.on('message',async message => {
     if(message.author.bot || message.channel.type === 'dm') return;
