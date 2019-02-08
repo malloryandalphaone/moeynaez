@@ -336,11 +336,12 @@ client.on('message', message => {
 
 
 giftKeys = {};
-const devs = ["380307890235506698","518113766915702789"]; // تقدر تضيف ايدي ثالث نفس الفكره تسوي كذا let devs = ["ايديك","ايدي خويك او إي ادمن","ايدي خويك الثالث"];
+//const devs = ["380307890235506698","518113766915702789"]; // تقدر تضيف ايدي ثالث نفس الفكره تسوي كذا let devs = ["ايديك","ايدي خويك او إي ادمن","ايدي خويك الثالث"];
 client.on("message", msg =>{
   let args = msg.content.split(" ").slice(1)[0];
   let cmd = msg.content.split(' ')[0]
   if(cmd === `${prefix}giftR`){
+  if (!msg.guild.member(msg.author).roles.has('538054326749364244')) return;
   let roleW = msg.mentions.roles.first();
   if(!devs.includes(msg.author.id)){
     let embed = new Discord.RichEmbed()
