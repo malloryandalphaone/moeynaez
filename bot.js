@@ -72,7 +72,8 @@ if (msg.author.bot) return;
 » \`Quixxyy\`
 » \`Ram6_Gamer\`
 » \`imMiller\`
-» \`1iLegqend_ \`
+» \`1iLegqend_\`
+» \`vM3ark_\`
 `)
 
 
