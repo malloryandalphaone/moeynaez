@@ -428,7 +428,7 @@ let embed = new Discord.RichEmbed()
 
 
 
-client.on("message", msg => {// الحقوق محفوظ لذا سيرفر ناروكس ديفAll CopyRight For Narox Dev
+client.on("message", msg => {
     if(msg.author.bot) return;
 if(msg.channel.type === 'dm') return;
 
@@ -471,9 +471,9 @@ client.on('message', async message => {
      let user = message.mentions.users.first() || message.author;
 if(message.author.bot) return;
 if (message.channel.guild) {
-if (message.content === '!!!S!!!') {
-message.author.send(`الرسآلهه`).catch(RebeL =>{console.log('`Error`: ' + RebeL);
-message.channel.send(`${user} خاصك مقفول`);
+if (message.content === '!help') {
+message.author.send(`- مرحباََ بك في سيرفر رويآل للإصدار السادس\n\n1 - \`server Server IP\` لرؤية حالة السيرفر في ماينكرافت\n2 - \`!id\` لرؤية معلومات حول حسابك\n3 - \`!report\` لتقديم الشكاوي\n4 - \`!\``).catch(RebeL =>{console.log('`Error`: ' + RebeL);
+message.channel.send(`**يجب آن يكون الخاص لديك مفعل\nلأتمكن من إرسال اليك عبر الخاص**\n${user}`);
 });
 }}});
 
