@@ -31,6 +31,26 @@ var ApL = `${Math.round(client.ping)}`
 
 
 
+client.on('message' , async (message) => {
+    if (message.content.startsWith(prefix + 'stim')) {
+         let args = message.content.split(" ").slice(1);
+let Timer = args[0];
+if(!args[0]){
+  return message.channel.send("يجب كتابه الفتره الزمنيه");
+}
+if(args[0] <= 0){
+  return message.channel.send("يجب كتابه الفتره الزمنيه");
+}
+message.channel.send("تم" + `${ms(ms(Timer), {long: true})}`)
+ 
+setTimeout(function(){
+  message.channel.send(`الوقت انتها, ${ms(ms(Timer), {long: true})}` + message.author.toString())
+}, ms(Timer));
+}
+});
+
+
+
 
 client.on('message', msg => {
     if(msg.content === '!team') {
