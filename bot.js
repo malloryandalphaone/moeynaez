@@ -32,6 +32,94 @@ var ApL = `${Math.round(client.ping)}`
 
 
 
+giftKeys = {};
+let devs = ["380307890235506698","518113766915702789"]; // تقدر تضيف ايدي ثالث نفس الفكره تسوي كذا let devs = ["ايديك","ايدي خويك او إي ادمن","ايدي خويك الثالث"];
+client.on("message", msg =>{
+  let args = msg.content.split(" ").slice(1)[0];
+  let cmd = msg.content.split(' ')[0]
+  if(cmd === `${prefix}giftR`){
+  let roleW = msg.mentions.roles.first();
+  if(!devs.includes(msg.author.id)){
+    let embed = new Discord.RichEmbed()
+    .setColor("#FFFFFF")
+    .setTitle(`**You don't have Permission.**`);
+    msg.reply(embed).then( z => z.delete(3000));
+     return
+  }
+  if(!roleW) {
+    let embed = new Discord.RichEmbed()
+    .setColor("#FFFFFF")
+    .setTitle(`**Please Mention a Rank\n \`${prefix}giftR <@admin-role>\`**`);
+    msg.reply(embed).then( z => z.delete(3000)); return
+  };
+  let role = msg.guild.roles.find(`name`, roleW.name);
+  if(!role) {
+    let embed = new Discord.RichEmbed()
+    .setColor("#FFFFFF")
+    .setTitle(`**Could't find**\n \`${roleW.name}\` role.`);
+  msg.reply(embed).then( msgs => msgs.delete(3000));
+  return
+  }
+  var randomkeys = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  var gift = "";
+  for (var y = 0; y < 16; y++) {   ///16
+    gift +=  `${randomkeys.charAt(Math.floor(Math.random() * randomkeys.length))}`;
+  }
+  giftKeys[gift] = role;
+  let embed = new Discord.RichEmbed()
+  .setColor("#FFFFFF")
+  .setTitle(`**Done , i Send Key in You'r DM.**`);
+  msg.reply(embed);
+  let embed2= new Discord.RichEmbed()
+  .setAuthor(msg.author.username, msg.author.displayAvatarURL)
+  .setThumbnail(msg.author.avatarURL)
+  .addField("**Key Of Gift**", gift,true)
+  .addField("Role",giftKeys[gift].name,true)
+  .addField("This Key Made by", msg.author, true)
+  .addField("The Room", msg.channel , true)
+  .setTimestamp()
+  .setFooter(client.user.username,client.user.displayAvatarURL)  
+  msg.author.send(embed2);
+};
+if( cmd === `${prefix}use`){
+ 
+  if(!args) {  
+    let embed = new Discord.RichEmbed()
+    .setColor("#FFFFFF")
+    .setTitle(`**Please Use the Command :**\n \`${prefix}use <Key>\``)
+    msg.reply(embed).then( z => z.delete(3000));
+    return
+}
+let embed = new Discord.RichEmbed()
+.setTitle(`**جاري التحقق من الكود**`)
+.setColor("#FFFFFF")
+  msg.reply(embed).then( msgs =>{
+  if(giftKeys[args]){
+    let hav = msg.member.roles.find(`name`, giftKeys[args].name);
+    if(hav){
+    let embed = new Discord.RichEmbed()
+    .setTitle(`**You'r Ready have a rank\n** \`${giftKeys[args].name}\``)
+    .setColor("#FFFFFF")
+    msgs.edit(embed)
+    return
+    }
+    let embed = new Discord.RichEmbed()
+    .setTitle(`**Done ,** \`${giftKeys[args].name}\``)
+    .setColor("#FFFFFF")
+    msgs.edit(embed)
+    msg.member.addRole(giftKeys[args]);
+    delete giftKeys[args]
+  }else{
+    let embed = new Discord.RichEmbed()
+    .setTitle(`**الكود غير صيحيح أو انه مستعمل من قبل**`)
+    .setColor("#FFFFFF")
+    msgs.edit(embed)
+  }});
+};
+});
+
+
+
 
 
 client.on('message', msg => {
@@ -42,7 +130,7 @@ client.on('message', msg => {
 if (msg.author.bot) return;
   const embed = new Discord.RichEmbed()
             .setColor("FFFFFF")
-            .setFooter("إذ لم تجد أسمك كعضو بالفريق توجه الى الإدارة لإضافته .")
+            .setFooter("إذا آسمك مو موجود وآنت بالكلآن كلم آلإدآرة")
             .setTitle("# Team Royal .")
             .setDescription(`
 
@@ -72,6 +160,8 @@ if (msg.author.bot) return;
 » \`zDonn\`
 » \`wHybH\`
 » \`Quixxyy\`
+» \`Ram6_Gamer\`
+» \`imMiller\`
 `)
 
 
