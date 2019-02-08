@@ -61,7 +61,6 @@ if (msg.author.bot) return;
 » \`JustCute_\`
 » \`iTzCommander_\`
 » \`xFn_\`
-» \`Hima_YT\`
 » \`K1nqS3m\`
 » \`iiM_\`
 » \`1Rakan\`
