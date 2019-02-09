@@ -244,11 +244,11 @@ const membersSize = (client) => {
 
 
 client.on('ready', () => {
-client.channels.get(voiceChannel).setName(`✾, - Voice Now ${membersSize(client)} .`)
+client.channels.get(voiceChannel).setName(`'⁎ Voice Now ${membersSize(client)}.`)
 }); 
 
 client.on('voiceStateUpdate', () => {
-client.channels.get(voiceChannel).setName(`✾, - Voice Now ${membersSize(client)} .`)
+client.channels.get(voiceChannel).setName(`'⁎ Voice Now ${membersSize(client)}.`)
 })
 
 
@@ -405,7 +405,7 @@ client.on("message", msg =>{
   .setFooter(client.user.username,client.user.displayAvatarURL)  
   msg.author.send(embed2);
 };
-if( cmd === `${prefix}use`){
+if( cmd === `${prefix}use code`){
  
   if(!args) {  
     let embed = new Discord.RichEmbed()
@@ -457,7 +457,7 @@ let msgarray = msg.content.split(" ");
 let cmd = msgarray[0];
 let args = msgarray.slice(1);
 
-if(cmd === `${p}repsaort`){
+if(cmd === `${p}report`){
 
 
     let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
@@ -492,7 +492,7 @@ client.on('message', async message => {
 if(message.author.bot) return;
 if (message.channel.guild) {
 if (message.content === '!help') {
-message.author.send(`- مرحباََ بك في سيرفر رويآل للإصدار السادس\n\n1 - \`server Server IP\` لرؤية حالة السيرفر في ماينكرافت\n2 - \`!id\` لرؤية معلومات حول حسابك\n3 - \`!report\` لتقديم الشكاوي\n4 - \`!\``).catch(RebeL =>{console.log('`Error`: ' + RebeL);
+message.author.send(`- مرحباََ بك في سيرفر رويآل للإصدار السادس\n\n1 - \`!server Server IP\` لرؤية حالة السيرفر في ماينكرافت\n2 - \`!id\` لرؤية معلومات حول حسابك\n3 - \`!report\` لتقديم الشكاوي\n4 - \`!use code\` لإستخدام كود الرتب`).catch(RebeL =>{console.log('`Error`: ' + RebeL);
 message.channel.send(`**يجب آن يكون الخاص لديك مفعل\nلأتمكن من إرسال اليك عبر الخاص**\n${user}`);
 });
 }}});
@@ -664,9 +664,9 @@ client.on('message',message =>{
     var userM = message.mentions.users.first()
     let em = client.emojis.find(e => e.name === "false");
     if(command == prefix + 'unban') {//SnOw Code
-        if (!message.guild.member(message.author).roles.has('538051771143159808')) return;
-        //if(!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send(':x: **You don\'t have permission.**'); //SnOw Code
-        //if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.channel.send('**hmmm..**');//SnOw Code
+        //if (!message.guild.member(message.author).roles.has('538051771143159808')) return;
+        if(!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send(':x: **You don\'t have permission.**'); //SnOw Code
+        if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.channel.send('**hmmm..**');//SnOw Code
         if(!args[1]) return  message.channel.send('**Mention Any Member..**');
         if(args[1].length < 16) return message.reply('**This is Id Not For Any User..**');//SnOw Code
         message.guild.fetchBans().then(bans => {//SnOw Code
@@ -840,8 +840,8 @@ client.on("message", (message) => {
 client.on('message', message => {
  
 if (message.content === prefix + "muted") {
-if (!message.guild.member(message.author).roles.has('538051773089447987')) return;
-//if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**You don’t havepermissions**');
+//if (!message.guild.member(message.author).roles.has('538051773089447987')) return;
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**You don’t havepermissions**');
           message.channel.overwritePermissions(message.guild.id, {
         SEND_MESSAGES: false
  
@@ -850,8 +850,8 @@ if (!message.guild.member(message.author).roles.has('538051773089447987')) retur
           });
 }
  if (message.content === prefix + "unmuted") {
- if (!message.guild.member(message.author).roles.has('538051773089447987')) return;
-//if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**You don’t have permissions**');
+ //if (!message.guild.member(message.author).roles.has('538051773089447987')) return;
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**You don’t have permissions**');
           message.channel.overwritePermissions(message.guild.id, {
         SEND_MESSAGES: true
  
@@ -890,8 +890,8 @@ let msgarray = msg.content.split(" ");
 let cmd = msgarray[0];
 let args = msgarray.slice(1);
 if(cmd === `${prefix}warn`){//الامر
-//if (!msg.member.hasPermission("MANAGE_ROLES")) return msg.channel.send('**:x: You don\'t have Permission.**');
-  if (!msg.guild.member(msg.author).roles.has('538054323490521088')) return;
+if (!msg.member.hasPermission("MANAGE_ROLES")) return msg.channel.send('**:x: You don\'t have Permission.**');
+//  if (!msg.guild.member(msg.author).roles.has('538054323490521088')) return;
 
   let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
 if(!rUser) return msg.channel.send("**Mention Any Member ..**");
@@ -927,8 +927,8 @@ let msgarray = msg.content.split(" ");
 let cmd = msgarray[0];
 let args = msgarray.slice(1);
 if(cmd === `${prefix}warn2`){//الامر
-//if (!msg.member.hasPermission("MANAGE_ROLES")) return msg.channel.send('**:x: You don\'t have Permission.**');
-  if (!msg.guild.member(msg.author).roles.has('538054323490521088')) return;
+if (!msg.member.hasPermission("MANAGE_ROLES")) return msg.channel.send('**:x: You don\'t have Permission.**');
+//  if (!msg.guild.member(msg.author).roles.has('538054323490521088')) return;
 
   let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
 if(!rUser) return msg.channel.send("**Mention Any Member ..**");
@@ -963,8 +963,8 @@ let msgarray = msg.content.split(" ");
 let cmd = msgarray[0];
 let args = msgarray.slice(1);
 if(cmd === `${prefix}warn3`){//الامر
-//if (!msg.member.hasPermission("MANAGE_ROLES")) return msg.channel.send('**:x: You don\'t have Permission.**');
-  if (!msg.guild.member(msg.author).roles.has('538054323490521088')) return;
+if (!msg.member.hasPermission("MANAGE_ROLES")) return msg.channel.send('**:x: You don\'t have Permission.**');
+//  if (!msg.guild.member(msg.author).roles.has('538054323490521088')) return;
 
   let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
 if(!rUser) return msg.channel.send("**Mention Any Member ..**");
@@ -1032,8 +1032,8 @@ client.on('message', message => {
     var prefix = "!";
     let em = client.emojis.find(e => e.name === "true");
     if(message.content.startsWith(prefix + 'move all')) {
-    if (!message.guild.member(message.author).roles.has('538054323662356502')) return;
-     //if (!message.member.hasPermission("MOVE_MEMBERS")) return message.channel.send('**:x: You Dont Have Perms `MOVE_MEMBERS`**');
+   // if (!message.guild.member(message.author).roles.has('538054323662356502')) return;
+     if (!message.member.hasPermission("MOVE_MEMBERS")) return message.channel.send('**:x: You Dont Have Perms `MOVE_MEMBERS`**');
        //if(!message.guild.member(client.user).hasPermission("MOVE_MEMBERS")) return message.reply("**:x: I Dont Have Perms `MOVE_MEMBERS`**");
     if (message.member.voiceChannel == null) return message.channel.send(`**You Have To Be In Room Voice**`)
      var author = message.member.voiceChannelID;
@@ -1051,37 +1051,37 @@ client.on('message', message => {
 
 
 
-//client.on("message", message => {
- //   var prefix = "!";
-   // const command = message.content.split(" ")[0];
+client.on("message", message => {
+    var prefix = "!";
+    const command = message.content.split(" ")[0];
 
-    //if(command == prefix+"vkick"){
+    if(command == prefix+"vk"){
       //    if (!message.guild.member(message.author).roles.has('⁎ Voice kick Access.')) return;
-        //if (!message.guild.member(message.author).hasPermission('MOVE_MEMBERS') || !message.guild.member(message.author).hasPermission('ADMINISTRATOR')) {
-           // return message.reply('you do not have permission to perform this action!');
-        //}
+        if (!message.guild.member(message.author).hasPermission('MOVE_MEMBERS') || !message.guild.member(message.author).hasPermission('ADMINISTRATOR')) {
+            return message.reply('you do not have permission to perform this action!');
+        }
 
-        //var member = message.guild.members.get(message.mentions.users.array()[0].id);
-        //if(!message.mentions.users){
-          //  message.reply("**Mention Any Member ..**")
-            //return;
-        //}
+        var member = message.guild.members.get(message.mentions.users.array()[0].id);
+        if(!message.mentions.users){
+            message.reply("**Mention Any Member ..**")
+            return;
+        }
 
-    //if(!member.voiceChannel){
-    //message.reply("**i Can't ..**")
-    //return;
-    //}
-      //        message.guild.createChannel('voicekick', 'voice').then(c => {
-        //        member.setVoiceChannel(c).then(() => {
-         //           c.delete(305).catch(console.log)
+    if(!member.voiceChannel){
+    message.reply("**i Can't ..**")
+    return;
+    }
+              message.guild.createChannel('voicekick', 'voice').then(c => {
+                member.setVoiceChannel(c).then(() => {
+                    c.delete(305).catch(console.log)
         
 
 
     
-     // });
-     //});
+      });
+     });
     
-//});
+});
 
 
 
@@ -1092,7 +1092,7 @@ client.on("message", message => {
   let args = message.content.split(" ").slice(1);
   var argresult = args.join(' '); 
   message.guild.members.filter(m => m.presence.status !== 'idle').forEach(m => {
- m.send(`${argresult}\n ${m}`);
+ m.send(`${argresult}\n\n ${m}`);
 })
  message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`); 
  message.delete(); 
@@ -1166,7 +1166,7 @@ client.on('message', async message => {
         if(message.author.bot) return;
         if(message.channel.type === 'dm') return;
  
-        var modRole = message.guild.roles.find(r => r.name === '- Clan Royal.');
+        var modRole = message.guild.roles.find(r => r.name === '# Royal.');
        
         if(message.guild.member(message.author).roles.has(modRole.id)) return message.channel.send('**- أنت بالفعل لديك رتبة الفريق.**');
         if(!subChannel) return message.channel.send('يجب أن يتوفر روم بأسم :: Requests');
@@ -1273,9 +1273,9 @@ client.on('message', async message => {
 
   if (command == "ban") {
                if(!message.channel.guild) return message.reply('** This command only for servers**');
-                 if (!message.guild.member(message.author).roles.has('⁎ Ban Access.')) return;
-  //if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("**انت لا تملك الصلاحيات المطلوبه**");
-  //if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**I Don't Have ` BAN_MEMBERS ` Permission**");
+                // if (!message.guild.member(message.author).roles.has('⁎ Ban Access.')) return;
+  if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("**انت لا تملك الصلاحيات المطلوبه**");
+  if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**I Don't Have ` BAN_MEMBERS ` Permission**");
   let user = message.mentions.users.first();
   
   if (message.mentions.users.size < 1) return message.channel.send("**Mention any Members.**");
@@ -1309,16 +1309,16 @@ client.on('message', msg => {
     let textxt = args.slice(0).join("");
     
   let em = client.emojis.find(e => e.name === "true");
-    //if(msg.member.hasPermission("MANAGE_MESSAGES")) {
-      if (!msg.guild.member(msg.author).roles.has('538054325629485063')) return;
+    if(msg.member.hasPermission("MANAGE_MESSAGES")) {
+    //  if (!msg.guild.member(msg.author).roles.has('538054325629485063')) return;
     if (textxt == "") {
         msg.delete().then
-    msg.channel.send("ضع رقم للمسح ..").then(m => m.delete(3000));
+    msg.channel.send(":wastebasket: **| أختر رقم بعدد الرسائل المراد مسحها**").then(m => m.delete(3000));
 } else {
     msg.delete().then
     msg.delete().then
     msg.channel.bulkDelete(textxt);
-        msg.channel.send(":white_check_mark: **Message " + textxt + " Clear.**").then(m => m.delete(3000));
+        msg.channel.send("**```js\n⇏ | Deleted " + textxt + " messages.\n```**").then(m => m.delete(3000));
         }    
     }
 
@@ -1339,9 +1339,9 @@ const prefix = "!";
   if (command == "kick") {
                if(!message.channel.guild) return;
          
-  //if(!message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return message.reply("You Don't Have KICK_MEMBERS Permission").then(msg => msg.delete(5000));
-  //if(!message.guild.member(client.user).hasPermission("KICK_MEMBERS")) return message.reply("I Don't Have KICK_Members Permission");
-    if (!message.guild.member(message.author).roles.has('538051772342599690')) return;
+  if(!message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return message.reply("You don't have Permission").then(msg => msg.delete(5000));
+  if(!message.guild.member(client.user).hasPermission("KICK_MEMBERS")) return message.reply("I don't have Permission");
+  //  if (!message.guild.member(message.author).roles.has('538051772342599690')) return;
   let user = message.mentions.users.first();
   let reason = message.content.split(" ").slice(2).join(" ");
 
@@ -1352,14 +1352,14 @@ const prefix = "!";
 
   message.guild.member(user).kick(7, user);
 
- message.channel.send(`**${em} ${user.tag} kicked from the server ! :airplane: **  `)
+ message.channel.send(`**:white_check_mark: ${user.tag} kicked from the server ! :airplane: **  `)
 
 }
 });
 
 client.on('message', message => {
     if (message.content.startsWith("!avatar")) {
-    if (!message.guild.member(message.author).roles.has('⁎ Avatar.')) return;
+    //if (!message.guild.member(message.author).roles.has('⁎ Avatar.')) return;
         var mentionned = message.mentions.users.first();
     var x5bzm;
       if(mentionned){
@@ -1390,8 +1390,8 @@ var command = message.content.split(" ")[0];
 command = command.slice(prefix.length);
 var args = message.content.split(" ").slice(1);
     if(command == "mute") {
-      if (!message.guild.member(message.author).roles.has('538054323460898847')) return;
-     //if(!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send(':x: **You don\'t have permission.**');
+   //   if (!message.guild.member(message.author).roles.has('538054323460898847')) return;
+     if(!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send(':x: **You don\'t have permission.**');
     let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!tomute) return message.channel.send("**Mention Player..**") .then(m => m.delete(5000));
     let muterole = message.guild.roles.find(`name`, "Muted");
@@ -1419,7 +1419,7 @@ var args = message.content.split(" ").slice(1);
     if(!mutetime) return message.channel.send(":x: **Supply Time.**");
  
     await(tomute.addRole(muterole.id));
-message.channel.send(`**:white_check_mark: <@${tomute.id}> has been muted ! :zipper_mouth:**`); //${ms(ms(mutetime))}
+message.channel.send(`**<@${tomute.id}> has been muted ! :zipper_mouth:**`); //${ms(ms(mutetime))}
 setTimeout(function(){
       tomute.removeRole(muterole.id);
       message.channel.send(`<@${tomute.id}> **Unmuted Timeout!**.`);
@@ -1431,8 +1431,8 @@ setTimeout(function(){
   
   let esm = client.emojis.find(e => e.name === "true");
 if(command === `unmute`) {
-  if (!message.guild.member(message.author).roles.has('538054323460898847')) return;
-  //if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.sendMessage("**You don't have permission.").then(m => m.delete(5000));
+ // if (!message.guild.member(message.author).roles.has('538054323460898847')) return;
+  if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.sendMessage("**You don't have permission.").then(m => m.delete(5000));
 if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**I don't have permission**").then(msg => msg.delete(6000))
  
   let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
@@ -1443,7 +1443,7 @@ if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return mess
   if(!role || !toMute.roles.has(role.id)) return message.channel.sendMessage("** Already UnMuted!**")
  
   await toMute.removeRole(role)
-  message.channel.sendMessage(":white_check_mark: **Member has been muted !**");
+  message.channel.sendMessage(":white_check_mark: **Member has been unmute !**");
  
   return;
  
@@ -1455,9 +1455,9 @@ if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return mess
 
 client.on('message', msg => {
     if(!msg.guild) return;
-    if(msg.channel.id === '529441755892809728') {
+    if(msg.channel.id === '543773596317777922') {
     msg.delete().then
-        var channel = msg.guild.channels.get("529441960331837441")
+        var channel = msg.guild.channels.get("543773977882001409")
         channel.send(msg.member + `\n\n` +msg.content)
     }
 });
@@ -1490,27 +1490,27 @@ client.on('message',async message => {
  
   let command = message.content.split(" ")[0];
  
-  if (message.content.split(" ")[0].toLowerCase() === prefix + "rainbow") {
-  if (!message.guild.member(message.author).roles.has('540554460536242176')) return;
-  if (!message.member.hasPermission('MANAGE_ROLES')) return;
-  let user = message.mentions.users.first();
-  let modlog = client.channels.find('name', 'system');
-  let muteRole = client.guilds.get(message.guild.id).roles.find('name', '❃, VIP | RainBow.');
-  if (!muteRole) return message.reply("**I Can't Find rank ..**").catch(console.error).then(message => message.delete(4000))
+ // if (message.content.split(" ")[0].toLowerCase() === prefix + "rainbow") {
+//  if (!message.guild.member(message.author).roles.has('540554460536242176')) return;
+//  if (!message.member.hasPermission('MANAGE_ROLES')) return;
+//  let user = message.mentions.users.first();
+//  let modlog = client.channels.find('name', 'system');
+ // let muteRole = client.guilds.get(message.guild.id).roles.find('name', '❃, VIP | RainBow.');
+ // if (!muteRole) return message.reply("**I Can't Find rank ..**").catch(console.error).then(message => message.delete(4000))
 //  if (message.mentions.users.size < 1) return message.reply('**Mention Any Member ..**').catch(console.error).then(message => message.delete(4000))
-  if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return;
+ // if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return;
  
-  if (message.guild.member(user).addRole(muteRole.id)) {
-      return message.channel.send(":white_check_mark: **User has given The Vastest Rank **").catch(console.error).then(message => message.delete(4000))
-  } else {
-    message.guild.member(user).removeRole(muteRole).then(() => {
-      return message.channel.send(":white_check_mark: **User has given The Vastest Rank **").catch(console.error).then(message => message.delete(4000))
-    });
-  }
+ // if (message.guild.member(user).addRole(muteRole.id)) {
+  //    return message.channel.send(":white_check_mark: **User has given The Vastest Rank **").catch(console.error).then(message => message.delete(4000))
+ // } else {
+  //  message.guild.member(user).removeRole(muteRole).then(() => {
+    //  return message.channel.send(":white_check_mark: **User has given The Vastest Rank **").catch(console.error).then(message => message.delete(4000))
+  //  });
+ // }
  
-};
+//};
  
-});
+//});
 
 
 //if(!reeebel) {
@@ -1621,7 +1621,7 @@ client.on("message", function(message) {
   const command = args.shift().toLowerCase();
  
   if (command === "del") {
-    message.channel.send("اختر الروم الذي تريد حذفه")
+    message.channel.send("**قم بأختيار الروم المراد حذفه**")
       .then(() => {
         message.channel.awaitMessages(res => res.author.id == message.author.id , {
         max: 1,
@@ -1631,7 +1631,7 @@ client.on("message", function(message) {
         .then((collected) => {
           let mentionMessage = collected.first();
           let channel = mentionMessage.mentions.channels.first();
-          mentionMessage.channel.send("select a time format\nwhere:\n[1] = second\n[2] = minute\n[3] = hour")
+          mentionMessage.channel.send("**Select a time format/nwhere:**/n:one:  = second/n:two:  = minute/n:three:  = hour")
             .then(function(botMessage) {
               console.log(botMessage)
               botMessage.react("1⃣")
@@ -1647,7 +1647,7 @@ client.on("message", function(message) {
                     .then(collected => {
                       var reaction = collected.first();              
                       if (reaction._emoji.name == "1⃣") {
-                        message.channel.send("اكتب عدد الثواني")
+                        message.channel.send("**أكتب عدد الثواني**")
                           .then(() => {
                             message.channel.awaitMessages(res => res.author.id == message.author.id , {
                               max: 1,
@@ -1656,15 +1656,15 @@ client.on("message", function(message) {
                             })
                               .then((collected1) => {
                                 let content = collected1.first().content;
-                                message.channel.send(" سوف يتم حذف الروم بعد انتهاء الوقت")
+                                message.channel.send("**سوف يتم حذف الروم بعد إنتهاء الوقت**")
                                 setTimeout(function() {
                                   channel.delete()
-                                  message.channel.send(channel.name + " تم حذف روم")
+                                  message.channel.send(channel.name + "**تم حذف روم**")
                                 }, (1000*parseInt(content)))
                               }).catch(console.error)
                             }).catch(console.error)
                         } else if (reaction._emoji.name == "2⃣") {
-                          message.channel.send("اكتب عدد الدقائق")
+                          message.channel.send("**اكتب عدد الدقائق**")
                             .then(() => {
                               message.channel.awaitMessages(res => res.author.id == message.author.id , {
                                 max: 1,
@@ -1673,15 +1673,15 @@ client.on("message", function(message) {
                             })
                               .then((collected2) => {
                                 let content = collected2.first().content;
-                                message.channel.send(" سوف يتم حذف الروم بعد انتهاء الوقت")
+                                message.channel.send("** سوف يتم حذف الروم بعد انتهاء الوقت**")
                                 setTimeout(function() {
                                   channel.delete()
-                                  message.channel.send(channel.name + "  تم حذف روم")
+                                  message.channel.send(channel.name + " **تم حذف روم**")
                                 }, (60000*parseInt(content)))
                               }).catch(console.error)
                           }).catch(console.error)
                         } else if(reaction._emoji.name == "3⃣") {
-                          message.channel.send("اكتب عدد الساعات")
+                          message.channel.send("**اكتب عدد الساعات**")
                             .then(() => {
                               message.channel.awaitMessages(res => res.author.id == message.author.id , {
                                 max: 1,
@@ -1690,10 +1690,10 @@ client.on("message", function(message) {
                               })
                                 .then((collected3) => {
                                   let content = collected3.first().content;
-                                  message.channel.send(" سوف يتم حذف الروم بعد انتهاء الوقت")
+                                  message.channel.send("** سوف يتم حذف الروم بعد انتهاء الوقت**")
                                   setTimeout(function() {
                                     channel.delete()
-                                    message.channel.send(channel.name + " تم حذف روم")
+                                    message.channel.send(channel.name + " **تم حذف روم**")
                                   }, (3600000*parseInt(content)))
                                 }).catch(console.error)
                             }).catch(console.error)
