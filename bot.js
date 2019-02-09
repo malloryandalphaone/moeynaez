@@ -44,7 +44,7 @@ if(args[0] <= 0){
 message.channel.send("تم" + `${ms(ms(Timer), {long: true})}`)
  
 setTimeout(function(){
-  message.channel.send(`الوقت انتها, ${ms(ms(Timer), {long: true})}` + message.author.toString())
+  message.channel.send(`**Time Ended!** ${ms(ms(Timer), {long: true})}` + message.author.toString())
 }, ms(Timer));
 }
 });
