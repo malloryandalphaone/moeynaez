@@ -1051,37 +1051,37 @@ client.on('message', message => {
 
 
 
-client.on("message", message => {
-    var prefix = "!";
-    const command = message.content.split(" ")[0];
+//client.on("message", message => {
+//    var prefix = "!";
+//    const command = message.content.split(" ")[0];
 
-    if(command == prefix+"vk"){
-      //    if (!message.guild.member(message.author).roles.has('⁎ Voice kick Access.')) return;
-        if (!message.guild.member(message.author).hasPermission('MOVE_MEMBERS') || !message.guild.member(message.author).hasPermission('ADMINISTRATOR')) {
-            return message.reply('you do not have permission to perform this action!');
-        }
+//    if(command == prefix+"vk"){
+//      //    if (!message.guild.member(message.author).roles.has('⁎ Voice kick Access.')) return;
+//if (!message.guild.member(message.author).hasPermission('MOVE_MEMBERS') || !message.guild.member(message.author).hasPermission('ADMINISTRATOR')) {
+//            return message.reply('you do not have permission to perform this action!');
+//        }
 
-        var member = message.guild.members.get(message.mentions.users.array()[0].id);
-        if(!message.mentions.users){
-            message.reply("**Mention Any Member ..**")
-            return;
-        }
+ //       var member = message.guild.members.get(message.mentions.users.array()[0].id);
+  //      if(!message.mentions.users){
+  //          message.reply("**Mention Any Member ..**")
+   //         return;
+   //     }
 
-    if(!member.voiceChannel){
-    message.reply("**i Can't ..**")
-    return;
-    }
-              message.guild.createChannel('voicekick', 'voice').then(c => {
-                member.setVoiceChannel(c).then(() => {
-                    c.delete(305).catch(console.log)
+  //  if(!member.voiceChannel){
+  //  message.reply("**i Can't ..**")
+  //  return;
+  //  }
+         //     message.guild.createChannel('voicekick', 'voice').then(c => {
+          //      member.setVoiceChannel(c).then(() => {
+           //         c.delete(305).catch(console.log)
         
 
 
     
-      });
-     });
+  //    });
+  //   });
     
-});
+//});
 
 
 
