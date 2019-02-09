@@ -1321,7 +1321,6 @@ client.on('message', msg => {
         msg.channel.send("**```js\n⇏ | Deleted " + textxt + " messages.\n```**").then(m => m.delete(3000));
         }    
     }
-
 });
 
 
