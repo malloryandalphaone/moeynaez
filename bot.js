@@ -49,7 +49,7 @@ client.on('message', async msg => {
             } else {
                 msg.delete();
                 await msg.channel.bulkDelete(textxt);
-                msg.channel.send(`**\`\`\`js\n⇏ | Deleted " + textxt + " messages.\n\`\`\`**`).then(m => m.delete(3000));
+                msg.channel.send(`\`\`\`js\n⇏ | Deleted " + textxt + " messages.\`\`\``).then(m => m.delete(3000));
             }
         }
     }
