@@ -31,6 +31,35 @@ var ApL = `${Math.round(client.ping)}`
 
 
 
+const prefix = '!';
+
+client.on('message', async msg => {
+    if (msg.author.bot) return;
+    if (!msg.content.startsWith(prefix)) return;
+    let command = msg.content.split(' ')[0];
+    command = command.slice(prefix.length);
+    const args = msg.content.split(' ').slice(1);
+
+
+    if (command === 'clear') {
+        const textxt = args.slice(0).join('');
+        if (msg.member.hasPermission('MANAGE_MESSAGES')) {
+           // if (!msg.guild.member(msg.author).roles.has('538054325629485063')) return;
+            if (textxt === '') {
+                msg.delete();
+                msg.channel.send(':wastebasket: **| أختر رقم بعدد الرسائل المراد مسحها**').then(m => m.delete(3000));
+            } else {
+                msg.delete();
+                await msg.channel.bulkDelete(textxt);
+                msg.channel.send(`**\`\`\`js\n⇏ | Deleted " + textxt + " messages.\n\`\`\`**`).then(m => m.delete(3000));
+            }
+        }
+    }
+});
+
+
+
+
 client.on('message' , async (message) => {
     if (message.content.startsWith(prefix + 'stim')) {
          let args = message.content.split(" ").slice(1);
