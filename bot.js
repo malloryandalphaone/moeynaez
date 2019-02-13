@@ -1342,36 +1342,37 @@ message.channel.send(`**:white_check_mark: ${user.tag} banned from the server ! 
 
 
 
-//client.on('message', msg => {
-  //  var prefix = "!";
+client.on('message', msg => {
+    var prefix = "!";
   
- // let em = client.emojis.find(e => e.name === "true");
- // if (msg.author.bot) return;
- // if (!msg.content.startsWith(prefix)) return;
- // let command = msg.content.split(" ")[0];
- // command = command.slice(prefix.length);
- // let args = msg.content.split(" ").slice(1);
+  let em = client.emojis.find(e => e.name === "true");
+  if (msg.author.bot) return;
+  if (!msg.content.startsWith(prefix)) return;
+  let command = msg.content.split(" ")[0];
+  command = command.slice(prefix.length);
+  let args = msg.content.split(" ").slice(1);
   
   
   
-   // if(command === "clear") {
-    //    const emoji = client.emojis.find("name", "wastebasket")
-    //let textxt = args.slice(0).join("");
+    if(command === "clear") {
+        const emoji = client.emojis.find("name", "wastebasket")
+    let textxt = args.slice(0).join("");
     
-  //let em = client.emojis.find(e => e.name === "true");
-    //if(msg.member.hasPermission("MANAGE_MESSAGES")) {
-    //  if (!msg.guild.member(msg.author).roles.has('538054325629485063')) return;
-   // if (textxt == "") {
-     //   msg.delete().then
-    //msg.channel.send(":wastebasket: **| أختر رقم بعدد الرسائل المراد مسحها**").then(m => m.delete(3000));
-//} else {
-  //  msg.delete().then
-    //msg.delete().then
-   // msg.channel.bulkDelete(textxt);
-      //  msg.channel.send("**```js\n⇏ | Deleted " + textxt + " messages.\n```**").then(m => m.delete(3000));
-    //    }    
-  //  }
-//});
+  let em = client.emojis.find(e => e.name === "true");
+    if(msg.member.hasPermission("MANAGE_MESSAGES")) {
+      if (!msg.guild.member(msg.author).roles.has('538054325629485063')) return;
+    if (textxt == "") {
+        msg.delete().then
+    msg.channel.send(":wastebasket: **| أختر رقم بعدد الرسائل المراد مسحها**").then(m => m.delete(3000));
+} else {
+    msg.delete().then
+    msg.delete().then
+    msg.channel.bulkDelete(textxt);
+        msg.channel.send("**```js\n⇏ | Deleted " + textxt + " messages.\n```**").then(m => m.delete(3000));
+        }    
+   }
+      
+});
 
 
 
