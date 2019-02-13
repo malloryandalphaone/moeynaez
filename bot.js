@@ -1533,11 +1533,11 @@ client.on('message',async message => {
   });
 
 
-  client.on("message", message => {
- if(!message.channel.guild) return;  
-  if (message.author.bot) return;
+//  client.on("message", message => {
+// if(!message.channel.guild) return;  
+//  if (message.author.bot) return;
  
-  let command = message.content.split(" ")[0];
+//  let command = message.content.split(" ")[0];
  
  // if (message.content.split(" ")[0].toLowerCase() === prefix + "rainbow") {
 //  if (!message.guild.member(message.author).roles.has('540554460536242176')) return;
