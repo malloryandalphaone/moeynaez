@@ -254,25 +254,25 @@ client.channels.get(voiceChannel).setName(`'⁎ Voice Now ${membersSize(client)}
 
 
 
-client.on("message", message => {
-  if(message.content.startsWith("%verify")) { // الامر والبريفكس
-    let num = Math.floor((Math.random() * 4783) + 10);
+//client.on("message", message => {
+ // if(message.content.startsWith("%verify")) { // الامر والبريفكس
+  //  let num = Math.floor((Math.random() * 4783) + 10);
  
-        message.channel.send(`**يرجى كتآبة الرقم التآلي :**\n**${num}**`).then(m => {
-      message.channel.awaitMessages(res => res.content == `${num}`, {
-        max: 1,
-        time: 60000,
-        errors: ['time'],
-      }).then(collected => {
-        message.delete();
-        m.delete();
-        message.member.addRole(message.guild.roles.find(c => c.name == "Members")); // اسم الرتبة
-      }).catch(() => {
-        m.edit(`لقد أخذت وقتًا طويلاً لكتابة الرقم.  قم بإعادة كتابة الأمر مرة أخرى إذا كنت تريد التحقق من هويتك..`).then(m2 => m.delete(15000));
-      });
-    });
-  }
-});
+  //      message.channel.send(`**يرجى كتآبة الرقم التآلي :**\n**${num}**`).then(m => {
+  //    message.channel.awaitMessages(res => res.content == `${num}`, {
+  //      max: 1,
+  //      time: 60000,
+   //     errors: ['time'],
+   //   }).then(collected => {
+     //   message.delete();
+     //   m.delete();
+    //    message.member.addRole(message.guild.roles.find(c => c.name == "Members")); // اسم الرتبة
+    //  }).catch(() => {
+  //      m.edit(`لقد أخذت وقتًا طويلاً لكتابة الرقم.  قم بإعادة كتابة الأمر مرة أخرى إذا كنت تريد التحقق من هويتك..`).then(m2 => m.delete(15000));
+   //   });
+  //  });
+//  }
+//});
 
 
 
@@ -493,7 +493,7 @@ if(message.author.bot) return;
 if (message.channel.guild) {
 if (message.content === '!help') {
 message.author.send(`- مرحباََ بك في سيرفر رويآل للإصدار السادس\n\n1 - \`!server Server IP\` لرؤية حالة السيرفر في ماينكرافت\n2 - \`!id\` لرؤية معلومات حول حسابك\n3 - \`!report\` لتقديم الشكاوي\n4 - \`!use code\` لإستخدام كود الرتب`).catch(RebeL =>{console.log('`Error`: ' + RebeL);
-message.channel.send(`**يجب آن يكون الخاص لديك مفعل\nلأتمكن من إرسال اليك عبر الخاص**\n${user}`);
+message.channel.send(`**يجب آن يكون الخاص لديك مفعل\nلأتمكن من إرسال اليك الرسائل عبر الخاص**\n${user}`);
 });
 }}});
 
@@ -1162,16 +1162,6 @@ client.on('message', async message => {
     var filter = m => m.author.id === message.author.id;
     var subChannel = message.guild.channels.find(c => c.name === 'requests');
   
-    const wait= new Set()
-    if (wait.has(message.author.id)) {
-    return message.reply("**Please CoolDown 10s.**").then(message => {
-     message.delete(10000) 
-    })
-    }
-    wait.add(message.author.id);
-    setTimeout(() => {
-        wait.delete(message.author.id);
-    }, 10000);
   
     if(command == prefix + 'royal') {
         if(message.author.bot) return;
