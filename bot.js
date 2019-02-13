@@ -31,8 +31,6 @@ var ApL = `${Math.round(client.ping)}`
 
 
 
-const prefix = '!';
-
 client.on('message', async msg => {
     if (msg.author.bot) return;
     if (!msg.content.startsWith(prefix)) return;
