@@ -34,7 +34,7 @@ var ApL = `${Math.round(client.ping)}`
 client.on('typingStart', (ch, user) => {
     if(user.presence.status === 'offline') {
         
-        ch.send(`${user}\n\n**Sending Message but You'r Status is**\`Offline\`.`)
+        ch.send(`${user}\n\n**يكتب وهو أوفلآين .. قفطتك يَ فله (:**`)
         .then(msg => {
             msg.delete(10000)
         })
@@ -175,7 +175,7 @@ client.on('guildMemberAdd', member => {
     invites[member.guild.id] = guildInvites;
     const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
     const inviter = client.users.get(invite.inviter.id);
-    const logChannel = member.guild.channels.find(channel => channel.name === "royal");
+    const logChannel = member.guild.channels.find(channel => channel.name === "・chat");
     logChannel.send(`**» Name : ${member} \n» Invite By : <@${inviter.id}>**`);
   });
 });
@@ -412,7 +412,7 @@ client.on("message", msg =>{
   if(!roleW) {
     let embed = new Discord.RichEmbed()
     .setColor("#FFFFFF")
-    .setTitle(`**Please Mention a Rank\n \`${prefix}giftR <@admin-role>\`**`);
+    .setTitle(`**Please Mention a Rank\n \`${prefix}gift <@admin-role>\`**`);
     msg.reply(embed).then( z => z.delete(3000)); return
   };
   let role = msg.guild.roles.find(`name`, roleW.name);
@@ -444,7 +444,7 @@ client.on("message", msg =>{
   .setFooter(client.user.username,client.user.displayAvatarURL)  
   msg.author.send(embed2);
 };
-if( cmd === `${prefix}use code`){
+if( cmd === `${prefix}use`){
  
   if(!args) {  
     let embed = new Discord.RichEmbed()
@@ -944,12 +944,12 @@ if(!rUser) return msg.channel.send("**Mention Any Member ..**");
     .addField("» Reason",`${reason}`)
     
     
-    let reportchannel = msg.guild.channels.find(`name`,"royal"); //حط هنا اسم الروم الي يوريك بعض المعلومات
+    let reportchannel = msg.guild.channels.find(`name`,"・chat"); //حط هنا اسم الروم الي يوريك بعض المعلومات
     if(!reportchannel) return msg.channel.send("Couldn't find `royal` channel. "); //ط هنا اسم الروم الي يوريك بعض المعلومات
     
     msg.delete().catch(O_o=>{});
     reportchannel.send(reportembed);
-    let role = msg.guild.roles.find(`name`, '» Warning 1.'); //حط هنا اسم الرتبة
+    let role = msg.guild.roles.find(`name`, '» Don\'t Active for Clan One.'); //حط هنا اسم الرتبة
     if(!role) return msg.guild.channel.send("Could't find `royal` role."); //حط هنا اسم الرتبة
     rUser.addRole(role);
     
@@ -981,12 +981,12 @@ if(!rUser) return msg.channel.send("**Mention Any Member ..**");
     .addField("» Reason",`${reason}`)
     
     
-    let reportchannel = msg.guild.channels.find(`name`,"royal"); //حط هنا اسم الروم الي يوريك بعض المعلومات
+    let reportchannel = msg.guild.channels.find(`name`,"・chat"); //حط هنا اسم الروم الي يوريك بعض المعلومات
     if(!reportchannel) return msg.channel.send("Couldn't find `vast` channel. "); //ط هنا اسم الروم الي يوريك بعض المعلومات
     
     msg.delete().catch(O_o=>{});
     reportchannel.send(reportembed);
-    let role = msg.guild.roles.find(`name`, '» Warning 1.'); //حط هنا اسم الرتبة
+    let role = msg.guild.roles.find(`name`, '» Don\'t Active for Clan Two.'); //حط هنا اسم الرتبة
     if(!role) return msg.guild.channel.send("Could't find `vast` role."); //حط هنا اسم الرتبة
     rUser.addRole(role);
     
@@ -1017,12 +1017,12 @@ if(!rUser) return msg.channel.send("**Mention Any Member ..**");
     .addField("» Reason",`${reason}`)
     
     
-    let reportchannel = msg.guild.channels.find(`name`,"royal"); //حط هنا اسم الروم الي يوريك بعض المعلومات
+    let reportchannel = msg.guild.channels.find(`name`,"・chat"); //حط هنا اسم الروم الي يوريك بعض المعلومات
     if(!reportchannel) return msg.channel.send("Couldn't find `royal` channel. "); //ط هنا اسم الروم الي يوريك بعض المعلومات
     
     msg.delete().catch(O_o=>{});
     reportchannel.send(reportembed);
-    let role = msg.guild.roles.find(`name`, '» Warning 3.'); //حط هنا اسم الرتبة
+    let role = msg.guild.roles.find(`name`, '» Don\'t Active for Clan Three.'); //حط هنا اسم الرتبة
     if(!role) return msg.guild.channel.send("Could't find `royal` role."); //حط هنا اسم الرتبة
     rUser.addRole(role);
     
