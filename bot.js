@@ -31,6 +31,18 @@ var ApL = `${Math.round(client.ping)}`
 
 
 
+client.on('typingStart', (ch, user) => {
+    if(user.presence.status === 'offline') {
+        
+        ch.send(`${user}\n\n**Sending Message but You'r Status is**\`Offline\`.`)
+        .then(msg => {
+            msg.delete(10000)
+        })
+    }
+});
+
+
+
 client.on('message', async msg => {
     if (msg.author.bot) return;
     if (!msg.content.startsWith(prefix)) return;
@@ -49,7 +61,7 @@ client.on('message', async msg => {
             } else {
                 msg.delete();
                 await msg.channel.bulkDelete(textxt);
-                msg.channel.send(`\`\`\`js\n⇏ | Deleted " + textxt + " messages.\`\`\``).then(m => m.delete(3000));
+                msg.channel.send(`**- Cleared The Messages.**`).then(m => m.delete(3000));
             }
         }
     }
