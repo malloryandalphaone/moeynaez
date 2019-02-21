@@ -1379,16 +1379,16 @@ command = command.slice(prefix.length);
 var args = message.content.split(" ").slice(1);
     if(command == "mute") {
    //   if (!message.guild.member(message.author).roles.has('538054323460898847')) return;
-     if(!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send(':x: **You don\'t have permission.**');
+     if(!message.member.hasPermission('MUTE_MEMBERS')) return message.channel.send(':x: **You don\'t have permission.**');
     let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!tomute) return message.channel.send("**Mention Player..**") .then(m => m.delete(5000));
-    let muterole = message.guild.roles.find(`name`, "Muted");
+    if(!tomute) return message.channel.send("- **Mention Any Member.**") .then(m => m.delete(5000));
+    let muterole = message.guild.roles.find(`name`, "- Muted.");
     //start of create role
     if(!muterole){
       try{
         muterole = await message.guild.createRole({
-          name: "Muted",
-          color: "#070000",
+          name: "- Muted.",
+          color: "#000000",
           permissions:[]
         })
         message.guild.channels.forEach(async (channel, id) => {
@@ -1420,13 +1420,13 @@ setTimeout(function(){
   let esm = client.emojis.find(e => e.name === "true");
 if(command === `unmute`) {
  // if (!message.guild.member(message.author).roles.has('538054323460898847')) return;
-  if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.sendMessage("**You don't have permission.").then(m => m.delete(5000));
-if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**I don't have permission**").then(msg => msg.delete(6000))
+  if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.sendMessage("**You don't have permission.").then(m => m.delete(5000));
+if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply("**I don't have permission**").then(msg => msg.delete(6000))
  
   let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
   if(!toMute) return message.channel.sendMessage(":x: **Mention Any Members.**");
  
-  let role = message.guild.roles.find (r => r.name === "Muted");
+  let role = message.guild.roles.find (r => r.name === "- Muted.");
  
   if(!role || !toMute.roles.has(role.id)) return message.channel.sendMessage("** Already UnMuted!**")
  
