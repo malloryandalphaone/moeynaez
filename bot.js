@@ -1034,7 +1034,7 @@ client.on("message", message => {
   var argresult = args.join(' '); 
  // message.guild.members.filter(m => m.presence.status !== 'idle').forEach(m => {
  m.send(`${argresult}\n\n ${m}`);
-})
+//})
  message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`); 
  message.delete(); 
 };     
@@ -1647,7 +1647,7 @@ msg.channel.awaitMessages(fltr, {
      .then(co => {
       from = co.first().content
       co.first().delete();
-      e.edit("**Are You Sure On Your Submit?\n✅ Yes\n ❌ No**").then(o => {
+      e.edit("**Are You Sure On Your Submit?**").then(o => {
           o.react("❌")
           .then(() => o.react('✅'))
             .then(() =>o.react('❌'))
@@ -1687,6 +1687,38 @@ msg.channel.awaitMessages(fltr, {
     }
 });
 
+client.on('message',async message => {
+  let mention = message.mentions.members.first();
+  let acRoom = client.channels.get('548208534618112020');
+  let em = client.emojis.find(e => e.name === "false");
+  if(message.content.startsWith(prefix + "Refusal")) {
+  if(message.guild.id !== '548103774116380682') return;
+  if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
+  if(!mention) return message.reply("- **Mention The member.**");
 
+  acRoom.send(`» ${mention},\n» Your unAcceptable for The Submit,** ${em}`)
+  }
+});
+ 
+ 
+client.on('message',async message => {
+  let mention = message.mentions.members.first();
+  let role = message.content.split(" ").slice(2).join(" ");
+  let mySupport = message.guild.roles.find('name',role);
+  let acRoom = client.channels.get('548208534618112020');
+  let em = client.emojis.find(e => e.name === "true");
+  if(message.content.startsWith(prefix + "acceptance")) {
+    if(message.guild.id !== '548103774116380682') return;
+    if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
+    if(!mention) return message.reply('- **Mention The member.**');
+    if(!role) return message.reply('- **Type Name Rank.**');
+    if(!mySupport) return message.reply('- **i Find The Rank.**');
+    if(mention.roles.has(mySupport)) return message.reply('- **The Member has a ready have the rank.**');
+
+    mention.addRole(mySupport).then(() => {
+      acRoom.send(`» ${mention},\n» Your Acceptable for The Submit,** ${em}`);
+    });
+  }
+});
 
 client.login(process.env.BOT_TOKEN);
