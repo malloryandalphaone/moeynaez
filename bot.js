@@ -12,7 +12,7 @@ if (x) x.join();
 
 client.on("ready", () => {
 client.user.setStatus('dnd');
-client.user.setGame("Royal System", "https://www.twitch.tv/idk");
+client.user.setGame("⌬", "https://www.twitch.tv/idk");
   console.log("Reeebel | Logged in! Server count: ${client.guilds.size}");
  // client.user.setActivity("Royal Orders.",{type: 'WATCHING'});
 });
