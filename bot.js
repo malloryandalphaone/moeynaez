@@ -34,7 +34,7 @@ var ApL = `${Math.round(client.ping)}`
 client.on('typingStart', (ch, user) => {
     if(user.presence.status === 'offline') {
         
-        ch.send(`${user}\n\n**يكتب وهو أوفلآين .. قفطتك يَ فله (:**`)
+        ch.send(`${user}, **Typing with Your Stats is Offline (:**`)
         .then(msg => {
             msg.delete(10000)
         })
@@ -452,7 +452,7 @@ let embed = new Discord.RichEmbed()
     delete giftKeys[args]
   }else{
     let embed = new Discord.RichEmbed()
-    .setTitle(`- **الكود غير صيحيح أو انه مستعمل من قبل**`)
+    .setTitle(`- **Error.**`)
     .setColor("#FFFFFF")
     msgs.edit(embed)
   }});
@@ -474,7 +474,7 @@ let msgarray = msg.content.split(" ");
 let cmd = msgarray[0];
 let args = msgarray.slice(1);
 
-if(cmd === `${p}report`){
+if(cmd === `${p}repsaasort`){
 
 
     let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
@@ -688,7 +688,7 @@ client.on('message',message =>{
         if(args[1].length < 16) return message.reply('**This is Id Not For Any User..**');//SnOw Code
         message.guild.fetchBans().then(bans => {//SnOw Code
             var Found = bans.find(m => m.id === args[1]);
-            if(!Found) return message.channel.send(`${em} **This is User is Not Banned!,** <@${message.author.id}>`);//SnOw Code
+            if(!Found) return message.channel.send(`:x: **This is User is Not Banned!,** <@${message.author.id}>`);//SnOw Code
             message.guild.unban(args[1]);
             message.channel.send(`:white_check_mark: **Successfully Unbanned <@${args[1]}> From the server!**`);
             }
@@ -824,7 +824,7 @@ client.on("message", (message) => {
   if (message.content.startsWith("!close")) {
         if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`You can't use the close command outside of a ticket channel.`);
  
-       message.channel.send(`**Are u Sure Close the ticket?\n\nType : !confirm**`)
+       message.channel.send(`- **Are u Sure Close the ticket?\nType: !confirm**.`)
            .then((m) => {
                message.channel.awaitMessages(response => response.content === '!confirm', {
                        max: 1,
@@ -1621,7 +1621,7 @@ client.on("message",async msg => {
         if(!channel) return msg.reply("- **i find Channel `submissions`.**`")
     let fltr = m => m.author.id === msg.author.id
     let name = '';
-   await msg.reply(':orange_book:**, Type Your Name?**.').then(e => {
+   await msg.channel.send(':orange_book:**, Type Your Name?**.').then(e => {
 msg.channel.awaitMessages(fltr, {
     time: 600000,
     max: 1
@@ -1696,7 +1696,7 @@ client.on('message',async message => {
   if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
   if(!mention) return message.reply("- **Mention The member.**");
 
-  acRoom.send(`» ${mention},\n» Your unAcceptable for The Submit,** ${em}`)
+  acRoom.send(`» ${mention},\n» **Your unAcceptable for The Submit,** ${em}`)
   }
 });
  
@@ -1716,7 +1716,7 @@ client.on('message',async message => {
     if(mention.roles.has(mySupport)) return message.reply('- **The Member has a ready have the rank.**');
 
     mention.addRole(mySupport).then(() => {
-      acRoom.send(`» ${mention},\n» Your Acceptable for The Submit,** ${em}`);
+      acRoom.send(`» ${mention},\n» **Your Acceptable for The Submit,** ${em}`);
     });
   }
 });
