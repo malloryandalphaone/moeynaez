@@ -309,26 +309,6 @@ client.on("message", (message) => {
 });
 
 
-
-
-client.on("message", msg => {
-  if(msg.content === '!' + "id") {
-      const embed = new Discord.RichEmbed();
-  embed.addField("Name Account :", `${msg.author.username}#${msg.author.discriminator}`, true)
-          .addField("Id :", `${msg.author.id}`, true)
-          .setColor("WHITE")
-          .setFooter(msg.author.username , msg.author.avatarURL)
-          .addField('» The Stats :', `${msg.author.presence.status.toUpperCase()}`, true)
-          .addField('» Playing :', `${msg.author.presence.game === null ? "No Game" : msg.author.presence.game.name}`, true)
-          .addField('» Ranks :', `${msg.member.roles.filter(r => r.name).size}`, true)
-      msg.channel.send({embed: embed})
-  }
-});
-
-
-
-
-
 client.on('message', message => {
             let args = message.content.split(' ').slice(1);
             if(message.content.split(' ')[0] == `${prefix}color`){
@@ -793,7 +773,7 @@ client.on("message", (message) => {
    if (message.content.startsWith("!problem")) {  
         const reason = message.content.split(" ").slice(1).join(" ");  
         if (!message.guild.roles.exists("name", "- Staff.")) return message.channel.send(`لازم تسوي رتبة اسمها \`Support Team\` وتنطي البوت ادمنيتر حتا يقدر يسوي الرومات ويعدل برمشنات`);
-        if (message.guild.channels.exists("name", "t-{message.author.id}" + message.author.id)) return message.channel.send(`You already have a ticket open.`);    /// ALPHA CODES
+        if (message.guild.channels.exists("name", "{message.author.id}" + message.author.id)) return message.channel.send(`You already have a ticket open.`);    /// ALPHA CODES
         message.guild.createChannel(`ticket-${message.author.username}`, "text").then(c => {
             let role = message.guild.roles.find("name", "- Staff.");
             let role2 = message.guild.roles.find("name", "@everyone");
