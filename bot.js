@@ -48,7 +48,7 @@ client.on("guildMemberAdd", function(member) {
         const embed = new Discord.RichEmbed()
         .setColor('RANDOM')
         .setAuthor(member.user.tag, member.user.avatarURL)
-        .setFooter("- **Welcome to __Warriors__ Clan.** ")
+        .setFooter("- Welcome to Warriors.")
         .setTimestamp()
         return wc.sendEmbed(embed);
 });
