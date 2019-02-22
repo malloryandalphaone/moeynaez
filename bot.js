@@ -1711,7 +1711,7 @@ client.on('message',async message => {
 
 
 client.on('message', message => {
-    if (message.content.startsWith(prefix + 'x')) {
+    if (message.content.startsWith(prefix + 'xx')) {
         if (message.author.bot) return;
         if (!message.guild) return;  
         let em = client.emojis.find(e => e.name === "false");
