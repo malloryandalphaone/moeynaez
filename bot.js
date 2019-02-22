@@ -1607,6 +1607,7 @@ client.on("message",async msg => {
     if(msg.content.startsWith(prefix  + "submit")){
         var channel = msg.guild.channels.find("name", "submissions");
         if(!channel) return msg.reply("- **i find Channel `submissions`.**`")
+    let em = client.emojis.find(e => e.name === "bot");
     let fltr = m => m.author.id === msg.author.id
     let name = '';
    await msg.channel.send(':orange_book:**, Type Your Name?**.').then(e => {
@@ -1655,12 +1656,13 @@ msg.channel.awaitMessages(fltr, {
                     o.delete(2222);
                     b.delete(2222);
                    let emb = new Discord.RichEmbed()
-                   .setTitle("Submit for join for Clan ;")
+                   .setAuthor(user.username,user.avatarURL)
+                   .setTitle("- Submit to Clan :")
                    .addField("**» Name :**", name)
                    .addField("**» Age :**", age)
                    .addField("**» Name Of The Game :**", from)
                    .addField("**- Submit by :**", msg.author)
-                   .addField("**- Id Account :**", msg.author.id)
+                   .addField("**- ID Account :**", msg.author.id)
                    channel.send(emb);
                 })
                
