@@ -5,6 +5,16 @@ const fs = require("fs");
 const moment = require("moment");  
 const ms = require("ms");
 const wait = require('util').promisify(setTimeout);
+const wait = new Set()
+  if (wait.has(message.author.id)) {
+    return message.reply("- **Please CoolDown 10s**").then(message => {
+     message.delete(10000) 
+    })
+    }
+    wait.add(message.author.id);
+    setTimeout(() => {
+        wait.delete(message.author.id);
+    }, 10000);
 client.on('ready', () => {
 var x = client.channels.get("548229379889823758");
 if (x) x.join();
@@ -509,7 +519,6 @@ message.author.send(`- مرحباََ بك في سيرفر رويآل للإصد
 message.channel.send(`**يجب آن يكون الخاص لديك مفعل\nلأتمكن من إرسال اليك الرسائل عبر الخاص**\n${user}`);
 });
 }}});
-
 
 
 
