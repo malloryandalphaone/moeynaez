@@ -45,23 +45,15 @@ client.on('message', async message => {
 
 var minecrafta = [
   "Test 1",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  ""
+  "sss",
+  "ssssa",
+  "ssasd",
+  "srij",
+  "hfrie",
+  "uierfhuier",
+  "rifhe",
+  "hueruire",
+  "111",
 ];
 
 client.on('message', message => {
