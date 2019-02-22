@@ -44,6 +44,50 @@ client.on('message', async message => {
 
 
 
+client.on('message' , async (message) => {
+       if(message.content.startsWith(`<@${client.user.id}>`)) {
+              message.channel.startTyping()
+ let responses = [
+        'Yes?',
+        'What you need?!',
+	   'Please Don\'t mention !',
+	   'Any Help Asking The Adminsistrtor',
+	   'I\'m Very Busy!',
+	   
+	   
+    ]
+    
+    // Fetch a random item from the array
+    let fetched = responses[Math.floor(Math.random() * responses.length)];
+   message.reply(fetched)
+   message.channel.stopTyping()
+       }
+  
+});
+
+
+client.on('message', message => {
+  var prefix ="!"
+        if(message.content.startsWith(prefix + 'namemc')) {
+            let args = message.content.split(' ').slice(1).join(' ');
+            if (!args) return message.channel.send("- **Please provide a Minecraft username.**");
+            var link = (`https://namemc.com/${args}`);
+            message.channel.send(link);
+        }
+    });
+
+
+
+client.on('message', message => {
+  var prefix = "!"
+        if(message.content.startsWith(prefix + 'hypixel')) {
+            let args = message.content.split(' ').slice(1).join(' ');
+            if (!args) return message.channel.send("- **Please provide a Minecraft username.**");
+            var link = (`https://hypixel.net/player/${args}`);
+            message.channel.send(link);
+        }
+    });
+
 
 
 client.on('typingStart', (ch, user) => {
