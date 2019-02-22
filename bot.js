@@ -126,6 +126,11 @@ if (msg.author.bot) return;
 » \`Mr447\`
 » \`wHybH\`
 » \`Quixxyy\`
+» \`1iLegqend_ \`
+» \`ii9l3a_\`
+» \`1zull\`
+» \`vM3ark_\`
+» \`1Rakan\`
 `)
 
 
