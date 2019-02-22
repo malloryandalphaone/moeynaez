@@ -1655,7 +1655,7 @@ msg.channel.awaitMessages(fltr, {
                     o.delete(2222);
                     b.delete(2222);
                    let emb = new Discord.RichEmbed()
-                   .setTitle("Submit for join Clan ;")
+                   .setTitle("Submit for join for Clan ;")
                    .addField("**» Name :**", name)
                    .addField("**» Age :**", age)
                    .addField("**» Name Of The Game :**", from)
@@ -1712,6 +1712,7 @@ client.on('message',async message => {
 
 client.on('message', message => {
     if (message.content.startsWith(prefix + 'refusal')) {
+      if(!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send('- **You dont have Permission.**');
         if (message.author.bot) return;
         if (!message.guild) return;  
         let em = client.emojis.find(e => e.name === "no");
@@ -1729,6 +1730,7 @@ client.on('message', message => {
 
 client.on('message', message => {
     if (message.content.startsWith(prefix + 'accept')) {
+      if(!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send('- **You dont have Permission.**');
         if (message.author.bot) return;
         if (!message.guild) return;  
         let em = client.emojis.find(e => e.name === "yes");
