@@ -1718,8 +1718,8 @@ client.on('message', message => {
         let Room = message.guild.channels.find(`name`, 'results');
         let user = message.mentions.users.first();
         let embedreject = new Discord.RichEmbed()
-        .setColor('#000000')
-        .setTitle(user.username,user.avatarURL)
+        //.setColor('')
+        .setAuthor(user.username,user.avatarURL)
         .setDescription(`» [ ${em} ] :: - \`تم رفض العضو .\``)
         .setThumbnail(message.author.avatarURL)
         Room.sendEmbed(embedreject);
