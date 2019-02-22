@@ -1711,7 +1711,7 @@ client.on('message',async message => {
 
 
 client.on('message', message => {
-    if (message.content.startsWith(prefix + 'xx')) {
+    if (message.content.startsWith(prefix + 'refusal')) {
         if (message.author.bot) return;
         if (!message.guild) return;  
         let em = client.emojis.find(e => e.name === "no");
@@ -1726,6 +1726,25 @@ client.on('message', message => {
     }
 });
 
+
+client.on('message', message => {
+    if (message.content.startsWith(prefix + 'accept')) {
+        if (message.author.bot) return;
+        if (!message.guild) return;
+        let em = client.emojis.find(e => e.name === "yes");
+        let user = message.mentions.users.first();
+        if(!user) return message.channel.send("**  -  mention a member  **")
+        let Room = message.guild.channels.find(`name`, "results");
+        let embed = new Discord.RichEmbed()
+     //   .setColor('RANDOM')
+        .setAuthor(user.username, user.avatarURL)
+        .setDescription(`» [ ${em}  ] :: - \`تم قبول العضو \``)
+        .setThumbnail(message.author.avatarURL)
+        let Support = message.guild.roles.find(`name`, "- Warriors ⌬.");
+        message.member.addRole(Support);
+        Room.sendEmbed(embed);
+    }
+});
 
 
 client.login(process.env.BOT_TOKEN);
