@@ -131,6 +131,8 @@ if (msg.author.bot) return;
 » \`1zull\`
 » \`vM3ark_\`
 » \`1Rakan\`
+» \`1Hero_\`
+» \`-\`
 `)
 
 
