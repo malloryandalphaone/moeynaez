@@ -1679,7 +1679,7 @@ client.on('message',async message => {
   let mention = message.mentions.members.first();
   let acRoom = client.channels.get('548208534618112020');
   let em = client.emojis.find(e => e.name === "no");
-  if(message.content.startsWith(prefix + "Refusal")) {
+  if(message.content.startsWith(prefix + "Refussssal")) {
   if(message.guild.id !== '548103774116380682') return;
   if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
   if(!mention) return message.reply("- **Mention The member.**");
@@ -1695,7 +1695,7 @@ client.on('message',async message => {
   let mySupport = message.guild.roles.find('name',role);
   let acRoom = client.channels.get('548208534618112020');
   let em = client.emojis.find(e => e.name === "yes");
-  if(message.content.startsWith(prefix + "acceptance")) {
+  if(message.content.startsWith(prefix + "acceptasssnce")) {
     if(message.guild.id !== '548103774116380682') return;
     if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
     if(!mention) return message.reply('- **Mention The member.**');
@@ -1730,19 +1730,16 @@ client.on('message', message => {
 client.on('message', message => {
     if (message.content.startsWith(prefix + 'accept')) {
         if (message.author.bot) return;
-        if (!message.guild) return;
+        if (!message.guild) return;  
         let em = client.emojis.find(e => e.name === "yes");
+        let Room = message.guild.channels.find(`name`, 'results');
         let user = message.mentions.users.first();
-        if(!user) return message.channel.send("**  -  mention a member  **")
-        let Room = message.guild.channels.find(`name`, "results");
-        let embed = new Discord.RichEmbed()
-     //   .setColor('RANDOM')
-        .setAuthor(user.username, user.avatarURL)
-        .setDescription(`» [ ${em}  ] :: - \`تم قبول العضو \``)
+        let embedreject = new Discord.RichEmbed()
+        //.setColor('')
+        .setAuthor(user.username,user.avatarURL)
+        .setDescription(`» [ ${em} ] :: - \`تم قبول العضو .\``)
         .setThumbnail(message.author.avatarURL)
-        let Support = message.guild.roles.find(`name`, "- Warriors ⌬.");
-        message.member.addRole(Support);
-        Room.sendEmbed(embed);
+        Room.sendEmbed(embedreject);
     }
 });
 
