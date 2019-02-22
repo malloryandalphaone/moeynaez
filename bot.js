@@ -43,26 +43,38 @@ client.on('message', async message => {
 });
 
 
+var minecrafta = [
+  "Test 1",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  ""
+];
 
-client.on('message' , async (message) => {
-       if(message.content.startsWith(`<@${client.user.id}>`)) {
-              message.channel.startTyping()
- let responses = [
-        'Yes?',
-        'What you need?!',
-	   'Please Don\'t mention !',
-	   'Any Help Asking The Adminsistrtor',
-	   'I\'m Very Busy!',
-	   
-	   
-    ]
-    
-    // Fetch a random item from the array
-    let fetched = responses[Math.floor(Math.random() * responses.length)];
-   message.reply(fetched)
-   message.channel.stopTyping()
-       }
-  
+client.on('message', message => {
+ if (message.content.startsWith("!minecraft")) {
+              if(!message.channel.guild) return message.reply('** This command only for servers**');
+var embed = new Discord.RichEmbed()
+.setColor('RANDOM')
+.setThumbnail(message.author.avatarURL) 
+.addField('Your Account Is : ' ,
+`${minecrafta[Math.floor(Math.random() * minecrafta.length)]}`)
+   message.author.sendEmbed(embed);
+console.log('[minecrafta] Send By: ' + message.author.username)
+  }
 });
 
 
