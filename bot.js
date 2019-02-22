@@ -1678,7 +1678,7 @@ msg.channel.awaitMessages(fltr, {
 client.on('message',async message => {
   let mention = message.mentions.members.first();
   let acRoom = client.channels.get('548208534618112020');
-  let em = client.emojis.find(e => e.name === "false");
+  let em = client.emojis.find(e => e.name === "no");
   if(message.content.startsWith(prefix + "Refusal")) {
   if(message.guild.id !== '548103774116380682') return;
   if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
@@ -1694,7 +1694,7 @@ client.on('message',async message => {
   let role = message.content.split(" ").slice(2).join(" ");
   let mySupport = message.guild.roles.find('name',role);
   let acRoom = client.channels.get('548208534618112020');
-  let em = client.emojis.find(e => e.name === "true");
+  let em = client.emojis.find(e => e.name === "yes");
   if(message.content.startsWith(prefix + "acceptance")) {
     if(message.guild.id !== '548103774116380682') return;
     if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
@@ -1714,7 +1714,7 @@ client.on('message', message => {
     if (message.content.startsWith(prefix + 'xx')) {
         if (message.author.bot) return;
         if (!message.guild) return;  
-        let em = client.emojis.find(e => e.name === "false");
+        let em = client.emojis.find(e => e.name === "no");
         let Room = message.guild.channels.find(`name`, 'results');
         let user = message.mentions.users.first();
         let embedreject = new Discord.RichEmbed()
