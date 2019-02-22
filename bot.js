@@ -1721,7 +1721,7 @@ client.on('message', message => {
         let embedreject = new Discord.RichEmbed()
       //  .setColor('RANDOM')
         .setAuthor(user.username,user.avatarURL)
-        .setTitle(`**» [ ${em} ] :: - \`تم رفض العضو .\`**`)
+        .setDiscreption(`**» [ ${em} ] :: - \`تم رفض العضو .\`**`)
         .setThumbnail(message.author.avatarURL)
         Room.sendEmbed(embedreject);
     }
