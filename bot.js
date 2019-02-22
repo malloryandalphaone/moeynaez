@@ -373,7 +373,8 @@ client.on("message", msg =>{
   let args = msg.content.split(" ").slice(1)[0];
   let cmd = msg.content.split(' ')[0]
   if(cmd === `${prefix}gift`){
-  if (!msg.guild.member(msg.author).roles.has('548168263318765589')) return;
+ // if (!msg.guild.member(msg.author).roles.has('548168263318765589')) return;
+    if(!msg.member.hasPermission('ADMINISTRATOR')) return msg.channel.send('- **You dont have Permission.**');
   let roleW = msg.mentions.roles.first();
   if(!devs.includes(msg.author.id)){
     let embed = new Discord.RichEmbed()
