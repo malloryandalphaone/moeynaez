@@ -1656,7 +1656,6 @@ msg.channel.awaitMessages(fltr, {
                     o.delete(2222);
                     b.delete(2222);
                    let emb = new Discord.RichEmbed()
-                   .setAuthor(user.username,user.avatarURL)
                    .setTitle("- Submit to Clan :")
                    .addField("**» Name :**", name)
                    .addField("**» Age :**", age)
