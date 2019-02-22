@@ -671,26 +671,35 @@ client.on('voiceStateUpdate', (oldM, newM) => {
 
 
 client.on('message',message =>{
-    var prefix = "!"
-  var command = message.content.toLowerCase().split(" ")[0];
-    var args = message.content.toLowerCase().split(" ");
-    var userM = message.mentions.users.first()
-    let em = client.emojis.find(e => e.name === "false");
-    if(command == prefix + 'unban') {//SnOw Code
-        //if (!message.guild.member(message.author).roles.has('538051771143159808')) return;
-        if(!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send(':x: **You don\'t have permission.**'); //SnOw Code
-        if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.channel.send('**hmmm..**');//SnOw Code
-        if(!args[1]) return  message.channel.send('**Mention Any Member..**');
-        if(args[1].length < 16) return message.reply('**This is Id Not For Any User..**');//SnOw Code
-        message.guild.fetchBans().then(bans => {//SnOw Code
-            var Found = bans.find(m => m.id === args[1]);
-            if(!Found) return message.channel.send(`:x: **This is User is Not Banned!,** <@${message.author.id}>`);//SnOw Code
-            message.guild.unban(args[1]);
-            message.channel.send(`:white_check_mark: **Successfully Unbanned <@${args[1]}> From the server!**`);
-            }
+        var command = message.content.toLowerCase().split(" ")[0];
+          var args = message.content.toLowerCase().split(" ");
+          var userM = message.mentions.users.first()
+          if(command == prefix + 'unban') {
+              if(!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send(':no_entry: | You dont have **BAN_MEMBERS** Permission!');
+              if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.channel.send(':no_entry: | I dont have **BAN_MEMBERS** Permission!');
+              if(!args[1]) return  message.channel.send('-** Please type the ID of user.**');
+              if(args[1].length < 16) return message.reply('-** This ID is not id user.**');
+              message.guild.fetchBans().then(bans => {
+                  var Found = bans.find(m => m.id === args[1]);
+                  if(!Found) return message.channel.send(`-** <@${message.author.id}> This preson not have any ban from this server!**`);
+                  message.guild.unban(args[1]);
+                  message.channel.send(`:white_check_mark: **Successfully Unbanned <@${args[1]}> From the server!**`);
  
-        )}
-      });
+                  let banInfo = new Discord.RichEmbed()
+                  .setTitle('**New Unbanned User !**')
+                  .setThumbnail(message.author.avatarURL)
+                  .setColor('RANDOM')
+                  .setDescription(`**\n:airplane: Successfully Unbanned <@${args[1]}> From the server!\n\n**User:** <@${args[1]}> (ID: ${args[1]})\n**By:** <@${message.author.id}> (ID: ${message.author.id})`)
+                  .setTimestamp()
+                  .setFooter(userM.user.tag, userM.user.avatarURL)
+ 
+                  let incidentchannel = message.guild.channels.find(`name`, "log");
+                  if(!incidentchannel) return message.channel.send("Can't find incidents channel.");
+                  incidentchannel.send(banEmbed);
+                  }
+ 
+              )}
+            })
 
 
 
@@ -1700,5 +1709,24 @@ client.on('message',async message => {
     });
   }
 });
+
+
+client.on('message', message => {
+    if (message.content.startsWith(prefix + 'x')) {
+        if (message.author.bot) return;
+        if (!message.guild) return;  
+        let em = client.emojis.find(e => e.name === "false");
+        let Room = message.guild.channels.find(`name`, 'results');
+        let user = message.mentions.users.first();
+        let embedreject = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setAuthor(user.username,user.avatarURL)
+        .setTitle(`» [ ${em} ] :: - \`تم رفض العضو .\``)
+        .setThumbnail(message.author.avatarURL)
+        Room.sendEmbed(embedreject);
+    }
+});
+
+
 
 client.login(process.env.BOT_TOKEN);
