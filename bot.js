@@ -5,16 +5,6 @@ const fs = require("fs");
 const moment = require("moment");  
 const ms = require("ms");
 const wait = require('util').promisify(setTimeout);
-const wait = new Set()
-  if (wait.has(message.author.id)) {
-    return message.reply("- **Please CoolDown 10s**").then(message => {
-     message.delete(10000) 
-    })
-    }
-    wait.add(message.author.id);
-    setTimeout(() => {
-        wait.delete(message.author.id);
-    }, 10000);
 client.on('ready', () => {
 var x = client.channels.get("548229379889823758");
 if (x) x.join();
@@ -1729,7 +1719,7 @@ client.on('message', message => {
         let user = message.mentions.users.first();
         let embedreject = new Discord.RichEmbed()
         .setColor('#000000')
-        .setAuthor(user.username,user.avatarURL)
+        .setTitle(user.username,user.avatarURL)
         .setDescription(`» [ ${em} ] :: - \`تم رفض العضو .\``)
         .setThumbnail(message.author.avatarURL)
         Room.sendEmbed(embedreject);
