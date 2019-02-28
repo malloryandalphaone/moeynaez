@@ -12,7 +12,7 @@ if (x) x.join();
 
 client.on("ready", () => {
 client.user.setStatus('dnd');
-client.user.setGame("⌬", "https://www.twitch.tv/idk");
+client.user.setGame("Clan ⌬", "https://www.twitch.tv/idk");
   console.log("Reeebel | Logged in! Server count: ${client.guilds.size}");
  // client.user.setActivity("Royal Orders.",{type: 'WATCHING'});
 });
@@ -106,15 +106,15 @@ client.on('typingStart', (ch, user) => {
 
 
 
-client.on("guildMemberAdd", function(member) {
-    const wc = member.guild.channels.find("name", "chat")
-        const embed = new Discord.RichEmbed()
-        .setColor('RANDOM')
-        .setAuthor(member.user.tag, member.user.avatarURL)
-        .setFooter("- Welcome to Warriors.")
-        .setTimestamp()
-        return wc.sendEmbed(embed);
-});
+//client.on("guildMemberAdd", function(member) {
+  //  const wc = member.guild.channels.find("name", "chat")
+    //    const embed = new Discord.RichEmbed()
+      //  .setColor('RANDOM')
+       // .setAuthor(member.user.tag, member.user.avatarURL)
+      //  .setFooter("- Welcome to Warriors.")
+     //   .setTimestamp()
+       // return wc.sendEmbed(embed);
+//});
 
 
 
@@ -136,28 +136,6 @@ if (message.content.startsWith(prefix + 'clear')) { //Codes
 
 
 
-
-client.on('message' , async (message) => {
-    if (message.content.startsWith(prefix + 'stim')) {
-         let args = message.content.split(" ").slice(1);
-let Timer = args[0];
-if(!args[0]){
-  return message.channel.send("يجب كتابه الفتره الزمنيه");
-}
-if(args[0] <= 0){
-  return message.channel.send("يجب كتابه الفتره الزمنيه");
-}
-message.channel.send(`${ms(ms(Timer), {long: true})}`)
- 
-setTimeout(function(){
-  message.channel.send(`- **Time Ended!** ${ms(ms(Timer), {long: true})}` + message.author.toString())
-}, ms(Timer));
-}
-});
-
-
-
-
 client.on('message', msg => {
     if(msg.content === '!team') {
         if (!msg.guild.member(msg.author).roles.has('548128401928486952')) return;
@@ -174,12 +152,6 @@ if (msg.author.bot) return;
 » \`Mr447\`
 » \`wHybH\`
 » \`Quixxyy\`
-» \`1iLegqend_ \`
-» \`ii9l3a_\`
-» \`1zull\`
-» \`vM3ark_\`
-» \`1Rakan\`
-» \`1Hero_\`
 » \`-\`
 `)
 
@@ -365,6 +337,20 @@ client.on("message", message => {
 
 
 
+client.on("message",msg =>{
+    let limit = 50; // عدد الرسائل المسموح بها قبل التنضيف
+    if(msg.channel.type !== "chat") return;
+    msg.channel.fetchMessages().then(mm=>{
+        if(mm.size >= limit){
+            msg.channel.bulkDelete(100).then(() => {
+                const embed = new Discord.RichEmbed()
+                  //  .setColor("")
+                    .setDescription(`- **Automatic Cleared!**`)
+                msg.channel.send({ embed }).then( z => z.delete(1600));
+                }).catch(err=>msg.channel.send(err.message))
+        }
+    })
+    });
 
 
 
