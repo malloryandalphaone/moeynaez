@@ -31,19 +31,19 @@ var ApL = `${Math.round(client.ping)}`
 
 
 
-client.on('message', message => {
-  if (message.content.startsWith(prefix + "help")) {
-  message.channel('- **Command's**
+//client.on('message', message => {
+  //if (message.content.startsWith(prefix + "help")) {
+  //message.channel('- **Command's**
 
-\`#\` **!use** لتفعيل كود
-\`#\` **!problem** لفتح تذكرة
-\`#\` **!hypixel** لعرض ملفك في سيرفر هآيبكسل
-\`#\` **!namemc** لرؤية ملفك في موقع نيم ام سي
-\`#\` **!server** لرؤية حآلة السيرفر في مآينكرافت
-\`#\` **!ping** لعرض سرعة أتصالك
-\`#\` **!avatar** لرؤية');
-    }
-});
+//\`#\` **!use** لتفعيل كود
+//\`#\` **!problem** لفتح تذكرة
+//\`#\` **!hypixel** لعرض ملفك في سيرفر هآيبكسل
+//\`#\` **!namemc** لرؤية ملفك في موقع نيم ام سي
+//\`#\` **!server** لرؤية حآلة السيرفر في مآينكرافت
+//\`#\` **!ping** لعرض سرعة أتصالك
+//\`#\` **!avatar** لرؤية');
+  //  }
+//});
 
 
 
