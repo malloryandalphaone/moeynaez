@@ -304,7 +304,7 @@ if(!check.voiceChannelID){
   rebel++;
 }
 }
-guild.channels.find('id', '548191375104147456').setName("Warriors Now "+rebel+".");
+guild.channels.find('id', '548191375104147456').setName("Tactics Now "+rebel+".");
   client.setInterval(() =>{
     let d = Date.now()
   }, 5000);
@@ -315,16 +315,16 @@ let newUserChannel = newMember.voiceChannel
 let oldUserChannel = oldMember.voiceChannel
  if(oldUserChannel === undefined && newUserChannel !== undefined) {
    rebel++;
-guild.channels.find('id', '548191375104147456').setName("Warriors Now "+rebel+".");
+guild.channels.find('id', '548191375104147456').setName("Tactics Now "+rebel+".");
 } else if(newUserChannel === undefined){
   rebel--;
-guild.channels.find('id', '548191375104147456').setName("Warriors Now "+rebel+".");
+guild.channels.find('id', '548191375104147456').setName("Tactics Now "+rebel+".");
 }
 });
 client.on('message', Codes => {
   
   if(Codes.content === "!voice") {
-      Codes.channel.send("- **Warriors Voice Now : \`"+rebel+"\`.**");
+      Codes.channel.send("- **Tactics Voice Now : \`"+rebel+"\`.**");
 }
 });
 
@@ -988,7 +988,7 @@ if(!rUser) return msg.channel.send("**Mention Any Member ..**");
     
     msg.delete().catch(O_o=>{});
     reportchannel.send(reportembed);
-    let role = msg.guild.roles.find(`name`, '» Don\'t Active for Clan Three.'); //حط هنا اسم الرتبة
+    let role = msg.guild.roles.find(`name`, '# Warrning.'); //حط هنا اسم الرتبة
     if(!role) return msg.guild.channel.send("Could't find `chat` role."); //حط هنا اسم الرتبة
     rUser.addRole(role);
     
@@ -1007,8 +1007,8 @@ client.on('message', function(message) {
         .setTimestamp()
         .setTitle('`New Message in private`')
         .setThumbnail(`${message.author.avatarURL}`)
-        .setDescription(`\`${message.content}\``)
-        .setFooter(`From **${message.author.tag} (${message.author.id})**`)
+        .setDescription(`\n${message.content}`)
+        .setFooter(`- ${message.author.tag} | (${message.author.id}).`)
     client.channels.get("548195172975116298").send({embed:RaYaN});
     }
 });
@@ -1018,7 +1018,7 @@ client.on('message', function(message) {
 
 client.on("guildMemberAdd", member => {
   member.createDM().then(function (channel) {
-  return channel.send(`- **Welcome to Warriors :**
+  return channel.send(`- **Welcome to Tactics :**
 
 \`#\` يجب آلتأدب بالأداب العآمة وعدم التطرق للموآضيع السيآسية والدينية
 \`#\` يجب عدم النشر بالخآص او آلمحآولة بأستدرآج الأعضاء الى التيم سبيك 
@@ -1668,7 +1668,7 @@ client.on("message",async msg => {
     let em = client.emojis.find(e => e.name === "bot");
     let fltr = m => m.author.id === msg.author.id
     let name = '';
-   await msg.channel.send(':orange_book:**, Type Your Name?**.').then(e => {
+   await msg.channel.send('- :orange_book:**, Type Your Name?**.').then(e => {
 msg.channel.awaitMessages(fltr, {
     time: 600000,
     max: 1
@@ -1677,7 +1677,7 @@ msg.channel.awaitMessages(fltr, {
     name = co.first().content
     co.first().delete()
     let age = '';
-    e.edit(`:green_book:**, Type Your Age?**`).then(e => {
+    e.edit(`- :green_book:**, Type Your Age?**`).then(e => {
      msg.channel.awaitMessages(fltr, {
          time: 600000,
          max: 1
@@ -1686,7 +1686,7 @@ msg.channel.awaitMessages(fltr, {
      age = co.first().content
      co.first().delete();
      let from = '';
-     e.edit(`:closed_book:**, Type Name Of The Game?**`).then(e => {
+     e.edit(`- :closed_book:**, Type Name Of The Game?**`).then(e => {
      msg.channel.awaitMessages(fltr, {
          time: 600000,
          max: 1
@@ -1694,7 +1694,7 @@ msg.channel.awaitMessages(fltr, {
      .then(co => {
       from = co.first().content
       co.first().delete();
-      e.edit("**Are You Sure On Your Submit?**").then(o => {
+      e.edit("- **Are You Sure On Your Submit?**").then(o => {
           o.react("❌")
           .then(() => o.react('✅'))
             .then(() =>o.react('❌'))
