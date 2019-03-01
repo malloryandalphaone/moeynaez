@@ -339,7 +339,7 @@ client.on("message", message => {
 
 client.on("message",msg =>{
     let limit = 50; // عدد الرسائل المسموح بها قبل التنضيف
-    if(msg.channel.type !== "chat") return;
+    if(msg.channel.type !== "text") return;
     msg.channel.fetchMessages().then(mm=>{
         if(mm.size >= limit){
             msg.channel.bulkDelete(100).then(() => {
