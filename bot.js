@@ -31,6 +31,23 @@ var ApL = `${Math.round(client.ping)}`
 
 
 
+client.on('message', message => {
+            if (message.content.startsWith(prefix + "help")) {
+  message.channel.send("- **Command's**
+
+\`#\` **!use** لتفعيل كود
+\`#\` **!problem** لفتح تذكرة
+\`#\` **!hypixel** لعرض ملفك في سيرفر هآيبكسل
+\`#\` **!namemc** لرؤية ملفك في موقع نيم ام سي
+\`#\` **!server** لرؤية حآلة السيرفر في مآينكرافت
+\`#\` **!ping** لعرض سرعة أتصالك
+\`#\` **!avatar** لرؤية");
+    }
+});
+
+
+
+
 client.on('message', async message => {
   let args = message.content.slice(3);
   if(message.content.startsWith(prefix + 'bc')) {
