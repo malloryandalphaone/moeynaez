@@ -162,7 +162,7 @@ if (msg.author.bot) return;
   const embed = new Discord.RichEmbed()
             .setColor("FFFFFF")
             .setFooter("\nإذا اسمك مو موجود كلم الإدارة")
-            .setTitle("- **Warriors Team,**")
+            .setTitle("- **Tactics Team,**")
             .setDescription(`
 
 » \`ReeeBeL\`
