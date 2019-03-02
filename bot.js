@@ -355,7 +355,7 @@ client.on("message", message => {
         m.delete();
         message.member.addRole(message.guild.roles.find(c => c.name == "- Members ♪.")); // اسم الرتبة
       }).catch(() => {
-        m.edit(`- **إنتهت مهلة آلوقت ، يجب إعآدة الأمر**`).then(m2 => m.delete(15000));
+        m.edit(`- **Time End, Please Try Again.**`).then(m2 => m.delete(15000));
       });
     });
   }
@@ -957,9 +957,9 @@ client.on('message', message => {
   const port = '25565'
   if(message.content.startsWith('!server')) {
  const args = message.content.split(" ").slice(1).join(" ")
-    if (!args) return message.channel.send("**Write Server IP . **");
+    if (!args) return message.channel.send("- **Write Server IP.**");
         let embed = new Discord.RichEmbed()
-        .setColor('RANDOM')
+      //  .setColor('RANDOM')
         .setThumbnail(`https://api.minetools.eu/favicon/${args}/25565`)
         .addField("» 📜 Server NIP",`${args}`,true)
         .setImage(`http://status.mclive.eu/${args}/${args}/25565/banner.png`)
@@ -1813,6 +1813,9 @@ client.on('message', message => {
         Room.sendEmbed(embedreject);
     }
 });
+
+
+
 
 
 client.login(process.env.BOT_TOKEN);
