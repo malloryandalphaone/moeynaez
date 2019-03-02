@@ -169,7 +169,17 @@ if (msg.author.bot) return;
 » \`Mr447\`
 » \`wHybH\`
 » \`Quixxyy\`
+» \`1zull\`
+» \`ImAbuSalem | AbuSalem\`
+» \`1Hero_\`
+» \`1Rakan\`
+» \`1iSoCute\`
 » \`-\`
+» \`-\`
+» \`-\`
+» \`-\`
+» \`-\`
+
 `)
 
 
