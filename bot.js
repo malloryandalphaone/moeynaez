@@ -31,22 +31,28 @@ var ApL = `${Math.round(client.ping)}`
 
 
 
-//client.on('message', message => {
-  //if (message.content.startsWith(prefix + "help")) {
-  //message.channel('- **Command's**
+client.on('message',async message => {
 
-//\`#\` **!use** لتفعيل كود
-//\`#\` **!problem** لفتح تذكرة
-//\`#\` **!hypixel** لعرض ملفك في سيرفر هآيبكسل
-//\`#\` **!namemc** لرؤية ملفك في موقع نيم ام سي
-//\`#\` **!server** لرؤية حآلة السيرفر في مآينكرافت
-//\`#\` **!ping** لعرض سرعة أتصالك
-//\`#\` **!avatar** لرؤية');
-  //  }
-//});
+let mention = message.mentions.members.first();
+
+let Room = client.channels.get('اي دي الروم الي يظهر فيه اذا انرفض العضو');
+let rank = message.guild.member(message.author).roles.find(r => r.name === 'اسم الرتبة الي تبيها ترفض');
+if(message.content.startsWith(prefix + "رفض")) {
+if (!rank) return message.channel.send('🛑 **| يجب ان تمتلك صلاحيات لأستخدام هذا الأمر.**');
+if(message.guild.id !== 'اي دي سيرفرك') return;
+if(!mention) return message.reply("منشن شخص");
 
 
 
+Room.send(`
+**» العضو :** ${mention}
+
+[ ❌ ] :: لقد تم رفض العضو`);
+
+}
+
+});
+  
 
 client.on('message', async message => {
   let args = message.content.slice(3);
@@ -170,12 +176,12 @@ if (msg.author.bot) return;
 » \`wHybH\`
 » \`Quixxyy\`
 » \`1zull\`
-» \`ImAbuSalem | AbuSalem\`
+» \`1xPanz_\`
 » \`1Hero_\`
 » \`1Rakan\`
 » \`1iSoCute\`
-» \`-\`
-» \`-\`
+» \`MarryJoAnA\`
+» \`iLuvkill\`
 » \`-\`
 » \`-\`
 » \`-\`
@@ -1744,40 +1750,6 @@ msg.channel.awaitMessages(fltr, {
     }
 });
 
-client.on('message',async message => {
-  let mention = message.mentions.members.first();
-  let acRoom = client.channels.get('548208534618112020');
-  let em = client.emojis.find(e => e.name === "no");
-  if(message.content.startsWith(prefix + "Refussssal")) {
-  if(message.guild.id !== '548103774116380682') return;
-  if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
-  if(!mention) return message.reply("- **Mention The member.**");
-
-  acRoom.send(`» ${mention},\n» **Your unAcceptable for The Submit,** ${em}`)
-  }
-});
- 
- 
-client.on('message',async message => {
-  let mention = message.mentions.members.first();
-  let role = message.content.split(" ").slice(2).join(" ");
-  let mySupport = message.guild.roles.find('name',role);
-  let acRoom = client.channels.get('548208534618112020');
-  let em = client.emojis.find(e => e.name === "yes");
-  if(message.content.startsWith(prefix + "acceptasssnce")) {
-    if(message.guild.id !== '548103774116380682') return;
-    if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
-    if(!mention) return message.reply('- **Mention The member.**');
-    if(!role) return message.reply('- **Type Name Rank.**');
-    if(!mySupport) return message.reply('- **i Find The Rank.**');
-    if(mention.roles.has(mySupport)) return message.reply('- **The Member has a ready have the rank.**');
-
-    mention.addRole(mySupport).then(() => {
-      acRoom.send(`» ${mention},\n» **Your Acceptable for The Submit,** ${em}`);
-    });
-  }
-});
-
 
 client.on('message', message => {
     if (message.content.startsWith(prefix + 'refusal')) {
@@ -1815,6 +1787,29 @@ client.on('message', message => {
 });
 
 
+client.on('message',async message => {
+
+let mention = message.mentions.members.first();
+let em = client.emojis.find(e => e.name === "no");
+let Room = client.channels.get('548208534618112020');
+let rank = message.guild.member(message.author).roles.find(r => r.name === '- Staff.');
+if(message.content.startsWith(prefix + "رفض")) {
+if (!rank) return message.channel.send('🛑 **| يجب ان تمتلك صلاحيات لأستخدام هذا الأمر.**');
+if(message.guild.id !== '548103774116380682') return;
+if(!mention) return message.reply("منشن شخص");
+
+
+                   let emb = new Discord.RichEmbed()
+                   .setAuthor("** **")
+                   .setTitle(`** **`)
+                   .setDescription(`${em} \`تم رفض آلعضو\``)
+                   .setThumbnail("** **")
+
+Room.send(emb);
+
+}
+
+});
 
 
 
