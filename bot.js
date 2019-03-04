@@ -1792,9 +1792,9 @@ client.on('message',async message => {
 let mention = message.mentions.members.first();
 let em = client.emojis.find(e => e.name === "no");
 let Room = client.channels.get('548208534618112020');
-let rank = message.guild.member(message.author).roles.find(r => r.name === 'staff');
+//let rank = message.guild.member(message.author).roles.find(r => r.name === 'staff');
 if(message.content.startsWith(prefix + "رفض")) {
-if (!rank) return message.channel.send('🛑 **| يجب ان تمتلك صلاحيات لأستخدام هذا الأمر.**');
+//if (!rank) return message.channel.send('🛑 **| يجب ان تمتلك صلاحيات لأستخدام هذا الأمر.**');
 if(message.guild.id !== '548103774116380682') return;
 if(!mention) return message.reply("منشن شخص");
 
