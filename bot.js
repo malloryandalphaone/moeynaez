@@ -1766,7 +1766,7 @@ client.on('message', message => {
         let embedreject = new Discord.RichEmbed()
         .setColor('#36393e')
         .setAuthor(user.username,user.avatarURL)
-        .addField(`[ ${em} ] **\`تم قبول العضو بنجآح\`**``, `** **`)
+        .addField('[ ${em} ] **`تم قبول العضو بنجآح`**', '** **')
         .setThumbnail(message.author.avatarURL)
         Room.sendEmbed(embedreject);
     }
