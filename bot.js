@@ -1730,12 +1730,15 @@ msg.channel.awaitMessages(fltr, {
                     o.delete(2222);
                     b.delete(2222);
                    let emb = new Discord.RichEmbed()
-                   .setTitle("- Submit to Clan :")
-                   .addField("**» Name :**", name)
-                   .addField("**» Age :**", age)
-                   .addField("**» Name Of The Game :**", from)
-                   .addField("**- Submit by :**", msg.author)
-                   .addField("**- ID Account :**", msg.author.id)
+                   
+                   .setTitle(user.username,user.avatarURL)
+                   .setThumbnail(user.avatarURL)
+                   .addField("**» `Name `**", name, true)
+                   .addField("**» `Age `**", age, true)
+                   .addField("**» `Name Of The Game `**", from, true)
+                   .setFooter(msg.author)
+                   .setColor('#36393e')
+                  // .addField("**- ID Account :**", msg.author.id)
                    channel.send(emb);
                 })
                
@@ -1760,7 +1763,7 @@ client.on('message', message => {
         let Room = message.guild.channels.find(`name`, 'results');
         let user = message.mentions.users.first();
         let embedreject = new Discord.RichEmbed()
-        //.setColor('')
+        .setColor('#36393e')
         .setAuthor(user.username,user.avatarURL)
         .setDescription(`» [ ${em} ] :: - \`تم رفض العضو .\``)
         .setThumbnail(message.author.avatarURL)
@@ -1778,7 +1781,7 @@ client.on('message', message => {
         let Room = message.guild.channels.find(`name`, 'results');
         let user = message.mentions.users.first();
         let embedreject = new Discord.RichEmbed()
-        //.setColor('')
+        .setColor('#36393e')
         .setAuthor(user.username,user.avatarURL)
         .setTitle("** **")
         .setDescription(`» [ ${em} ] :: - \`تم قبول العضو .\``)
