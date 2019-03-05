@@ -1732,12 +1732,13 @@ msg.channel.awaitMessages(fltr, {
                    let emb = new Discord.RichEmbed()
                    
                    .setThumbnail(msg.author.avatarURL)
-                   .addField('» `Name`', name, true)
-                   .addField('» `Age`', age, true)
-                   .addField('» `Name Of the Game`', from, true)
+                   .addField('» `الأسم`', name, true)
+                   .addField('» `العمر`', age, true)
+                   .addField('» `أسم المستخدم`', from, true)
+                   .setFooter('Account :', msg.author)
                    .setColor('#36393e')
                   // .setTimestamp()
-                   .setFooter(msg.author.name, msg.author.iconURL)
+                 //  .setFooter(msg.guild.name, msg.guild.iconURL)
                 //   .setFooter('**ID Account :**', msg.author.id)
                    channel.send(emb);
                 })
@@ -1765,7 +1766,7 @@ client.on('message', message => {
         let embedreject = new Discord.RichEmbed()
         .setColor('#36393e')
         .setAuthor(user.username,user.avatarURL)
-        .setDescription(`» [ ${em} ] :: - \`تم رفض العضو .\``)
+        .addField(`[ ${em} ] **\`تم قبول العضو بنجآح\`**``, '** **')
         .setThumbnail(message.author.avatarURL)
         Room.sendEmbed(embedreject);
     }
@@ -1783,9 +1784,7 @@ client.on('message', message => {
         let embedreject = new Discord.RichEmbed()
         .setColor('#36393e')
         .setAuthor(user.username,user.avatarURL)
-        .setTitle("** **")
         .setDescription(`» [ ${em} ] :: - \`تم قبول العضو .\``)
-        .setFooter(" ")
         .setThumbnail(message.author.avatarURL)
         Room.sendEmbed(embedreject);
     }
