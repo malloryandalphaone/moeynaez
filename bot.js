@@ -1766,7 +1766,7 @@ client.on('message', message => {
         let embedreject = new Discord.RichEmbed()
         .setColor('#36393e')
         .setAuthor(user.username,user.avatarURL)
-        .addField(`[ ${em} ] \`تم رفض العضو.\``,`****`, true)
+        .addField(`** **`,`[ ${em} ] \`تم رفض العضو.\``, true)
         .setThumbnail(message.author.avatarURL)
         Room.sendEmbed(embedreject);
     }
@@ -1784,7 +1784,7 @@ client.on('message', message => {
         let embedreject = new Discord.RichEmbed()
         .setColor('#36393e')
         .setAuthor(user.username,user.avatarURL)
-        .addField(`[ ${em} ] \`تم قبول العضو بنجاح.\``,`****`, true)
+        .addField(`** **`,`[ ${em} ] \`تم قبول العضو بنجاح.\``, true)
         .setThumbnail(message.author.avatarURL)
         Room.sendEmbed(embedreject);
     }
