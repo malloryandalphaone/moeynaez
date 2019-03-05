@@ -1801,7 +1801,7 @@ if(!fchannel) return;
   if (message.channel.id === fchannel) { 
     message.delete(100);
    message.member.addRole(role);
-    channel.send("- **New Member Verify,**\nName; " + message.member + "\nVerify Message; " + message.content);
+    schannel.send("- **New Member Verify,**\nName; " + message.member + "\nVerify Message; " + message.content);
     }
   });
 
