@@ -1780,7 +1780,9 @@ client.on('message', message => {
         let embedreject = new Discord.RichEmbed()
         //.setColor('')
         .setAuthor(user.username,user.avatarURL)
+        .setTitle("** **")
         .setDescription(`» [ ${em} ] :: - \`تم قبول العضو .\``)
+        .setFooter(" ")
         .setThumbnail(message.author.avatarURL)
         Room.sendEmbed(embedreject);
     }
@@ -1806,28 +1808,6 @@ if(!mention) return message.reply("منشن شخص");
                    .setThumbnail("** **")
 
 Room.send(emb);
-
-}
-
-});
-
-client.on('message',async message => {
-
-let mention = message.mentions.members.first();
-
-let Room = client.channels.get('548208534618112020');
-let rank = message.guild.member(message.author).roles.find(r => r.name === 'staff');
-if(message.content.startsWith(prefix + "سرفض")) {
-if (!rank) return message.channel.send('🛑 **| يجب ان تمتلك صلاحيات لأستخدام هذا الأمر.**');
-if(message.guild.id !== '548103774116380682') return;
-if(!mention) return message.reply("منشن شخص");
-
-
-
-Room.send(`
-**» العضو :** ${mention}
-
-[ ❌ ] :: لقد تم رفض العضو`);
 
 }
 
