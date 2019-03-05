@@ -1731,14 +1731,14 @@ msg.channel.awaitMessages(fltr, {
                     b.delete(2222);
                    let emb = new Discord.RichEmbed()
                    
-                   .setThumbnail(msg.author.avatarURL)
+                   //.setThumbnail(msg.author.avatarURL)
                    .addField('» `Name`', name, true)
                    .addField('» `Age`', age, true)
                    .addField('» `Name Of the Game`', from, true)
                    .setColor('#36393e')
-                   .setTimestamp()
+                  // .setTimestamp()
                   // .setFooter(msg.guild.name, msg.guild.iconURL)
-                   .setFooter('**ID Account :**', msg.author.id)
+                //   .setFooter('**ID Account :**', msg.author.id)
                    channel.send(emb);
                 })
                
