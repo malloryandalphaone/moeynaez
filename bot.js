@@ -12,7 +12,7 @@ if (x) x.join();
 
 client.on("ready", () => {
 client.user.setStatus('dnd');
-client.user.setGame("Clan ⌬", "https://www.twitch.tv/idk");
+client.user.setGame("- Tactics.", "https://www.twitch.tv/idk");
   console.log("Reeebel | Logged in! Server count: ${client.guilds.size}");
  // client.user.setActivity("Royal Orders.",{type: 'WATCHING'});
 });
@@ -143,7 +143,7 @@ client.on('message', msg => {
        
 if (msg.author.bot) return;
   const embed = new Discord.RichEmbed()
-            .setColor("FFFFFF")
+            .setColor("#36393e")
             .setFooter("\nإذا اسمك مو موجود كلم الإدارة")
             .setTitle("- **Tactics Team,**")
             .setDescription(`
@@ -228,7 +228,7 @@ client.on('guildMemberAdd', member => {
   
     const embed = new Discord.RichEmbed()
     
-    .setColor("WHITE")
+    .setColor("#36393e")
     .setDescription(`» Join Discord in __${createdAt.toFixed(0)}__ Day.`)
     .setAuthor(member.user.tag, member.user.avatarURL);
     channel.sendEmbed(embed);
@@ -348,13 +348,13 @@ client.on("message", message => {
 
 
 client.on("message",msg =>{
-    let limit = 50; // عدد الرسائل المسموح بها قبل التنضيف
+    let limit = 100; // عدد الرسائل المسموح بها قبل التنضيف
     if(msg.channel.type !== "text") return;
     msg.channel.fetchMessages().then(mm=>{
         if(mm.size >= limit){
             msg.channel.bulkDelete(100).then(() => {
                 const embed = new Discord.RichEmbed()
-                  //  .setColor("")
+                    .setColor("#36393e")
                     .setDescription(`- **Automatic Cleared!**`)
                 msg.channel.send({ embed }).then( z => z.delete(1600));
                 }).catch(err=>msg.channel.send(err.message))
@@ -582,33 +582,7 @@ client.on('message', message => {
     }
 });
 
-
-
-//client.on("message", msg => {
-//  var prefix = '!'//البركفس
-//  if(msg.content.startsWith(prefix + 'account')){
-//    let embed = new Discord.RichEmbed()
-  //  .setColor("WHITE")
-   // .addField("Year📆",msg.author.createdAt.getFullYear())
-  //  .addField("Hour📆", msg.author.createdAt.getHours())
-  //  .addField("Day📆", msg.author.createdAt.getDay())
-//    .addField("Month📆", msg.author.createdAt.getMonth())
-  //  .addField("Minutes📆", msg.author.createdAt.getMinutes())
-  //  .addField("Seconds📆", msg.author.createdAt.getSeconds())
-  //  .addField("Full📆", msg.author.createdAt.toLocaleString())
-   // .setTimestamp()
- //   msg.channel.send(embed);
- // }
-//});
-
-
-
-
-
-
-
-
-////////
+///////
 
 
 //// client.on("ready", () => { 
@@ -942,9 +916,9 @@ client.on('message', message => {
  const args = message.content.split(" ").slice(1).join(" ")
     if (!args) return message.channel.send("- **Write Server IP.**");
         let embed = new Discord.RichEmbed()
-      //  .setColor('RANDOM')
+        .setColor('#36393e')
         .setThumbnail(`https://api.minetools.eu/favicon/${args}/25565`)
-        .addField("» 📜 Server NIP",`${args}`,true)
+        .addField("» 📜 Server IP",`${args}`,true)
         .setImage(`http://status.mclive.eu/${args}/${args}/25565/banner.png`)
         .setFooter(`» Warriors,`)
     message.channel.send(embed)      
@@ -969,11 +943,11 @@ if(!rUser) return msg.channel.send("**Mention Any Member ..**");
 
     let reportembed = new Discord.RichEmbed()
     .setTitle("Warning :")
-    .setColor("RANDOM")
-    .addField("» Warn User", `${rUser}`)
-    .addField("» Warn By", `${msg.author}`)
-    .addField("» Reason",`${reason}`)
-    .setFooter("Please Respect the Rules.")
+    .setColor("#36393e")
+    .addField("» Warn User", `${rUser}`, true)
+    .addField("» Warn By", `${msg.author}`, true)
+    .addField("» Reason",`${reason}`, true)
+    .setFooter("\nPlease Respect the Rules.")
     
     
     let reportchannel = msg.guild.channels.find(`name`,"chat"); //حط هنا اسم الروم الي يوريك بعض المعلومات
@@ -1716,7 +1690,7 @@ msg.channel.awaitMessages(fltr, {
                    .setColor('#36393e')
                   // .setTimestamp()
                  //  .setFooter(msg.guild.name, msg.guild.iconURL)
-                   .setFooter(msg.author)
+                   .setFooter(`@${msg.author.tag}`)
                    channel.send(emb);
                 })
                
