@@ -1736,7 +1736,6 @@ msg.channel.awaitMessages(fltr, {
                    .addField('**» `Name `**', name, true)
                    .addField('**» `Age `**', age, true)
                    .addField('**» `Name Of The Game `**', from, true)
-                   .setFooter(msg.author)
                    .setColor('#36393e')
                   // .addField("**- ID Account :**", msg.author.id)
                    channel.send(emb);
@@ -1791,29 +1790,5 @@ client.on('message', message => {
     }
 });
 
-
-client.on('message',async message => {
-
-let mention = message.mentions.members.first();
-let em = client.emojis.find(e => e.name === "no");
-let Room = client.channels.get('548208534618112020');
-//let rank = message.guild.member(message.author).roles.find(r => r.name === 'staff');
-if(message.content.startsWith(prefix + "رفض")) {
-//if (!rank) return message.channel.send('🛑 **| يجب ان تمتلك صلاحيات لأستخدام هذا الأمر.**');
-if(message.guild.id !== '548103774116380682') return;
-if(!mention) return message.reply("منشن شخص");
-
-
-                   let emb = new Discord.RichEmbed()
-                   .setAuthor("** **")
-                   .setTitle(`** **`)
-                   .setDescription(`${em} \`تم رفض آلعضو\``)
-                   .setThumbnail("** **")
-
-Room.send(emb);
-
-}
-
-});
 
 client.login(process.env.BOT_TOKEN);
