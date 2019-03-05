@@ -1201,7 +1201,7 @@ client.on('message', async message => {
         if(message.author.bot) return;
         if(message.channel.type === 'dm') return;
  
-        var modRole = message.guild.roles.find(r => r.name === '# Royal.');
+        var modRole = message.guild.roles.find(r => r.name === 'staff');
        
         if(message.guild.member(message.author).roles.has(modRole.id)) return message.channel.send('**- أنت بالفعل لديك رتبة الفريق.**');
         if(!subChannel) return message.channel.send('يجب أن يتوفر روم بأسم :: Requests');
