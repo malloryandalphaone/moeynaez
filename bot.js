@@ -1766,7 +1766,7 @@ client.on('message', message => {
         let embedreject = new Discord.RichEmbed()
         .setColor('#36393e')
         .setAuthor(user.username,user.avatarURL)
-        .addField('[ ${em} ] **`تم رفض العضو`**', '** **')
+        .addField(`[ ${em} ] \`تم رفض العضو.\``,`****`, true)
         .setThumbnail(message.author.avatarURL)
         Room.sendEmbed(embedreject);
     }
@@ -1778,13 +1778,13 @@ client.on('message', message => {
       if(!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send('- **You dont have Permission.**');
         if (message.author.bot) return;
         if (!message.guild) return;  
-        let em = client.emojis.find(e => e.name === "yes");
         let Room = message.guild.channels.find(`name`, 'results');
         let user = message.mentions.users.first();
+        let em = client.emojis.find(e => e.name === "yes");
         let embedreject = new Discord.RichEmbed()
         .setColor('#36393e')
         .setAuthor(user.username,user.avatarURL)
-        .addField(`[ ${em} ] \`تم قبول العضو بنجآح\``, ,true)
+        .addField(`[ ${em} ] \`تم قبول العضو بنجاح.\``,`****`, true)
         .setThumbnail(message.author.avatarURL)
         Room.sendEmbed(embedreject);
     }
