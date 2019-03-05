@@ -29,29 +29,6 @@ var ApL = `${Math.round(client.ping)}`
   }  
  });
 
-
-
-client.on('message',async message => {
-
-let mention = message.mentions.members.first();
-
-let Room = client.channels.get('اي دي الروم الي يظهر فيه اذا انرفض العضو');
-let rank = message.guild.member(message.author).roles.find(r => r.name === 'اسم الرتبة الي تبيها ترفض');
-if(message.content.startsWith(prefix + "رفض")) {
-if (!rank) return message.channel.send('🛑 **| يجب ان تمتلك صلاحيات لأستخدام هذا الأمر.**');
-if(message.guild.id !== 'اي دي سيرفرك') return;
-if(!mention) return message.reply("منشن شخص");
-
-
-
-Room.send(`
-**» العضو :** ${mention}
-
-[ ❌ ] :: لقد تم رفض العضو`);
-
-}
-
-});
   
 
 client.on('message', async message => {
@@ -1739,7 +1716,7 @@ msg.channel.awaitMessages(fltr, {
                    .setColor('#36393e')
                   // .setTimestamp()
                  //  .setFooter(msg.guild.name, msg.guild.iconURL)
-                   .setFooter(msg.author.id)
+                   .setFooter(msg.author)
                    channel.send(emb);
                 })
                
