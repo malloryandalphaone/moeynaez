@@ -1735,7 +1735,7 @@ msg.channel.awaitMessages(fltr, {
                    .addField('» `الأسم`', name, true)
                    .addField('» `العمر`', age, true)
                    .addField('» `أسم المستخدم`', from, true)
-                   .setFooter('Account :', msg.author)
+                   //.setFooter('Account :', msg.author)
                    .setColor('#36393e')
                   // .setTimestamp()
                  //  .setFooter(msg.guild.name, msg.guild.iconURL)
