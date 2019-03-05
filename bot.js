@@ -1000,7 +1000,7 @@ if(!rUser) return msg.channel.send("**Mention Any Member ..**");
     
     
     let reportchannel = msg.guild.channels.find(`name`,"chat"); //حط هنا اسم الروم الي يوريك بعض المعلومات
-    if(!reportchannel) return msg.channel.send("Couldn't find `royal` channel. "); //ط هنا اسم الروم الي يوريك بعض المعلومات
+    if(!reportchannel) return msg.channel.send("Couldn't find `chat` channel. "); //ط هنا اسم الروم الي يوريك بعض المعلومات
     
     msg.delete().catch(O_o=>{});
     reportchannel.send(reportembed);
@@ -1732,10 +1732,10 @@ msg.channel.awaitMessages(fltr, {
                    let emb = new Discord.RichEmbed()
                    
                    .setTitle(user.username,user.avatarURL)
-                   .setThumbnail(user.avatarURL)
-                   .addField('**» `Name `**', name, true)
-                   .addField('**» `Age `**', age, true)
-                   .addField('**» `Name Of The Game `**', from, true)
+                   //.setThumbnail(user.avatarURL)
+                   .addField('» `Name`', name, true)
+                   .addField('» `Age`', age, true)
+                   .addField('» `Name Of the Game`', from, true)
                    .setColor('#36393e')
                   // .addField("**- ID Account :**", msg.author.id)
                    channel.send(emb);
