@@ -348,7 +348,7 @@ client.on('message', Codes => {
 
 
 client.on("message", message => {
-  if(message.content.startsWith("!verify")) { // الامر والبريفكس
+  if(message.content.startsWith("!verify,soon.")) { // الامر والبريفكس
     let num = Math.floor((Math.random() * 4783) + 10);
  
         message.channel.send(`- **Please Type the Number :** __**\`${num}\`**__`).then(m => {
@@ -1005,7 +1005,7 @@ if(!rUser) return msg.channel.send("**Mention Any Member ..**");
     msg.delete().catch(O_o=>{});
     reportchannel.send(reportembed);
     let role = msg.guild.roles.find(`name`, '# Warrning.'); //حط هنا اسم الرتبة
-    if(!role) return msg.guild.channel.send("Could't find `chat` role."); //حط هنا اسم الرتبة
+    if(!role) return msg.guild.channel.send("Could't find `# Warrning.` role."); //حط هنا اسم الرتبة
     rUser.addRole(role);
     
         return;
@@ -1021,10 +1021,10 @@ client.on('message', function(message) {
         var RaYaN= new Discord.RichEmbed()
         .setColor('WHITE')
         .setTimestamp()
-        .setTitle('`New Message in private`')
+        .setTitle('- New Message in DM!.')
         .setThumbnail(`${message.author.avatarURL}`)
         .setDescription(`\n${message.content}`)
-        .setFooter(`- ${message.author.tag} | (${message.author.id}).`)
+        .setFooter(`${message.author.tag} | (${message.author.id}.`)
     client.channels.get("548195172975116298").send({embed:RaYaN});
     }
 });
@@ -1790,5 +1790,19 @@ client.on('message', message => {
     }
 });
 
+
+client.on("message", message => {
+  var role = message.guild.roles.find(juliancodes => juliancodes.name === '- Members ♪.');
+  if(!role) return;
+  var fchannel = "548229920346603520";
+var schannel = message.guild.channels.find(j => j.name === "log");
+if(!schannel) return;
+if(!fchannel) return;
+  if (message.channel.id === fchannel) { 
+    message.delete(100);
+   message.member.addRole(role);
+    channel.send("- **New Member Verify,**\nName; " + message.member + "\nVerify Message; " + message.content);
+    }
+  });
 
 client.login(process.env.BOT_TOKEN);
