@@ -1733,9 +1733,9 @@ msg.channel.awaitMessages(fltr, {
                    
                    .setTitle(user.username,user.avatarURL)
                    .setThumbnail(user.avatarURL)
-                   .addField("**» `Name `**", name, true)
-                   .addField("**» `Age `**", age, true)
-                   .addField("**» `Name Of The Game `**", from, true)
+                   .addField('**» `Name `**', name, true)
+                   .addField('**» `Age `**', age, true)
+                   .addField('**» `Name Of The Game `**', from, true)
                    .setFooter(msg.author)
                    .setColor('#36393e')
                   // .addField("**- ID Account :**", msg.author.id)
