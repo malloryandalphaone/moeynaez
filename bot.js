@@ -1690,7 +1690,7 @@ msg.channel.awaitMessages(fltr, {
                    .setColor('#36393e')
                   // .setTimestamp()
                  //  .setFooter(msg.guild.name, msg.guild.iconURL)
-                   .setFooter(`@${msg.author.tag}`)
+                   .setFooter(msg.author)
                    channel.send(emb);
                 })
                
