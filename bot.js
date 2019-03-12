@@ -12,7 +12,7 @@ if (x) x.join();
 
 client.on("ready", () => {
 client.user.setStatus('dnd');
-client.user.setGame("- Tactics.", "https://www.twitch.tv/idk");
+client.user.setGame("- Atom.", "https://www.twitch.tv/idk");
   console.log("Reeebel | Logged in! Server count: ${client.guilds.size}");
  // client.user.setActivity("Royal Orders.",{type: 'WATCHING'});
 });
@@ -138,27 +138,16 @@ if (message.content.startsWith(prefix + 'clear')) { //Codes
 
 client.on('message', msg => {
     if(msg.content === '!team') {
-        if (!msg.guild.member(msg.author).roles.has('548128401928486952')) return;
+       // if (!msg.guild.member(msg.author).roles.has('548128401928486952')) return;
         if(!msg.channel.guild) return msg.reply(":x: **This is Command for Servers Only.**");
        
 if (msg.author.bot) return;
   const embed = new Discord.RichEmbed()
             .setColor("#36393e")
             .setFooter("\nإذا اسمك مو موجود كلم الإدارة")
-            .setTitle("- **Tactics Team,**")
+            .setTitle("- **Atom Team,**")
             .setDescription(`
 
-» \`ReeeBeL\`
-» \`Mr447\`
-» \`wHybH\`
-» \`Quixxyy\`
-» \`1zull\`
-» \`1xPanz_\`
-» \`1Hero_\`
-» \`1Rakan\`
-» \`1iSoCute\`
-» \`MarryJoAnA\`
-» \`iLuvkill\`
 » \`-\`
 » \`-\`
 » \`-\`
@@ -240,7 +229,7 @@ client.on('guildMemberAdd', member => {
 
 
 
-const devs = ["518113766915702789", "380307890235506698"]// ايدي الخاص بحسابك
+const devs = ["518113766915702789", "380307890235506698", "517697831969095690"]// ايدي الخاص بحسابك
  
 const adminprefix = "!";//Narox
 client.on('message', message => {
@@ -283,49 +272,49 @@ client.on('message', message => {
 
 
 
-let rebel;
-client.on("ready", async  => {
-    let guild = client.guilds.get("548103774116380682");
-  let users = guild.members.map(member => member.user.id);
-  let i;
-  rebel=0;
-for (i=0 ; i < users.length ; i++) {
- let   check = guild.members.get(users[i]);
-if(!check.voiceChannelID){
-        continue;
-}else{
-  rebel++;
-}
-}
-guild.channels.find('id', '548191375104147456').setName("Tactics Now "+rebel+".");
-  client.setInterval(() =>{
-    let d = Date.now()
-  }, 5000);
-});
-client.on('voiceStateUpdate', (oldMember, newMember) => {
-    let guild = client.guilds.get("548103774116380682");
-let newUserChannel = newMember.voiceChannel
-let oldUserChannel = oldMember.voiceChannel
- if(oldUserChannel === undefined && newUserChannel !== undefined) {
-   rebel++;
-guild.channels.find('id', '548191375104147456').setName("Tactics Now "+rebel+".");
-} else if(newUserChannel === undefined){
-  rebel--;
-guild.channels.find('id', '548191375104147456').setName("Tactics Now "+rebel+".");
-}
-});
-client.on('message', Codes => {
+//let rebel;
+//client.on("ready", async  => {
+  //  let guild = client.guilds.get("548103774116380682");
+//  let users = guild.members.map(member => member.user.id);
+//  let i;
+//  rebel=0;
+//for (i=0 ; i < users.length ; i++) {
+// let   check = guild.members.get(users[i]);
+//if(!check.voiceChannelID){
+   //     continue;
+//}else{
+//  rebel++;
+//}
+//}
+//guild.channels.find('id', '548191375104147456').setName("Tactics Now "+rebel+".");
+//  client.setInterval(() =>{
+  //  let d = Date.now()
+ // }, 5000);
+//});
+//client.on('voiceStateUpdate', (oldMember, newMember) => {
+  //  let guild = client.guilds.get("548103774116380682");
+//let newUserChannel = newMember.voiceChannel
+//let oldUserChannel = oldMember.voiceChannel
+// if(oldUserChannel === undefined && newUserChannel !== undefined) {
+ //  rebel++;
+//guild.channels.find('id', '548191375104147456').setName("Tactics Now "+rebel+".");
+//} else if(newUserChannel === undefined){
+  //rebel--;
+//guild.channels.find('id', '548191375104147456').setName("Tactics Now "+rebel+".");
+//}
+//});
+//client.on('message', Codes => {
   
-  if(Codes.content === "!voice") {
-      Codes.channel.send("- **Tactics Voice Now : \`"+rebel+"\`.**");
-}
-});
+ // if(Codes.content === "!voice") {
+    //  Codes.channel.send("- **Tactics Voice Now : \`"+rebel+"\`.**");
+//}
+//});
 
 
 
 
 client.on("message", message => {
-  if(message.content.startsWith("!verify,soon.")) { // الامر والبريفكس
+  if(message.content.startsWith("!verifyssx")) { // الامر والبريفكس
     let num = Math.floor((Math.random() * 4783) + 10);
  
         message.channel.send(`- **Please Type the Number :** __**\`${num}\`**__`).then(m => {
@@ -920,7 +909,7 @@ client.on('message', message => {
         .setThumbnail(`https://api.minetools.eu/favicon/${args}/25565`)
         .addField("» 📜 Server IP",`${args}`,true)
         .setImage(`http://status.mclive.eu/${args}/${args}/25565/banner.png`)
-        .setFooter(`» Warriors,`)
+        .setFooter(`» Atom,`)
     message.channel.send(embed)      
 }});
 
@@ -955,7 +944,7 @@ if(!rUser) return msg.channel.send("**Mention Any Member ..**");
     
     msg.delete().catch(O_o=>{});
     reportchannel.send(reportembed);
-    let role = msg.guild.roles.find(`name`, '# Warrning.'); //حط هنا اسم الرتبة
+    let role = msg.guild.roles.find(`name`, '- Warrning.'); //حط هنا اسم الرتبة
     if(!role) return msg.guild.channel.send("Could't find `# Warrning.` role."); //حط هنا اسم الرتبة
     rUser.addRole(role);
     
@@ -985,10 +974,10 @@ client.on('message', function(message) {
 
 client.on("guildMemberAdd", member => {
   member.createDM().then(function (channel) {
-  return channel.send(`- **Welcome to Tactics :**
+  return channel.send(`- **Welcome to Atom :**
 
 \`#\` يجب آلتأدب بالأداب العآمة وعدم التطرق للموآضيع السيآسية والدينية
-\`#\` يجب عدم النشر بالخآص او آلمحآولة بأستدرآج الأعضاء الى التيم سبيك 
+\`#\` يجب عدم النشر بالخآص او آلمحآولة بأستدرآج الأعضاء الى محاولة النشر 
 \`#\` يجب عليك التفآعل كعضو بالفريق لتجنب الإنذار والطرد من الفريق 
 
  ${member} :four_leaf_clover:.`) 
@@ -1465,7 +1454,7 @@ client.on('message', msg => {
 
 
 client.on('message',async message => {
-  if(message.content === '!unbans') {
+  if(message.content === '!unbanssss') {
     var user = message.mentions.users.first();
     if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send(':x: **You don\'t have permission.**');
     if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**Hmmm..**");
@@ -1538,7 +1527,7 @@ client.on("message", function(message) {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
  
-  if (command === "del") {
+  if (command === "deleses") {
     message.channel.send("**قم بأختيار الروم المراد حذفه**")
       .then(() => {
         message.channel.awaitMessages(res => res.author.id == message.author.id , {
@@ -1629,7 +1618,7 @@ client.on("message", function(message) {
 
 client.on("message",async msg => {
     var prefix = '!';
-    if(msg.content.startsWith(prefix  + "submit")){
+    if(msg.content.startsWith(prefix  + "submitssss")){
         var channel = msg.guild.channels.find("name", "submissions");
         if(!channel) return msg.reply("- **i find Channel `submissions`.**`")
     let em = client.emojis.find(e => e.name === "bot");
@@ -1712,7 +1701,7 @@ client.on('message', message => {
         if (message.author.bot) return;
         if (!message.guild) return;  
         let em = client.emojis.find(e => e.name === "no");
-        let Room = message.guild.channels.find(`name`, 'results');
+        let Room = message.guild.channels.find(`name`, 'resultssssss');
         let user = message.mentions.users.first();
         let embedreject = new Discord.RichEmbed()
         .setColor('#36393e')
@@ -1725,7 +1714,7 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-    if (message.content.startsWith(prefix + 'accept')) {
+    if (message.content.startsWith(prefix + 'acceptsssss')) {
       if(!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send('- **You dont have Permission.**');
         if (message.author.bot) return;
         if (!message.guild) return;  
