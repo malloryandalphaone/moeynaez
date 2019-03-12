@@ -57,7 +57,7 @@ var minecrafta = [
 ];
 
 client.on('message', message => {
- if (message.content.startsWith("!minecraft")) {
+ if (message.content.startsWith("!minecraسft")) {
               if(!message.channel.guild) return message.reply('** This command only for servers**');
 var embed = new Discord.RichEmbed()
 .setColor('RANDOM')
